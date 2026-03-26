@@ -12,7 +12,7 @@ RUN npm install
 
 COPY . /app
 
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS="--max-old-space-size=1536"
 
 RUN npm run build
 
