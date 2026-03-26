@@ -1,0 +1,110 @@
+.week {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.week__title {
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  width: max-content;
+  font: var(--font-submenu);
+  color: var(--color-black);
+  margin: 3px 0 10px 0;
+  padding: 5px 20px;
+  background-color: var(--color-gray-dark);
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+
+.week__subtitle {
+  font: var(--font-s);
+  color: var(--color-black);
+}
+
+.week__help {
+  width: 100%;
+  padding: 10px 3px;
+  font: var(--font-submenu);
+  background-color: var(--color-blue-light);
+  color: var(--color-green);
+  text-align: center;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.week__link {
+  color: var(--color-green);
+}
+
+.checkbox_wrapper {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.checkbox_input {
+  /* сбрасываем стили с формы с помощью appearance:none, чтобы задать свой стиль  */
+  -webkit-appearance: none;
+  appearance: none;
+  /* задаем кастомное оформления для чекбокса */
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 3px solid var(--color-gray-dark);
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  font: (--font-s);
+  color: var(--color-black);
+  margin-left: 10px;
+}
+
+.checkbox_checked {
+  background-color: var(--color-gray-light);
+  position: relative;
+}
+
+.checkbox_checked::before {
+  content: '\2714';
+  font-size: 15px;
+  color: var(--color-black);
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.checkbox_wrapper input[type='checkbox']:disabled {
+  border-color: #c0c0c0;
+  background-color: #c0c0c0;
+}
+
+.checkbox_wrapper input[type='checkbox']:disabled + span {
+  color: #c0c0c0;
+}
+
+.checkbox_wrapper input[type='checkbox']:focus {
+  box-shadow: 0 0 20px #c0c0c0;
+}
+
+@media screen and (max-width: 700px) {
+  .week__header {
+    color: var(--color-white);
+    font: var(--font-submenu);
+    overflow: hidden;
+    grid-template-columns: 35px 35px 90px 2fr 30px 40px;
+  }
+}

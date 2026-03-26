@@ -1,0 +1,59 @@
+.calendar_container {
+  width: 100%;
+  max-width: 300px;
+  margin: 15px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar_container_title {
+  font: var(--font-ms);
+  color: var(--color-grey);
+}
+
+/* Принудительно задаем высоту SVG, иначе он может быть 0px */
+.react-calendar-heatmap {
+  height: 120px;
+  width: 100%;
+}
+
+/* Цвета для закрашивания квадратиков */
+.react-calendar-heatmap .color-empty {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-filled {
+  fill: #2688eb;
+} /* Зеленый как в VK/GitHub */
+
+/* Сдвиг текста дней недели, чтобы они не наезжали на квадраты */
+.react-calendar-heatmap text {
+  font-size: 8px;
+  fill: #999;
+}
+
+
+/* Основной контейнер тултипа */
+.react-tooltip {
+  background-color: #ffffff !important; /* Белый фон */
+  color: #333333 !important;           /* Темный текст */
+  padding: 4px 8px !important;       /* Внутренние отступы */
+  border-radius: 8px !important;       /* Скругление углов */
+  font-size: 10px !important;          /* Размер шрифта */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important; /* Мягкая тень */
+  border: 1px solid #ebebeb !important; /* Тонкая рамка */
+  opacity: 1 !important;               /* Убираем прозрачность */
+  z-index: 1000 !important;
+}
+
+/* Стилизация "хвостика" (стрелочки) тултипа */
+.react-tooltip .react-tooltip-arrow {
+  background-color: #ffffff !important;
+  border: 1px solid #ebebeb !important;
+}
+
+/*добавить иконку внутри текста */
+.react-tooltip::before {
+  content: '🏃 '; /* Маленькая иконка бегуна перед датой */
+}

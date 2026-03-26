@@ -1,0 +1,27 @@
+.main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 515px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--color-grey-dark);
+ 
+}
+
+.icon {
+  color: var(--color-blue);
+}

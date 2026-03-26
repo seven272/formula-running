@@ -1,0 +1,47 @@
+.choose_plan {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.icon {
+    width: 23px;
+    height: 23px;
+    color: var(--color-blue);
+    margin-right: 10px;
+}
+.title {
+  font: var(--font-submenu);
+  color: var(--color-grey-dark);
+}
+
+.select_form {
+    width: 100%;
+    max-width: 200px;
+    background: none;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-dark);
+    border-radius: 6px;
+    color: var(--color-grey-dark);
+    font: var(--font-s);
+    padding: 3px 3px;
+    box-sizing: border-box;
+overflow: hidden;
+}
+
+.select_option {
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    overflow: hidden;
+}

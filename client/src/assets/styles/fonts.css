@@ -1,0 +1,86 @@
+/* Шрифты семейства Unbounded */
+@font-face {
+  font-family: 'Unbounded-Black';
+  src: url('../fonts/Unbounded-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded-Bold';
+  src: url('../fonts/Unbounded-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded-Medium';
+  src: url('../fonts/Unbounded-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded-Regular';
+  src: url('../fonts/Unbounded-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded-Blond';
+  src: url('../fonts/Unbounded-Blond.woff2') format('woff2');
+  font-weight: 250;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Unbounded-Light';
+  src: url('../fonts/Unbounded-Light.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Paragraph-Medium';
+  src: local('Paragraph Medium'), local('Paragraph-Medium');
+  src: url('../fonts/Paragraph-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url('../fonts/Roboto-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: local('Roboto Medium'), local('Roboto-Medium');
+  src: url('../fonts/Roboto-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('../fonts/Roboto-Light.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}

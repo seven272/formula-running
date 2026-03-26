@@ -1,0 +1,44 @@
+.main {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.logo_wrap {
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--color-white);
+  margin: 10px 0 15px 10px;
+}
+
+
+
+.icon_wrap {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.icon {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font: var(--font-l);
+}
+
+.auth_icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}

@@ -1,0 +1,14 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font: var(--font-menu);
+  color: var(--color-black);
+  margin: 10px 0;
+}

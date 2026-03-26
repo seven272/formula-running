@@ -1,0 +1,62 @@
+.about_plan {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--color-grey-light);
+    border: 1px solid var(--color-grey);
+    border-radius: 8px;
+    padding: 10px 10px;
+    margin: 5px 0;
+  }
+  
+  .icon_wrap_about {
+    width: 45px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+  }
+  
+  .icon_wrap_close {
+    width: 25px;
+    height: auto;
+  }
+  
+  .icon_about {
+    width: 45px;
+    height: 45px;
+    color: var(--color-blue);
+  }
+  .icon_close {
+    width: 25px;
+    height: 25px;
+    color: var(--color-grey);
+    cursor: pointer;
+  }
+  
+  .content_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start;
+    text-align: justify;
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  .title {
+    color: var(--color-black);
+    font: var(--font-submenu);
+    margin-bottom: 5px;
+  }
+
+  .descr {
+    color: var(--color-grey-dark);
+    font: var(--font-s);
+  }
+  

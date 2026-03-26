@@ -1,0 +1,17 @@
+.auth_main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_wrap {
+    width: 100%;
+    height: auto;
+    max-width: 515px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}

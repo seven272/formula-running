@@ -1,0 +1,124 @@
+.carousel {
+  width: 100%;
+  max-width: 415px;
+  height: auto;
+  background-color:none;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+}
+
+.block_content_1 {
+  width: 80px;
+  height: auto;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #5b9da7;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  border: 3px solid var(--color-white);
+  cursor: pointer;
+}
+
+.block_content_2 {
+  width: 80px;
+  height: auto;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #84c3be;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  border: 3px solid var(--color-white);
+  cursor: pointer;
+}
+
+.block_content_3 {
+  width: 80px;
+  height: auto;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #bab86c;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  border: 3px solid var(--color-white);
+}
+
+
+.icon_top {
+  width: 45px;
+  height: 45px;
+  color:var(--color-grey-light);
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+.icon_bottom {
+  width: 45px;
+  height: 45px;
+  color:var(--color-grey-light);
+  opacity: 0.8;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-menu);
+  color: var(--color-white);
+  text-transform: uppercase;
+  padding: 0 3px;
+  margin: 15px 0;
+}
+
+.descr {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  font: var(--font-s);
+  color: var(--color-white);
+  text-transform: inherit;
+  text-align: justify;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+
+
+.next_slick_arrow {
+    color:  var(--color-blue-light);
+    font-size: 65px;
+}
+
+.prev_slick_arrow {
+    color: var(--color-blue-light);
+    font-size: 65px;
+}
+

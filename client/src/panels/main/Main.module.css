@@ -1,0 +1,19 @@
+.section_main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--font-color);
+}
+
+.subtitle {
+  font: var(--font-menu);
+  color: var(--font-color);
+}
+

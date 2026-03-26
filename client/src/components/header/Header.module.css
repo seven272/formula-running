@@ -1,0 +1,43 @@
+.header_main {
+  width: 100%;
+  max-width: 1050px;
+  height: 343px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background-image: url('../../assets/images/components/header-background.png');
+  background-size: cover;
+  border-radius: 0 0 12px 12px;
+  border: 1px solid green;
+}
+
+.header_other {
+  width: 100%;
+  max-width: 1050px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background-color: var(--color-blue);
+  background-size: cover;
+  border-radius: 0 0 12px 12px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    width: 100%;
+  }
+}

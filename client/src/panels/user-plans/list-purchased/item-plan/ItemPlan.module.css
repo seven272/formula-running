@@ -1,0 +1,35 @@
+.item_plan {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  flex-grow: 1;
+  font: var(--font-ms);
+  color: var(--color-grey);
+}
+
+.btn_wrap {
+  width: 60px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon {
+  font-size: 17px;
+  display: block;
+  color: var(--color-blue);
+  cursor: pointer;
+  margin-left: 5px;
+}

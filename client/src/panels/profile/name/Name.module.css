@@ -1,0 +1,33 @@
+.name_section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font: var(--font-l);
+  color: var(--color-black);
+}
+
+.icon_edit {
+  width: 15px;
+  height: 15px;
+  color: var(--color-grey);
+  margin-right: 15px;
+  cursor: pointer;
+}

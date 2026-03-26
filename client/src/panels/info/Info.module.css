@@ -1,0 +1,17 @@
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.title {
+  font: var(--font-l);
+  color: var(--color-black);
+}
+
+.header {
+  font: var(--font-menu);
+  color: var(--color-black);
+  cursor: pointer;
+}

@@ -1,0 +1,95 @@
+.main_rg {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid blue;
+  border-radius: 6px;
+  padding: 10px 0 20px 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font: var(--font-menu);
+  color: var(--color-grey);
+}
+
+.level_user,
+.time {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  row-gap: 5px;
+  margin-top: 20px;
+}
+
+.level_user_title,
+.time_title {
+  font: var(--font-submenu);
+  color: var(--color-grey);
+}
+
+.select_form {
+  width: 110px;
+  height: 20px;
+  padding-left: 5px;
+  background: none;
+  border: 1px solid var(--color-blue);
+  border-radius: 6px;
+  font: var(--font-s);
+  color: var(--color-grey);
+}
+
+.select_form option {
+  padding-left: 5px;
+  font: var(--font-s);
+  color: var(--color-grey);
+}
+
+.time_inputs_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.time_input_label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 2px;
+}
+
+.time_input_text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-s);
+  font-size: 8px;
+  color: var(--color-grey);
+}
+
+.time_input_field {
+  width: 70px;
+  height: 20px;
+  padding-left: 5px;
+  font: var(--font-s);
+  color: var(--color-grey);
+  border: 1px solid var(--color-blue);
+  border-radius: 6px;
+  font: var(--font-s);
+  color: var(--color-grey);
+  outline: none;
+}
+
+.time_input_field:focus {
+  outline: 1px solid var(--color-blue);
+}

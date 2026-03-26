@@ -1,0 +1,60 @@
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .input_label_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .input_title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+  }
+  
+  .input_field_text {
+    outline: none;
+    padding-left: 7px;
+    height: 25px;
+    border: 1px solid var(--color-grey);
+  }
+  
+  .input_field_text::placeholder {
+    font-size: 12px;
+    color: rgb(173, 169, 169);
+  }
+  
+  .input_error {
+    font-size: 10px;
+    color: red;
+  }
+  
+  .btn_save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none; 
+    background: none;
+    color: var(--color-grey);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .icon_save {
+    width: 15px;
+    height: 15px;
+    color: var(--color-grey);
+    margin-right: 5px;
+  }
+    

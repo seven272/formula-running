@@ -1,0 +1,110 @@
+.items {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.item {
+  width: 60px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-s);
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  border-radius: 4px;
+}
+
+.active {
+  width: 60px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-s);
+  cursor: pointer;
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  border-radius: 4px;
+}
+
+.item a,
+.active a {
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item a:hover,
+.active a:hover {
+  text-decoration: none;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  margin-bottom: 3px;
+}
+
+.dropmenu_items {
+  width: 190px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: calc(100% + 5px);
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--color-blue);
+  z-index: 3;
+}
+
+.dropmenu_item {
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--color-blue);
+  cursor: pointer;
+
+}
+
+.dropmenu_item a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--color-blue);
+  cursor: pointer;
+  font: var(--font-s);
+}
+
+
+.dropmenu_icon {
+  width: 15px;
+  height: 15px;
+  color: var(--color-blue);
+  margin-right: 5px;
+}

@@ -1,0 +1,21 @@
+.result_sort {
+    width: 100%;
+    max-width: 515px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+  width: 80%;
+  display: flex;
+  justify-content:stretch;
+  align-items: flex-start;
+  font: var(--font-m);
+  color: var(--color-grey);
+  padding: 10px;
+  border: 1px solid var(--color-blue);
+  border-radius: 12px;
+  margin-top: 50px;
+}

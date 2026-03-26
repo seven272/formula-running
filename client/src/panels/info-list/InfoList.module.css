@@ -1,0 +1,45 @@
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--color-grey);
+}
+
+.href_wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.href_icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-grey);
+  margin-right: 10px;
+}
+
+.href_text {
+  font: var(--font-m);
+  color: var(--color-grey);
+  cursor: pointer;
+}
+
+.href_text:hover {
+  text-decoration: underline;
+}

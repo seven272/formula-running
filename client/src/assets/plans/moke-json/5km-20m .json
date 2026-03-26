@@ -1,0 +1,525 @@
+{
+  "week1": [
+    {
+      "id": 1,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 2,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 6х400м в темпе 3.30/км, отдых 2 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 3,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "6 км в темпе 5.50/км",
+      "isCompleted": false
+    },
+    {
+      "id": 4,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 3х1000м в темпе 3.55-4.00/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 5,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 6,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "7 км в темпе 5.40/км",
+      "isCompleted": false
+    },
+    {
+      "id": 7,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 12 км в темпе 5.30/км",
+      "isCompleted": false
+    }
+  ],
+
+  "week2": [
+    {
+      "id": 8,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 9,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 7х400м в темпе 3.30/км, отдых 2 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 10,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "6 км в темпе 5.45/км",
+      "isCompleted": false
+    },
+    {
+      "id": 11,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 4х1000м в темпе 3.55-4.00/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 12,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 13,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "7 км в темпе 5.30/км",
+      "isCompleted": false
+    },
+    {
+      "id": 14,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 12 км в темпе 5.25/км",
+      "isCompleted": false
+    }
+  ],
+
+  "week3": [
+     {
+      "id": 15,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 16,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 8х400м в темпе 3.30/км, отдых 2 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 17,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "6 км в темпе 5.50/км",
+      "isCompleted": false
+    },
+    {
+      "id": 18,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 5х1000м в темпе 3.55-4.00/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 19,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 20,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "9 км в темпе 5.40/км",
+      "isCompleted": false
+    },
+    {
+      "id": 21,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 14 км в темпе 5.25/км",
+      "isCompleted": false
+    }
+  ],
+
+  "week4": [
+     {
+      "id": 22,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 23,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 6х400м в темпе 3.30/км, отдых 2 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 24,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "7 км в темпе 5.45/км",
+      "isCompleted": false
+    },
+    {
+      "id": 25,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 4х1000м в темпе 3.55-4.00/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 26,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 27,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "9 км в темпе 5.30/км",
+      "isCompleted": false
+    },
+    {
+      "id": 28,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 16 км в темпе 5.30/км",
+      "isCompleted": false
+    }
+  ],
+  "week5": [
+     {
+      "id": 29,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 30,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 7х400м в темпе 3.30/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 31,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "8 км в темпе 5.50/км",
+      "isCompleted": false
+    },
+    {
+      "id": 32,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 5х1000м в темпе 3.55-4.00/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 33,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 34,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "10 км в темпе 5.40/км",
+      "isCompleted": false
+    },
+    {
+      "id": 35,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 18 км в темпе 5.30/км",
+      "isCompleted": false
+    }
+  ],
+  "week6": [
+    {
+      "id": 36,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 37,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 8х400м в темпе 3.30/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 38,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "8 км в темпе 5.45/км",
+      "isCompleted": false
+    },
+    {
+      "id": 39,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 2х2000м в темпе 3.55-4.00/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 40,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 41,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "10 км в темпе 5.30/км",
+      "isCompleted": false
+    },
+    {
+      "id": 42,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 18 км в темпе 5.20/км",
+      "isCompleted": false
+    }
+  ],
+  "week7": [
+   {
+      "id": 43,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 44,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 6х400м в темпе 3.30/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 45,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "6 км в темпе 5.40/км",
+      "isCompleted": false
+    },
+    {
+      "id": 46,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 2х2000м в темпе 3.55-4.00/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 47,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 48,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "7 км в темпе 5.30/км",
+      "isCompleted": false
+    },
+    {
+      "id": 49,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "",
+      "description": "Длительная пробежка 10 км в темпе 5.15/км",
+      "isCompleted": false
+    }
+  ],
+  "week8": [
+  {
+      "id": 50,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 51,
+      "day": "ВТ",
+      "title": "Интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 5х400м в темпе 3.30/км, отдых 30 сек. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 52,
+      "day": "СР",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "6 км в темпе 5.50/км",
+      "isCompleted": false
+    },
+    {
+      "id": 53,
+      "day": "ЧТ",
+      "title": "Темповые интервалы",
+      "type": "run",
+      "subtype": "",
+      "description": "Разминка 2 км. 3х1000м в темпе 3.55-4.00/км, отдых 1 мин. Заминка 2 км",
+      "isCompleted": false
+    },
+    {
+      "id": 54,
+      "day": "ПТ",
+      "title": "Отдых или кросс-тренинг",
+      "type": "run",
+      "subtype": "",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 55,
+      "day": "СБ",
+      "title": "Легкий бег",
+      "type": "run",
+      "subtype": "",
+      "description": "4 км в темпе 5.50/км",
+      "isCompleted": false
+    },
+    {
+      "id": 56,
+      "day": "ВС",
+      "title": "Соревнования",
+      "type": "run",
+      "subtype": "",
+      "description": "Удачи на старте!",
+      "isCompleted": false
+    }
+  ]
+}

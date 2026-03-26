@@ -1,0 +1,1172 @@
+{
+  "week1": [
+    {
+      "id": 1,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 2,
+      "day": "ВТ",
+      "type": "run",
+      "subtype": "easy",
+      "title": "быстрый финиш(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 3,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 4,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 5,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "фартлек(33 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 6 х (1 минута в зоне 4 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 6,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 7,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(13 км)",
+      "description": "2 км в зоне 1, 10 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week2": [
+    {
+      "id": 8,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 9,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(47 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 12 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 10,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 11,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 12,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "фартлек(35 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 5 х (2 минута в зоне 4 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 13,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 14,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(14 км)",
+      "description": "2 км в зоне 1, 11 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week3": [
+    {
+      "id": 15,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 16,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(40 мин)",
+      "description": "5 минут в зоне 1, 25 минут в зоне 2, 10 минут в зоне 3",
+      "isCompleted": false
+    },
+    {
+      "id": 17,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 18,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 19,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "фартлек(33 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 6 х (1 минута в зоне 4 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 20,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 21,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(12 км)",
+      "description": "2 км в зоне 1, 9 км в зоне 2, 1 км в зоне 1 ",
+      "isCompleted": false
+    }
+  ],
+  "week4": [
+    {
+      "id": 22,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 23,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(47 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 12 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 24,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 25,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 26,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(35 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 10 х (30 сек в зоне 5 в гору / 1.5 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 27,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(40 мин)",
+      "description": "40 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 28,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(18 км)",
+      "description": "2 км в зоне 1, 15 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week5": [
+    {
+      "id": 29,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 30,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(42 мин)",
+      "description": "5 минут в зоне 1, 25 минут в зоне 2, 12 минут в зоне 3",
+      "isCompleted": false
+    },
+    {
+      "id": 31,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 32,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 33,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(39 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 8 х (90 сек в зоне 5 в гору / 1.5 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 34,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 35,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(20 км)",
+      "description": "2 км в зоне 1, 17 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week6": [
+    {
+      "id": 36,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 37,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(47 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 12 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 38,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 39,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 40,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(35 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 10 х (30 сек в зоне 5 в гору / 1.5 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 41,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(40 мин)",
+      "description": "40 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 42,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(13 км)",
+      "description": "2 км в зоне 1, 10 км в зоне 2, 1 км в зоне 1 ",
+      "isCompleted": false
+    }
+  ],
+  "week7": [
+    {
+      "id": 43,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 44,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(55 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 15 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 45,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 46,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 47,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(39 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 8 х (90 сек в зоне 5 в гору / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 48,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 49,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(23 км)",
+      "description": "2 км в зоне 1, 20 км в зоне 2, 1 км в зоне 1 ",
+      "isCompleted": false
+    }
+  ],
+  "week8": [
+    {
+      "id": 49,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 50,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(60 мин)",
+      "description": " 5 минут в зоне 1, 40 минут в зоне 2, 15 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 51,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 52,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(40 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 53,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(45 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 10 х (60 сек в зоне 5 в гору / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 54,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 55,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(26 км)",
+      "description": "2 км в зоне 1, 23 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week9": [
+    {
+      "id": 56,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 57,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(47 мин)",
+      "description": "5 минут в зоне 1, 30 минут в зоне 2, 12 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 58,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 59,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 60,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "бег в подъемы(39 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 8 х (90 сек в зоне 5 в гору / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 61,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 62,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(18 км)",
+      "description": "2 км в зоне 1, 15 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week10": [
+    {
+      "id": 63,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 64,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "интервальня(64 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 4 х (8минут в зоне 3 / 3 минуты в зоне 1), 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 65,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 67,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 68,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "короткие интервалы(45 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 10 х (1 минута в зоне 5 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 69,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 70,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(29 км)",
+      "description": "2 км в зоне 1, 26 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week11": [
+    {
+      "id": 71,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 72,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "темповая (44 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 24 минут в зоне 3, 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 73,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(40 мин)",
+      "description": "40 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 74,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(35 мин)",
+      "description": "5 минут в зоне 1, 25 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 75,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "короткие интервалы(47 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 8 х (1.5 минута в зоне 5 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 76,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 77,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(33 км)",
+      "description": "2 км в зоне 1, 30 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week12": [
+    {
+      "id": 78,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 79,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "темповая (44 мин)",
+      "description": "темповая (44 мин): 5 минут в зоне 1, 5 минут в зоне 2, 24 минут в зоне 3, 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 80,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(40 мин)",
+      "description": "40 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 81,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 82,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "короткие интервалы(39 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 6 х (1.5 минуты в зоне 5 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 83,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 84,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(23 км)",
+      "description": "2 км в зоне 1, 20 км в зоне 2, 1 км в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week13": [
+    {
+      "id": 85,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 86,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "темповая(57 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 32 минут в зоне 3, 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 87,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 88,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 89,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "длинные интервалы(39 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 3 х (5 минут в зоне 4 / 3 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 90,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 91,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная с фартлеком(16.7 км)",
+      "description": "1 км в зоне 1, 2 км в зоне 2, 8 х (400 метров в зоне 3 / 1.2 км в зоне 2), 500 метров в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week14": [
+    {
+      "id": 85,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 86,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "интервальня(64 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 4 х (8минут в зоне 3 / 3 минуты в зоне 1), 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 87,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 88,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 89,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "длинные интервалы(45 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 6 х (3 минут в зоне 5 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 90,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 91,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная (25 км)",
+      "description": "1 км в зоне 1, 22.5 км в зоне 2, 1.5 км в зоне 3",
+      "isCompleted": false
+    }
+  ],
+  "week15": [
+    {
+      "id": 92,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 93,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "темповая (44 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 24 минут в зоне 3, 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 94,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(40 мин)",
+      "description": "40 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 95,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 96,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "длинные интервалы(45 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 6 х (3 минут в зоне 4 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 97,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 98,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "пробежка симулирующая марафон",
+      "description": "бежать в марафонском темпе от 25км до 30км",
+      "isCompleted": false
+    }
+  ],
+  "week16": [
+    {
+      "id": 99,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 100,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "интервальня(64 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 4 х (8минут в зоне 3 / 3 минуты в зоне 1), 5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 101,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 102,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(45 мин)",
+      "description": "5 минут в зоне 1, 35 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 103,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "интервалы(46 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 1.5 минуты в зоне 5, 2 минуты в зоне 1, 5 минут в зоне 4, 2 минуты в зоне 1, 10 минут в зоне 3, 2 минуты в зоне 1, 5 минут в зоне 4, 2 минуты в зоне 1, 1.5 минуты в зоне 5, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 104,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 105,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная с фартлеком(29.6 км)",
+      "description": "1 км в зоне 1, 2 км в зоне 2, 16 х (400 метров в зоне 3 / 1.2 км в зоне 2), 1000 метров в зоне 1",
+      "isCompleted": false
+    }
+  ],
+  "week17": [
+    {
+      "id": 106,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "ВСстановительная(45 мин)",
+      "description": "45 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 107,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "интервальня(52 мин)",
+      "description": "5 минут в зоне 1,5 минут в зоне 2, 4 х (5 минут в зоне 3 / 3 минуты в зоне 1),5 минут в зоне 2, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 108,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "ВСстановительная(35 мин)",
+      "description": "35 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 109,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(35 мин)",
+      "description": "5 минут в зоне 1, 25 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 110,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "интервалы(46 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 1.5 минуты в зоне 5, 2 минуты в зоне 1, 5 минут в зоне 4, 2 минуты в зоне 1, 10 минут в зоне 3, 2 минуты в зоне 1, 5 минут в зоне 4, 2 минуты в зоне 1, 1.5 минуты в зоне 5, 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 111,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(35 мин)",
+      "description": "35 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 112,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "длительная(16 км)",
+      "description": "1 км в зоне 1, 13 км в зоне 2, 2 км в зоне 3",
+      "isCompleted": false
+    }
+  ],
+  "week18": [
+    {
+      "id": 113,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПН",
+      "title": "отдых",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 114,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВТ",
+      "title": "быстрый финиш(40 мин)",
+      "description": "5 минут в зоне 1, 25 минут в зоне 2, 10 минут в зоне",
+      "isCompleted": false
+    },
+    {
+      "id": 115,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СР",
+      "title": "базовая(30 мин)",
+      "description": "5 минут в зоне 1, 20 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 116,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ЧТ",
+      "title": "базовая(30 мин)",
+      "description": "5 минут в зоне 1, 20 минут в зоне 2, 5 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 117,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ПТ",
+      "title": "фартлек(31 мин)",
+      "description": "5 минут в зоне 1, 5 минут в зоне 2, 4 х (2 минуты в зоне 4 / 2 минуты в зоне 1), 5 минут в зоне 1",
+      "isCompleted": false
+    },
+    {
+      "id": 118,
+      "type": "run",
+      "subtype": "easy",
+      "day": "СБ",
+      "title": "ВСстановительная(20 мин)",
+      "description": "20 минут в зоне 1 или кросс-тренинг",
+      "isCompleted": false
+    },
+    {
+      "id": 119,
+      "type": "run",
+      "subtype": "easy",
+      "day": "ВС",
+      "title": "МАРАФОН",
+      "description": "Вот и настал день соревнований. Удачи и легких ног!",
+      "isCompleted": false
+    }
+  ]
+}

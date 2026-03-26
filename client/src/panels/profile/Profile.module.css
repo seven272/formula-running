@@ -1,0 +1,68 @@
+.profile {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.profile_wrap {
+  width: 100%;
+  max-width: 515px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar_name_wrap {
+  position: relative;
+  width: 100%;
+  max-width: 515px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn_wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.btn {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font: var(--font-menu);
+  cursor: pointer;
+}
+
+.btn_icon {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.descr {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  text-align: justify;
+  font: var(--font-s);
+  color: var(--color-grey-dark);
+  margin: 5px 0 20px 0;
+}

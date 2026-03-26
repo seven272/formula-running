@@ -1,0 +1,10 @@
+.section_chart {
+margin: 20px 0;
+height: 350px;
+max-width: 515px;
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--color-grey-dark);
+}

@@ -1,0 +1,36 @@
+.theme_wrapper {
+  width: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_theme {
+  font-size: 18px;
+}
+
+.icon_toggle {
+  font-size: 40px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .theme_wrapper {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 15px;
+    /* margin-right: 15px; */
+  }
+  .icon_toggle {
+    font-size: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  .icon_theme {
+    font-size: 14px;
+  }
+}

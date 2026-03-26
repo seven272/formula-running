@@ -1,0 +1,183 @@
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title {
+  font: var(--font-l);
+  margin-bottom: 25px;
+  color: var(--color-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+}
+
+
+.form {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid var(--color-blue);
+  padding: 20px;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.label_title {
+  font: var(--font-menu);
+  margin-right: 15px;
+}
+
+.input_text {
+  outline: none;
+  padding-left: 7px;
+  height: 25px;
+  border: 1px solid var(--color-grey);
+}
+
+.input_textarea {
+  outline: none;
+  padding-left: 7px;
+  border: 1px solid var(--color-grey);
+  width: 100%;
+}
+
+.wrap_btn_radio {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input_radio_right {
+  margin-left: 15px;
+}
+.text_radio {
+  font: var(--font-s);
+  margin-left: 5px;
+}
+
+.input_select {
+  width: max-content;
+  padding: 3px 15px 3px 15px;
+  background: none;
+  border: 1px solid var(--color-grey);
+  outline: none;
+}
+
+.btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 5px 20px;
+  border: 2px solid var(--color-grey);
+  cursor: pointer;
+  font: var(--font-menu);
+  background: none;
+  color: var(--color-grey);
+}
+.upload_icon_wrap {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.upload_icon {
+  width: 100%;
+  height: 100%;
+  color: var(--color-grey);
+}
+
+.image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+
+.planurl_wrap {
+  width: max-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.planurl_text {
+  font: var(--font-s);
+  color: var(--color-grey);
+}
+
+.planurl_icon_wrap {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 7px;
+}
+
+.planurl_icon {
+  width: 100%;
+  height: 100%;
+  color: var(--color-grey);
+}
+
+.time_inputs_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.time_input_label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 2px;
+}
+
+.time_input_text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-s);
+  font-size: 8px;
+  color: var(--color-grey);
+}
+
+.time_input_field {
+  width: 70px;
+  height: 20px;
+  padding-left: 5px;
+  font: var(--font-s);
+  color: var(--color-grey);
+  border: 1px solid var(--color-blue);
+  border-radius: 6px;
+  font: var(--font-s);
+  color: var(--color-grey);
+  outline: none;
+}
+
+.time_input_field:focus {
+  outline: 1px solid var(--color-blue);
+}

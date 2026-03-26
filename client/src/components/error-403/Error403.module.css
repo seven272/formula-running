@@ -1,0 +1,16 @@
+.main {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.text {
+  color: var(--color-blue);
+  font-weight: 900;
+  font-size: 100px;
+  padding: 100px;
+  text-align: center;
+}

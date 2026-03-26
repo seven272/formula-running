@@ -1,0 +1,266 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 высокая (развитие)",
+    "weeklyKm": 45,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "10х[2мин ходьба, 1 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 4, 
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "10х[2мин ходьба, 1 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "easy",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "easy",
+        "descr": "длительная пробежка в течении 12 минут",
+        "сompleted": false
+      }
+    ]
+  },
+
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 высокая (развитие)",
+    "weeklyKm": 45,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+
+        "descr": "15х[1мин ходьба, 1 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "15х[1мин ходьба, 1 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "easy",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 13,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "easy",
+        "descr": "длительная пробежка в течении 18 минут",
+        "сompleted": false
+      }
+    ]
+  },
+
+  {
+    "weekNumber": 3,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 высокая (развитие)",
+    "weeklyKm": 45,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "15х[30 сек ходьба, 1.5 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "15х[30 сек ходьба, 1.5 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "easy",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "easy",
+        "descr": "длительная пробежка в течении 26 минут",
+        "сompleted": false
+      }
+    ]
+  },
+
+  {
+    "weekNumber": 4,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 высокая (развитие)",
+    "weeklyKm": 45,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "10х[1мин ходьба, 2 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "easy",
+        "descr": "10х[1мин ходьба, 2 мин бег]",
+        "сompleted": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "easy",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "easy",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "easy",
+        "descr": "длительная пробежка - дистанция 5км",
+        "сompleted": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,794 @@
+{
+  "week1": [
+    {
+      "id": 1,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 2,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 3,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 3 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 4,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 5,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 6,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 7,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week2": [
+    {
+      "id": 8,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 9,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 10,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 3 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 11,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 12,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 13,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 14,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week3": [
+    {
+      "id": 15,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 16,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 6 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 17,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 4 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+    {
+      "id": 18,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 19,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 6 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 20,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 21,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week4": [
+    {
+      "id": 22,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 23,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 6 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 24,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 4 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 25,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 26,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 6 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 27,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 28,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week5": [
+    {
+      "id": 29,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 30,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 31,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 4 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 32,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 33,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 34,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 35,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week6": [
+    {
+      "id": 36,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 37,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 38,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 5 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 39,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 40,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 41,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 42,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 11 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week7": [
+    {
+      "id": 43,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 44,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 45,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 6 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 46,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 47,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 7 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 48,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 49,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 13 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week8": [
+    {
+      "id": 50,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 51,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 52,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 7 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 53,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 54,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 55,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 56,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 10 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+
+  "week9": [
+    {
+      "id": 57,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 58,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 59,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 8 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 60,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 61,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 62,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 63,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 15 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week10": [
+    {
+      "id": 64,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 65,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 66,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Разминка 10 мин.Бег в целевом полумарафонском темпе. Дистнация 9 км. RPE 6-7. Заминка 10 мин.",
+      "isCompleted": false
+    },
+
+    {
+      "id": 67,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 68,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 69,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 70,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 16 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week11": [
+    {
+      "id": 71,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 72,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 73,
+      "day": "СР",
+      "title": "Темповый бег",
+      "type": "run",
+      "subtype": "tempo",
+      "description": "Бег в целевом полумарафонском темпе. Дистнация 4 км. RPE 6-7",
+      "isCompleted": false
+    },
+
+    {
+      "id": 74,
+      "day": "ЧТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 75,
+      "day": "ПТ",
+      "title": "Умеренный бег",
+      "type": "rest",
+      "subtype": "",
+      "description": "Бег с средними усилиями. Дистанция 8 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 76,
+      "day": "СБ",
+      "title": "Кросс-тренинг",
+      "type": "run",
+      "subtype": "other",
+      "description": "Кросс-тренинг или легкая пробежка. Время тренировки 45-60 минут. RPE 4-6",
+      "isCompleted": false
+    },
+    {
+      "id": 77,
+      "day": "ВС",
+      "title": "Длительный бег",
+      "type": "run",
+      "subtype": "long",
+      "description": "Длительна пробежка. Дистанция 11 км. RPE 5-6",
+      "isCompleted": false
+    }
+  ],
+  "week12": [
+    {
+      "id": 78,
+      "day": "ПН",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 79,
+      "day": "ВТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 80,
+      "day": "СР",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+
+    {
+      "id": 81,
+      "day": "ЧТ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 5 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 82,
+      "day": "ПТ",
+      "title": "Отдых",
+      "type": "run",
+      "subtype": "rest",
+      "description": "",
+      "isCompleted": false
+    },
+    {
+      "id": 83,
+      "day": "СБ",
+      "title": "Умеренный бег",
+      "type": "run",
+      "subtype": "easy",
+      "description": "Бег с средними усилиями. Дистанция 3 км. RPE 5-6",
+      "isCompleted": false
+    },
+    {
+      "id": 84,
+      "day": "ВС",
+      "title": "Полумарафон",
+      "type": "run",
+      "subtype": "long",
+      "description": "Соревновательный день. 21 км. Удачи на старте!",
+      "isCompleted": false
+    }
+  ]
+}

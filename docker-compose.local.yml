@@ -1,0 +1,71 @@
+services:
+  run-mongo:
+    image: mongo:8.0
+    container_name: run_mongo_container
+    networks:
+      - run-app-net
+    restart: always
+    volumes:
+      - run_mongo_db:/data/db
+    # prank-server начнет сборку и запуск только тогда, когда база ответит на «пинг» внутри контейнера
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  run-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    container_name: run_server_container
+    networks:
+      - run-app-net
+    ports:
+      - '${SERVER_OUTSIDE_PORT}:${SERVER_DOCKER_PORT}'
+    environment:
+      MONGO_URI: ${MONGO_URI}
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    restart: always
+    depends_on:
+      run-mongo:
+        condition: service_healthy
+  run-client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    container_name: run_client_container
+    networks:
+      - run-app-net
+    environment:
+      - VITE_HMR_PORT=3010 # Для локального Docker
+    ports:
+      - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    volumes:
+       - /app/node_modules
+       - ./client:/app
+    restart: always
+    depends_on:
+      - run-server
+  run-mongo-express:
+    image: mongo-express:1.0
+    container_name: run_mongo_express_container
+    networks:
+      - run-app-net
+    ports:
+      - '${ME_OUTSIDE_PORT}:${ME_DOCKER_PORT}'
+    environment:
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+    restart: always
+
+volumes:
+  run_mongo_db:
+
+networks:
+  # Внутренняя сеть для связи Backend <-> MongoDB и Mongo-express <-> MongoDB
+  run-app-net:
+    driver: bridge
