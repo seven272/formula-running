@@ -53,7 +53,7 @@ services:
       - 'traefik.http.services.run-backend.loadbalancer.server.port=5010'
   run-client:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./client
     container_name: run_client_container
     networks:
