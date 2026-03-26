@@ -75,7 +75,7 @@ services:
       - 'traefik.http.routers.run-front.entrypoints=websecure'
       - 'traefik.http.routers.run-front.tls.certresolver=myresolver'
       # Порт, на котором работает React/Nginx внутри контейнера. Для development режима указываем порт Vite (3000, 3010, ...), production - порт Nginx(4000, 4010, ....)
-      - 'traefik.http.services.run-front.loadbalancer.server.port=4010'
+      - 'traefik.http.services.run-front.loadbalancer.server.port=3010'
       # ПРИОРИТЕТ 10 (самый низкий)
       # Это правило "по умолчанию" для всего, что не попало в /api
       - 'traefik.http.routers.run-front.priority=10'
