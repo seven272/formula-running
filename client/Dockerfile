@@ -1,5 +1,8 @@
 FROM nginx:stable-alpine
 
+# Удаляем стандартный дефолтный конфиг!
+RUN rm /etc/nginx/conf.d/default.conf
+
 # Копирую готовую сборку из папки dist, которую приылаю через Git
 COPY ./dist /usr/share/nginx/html
 
