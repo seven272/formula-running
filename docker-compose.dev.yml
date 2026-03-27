@@ -1,0 +1,112 @@
+services:
+  run-mongo:
+    image: mongo:8.0
+    container_name: run_mongo_container
+    networks:
+      - run-app-net
+    restart: always
+    volumes:
+      - run_mongo_db:/data/db
+    # prank-server начнет сборку и запуск только тогда, когда база ответит на «пинг» внутри контейнера
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  run-server:
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    container_name: run_server_container
+    networks:
+      - traefik-net
+      - run-app-net
+    # ports:
+    #   - '${SERVER_OUTSIDE_PORT}:${SERVER_DOCKER_PORT}'
+    environment:
+      MONGO_URI: ${MONGO_URI}
+    volumes:
+      - ./server/src:/app/src
+      - uploads_run_data:/app/src/uploads
+    restart: always
+    depends_on:
+      run-mongo:
+        condition: service_healthy
+    labels:
+      - 'traefik.enable=true'
+      # --- РОУТЕР ДЛЯ API ---
+      - 'traefik.http.routers.run-api.rule=Host(`sportplans.ru`) && PathPrefix(`/api`)'
+      - 'traefik.http.routers.run-api.entrypoints=websecure'
+      - 'traefik.http.routers.run-api.tls.certresolver=myresolver'
+      - 'traefik.http.routers.run-api.priority=100'
+      - 'traefik.http.routers.run-api.service=run-backend' # Явно указываем сервис, название произвольное
+
+      # --- РОУТЕР ДЛЯ СТАТИКИ ---
+      - 'traefik.http.routers.run-static.rule=Host(`sportplans.ru`) && PathPrefix(`/static`)'
+      - 'traefik.http.routers.run-static.entrypoints=websecure'
+      - 'traefik.http.routers.run-static.tls.certresolver=myresolver'
+      - 'traefik.http.routers.run-static.priority=100'
+      - 'traefik.http.routers.run-static.service=run-backend' # Тот же сервис
+
+      # --- ОБЩИЙ СЕРВИС (Node.js порт) ---
+      - 'traefik.http.services.run-backend.loadbalancer.server.port=5010'
+  run-client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    container_name: run_client_container
+    networks:
+      - traefik-net
+      - run-app-net
+    environment:
+      - NODE_ENV=development
+      # Лимит памяти для Node, чтобы не вызывать OOM-killer (у нас есть swap!)
+      - NODE_OPTIONS=--max-old-space-size=1024
+      # Порт для горячей перезагрузки через HTTPS Traefik
+      - VITE_HMR_PORT=443
+    # ports:
+    #   - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    volumes:
+      - ./client/src:/app/src
+    restart: always
+    depends_on:
+      - run-server
+    labels:
+      - 'traefik.enable=true'
+      # Основной домен сайта
+      - 'traefik.http.routers.run-front.rule=Host(`sportplans.ru`)'
+      - 'traefik.http.routers.run-front.entrypoints=websecure'
+      - 'traefik.http.routers.run-front.tls.certresolver=myresolver'
+      # Порт, на котором работает React/Nginx внутри контейнера. Для development режима указываем порт Vite (3000, 3010, ...), production - порт Nginx(4000, 4010, ....)
+      - 'traefik.http.services.run-front.loadbalancer.server.port=3010'
+      # ПРИОРИТЕТ 10 (самый низкий)
+      # Это правило "по умолчанию" для всего, что не попало в /api
+      - 'traefik.http.routers.run-front.priority=10'
+
+  run-mongo-express:
+    image: mongo-express:1.0
+    container_name: run_mongo_express_container
+    networks:
+      - run-app-net
+    ports:
+      - '${ME_OUTSIDE_PORT}:${ME_DOCKER_PORT}'
+    environment:
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+    restart: always
+
+volumes:
+  run_mongo_db:
+  uploads_run_data:
+
+networks:
+  # Внешняя сеть для связи с Traefik
+  traefik-net:
+    external: true
+    driver_opts:
+      com.docker.network.driver.mtu: '1500' # Чтобы Docker всегда помнил про MTU
+  # Внутренняя сеть для связи Backend <-> MongoDB и Mongo-express <-> MongoDB
+  run-app-net:
+    driver: bridge
