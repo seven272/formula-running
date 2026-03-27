@@ -72,7 +72,6 @@ export default defineConfig({
   },
 
   optimizeDeps: {
-    force: true,
     esbuildOptions: {
       loader: {
         '.js': 'jsx',

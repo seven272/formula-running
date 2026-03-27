@@ -22,9 +22,12 @@ services:
     networks:
       - traefik-net
       - run-app-net
+    # ports:
+    #   - '${SERVER_OUTSIDE_PORT}:${SERVER_DOCKER_PORT}'
     environment:
       MONGO_URI: ${MONGO_URI}
     volumes:
+      - ./server/src:/app/src
       - uploads_run_data:/app/src/uploads
     restart: always
     depends_on:
@@ -58,6 +61,10 @@ services:
       - run-app-net
     environment:
       - VITE_HMR_PORT=443 # Для сервера с HTTPS/VK
+    # ports:
+    #   - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    volumes:
+      - ./client/src:/app/src
     restart: always
     depends_on:
       - run-server
