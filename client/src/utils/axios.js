@@ -1,8 +1,18 @@
 import axios from 'axios'
 import store from '../redux/store'
+const BASE_URL =
+  // local development/production
+  // import.meta.env.MODE === 'development'
+  //   ? 'http://localhost:5000/api'
+  //   : '/api'
+
+  //public devolopment / production
+  import.meta.env.MODE === 'development'
+    ? 'https://sportplans.ru/api'
+    : '/api'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5010/api',
+  baseURL: BASE_URL,
 })
 
 //каждый раз когда делаем запрос через axios вшиваем в headers токен
@@ -20,7 +30,6 @@ instance.interceptors.request.use((config) => {
   //2.2 для теста берем из хранилища redux
   const state = store.getState()
   const vkId = state.user.preVkId
-  
 
   if (vkId) {
     // Вшиваем ID в кастомный заголовок, где Х правило хорошего тона при наименовании кастомных заголовков
