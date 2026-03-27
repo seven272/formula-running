@@ -68,7 +68,8 @@ services:
     # ports:
     #   - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
     volumes:
-      - ./client/src:/app/src
+      - ./client:/app    # Монтируем всё содержимое для живой правки
+      - /app/node_modules # Важно! Не даем локальным node_modules перетереть контейнерные
     restart: always
     depends_on:
       - run-server
