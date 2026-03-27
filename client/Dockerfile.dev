@@ -6,4 +6,4 @@ RUN npm install
 # Мы не копируем весь код через COPY, так как он примонтируется через volumes
 EXPOSE 3010
 # Запуск Vite с флагами для Docker
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "3010"]
+CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--port", "3010"]
