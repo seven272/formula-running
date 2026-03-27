@@ -18,13 +18,15 @@ const CurrentPlan = () => {
   const { plan, activityDates } = useSelector(
     (state) => state.currentPlan,
   )
+  console.log(plan)
   const [showModal, setShowModal] = useState(false)
+  const hasPlan = plan && Object.keys(plan).length > 0;
 
   return (
     <div className={styles.main}>
       <span className={styles.title}>Активный план</span>
       <div className={styles.content_wrap}>
-        {plan ? (
+        {hasPlan ? (
           <div className={styles.content}>
             <span className={styles.subtitle}>
               {plan.title}

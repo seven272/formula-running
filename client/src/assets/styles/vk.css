@@ -10,6 +10,7 @@
 
 .vkui {
   background-color: var(--color-white) !important;
+  margin: 0 auto;
 }
 .vkuiAppRoot {
   background-color: var(--color-white) !important;

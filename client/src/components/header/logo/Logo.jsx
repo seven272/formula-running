@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { CiLogin, CiLogout } from 'react-icons/ci'
-// import LogoIcon from '../../../assets/images/components/header/logo-icon.png'
 import LogoIcon from '../../../assets/images/ai/logo.jpeg'
 
 import styles from './Logo.module.css'
@@ -24,7 +23,7 @@ const Logo = () => {
             className={styles.icon}
           />
         </div>
-        <span className={styles.title}>Формула бега</span>
+        <span className={styles.title}>Формула1 бега</span>
       </div>
       {isAuth ? (
         <CiLogout

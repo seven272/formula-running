@@ -1,8 +1,11 @@
-import React from 'react'
+import { Spinner } from '@vkontakte/vkui'
 
 import styles from './ListPurchasedPlans.module.css'
 
 const ListPurchasedPlans = ({ plans }) => {
+  if (!plans) {
+    return <Spinner />
+  }
   return (
     <div className={styles.main}>
       <h3 className={styles.title}>

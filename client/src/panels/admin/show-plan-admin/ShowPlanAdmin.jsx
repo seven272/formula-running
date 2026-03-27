@@ -1,6 +1,7 @@
-import React from 'react'
 
 import styles from './ShowPlanAdmin.module.css'
+
+const URL = import.meta.env.VITE_PUBLIC_URL
 
 const ShowPlanAdmin = ({ plan, closeFn }) => {
   const {
@@ -62,10 +63,10 @@ const ShowPlanAdmin = ({ plan, closeFn }) => {
           ) : (
             <>
               <span className={styles.image_text}>{pictureUrl}</span>
-              <div className={styles.image_wrap}> 
+              <div className={styles.image_wrap}>
                 <img
                   className={styles.image}
-                  src={`http://localhost:5010/${pictureUrl}`}
+                  src={`${URL}/${pictureUrl}`}
                   alt="изображение плана"
                 />
               </div>

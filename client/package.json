@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=4192 vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "tunnel": "vk-tunnel --http-protocol=http --host=localhost --port=5173",
@@ -21,6 +21,7 @@
     "@vkontakte/vkui": "^6.0.0",
     "antd": "^5.23.3",
     "axios": "^1.11.0",
+    "cross-env": "^10.1.0",
     "dayjs": "^1.11.13",
     "moment": "^2.30.1",
     "react": "^18.2.0",

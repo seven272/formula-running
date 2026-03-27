@@ -9,6 +9,8 @@ import { fetchBuyPlan } from '../../../redux/slices/plansSlice';
 import templatePlanImg from '../../../assets/images/template_plan.png'
 import styles from './PreviewPlan.module.css'
 
+const URL = import.meta.env.VITE_PUBLIC_URL
+
 const PreviewPlan = ({ objPlan }) => {
   const { title, pictureUrl, _id } = objPlan
   const dispatch = useDispatch()
@@ -51,7 +53,7 @@ const PreviewPlan = ({ objPlan }) => {
       {pictureUrl !== '' ? (
         <img
           className={styles.picture}
-          src={`http://localhost:5010/${pictureUrl}`}
+          src={`${URL}/${pictureUrl}`}
           alt={title}
         />
       ) : (

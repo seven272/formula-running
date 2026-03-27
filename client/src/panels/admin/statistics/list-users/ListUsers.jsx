@@ -1,8 +1,11 @@
-import React from 'react'
+import {Spinner} from '@vkontakte/vkui'
 
 import styles from './ListUsers.module.css'
 
-const ListUsers = ({ users }) => {
+const ListUsers = ({ users = [] }) => {
+  if(!users) {
+    return <Spinner />
+  }
   return (
     <div className={styles.main}>
       <h3 className={styles.title}>Список пользователей</h3>
