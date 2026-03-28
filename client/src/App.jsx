@@ -7,6 +7,7 @@ import { ScreenSpinner } from '@vkontakte/vkui'
 import MainView from './views/MainView'
 import { getMe, authWithVk } from './redux/slices/authSlice'
 import { fetchGetMyProfile } from './redux/slices/userSlice'
+import { fetchGetCurrentPlan } from './redux/slices/currentPlanSlice'
 
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
@@ -19,6 +20,7 @@ const App = () => {
       .unwrap() // unwrap позволяет дождаться успеха
       .then(() => {
         dispatch(fetchGetMyProfile())
+        dispatch(fetchGetCurrentPlan())
       })
       .catch((err) => console.error('Ошибка входа:', err))
   }, [dispatch])

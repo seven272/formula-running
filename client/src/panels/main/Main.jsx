@@ -16,7 +16,7 @@ const Main = ({ id }) => {
       <Header />
       <div className={styles.section_main}>
         {hasCurrentPlan ? <SecondStart /> : <FirstStart />}
-      </div>
+      </div> 
       <Footer />
     </Panel>
   )
