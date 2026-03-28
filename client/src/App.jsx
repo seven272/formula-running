@@ -12,7 +12,7 @@ import { fetchGetCurrentPlan } from './redux/slices/currentPlanSlice'
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
   const dispatch = useDispatch()
-  const isAuthLoading = useSelector((state) => state.auth.isLoading)
+  const isAuthLoading = useSelector((state) => state.auth.isLoadingVk)
 
   useEffect(() => {
     dispatch(getMe())

@@ -129,6 +129,7 @@ const initialState = {
   isLoading: null,
   message: null,
   vkToken: null,
+  isLoadingVk: null,
 }
 
 const authSlice = createSlice({
@@ -202,14 +203,14 @@ const authSlice = createSlice({
       })
       //fetch token to VK
       .addCase(authWithVk.pending, (state) => {
-        state.isLoading = true
+        state.isLoadingVk = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
-        state.isLoading = false
+        state.isLoadingVk = false
         state.vkToken = action.payload?.token
       })
       .addCase(authWithVk.rejected, (state) => {
-        state.isLoading = false
+        state.isLoadingVk = false
       })
   },
 })
