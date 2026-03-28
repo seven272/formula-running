@@ -28,7 +28,7 @@ router.post('/upload/avatar', upload.single('avatar'), (req, res) => {
   })
 })
 
-router.post('/create-profile', verifyVkSignature, createProfile)
+router.post('/create-profile', createProfile)
 router.get('/get-profile', checkVkId, getMyProfile)
 router.put('/personal-param', checkVkId, updatePersonalParameters)
 router.put('/records', checkVkId, updateRecords)
