@@ -9,13 +9,13 @@ const registerUser = createAsyncThunk(
       const responce = await axios.post('/auth/register', {
         username,
         password,
-        code
+        code,
       })
 
       if (responce.data.token) {
         window.localStorage.setItem(
           'token-runplans',
-          responce.data.token
+          responce.data.token,
         )
       }
 
@@ -23,7 +23,7 @@ const registerUser = createAsyncThunk(
         showToast({
           message: 'Вы успешно зарегистрировались',
           type: 'success',
-        })
+        }),
       )
       return responce.data
     } catch (error) {
@@ -32,10 +32,10 @@ const registerUser = createAsyncThunk(
         showToast({
           message: 'Ошибка при регистрации',
           type: 'error',
-        })
+        }),
       )
     }
-  }
+  },
 )
 
 const loginUser = createAsyncThunk(
@@ -54,16 +54,16 @@ const loginUser = createAsyncThunk(
         showToast({
           message: 'Вы успешно авторизовались',
           type: 'success',
-        })
+        }),
       )
       return res.data
     } catch (error) {
       console.log('ошибка при авторизации redux ', error)
       dispatch(
-        showToast({ message: 'Ошибка авторизации', type: 'error' })
+        showToast({ message: 'Ошибка авторизации', type: 'error' }),
       )
     }
-  }
+  },
 )
 
 const logoutUser = createAsyncThunk(
@@ -78,7 +78,7 @@ const logoutUser = createAsyncThunk(
         showToast({
           message: 'Вы успешно вышли из системы',
           type: 'success',
-        })
+        }),
       )
       return res.data
     } catch (error) {
@@ -87,53 +87,53 @@ const logoutUser = createAsyncThunk(
         showToast({
           message: 'Ошибка при выходе с сайта',
           type: 'error',
-        })
+        }),
       )
     }
-  }
+  },
 )
 
 const getMe = createAsyncThunk('auth/getMe', async () => {
   try {
     const res = await axios.get('/auth/me')
-    return res.data 
+    return res.data
   } catch (error) {
     console.log(
       'ошибка при получении данных пользователя redux ',
-      error
+      error,
     )
   }
 })
 
-const authWithVk= async () => {
+const authWithVk = createAsyncThunk('auth/authWithVk', async () => {
   // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
-  const launchParams = window.location.search;
+  const launchParams = window.location.search
   console.log('launchParams', launchParams)
 
   try {
     const res = await axios.post('auth/authVk', {
-      launchParams // Отправляем всю сырую строку
-    });
-    
-    const { token } = res.data;
+      launchParams, // Отправляем всю сырую строку
+    })
+
+    const { token } = res.data
     // localStorage.setItem('app_token', token); // Сохраняем ваш внутренний JWT
     console.log(res.data)
     console.log(token)
     return res.data
   } catch (error) {
-    console.error('Ошибка авторизации', error);
+    console.error('Ошибка авторизации', error)
   }
-};
+})
 
 const initialState = {
-  user: null, 
+  user: null,
   token: null,
   isLoading: null,
   message: null,
   vkToken: null,
 }
 
-const authSlice = createSlice({ 
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -149,7 +149,6 @@ const authSlice = createSlice({
     builder
       .addCase(registerUser.pending, (state) => {
         state.isLoading = true
-        
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false
@@ -161,10 +160,9 @@ const authSlice = createSlice({
         state.message = action.payload.message
         state.isLoading = false
       })
-    //login user
+      //login user
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true
-      
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false
@@ -175,11 +173,10 @@ const authSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.message = action.payload.message
         state.isLoading = false
-        
       })
-    //logout user
+      //logout user
       .addCase(logoutUser.pending, (state) => {
-        state.isLoading = true 
+        state.isLoading = true
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false
@@ -190,9 +187,8 @@ const authSlice = createSlice({
       .addCase(logoutUser.rejected, (state, action) => {
         state.message = action.payload.message
         state.isLoading = false
-       
       })
-    //get me
+      //get me
       .addCase(getMe.pending, (state) => {
         state.isLoading = true
         state.status = null
@@ -205,8 +201,8 @@ const authSlice = createSlice({
       .addCase(getMe.rejected, (state, action) => {
         state.message = action.payload.message
         state.isLoading = false
-      }) 
-         //fetch token to VK
+      })
+      //fetch token to VK
       .addCase(authWithVk.pending, (state) => {
         state.isLoading = true
       })
@@ -216,12 +212,19 @@ const authSlice = createSlice({
       })
       .addCase(authWithVk.rejected, (state) => {
         state.isLoading = false
-      }) 
+      })
   },
 })
 const checkIsAuth = (state) => {
   return Boolean(state.auth.token)
 }
 export const { logout } = authSlice.actions
-export { registerUser, loginUser, logoutUser, getMe, authWithVk, checkIsAuth }
+export {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getMe,
+  authWithVk,
+  checkIsAuth,
+}
 export default authSlice.reducer
