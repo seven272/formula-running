@@ -27,7 +27,7 @@ const verifyVkSignature = (req, res, next) => {
   // 2. Проверка времени (vk_ts). Ссылка должна быть "свежей" (например, не старше 3 часов)
   const vkTs = parseInt(params.vk_ts, 10)
   const now = Math.floor(Date.now() / 1000)
-  if (!vkTs || Math.abs(now - vkTs) > 10800) {
+  if (!vkTs || Math.abs(now - vkTs) > 40800) {
     return res
       .status(403)
       .json({ message: 'Срок действия параметров запуска истек' })
@@ -69,7 +69,7 @@ const verifyVkSignature = (req, res, next) => {
   }
 
   // Если всё ок, передаем ID пользователя дальше
-  req.vkId = parseInt(params.vk_user_id, 10)
+  req.vkId = params.vk_user_id
   next()
 }
 

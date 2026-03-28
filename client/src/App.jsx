@@ -1,26 +1,31 @@
 import { Root, SplitLayout } from '@vkontakte/vkui'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router'
+import { ScreenSpinner } from '@vkontakte/vkui'
 
 import MainView from './views/MainView'
 import { getMe, authWithVk } from './redux/slices/authSlice'
-import {
-  loadVkPersona,
-  fetchGetMyProfile,
-} from './redux/slices/userSlice'
-import { dataUserVK } from './assets/data/vk-mock'
+import { fetchGetMyProfile } from './redux/slices/userSlice'
 
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
   const dispatch = useDispatch()
+  const isAuthLoading = useSelector((state) => state.auth.isLoading)
 
   useEffect(() => {
     dispatch(getMe())
-    dispatch(loadVkPersona(dataUserVK))
-    dispatch(fetchGetMyProfile())
     dispatch(authWithVk())
-  }, [])
+      .unwrap() // unwrap позволяет дождаться успеха
+      .then(() => {
+        dispatch(fetchGetMyProfile())
+      })
+      .catch((err) => console.error('Ошибка входа:', err))
+  }, [dispatch])
+
+  if (isAuthLoading) {
+    return <ScreenSpinner size="large" />
+  }
 
   return (
     <div className="app">
