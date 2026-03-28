@@ -30,10 +30,11 @@ instance.interceptors.request.use((config) => {
   //2.2 для теста берем из хранилища redux
   const state = store.getState()
   const vkId = state.user.preVkId
+  const vkToken = state.auth.vkToken
 
-  if (vkId) {
+  if (vkToken) {
     // Вшиваем ID в кастомный заголовок, где Х правило хорошего тона при наименовании кастомных заголовков
-    config.headers['X-VK-User-Id'] = vkId
+    config.headers['X-VK-User-Id'] = vkToken
   }
 
   return config

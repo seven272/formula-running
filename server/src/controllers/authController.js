@@ -160,4 +160,29 @@ const getStatistics = async (req, res) => {
   }
 }
 
-export { getMe, login, register, logout, getStatistics }
+const createVkToken = async (req, res) => {
+  try {
+    const token = jwt.sign(
+      {
+        vkId: req.vkId,
+      },
+      JWT_SECRET,
+      { expiresIn: '30d' },
+    )
+
+    res.status(201).json({
+      token: token,
+    })
+  } catch (error) {
+    res.status(403).json({ message: 'Нет доступа' })
+  }
+}
+
+export {
+  getMe,
+  login,
+  register,
+  logout,
+  getStatistics,
+  createVkToken,
+}

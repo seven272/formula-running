@@ -23,7 +23,7 @@ const Logo = () => {
             className={styles.icon}
           />
         </div>
-        <span className={styles.title}>Формула1 бега</span>
+        <span className={styles.title}>Формула бега</span>
       </div>
       {isAuth ? (
         <CiLogout

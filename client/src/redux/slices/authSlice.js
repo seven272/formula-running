@@ -105,11 +105,31 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
   }
 })
 
+const authWithVk= async () => {
+  // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
+  const launchParams = window.location.search;
+
+  try {
+    const res = await axios.post('auth/authVk', {
+      launchParams // Отправляем всю сырую строку
+    });
+    
+    const { token } = res.data;
+    // localStorage.setItem('app_token', token); // Сохраняем ваш внутренний JWT
+    console.log(res.data)
+    console.log(token)
+    return res.data
+  } catch (error) {
+    console.error('Ошибка авторизации', error);
+  }
+};
+
 const initialState = {
   user: null, 
   token: null,
   isLoading: null,
   message: null,
+  vkToken: null,
 }
 
 const authSlice = createSlice({ 
@@ -141,7 +161,6 @@ const authSlice = createSlice({
         state.isLoading = false
       })
     //login user
-    builder
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true
       
@@ -158,10 +177,8 @@ const authSlice = createSlice({
         
       })
     //logout user
-    builder
       .addCase(logoutUser.pending, (state) => {
-        state.isLoading = true
-        
+        state.isLoading = true 
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.isLoading = false
@@ -175,7 +192,6 @@ const authSlice = createSlice({
        
       })
     //get me
-    builder
       .addCase(getMe.pending, (state) => {
         state.isLoading = true
         state.status = null
@@ -189,11 +205,22 @@ const authSlice = createSlice({
         state.message = action.payload.message
         state.isLoading = false
       }) 
+         //fetch token to VK
+      .addCase(authWithVk.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(authWithVk.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.vkToken = action.payload?.token
+      })
+      .addCase(authWithVk.rejected, (state) => {
+        state.isLoading = false
+      }) 
   },
 })
 const checkIsAuth = (state) => {
   return Boolean(state.auth.token)
 }
 export const { logout } = authSlice.actions
-export { registerUser, loginUser, logoutUser, getMe, checkIsAuth }
+export { registerUser, loginUser, logoutUser, getMe, authWithVk, checkIsAuth }
 export default authSlice.reducer

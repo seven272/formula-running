@@ -1,15 +1,33 @@
+import jwt from 'jsonwebtoken'
+
 const checkVkId = (req, res, next) => {
-  // Express автоматически переводит заголовки в нижний регистр
-  const vkId = req.headers['x-vk-user-id']
-  if (!vkId) {
-    return res.status(400).json({
+  // 1. Достаем JWT из  кастомного заголовка
+  // Express автоматически приводит названия заголовков к нижнему регистру
+  const vkToken = req.headers['x-vk-user-id']
+
+  if (!vkToken) {
+    return res.status(401).json({
       message: 'Доступ запрещен: отсутствует заголовок X-VK-User-Id',
     })
   }
-  // Сохраняем ID в объект запроса, чтобы контроллеры его подхватили
-  req.vkId = String(vkId)
 
-  next()
+  // Убираем 'Bearer ', если вы передаете его в этом заголовке
+  const cleanToken = vkToken.replace(/Bearer\s?/, '')
+
+  try {
+    // 2. Проверяем  внутренний JWT, созданный ранее на бэкенде
+    const decoded = jwt.verify(cleanToken, process.env.JWT_SECRET)
+
+    // 3. Сохраняем реальный VK ID из токена в объект запроса
+    // Важно: при генерации токена (jwt.sign) поле должно называться 'vkId'
+    req.vkId = String(decoded.vkId)
+
+    next()
+  } catch (error) {
+    return res.status(403).json({
+      message: 'Не удалось пройти проверку подлинности аккаунта',
+    })
+  }
 }
 
 export default checkVkId

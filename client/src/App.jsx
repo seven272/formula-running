@@ -4,21 +4,24 @@ import { useDispatch } from 'react-redux'
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router'
 
 import MainView from './views/MainView'
-import { getMe } from './redux/slices/authSlice'
-import { loadVkPersona, fetchGetMyProfile } from './redux/slices/userSlice'
+import { getMe, authWithVk } from './redux/slices/authSlice'
+import {
+  loadVkPersona,
+  fetchGetMyProfile,
+} from './redux/slices/userSlice'
 import { dataUserVK } from './assets/data/vk-mock'
-
 
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
   const dispatch = useDispatch()
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getMe())
     dispatch(loadVkPersona(dataUserVK))
     dispatch(fetchGetMyProfile())
-  }, [])
- 
+    dispatch(authWithVk())
+  }, [dispatch])
+
   return (
     <div className="app">
       <SplitLayout>

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-import Auth from '../models/authModel.js'
+
 
 //1 вариант авторизации через куки, необходимо также настроить cors разрешить принимать куки и axios,разрешив отправлять куки (credentials: true)
 // const checkAuth = async (req, res, next) => {
@@ -45,10 +45,8 @@ const checkAuth = (req, res, next) => {
   //1 вариант расшифровки токена
   const token = (req.headers.authorization || '').replace(
     /Bearer\s?/,
-    '',
+    '', 
   )
-  //2 вариант расшифровки токена. Yдаляю из токена слово Bearer
-  // const token = (req.headers.authorization || '').split(' ')[1]
 
   if (token) {
     try {

@@ -87,10 +87,10 @@ const Statistics = ({ closeFn }) => {
       </div>
 
       {valueBtn === 'users' && (
-        <ListUsers closeFn={setValueBtn} users={data.users} />
+        <ListUsers closeFn={setValueBtn} users={data?.users} />
       )}
-      {valueBtn === 'purchased' && <ListPurchasedPlans plans={data.purchasedPlans}/>}
-      {valueBtn === 'generated' && <ListGeneratedPlans plans={data.generatedPlans}/>}
+      {valueBtn === 'purchased' && <ListPurchasedPlans plans={data?.purchasedPlans}/>}
+      {valueBtn === 'generated' && <ListGeneratedPlans plans={data?.generatedPlans}/>}
     </div>
   )
 }
