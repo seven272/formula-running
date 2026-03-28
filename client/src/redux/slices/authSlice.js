@@ -108,6 +108,7 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
 const authWithVk= async () => {
   // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
   const launchParams = window.location.search;
+  console.log('launchParams', launchParams)
 
   try {
     const res = await axios.post('auth/authVk', {

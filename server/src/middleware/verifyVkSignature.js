@@ -1,4 +1,4 @@
-import crypto from 'node: crypto'
+import crypto from 'node:crypto'
 
 const verifyVkSignature = (req, res, next) => {
   // 1. Ожидаем строку window.location.search целиком в теле запроса
