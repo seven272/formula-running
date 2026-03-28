@@ -10,7 +10,6 @@ import Records from './records/Records'
 import Pulse from './pulse/Pulse'
 import Paces from './paces/Paces'
 import Name from './name/Name'
-import { dataUserVK } from '../../assets/data/vk-mock'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
@@ -28,7 +27,7 @@ const Profile = ({ id }) => {
   const [showSportProfile, setShowSportProfile] = useState(false)
 
   const createSportProfile = () => {
-    dispatch(fetchCreateProfile(dataUserVK))
+    dispatch(fetchCreateProfile())
     setShowSportProfile(true)
   }
 

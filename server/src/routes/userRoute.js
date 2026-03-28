@@ -14,7 +14,7 @@ import {
   toggleSessionStatus,
 } from '../controllers/userController.js'
 
-import checkAuth from '../middleware/checkAuth.js'
+import verifyVkSignature from '../middleware/verifyVkSignature.js'
 import checkVkId from '../middleware/сheckVkId.js'
 import upload from '../middleware/upload.js'
 
@@ -28,7 +28,7 @@ router.post('/upload/avatar', upload.single('avatar'), (req, res) => {
   })
 })
 
-router.post('/create-profile', checkVkId, createProfile)
+router.post('/create-profile', verifyVkSignature, createProfile)
 router.get('/get-profile', checkVkId, getMyProfile)
 router.put('/personal-param', checkVkId, updatePersonalParameters)
 router.put('/records', checkVkId, updateRecords)

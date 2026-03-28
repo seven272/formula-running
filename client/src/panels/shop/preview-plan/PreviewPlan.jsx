@@ -15,8 +15,8 @@ const PreviewPlan = ({ objPlan }) => {
   const { title, pictureUrl, _id } = objPlan
   const dispatch = useDispatch()
   const routeNavigator = useRouteNavigator()
-  const { purchasedPlans } = useSelector(
-    (state) => state.plans
+  const  purchasedPlans  = useSelector(
+    (state) => state.plans.purchasedPlans || []
   ) 
  
   const [isPurchased, setIsPurchased] = useState(false)

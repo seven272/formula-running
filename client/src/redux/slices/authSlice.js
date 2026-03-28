@@ -105,26 +105,23 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
   }
 })
 
-const authWithVk = createAsyncThunk('auth/authWithVk', async () => {
-  // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
-  const launchParams = window.location.search
-  console.log('launchParams', launchParams)
+const authWithVk = createAsyncThunk(
+  'auth/authWithVk',
+  async (_, { rejectWithValue }) => {
+    // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
+    const launchParams = window.location.search
 
-  try {
-    const res = await axios.post('auth/authVk', {
-      launchParams, // Отправляем всю сырую строку
-    })
-
-    const { token } = res.data
-    // localStorage.setItem('app_token', token); // Сохраняем ваш внутренний JWT
-    console.log(res.data)
-    console.log('Токен пользователя Редакс стр ниже')
-    console.log(token)
-    return res.data
-  } catch (error) {
-    console.error('Ошибка авторизации', error)
-  }
-})
+    try {
+      const res = await axios.post('auth/authVk', {
+        launchParams, // Отправляем всю сырую строку
+      })
+      return res.data
+    } catch (error) {
+      console.error('Ошибка авторизации', error)
+      return rejectWithValue(error)
+    }
+  },
+)
 
 const initialState = {
   user: null,
@@ -208,8 +205,6 @@ const authSlice = createSlice({
         state.isLoading = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
-        console.log('Токен пользователя VkTOken созданный')
-        console.log(action.payload.token)
         state.isLoading = false
         state.vkToken = action.payload?.token
       })

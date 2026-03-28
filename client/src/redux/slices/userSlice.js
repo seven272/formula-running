@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../utils/axios.js'
 import { showToast } from './toastSlice.js'
+import bridge from '@vkontakte/vk-bridge'
 
 const fetchGetMyProfile = createAsyncThunk(
   'user/fetchGetMyProfile',
@@ -12,30 +13,37 @@ const fetchGetMyProfile = createAsyncThunk(
 
 const fetchCreateProfile = createAsyncThunk(
   'user/fetchCreateProfile',
-  async (preDataVk, { dispatch }) => {
-    console.log(preDataVk)
+  async (_, { dispatch, rejectWithValue }) => {
     try {
-      const res = await axios.post('/user/create-profile', {
-        vkId: String(preDataVk.id),
-        name: preDataVk.first_name,
-        avatarUrl: preDataVk.photo_100,
-      })
+      const data = await bridge.send('VKWebAppGetUserInfo')
+      // Данные пользователя получены
+      if (data.id) {
+        const res = await axios.post('/user/create-profile', {
+          vkId: String(data.id),
+          name: data.first_name,
+          avatarUrl: data.photo_100,
+        })
 
-      dispatch(
-        showToast({
-          message: 'Спортивный профиль создан',
-          type: 'success',
-        }),
-      )
-      return res.data
+        dispatch(
+          showToast({
+            message: 'Спортивный профиль создан',
+            type: 'success',
+          }),
+        )
+        return res.data
+      }
     } catch (error) {
-      console.error('ошибка при создании спорт профиля redux ', error)
+      console.error(
+        'ошибка при создании спортивного профиля redux ',
+        error,
+      )
       dispatch(
         showToast({
           message: 'Ошибка при создании спортивного профиля',
           type: 'error',
         }),
       )
+      return rejectWithValue(error)
     }
   },
 )

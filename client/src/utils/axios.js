@@ -29,7 +29,6 @@ instance.interceptors.request.use((config) => {
   // const vkId = urlParams.get('vk_user_id')
   //2.2 для теста берем из хранилища redux
   const state = store.getState()
-  const vkId = state.user.preVkId
   const vkToken = state.auth.vkToken
 
   if (vkToken) {

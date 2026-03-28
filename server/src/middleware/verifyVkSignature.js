@@ -4,8 +4,6 @@ const verifyVkSignature = (req, res, next) => {
   // 1. Ожидаем строку window.location.search целиком в теле запроса
   const { launchParams } = req.body
 
-  console.log(launchParams)
-
   if (!launchParams) {
     return res
       .status(400)
