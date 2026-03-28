@@ -1,4 +1,4 @@
-import crypto from 'node:crypto'
+import crypto from 'crypto'
 
 const verifyVkSignature = (req, res, next) => {
   // 1. Ожидаем строку window.location.search целиком в теле запроса
@@ -46,7 +46,15 @@ const verifyVkSignature = (req, res, next) => {
     .join('&')
 
   // 4. Считаем хеш, используя Защищенный ключ (Client Secret) из настроек VK
-  const secretKey = process.env.VK_CLIENT_SECRET
+  const secretKey = process.env.VK_SECRET_KEY
+  if (!secretKey) {
+    console.error(
+      'КРИТИЧЕСКАЯ ОШИБКА: Переменная VK_SECRET_KEY не задана в .env',
+    )
+    return res
+      .status(500)
+      .json({ message: 'Ошибка конфигурации сервера' })
+  }
   const hash = crypto
     .createHmac('sha256', secretKey)
     .update(checkString)

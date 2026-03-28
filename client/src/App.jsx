@@ -20,7 +20,7 @@ const App = () => {
     dispatch(loadVkPersona(dataUserVK))
     dispatch(fetchGetMyProfile())
     dispatch(authWithVk())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="app">

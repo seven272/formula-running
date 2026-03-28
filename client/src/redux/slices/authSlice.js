@@ -118,6 +118,7 @@ const authWithVk = createAsyncThunk('auth/authWithVk', async () => {
     const { token } = res.data
     // localStorage.setItem('app_token', token); // Сохраняем ваш внутренний JWT
     console.log(res.data)
+    console.log('Токен пользователя Редакс стр ниже')
     console.log(token)
     return res.data
   } catch (error) {
@@ -207,6 +208,8 @@ const authSlice = createSlice({
         state.isLoading = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
+        console.log('Токен пользователя VkTOken созданный')
+        console.log(action.payload.token)
         state.isLoading = false
         state.vkToken = action.payload?.token
       })
