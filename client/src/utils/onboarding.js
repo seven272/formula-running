@@ -33,6 +33,7 @@ const showOnboarding = async () => {
     }
   } catch (error) {
     // Ошибка
+    console.log("Ошибка показа Онбординга")
     console.log(error)
   }
 }
