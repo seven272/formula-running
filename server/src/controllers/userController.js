@@ -402,13 +402,13 @@ const payVk = async (req, res) => {
     ready_plan: {
       title: 'Готовый план',
       price: 10,
-      photo_url: 'https://sportplans.ru/static/pictures/buy-icon.png',
+      photo_url: 'https://sportplans.ru/static/pictures/1774361977479-517821854-glavnaya-oblozhka-soobshestva.jpg',
      
     },
     sale_key: {
-      title: 'Музыкальный ключ',
-      price: 2,
-      photo_url: 'https://prank-sound.ru/.../...jpeg',
+      title: 'Созданный план',
+      price: 15,
+      photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
     },
   }
   const { notification_type, item, user_id, order_id, status } =
