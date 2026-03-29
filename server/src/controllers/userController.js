@@ -396,14 +396,12 @@ const buyPlan = async (req, res) => {
   }
 }
 
-
 const payVk = async (req, res) => {
   const ITEMS_STORE = {
     ready_plan: {
       title: 'Готовый план',
       price: 10,
-      photo_url: 'https://sportplans.ru/static/pictures/1774361977479-517821854-glavnaya-oblozhka-soobshestva.jpg',
-     
+      photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
     },
     sale_key: {
       title: 'Созданный план',
@@ -414,7 +412,7 @@ const payVk = async (req, res) => {
   const { notification_type, item, user_id, order_id, status } =
     req.body
 
-    console.log(req.body)
+  console.log(req.body)
   try {
     // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
     if (
@@ -501,5 +499,5 @@ export {
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
-  payVk
+  payVk,
 }
