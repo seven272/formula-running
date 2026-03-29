@@ -105,7 +105,7 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
   }
 })
 
-const authWithVk = createAsyncThunk(
+const authWithVk = createAsyncThunk( 
   'auth/authWithVk',
   async (_, { rejectWithValue }) => {
     // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
