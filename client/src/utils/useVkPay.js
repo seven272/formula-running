@@ -9,12 +9,12 @@ const useVkPay = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
-  const payVirtualMoney = async () => {
+  const payVirtualMoney = async ({planId}) => {
     try {
       // 1. Вызываем нативное окно оплаты VK
       const data = await bridge.send('VKWebAppShowOrderBox', {
         type: 'item', // Всегда должно быть 'item'
-        item: 'ready_plan', // Идентификатор товара
+        item: `ready_${planId}`, // Идентификатор товара
       })
       console.log(data)
       if (data.success) {

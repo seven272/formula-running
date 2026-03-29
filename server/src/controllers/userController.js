@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import User from '../models/userModel.js'
 import ReadyPlan from '../models/readyPlanModel.js'
 import PurchasedPlan from '../models/purchasedPlanModel.js'
+import Order from '../models/orderModel.js'
 
 const createProfile = async (req, res) => {
   try {
@@ -335,6 +336,23 @@ const buyPlan = async (req, res) => {
     const vkId = req.vkId
     const readyPlanId = req.body.readyPlanId
 
+    // 1. ПРОВЕРКА ОПЛАТЫ
+    // Ищем в базе Order запись, которую создал payVk
+    const paymentRecord = await Order.findOne({
+      vkId: vkId,
+      item: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
+      status: 'completed',
+    })
+
+    // Если записи нет — значит, оплаты не было (или она еще не дошла)
+    if (!paymentRecord) {
+      return res.status(402).json({
+        message:
+          'План не оплачен. Пожалуйста, сначала совершите покупку.',
+        error_code: 'PAYMENT_REQUIRED',
+      })
+    }
+
     const template = await ReadyPlan.findById(readyPlanId)
     const user = await User.findOne({ vkId })
     //проверяю существует или авторизован юзер
@@ -345,7 +363,7 @@ const buyPlan = async (req, res) => {
     }
     //проверяю есть уже этот план в купленных или нет
     const isPurchased = user.purchasedReadyPlans.includes(readyPlanId)
-    //если да, то выкидыываю ошибку
+    //если да, то выкидываю ошибку
     if (isPurchased) {
       return res.status(401).json({
         message: 'Вы купили этот план ранее',
@@ -395,7 +413,6 @@ const buyPlan = async (req, res) => {
     })
   }
 }
-
 
 export {
   createProfile,

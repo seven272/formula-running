@@ -3,30 +3,37 @@ import mongoose from 'mongoose'
 import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
 
+const ITEMS_STORE = {
+  ready: {
+    title: 'Готовый план',
+    price: 10,
+    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+  },
+  custom: {
+    title: 'Созданный план',
+    price: 15,
+    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+  },
+}
+
 const payVk = async (req, res) => {
-  const ITEMS_STORE = {
-    ready_plan: {
-      title: 'Готовый план',
-      price: 10,
-      photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-    },
-    custom_plan: {
-      title: 'Созданный план',
-      price: 15,
-      photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-    },
-  }
   const { notification_type, item, user_id, order_id, status } =
     req.body
-
   console.log(req.body)
+
+  const valuesItem = item.split('_')
+  //тип плана ready / custom
+  const typePlan = valuesItem[0]
+  // Извлекаем чистый ID плана из строки 'ready_id'/'custom_id'
+  const cleanPlanId = valuesItem[1] || typePlan // если ID нет, берем тип
+
   try {
     // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
     if (
       notification_type === 'get_item' ||
       notification_type === 'get_item_test'
     ) {
-      const product = ITEMS_STORE[item]
+      const product = ITEMS_STORE[typePlan]
 
       console.log(product)
 
@@ -53,14 +60,17 @@ const payVk = async (req, res) => {
         notification_type === 'order_status_change_test') &&
       status === 'chargeable'
     ) {
-      const orderId = String(order_id)
+      const vkOrderId = String(order_id)
       const vkId = String(user_id)
 
       //Проверка на дубликаты заказов. Проверяем, не обрабатывали ли мы этот order_id ранее
-      const existing = await Order.findOne({ orderId })
+      const existing = await Order.findOne({ orderId: vkOrderId })
       if (existing) {
         return res.json({
-          response: { order_id: orderId, app_order_id: existing._id },
+          response: {
+            order_id: vkOrderId,
+            app_order_id: existing._id,
+          },
         })
       }
 
@@ -75,16 +85,16 @@ const payVk = async (req, res) => {
       // 3. Создаем запись о покупке
       // Именно наличие этого Order будет основанием для выдачи плана в другом контроллере
       const newOrder = await Order.create({
-        orderId: orderId,
+        orderId: vkOrderId,
         userId: user._id, // Привязываем к нашему внутреннему ID
         vkId: vkId,
-        item: item,
+        item: cleanPlanId,
         status: 'completed',
       })
-      // 4. Отвечаем VK. VK ожидает id заказа в вашей системе (app_order_id)
+      // 4. Отвечаем VK. VK ожидает id заказа в системе (app_order_id)
       return res.json({
         response: {
-          order_id: orderId,
+          order_id: vkOrderId,
           app_order_id: String(newOrder._id),
         },
       })
@@ -96,7 +106,10 @@ const payVk = async (req, res) => {
     console.error('Ошибка в обработке платежа:', error)
     // Возвращаем ошибку в формате VK
     return res.json({
-      error: { error_code: 1, error_msg: 'Внутренняя ошибка сервера' }
+      error: {
+        error_code: 1,
+        error_msg: 'Внутренняя ошибка сервера',
+      },
     })
   }
 }

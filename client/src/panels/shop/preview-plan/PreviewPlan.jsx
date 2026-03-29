@@ -28,7 +28,7 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   const buyPlan = (_id) => {
-    payVirtualMoney()
+    payVirtualMoney(_id)
     // dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
   }
