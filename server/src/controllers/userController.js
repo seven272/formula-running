@@ -179,72 +179,6 @@ const updatePace = async (req, res) => {
   }
 }
 
-const buyPlan = async (req, res) => {
-  try {
-    const vkId = req.vkId
-    const readyPlanId = req.body.readyPlanId
-
-    const template = await ReadyPlan.findById(readyPlanId)
-    const user = await User.findOne({ vkId })
-    //проверяю существует или авторизован юзер
-    if (!user) {
-      return res.status(403).json({
-        message: 'Необходимо авторизоваться, чтобы купить план',
-      })
-    }
-    //проверяю есть уже этот план в купленных или нет
-    const isPurchased = user.purchasedReadyPlans.includes(readyPlanId)
-    //если да, то выкидыываю ошибку
-    if (isPurchased) {
-      return res.status(401).json({
-        message: 'Вы купили этот план ранее',
-      })
-    }
-
-    // Клонирую воркауты с дефолтным статусом false
-    const clonedWorkouts = template.workouts.map((week) => ({
-      ...week,
-      sessions: week.sessions.map((s) => ({
-        ...s,
-        completed: false,
-      })),
-    }))
-
-    const personalCopy = await PurchasedPlan.create({
-      userId: user._id,
-      originalPlanId: readyPlanId,
-      ownerVkId: vkId,
-      pace: {},
-      workouts: clonedWorkouts,
-      title: template.title,
-      subtitle: template.subtitle,
-      typeSport: template.typeSport,
-      distance: template.distance,
-      period: template.period,
-      time: template.time,
-      pace: template.pace,
-      planUrl: template.planUrl,
-      pictureUrl: template.pictureUrl,
-      isFree: template.isFree,
-    })
-
-    // Обновляем юзера
-
-    user.purchasedCopiedPlans.push(personalCopy._id)
-    user.purchasedReadyPlans.push(readyPlanId)
-    user.currentPlan = personalCopy._id
-    user.nameModel = 'PurchasedPlan'
-    await user.save()
-
-    res.status(200).json(personalCopy)
-  } catch (error) {
-    console.error('Ошибка buyPlan controller:', error)
-    res.status(500).json({
-      message: 'Ошибка сервера при покупке плана',
-    })
-  }
-}
-
 const getPurchasedPlans = async (req, res) => {
   const vkId = req.vkId
   try {
@@ -396,6 +330,161 @@ const toggleSessionStatus = async (req, res) => {
   }
 }
 
+const buyPlan = async (req, res) => {
+  try {
+    const vkId = req.vkId
+    const readyPlanId = req.body.readyPlanId
+
+    const template = await ReadyPlan.findById(readyPlanId)
+    const user = await User.findOne({ vkId })
+    //проверяю существует или авторизован юзер
+    if (!user) {
+      return res.status(403).json({
+        message: 'Необходимо авторизоваться, чтобы купить план',
+      })
+    }
+    //проверяю есть уже этот план в купленных или нет
+    const isPurchased = user.purchasedReadyPlans.includes(readyPlanId)
+    //если да, то выкидыываю ошибку
+    if (isPurchased) {
+      return res.status(401).json({
+        message: 'Вы купили этот план ранее',
+      })
+    }
+
+    // Клонирую воркауты с дефолтным статусом false
+    const clonedWorkouts = template.workouts.map((week) => ({
+      ...week,
+      sessions: week.sessions.map((s) => ({
+        ...s,
+        completed: false,
+      })),
+    }))
+
+    const personalCopy = await PurchasedPlan.create({
+      userId: user._id,
+      originalPlanId: readyPlanId,
+      ownerVkId: vkId,
+      pace: {},
+      workouts: clonedWorkouts,
+      title: template.title,
+      subtitle: template.subtitle,
+      typeSport: template.typeSport,
+      distance: template.distance,
+      period: template.period,
+      time: template.time,
+      pace: template.pace,
+      planUrl: template.planUrl,
+      pictureUrl: template.pictureUrl,
+      isFree: template.isFree,
+    })
+
+    // Обновляем юзера
+
+    user.purchasedCopiedPlans.push(personalCopy._id)
+    user.purchasedReadyPlans.push(readyPlanId)
+    user.currentPlan = personalCopy._id
+    user.nameModel = 'PurchasedPlan'
+    await user.save()
+
+    res.status(200).json(personalCopy)
+  } catch (error) {
+    console.error('Ошибка buyPlan controller:', error)
+    res.status(500).json({
+      message: 'Ошибка сервера при покупке плана',
+    })
+  }
+}
+
+
+const payVk = async (req, res) => {
+  const ITEMS_STORE = {
+    premium_pass: {
+      title: 'Премиум доступ',
+      price: 10,
+      photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
+     
+    },
+    sale_key: {
+      title: 'Музыкальный ключ',
+      price: 2,
+      photo_url: 'https://prank-sound.ru/.../...jpeg',
+    },
+  }
+  const { notification_type, item, user_id, order_id, status } =
+    req.body
+  try {
+    // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
+    if (
+      notification_type === 'get_item' ||
+      notification_type === 'get_item_test'
+    ) {
+      const product = ITEMS_STORE[item]
+
+      if (!product)
+        return res
+          .status(404)
+          .json({ error: 'Товара нет в списке ITEMS_STORE' })
+
+      return res.json({
+        response: {
+          item_id: item,
+          title: product.title,
+          price: product.price,
+          photo_url: product.photo_url,
+        },
+      })
+    }
+
+    // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
+    if (
+      (notification_type === 'order_status_change' ||
+        notification_type === 'order_status_change_test') &&
+      status === 'chargeable'
+    ) {
+      const orderId = String(order_id)
+      const vkId = String(user_id)
+
+      // Проверка на дубликаты
+      // const existing = await Order.findOne({ orderId })
+      // if (existing) {
+      //   return res.json({
+      //     response: { order_id: orderId, app_order_id: existing._id },
+      //   })
+      // }
+
+      // Создаем заказ и создаем нового пользователя в БД
+      // const newOrder = await Order.create({
+      //   orderId,
+      //   userId: vkId,
+      //   item,
+      // })
+
+      // Проверка на уже созданного пользователя
+      const existingUser = await User.findOne({ vk_id: vkId })
+
+      if (existingUser) {
+        console.log('Такой пользователья уже есть в БД')
+      } else {
+        const user = await User.create({ vk_id: vkId, isPaid: true })
+        console.log(user)
+      }
+
+      return res.json({
+        response: { order_id: orderId, app_order_id: newOrder._id },
+      })
+    }
+
+    // На все остальные типы уведомлений (например, критические ошибки платежа)
+    res.json({ response: 'ok' })
+  } catch (error) {
+    console.error('Ошибка в обработке платежа:', error)
+    return res.status(500).json({
+      error: 'Внутренняя ошибка сервера при покупке товара',
+    })
+  }
+}
+
 export {
   createProfile,
   getMyProfile,
@@ -408,4 +497,5 @@ export {
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
+  payVk
 }

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { message } from 'antd'
-import { changeStatusPaid } from '../redux/slices/vkUserSlice'
+// import { changeStatusPaid } from '../redux/slices/vkUserSlice'
 
 const useVkPay = () => {
   const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const useVkPay = () => {
       // 1. Вызываем нативное окно оплаты VK
       const data = await bridge.send('VKWebAppShowOrderBox', {
         type: 'item', // Всегда должно быть 'item'
-        item: 'premium_pass', // Идентификатор товара
+        item: 'ready_plan', // Идентификатор товара
       })
       console.log(data)
       if (data.success) {
@@ -27,11 +27,11 @@ const useVkPay = () => {
           'Оплата прошла успешно! Премиум доступ скоро появится.',
         )
         // Здесь вызов функции обновления баланса или статуса оплаты
-        setLoading(true)
-        setTimeout(() => {
-          dispatch(changeStatusPaid())
-          setLoading(false)
-        }, 1500)
+        // setLoading(true)
+        // setTimeout(() => {
+        //   dispatch(changeStatusPaid())
+        //   setLoading(false)
+        // }, 1500)
       }
     } catch (error) {
       // Пользователь закрыл окно или произошла ошибка (например, ошибка 13)

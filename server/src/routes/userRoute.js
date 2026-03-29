@@ -12,9 +12,11 @@ import {
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
+  payVk,
 } from '../controllers/userController.js'
 
 import verifyVkSignature from '../middleware/verifyVkSignature.js'
+import vkPayMiddleware from '../middleware/vkPayMiddleware.js'
 import checkVkId from '../middleware/сheckVkId.js'
 import upload from '../middleware/upload.js'
 
@@ -39,5 +41,7 @@ router.get('/purchased', checkVkId, getPurchasedPlans)
 router.get('/get-current-plan', checkVkId, getCurrentPlan)
 router.put('/change-current-plan', checkVkId, changeCurrentPlan)
 router.patch('/toggle-session-staus', checkVkId, toggleSessionStatus)
+router.post('/pay-vk', vkPayMiddleware, payVk)
+router.get('/pay-vk', payVk)
 
 export default router

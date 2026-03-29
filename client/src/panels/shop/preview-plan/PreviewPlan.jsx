@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-import { BiDetail } from "react-icons/bi";
+import { BiDetail } from 'react-icons/bi'
 import { IoCartOutline } from 'react-icons/io5'
-import { TbCurrencyDollarOff } from "react-icons/tb";
+import { TbCurrencyDollarOff } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchBuyPlan } from '../../../redux/slices/plansSlice';
+import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
 import templatePlanImg from '../../../assets/images/template_plan.png'
+import { useVkPay } from '../../../utils/useVkPay'
 import styles from './PreviewPlan.module.css'
 
 const URL = import.meta.env.VITE_PUBLIC_URL
@@ -15,16 +16,20 @@ const PreviewPlan = ({ objPlan }) => {
   const { title, pictureUrl, _id } = objPlan
   const dispatch = useDispatch()
   const routeNavigator = useRouteNavigator()
-  const  purchasedPlans  = useSelector(
-    (state) => state.plans.purchasedPlans || []
-  ) 
- 
+  const purchasedPlans = useSelector(
+    (state) => state.plans.purchasedPlans || [],
+  )
   const [isPurchased, setIsPurchased] = useState(false)
+  const { payVirtualMoney } = useVkPay()
 
-
- 
-  const buyPlan = (_id) => {
+  const buyFreePlan = (_id) => {
     dispatch(fetchBuyPlan(_id))
+    setIsPurchased((prev) => !prev)
+  }
+
+  const buyPlan = (_id) => {
+    payVirtualMoney()
+    // dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
   }
 
@@ -33,7 +38,6 @@ const PreviewPlan = ({ objPlan }) => {
       keepSearchParams: true,
     })
   }
-
 
   const checkPurchased = () => {
     const arrId = purchasedPlans.map((elem) => {
@@ -57,7 +61,11 @@ const PreviewPlan = ({ objPlan }) => {
           alt={title}
         />
       ) : (
-        <img src={templatePlanImg} alt="шаблон изображение плана" className={styles.template_img} />
+        <img
+          src={templatePlanImg}
+          alt="шаблон изображение плана"
+          className={styles.template_img}
+        />
       )}
 
       <div className={styles.card__btn_wrap}>
@@ -66,24 +74,25 @@ const PreviewPlan = ({ objPlan }) => {
           <BiDetail className={styles.btn_icon} />
         </button>
 
-        {objPlan.isFree ? 
-         <button
-          className={styles.card_btn}
-          onClick={() => buyPlan(_id)}
-          disabled={isPurchased}
-        >
-          купить
-          <TbCurrencyDollarOff className={styles.btn_icon} />
-        </button> :  <button
-          className={styles.card_btn}
-          onClick={() => buyPlan(_id)}
-          disabled={isPurchased}
-        >
-          купить
-          <IoCartOutline className={styles.btn_icon} />
-        </button>
-      }
-
+        {objPlan.isFree ? (
+          <button
+            className={styles.card_btn}
+            onClick={() => buyFreePlan(_id)}
+            disabled={isPurchased}
+          >
+            купить
+            <TbCurrencyDollarOff className={styles.btn_icon} />
+          </button>
+        ) : (
+          <button
+            className={styles.card_btn}
+            onClick={() => buyPlan(_id)}
+            disabled={isPurchased}
+          >
+            купить
+            <IoCartOutline className={styles.btn_icon} />
+          </button>
+        )}
       </div>
     </div>
   )
