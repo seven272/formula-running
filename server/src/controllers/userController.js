@@ -399,10 +399,10 @@ const buyPlan = async (req, res) => {
 
 const payVk = async (req, res) => {
   const ITEMS_STORE = {
-    premium_pass: {
-      title: 'Премиум доступ',
+    ready_plan: {
+      title: 'Готовый план',
       price: 10,
-      photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
+      photo_url: 'https://sportplans.ru/static/other/run_plan.jpg',
      
     },
     sale_key: {
