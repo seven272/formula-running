@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      default: '',
+      default: 'имя',
     },
     avatarUrl: String,
     profile: {

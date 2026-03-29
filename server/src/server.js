@@ -9,6 +9,7 @@ import authRoute from './routes/authRoute.js'
 import userRoute from './routes/userRoute.js'
 import readyPlanRoute from './routes/readyPlanRoute.js'
 import customPlanRoute from './routes/customPlanRoute.js'
+import orderRoute from './routes/orderRoute.js'
 
 
 //создаю приложение
@@ -36,6 +37,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/user', userRoute)
 app.use('/api/plans', readyPlanRoute)
 app.use('/api/custom-plans', customPlanRoute)
+app.use('/api/orders', orderRoute)
 
 
 // Запускаем сервер
