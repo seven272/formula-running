@@ -5,6 +5,7 @@ import { convertBase64FromUrl } from './convertToBase64'
 import { setOnboardingShown, getOnboardingShown } from './vkStorage'
 
 const showOnboarding = async () => {
+  console.log('Запуск функции показа Онбордиган')
   try {
     const imgForOnboarding = await convertBase64FromUrl(ImgOnboarding)
     // получаем информацию о "флаге" из хранилища о том были ли уже показа онбодинг, если да то прекращаю выполнения ф-и
