@@ -402,7 +402,7 @@ const payVk = async (req, res) => {
     ready_plan: {
       title: 'Готовый план',
       price: 10,
-      photo_url: 'https://sportplans.ru/static/other/run_plan.jpg',
+      photo_url: 'https://sportplans.ru/static/pictures/buy-icon.png',
      
     },
     sale_key: {
