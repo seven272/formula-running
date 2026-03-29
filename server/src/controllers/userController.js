@@ -413,6 +413,8 @@ const payVk = async (req, res) => {
   }
   const { notification_type, item, user_id, order_id, status } =
     req.body
+
+    console.log(req.body)
   try {
     // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
     if (
@@ -420,6 +422,8 @@ const payVk = async (req, res) => {
       notification_type === 'get_item_test'
     ) {
       const product = ITEMS_STORE[item]
+
+      console.log(product)
 
       if (!product)
         return res
