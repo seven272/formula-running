@@ -9,7 +9,7 @@ const showOnboarding = async () => {
     const imgForOnboarding = await convertBase64FromUrl(ImgOnboarding)
     // получаем информацию о "флаге" из хранилища о том были ли уже показа онбодинг, если да то прекращаю выполнения ф-и
     const isShown = getOnboardingShown()
-    if (isShown) {
+    if (!isShown) {
       return
     }
 

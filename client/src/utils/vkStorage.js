@@ -67,8 +67,10 @@ const getOnboardingShown = async () => {
   // получением значение первого элемента массива обьектов keys
   const resultValue = result.keys[0].value
   if (resultValue === '') {
+    console.log('Onboarding not show yet')
     return false
   } else if (resultValue === '1') {
+    console.log('Onboarding was shown')
     return true
   }
 }
