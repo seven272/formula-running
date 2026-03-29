@@ -8,6 +8,8 @@ import MainView from './views/MainView'
 import { getMe, authWithVk } from './redux/slices/authSlice'
 import { fetchGetMyProfile } from './redux/slices/userSlice'
 import { fetchGetCurrentPlan } from './redux/slices/currentPlanSlice'
+import { showOnboarding } from './utils/onboarding'
+import { showPromo } from './utils/vkShowPromo'
 
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
@@ -23,6 +25,8 @@ const App = () => {
         dispatch(fetchGetCurrentPlan())
       })
       .catch((err) => console.error('Ошибка входа:', err))
+    showOnboarding()
+    showPromo()
   }, [dispatch])
 
   if (isAuthLoading) {

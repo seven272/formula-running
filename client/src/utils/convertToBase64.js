@@ -1,4 +1,4 @@
-const getBase64FromUrl = async (url) => {
+const convertBase64FromUrl = async (url) => {
   const data = await fetch(url)
   const blob = await data.blob()
 
@@ -10,7 +10,7 @@ const getBase64FromUrl = async (url) => {
       const base64data = reader.result
       resolve(base64data)
     }
-  })
-}
+  }) 
+} 
 
-export {getBase64FromUrl}
+export {convertBase64FromUrl}
