@@ -28,7 +28,8 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   const buyPlan = (_id) => {
-    payVirtualMoney(_id)
+    console.log(_id)
+    payVirtualMoney('ready', _id)
     // dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
   }
