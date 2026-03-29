@@ -53,11 +53,11 @@ const PreviewPlan = ({ objPlan }) => {
 
   return (
     <div className={styles.card}>
-      <span className={styles.title}>{title}</span>
+      <span className={styles.title}>{title || ''}</span>
       {pictureUrl !== '' ? (
         <img
           className={styles.picture}
-          src={`${URL}/${pictureUrl}`}
+          src={`${URL}/${pictureUrl}` || ''}
           alt={title}
         />
       ) : (
