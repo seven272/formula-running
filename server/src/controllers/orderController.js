@@ -3,13 +3,13 @@ import Order from '../models/orderModel.js'
 
 const ITEMS_STORE = {
   ready: {
-    title: 'Готовый план',
-    price: 10,
+    title: 'Покупка готового плана',
+    price: 30,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
   custom: {
-    title: 'Созданный план',
-    price: 15,
+    title: 'Создание персонального плана',
+    price: 30,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
 }

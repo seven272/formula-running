@@ -14,6 +14,7 @@ import { showToast } from '../../redux/slices/toastSlice'
 import {
   fetchCreateCustomPlan,
   fetchCheckToken,
+  changeStatusToken,
 } from '../../redux/slices/customPlanSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -101,6 +102,16 @@ const Generate = ({ id }) => {
     } else {
       setShowCreated(true)
       dispatch(fetchCreateCustomPlan(dataPlan))
+        .unwrap()
+        .then(() => {
+          dispatch(changeStatusToken(false))
+        })
+        .catch((err) => {
+          console.error(
+            'План не создан, статус токена не изменен',
+            err,
+          )
+        })
     }
   }
 

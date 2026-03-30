@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux'
 
 import { message } from 'antd'
 import { changeStatusToken } from '../redux/slices/customPlanSlice'
-// import { changeStatusPaid } from '../redux/slices/vkUserSlice'
+import { fetchBuyPlan } from '../redux/slices/plansSlice'
 
 const useVkPay = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
   const payVirtualMoney = async (typePlan, planId) => {
-    console.log(planId)
+    
     try {
       // 1. Вызываем нативное окно оплаты VK
       const data = await bridge.send('VKWebAppShowOrderBox', {
@@ -29,11 +29,23 @@ const useVkPay = () => {
         if (typePlan === 'custom') {
           setLoading(true)
           setTimeout(() => {
-            dispatch(changeStatusToken())
+            dispatch(changeStatusToken(true))
             setLoading(false)
           }, 1500)
         } else if (typePlan === 'ready') {
-           message.success('вызываю контроллер покупки готового плана')
+          setLoading(true)
+          setTimeout(() => {
+            dispatch(fetchBuyPlan(planId))
+            setLoading(false)
+          }, 1500)
+        } else {
+          setLoading(true)
+          setTimeout(() => {
+            message.error(
+              'Что-то пошло не так после получения платежа...',
+            )
+            setLoading(false)
+          }, 3500)
         }
       }
     } catch (error) {

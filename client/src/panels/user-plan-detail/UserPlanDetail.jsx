@@ -10,6 +10,8 @@ import styles from './UserPlanDetail.module.css'
 import BriefPlan from './brief-plan/BriefPlan'
 import FullPlan from './full-plan/FullPlan'
 import NotFound from '../../components/not-found/NotFound'
+import Header from '../../components/header/Header'
+import Footer from '../../components/footer/Footer'
 
 const UserPlanDetail = ({ id }) => {
   const { url } = useParams()
@@ -43,7 +45,9 @@ const UserPlanDetail = ({ id }) => {
   if (isSearching) {
     return (
       <Panel id={id}>
+        <Header />
         <PanelSpinner />
+        <Footer />
       </Panel>
     )
   }
@@ -51,17 +55,21 @@ const UserPlanDetail = ({ id }) => {
   if (!plan) {
     return (
       <Panel id={id}>
+        <Header />
         <NotFound />
+        <Footer />
       </Panel>
     )
   }
 
   return (
     <Panel id={id}>
+      <Header />
       <div className={styles.main_detail_plan}>
-        <BriefPlan plan={plan} typePlan={typePlan}/>
+        <BriefPlan plan={plan} typePlan={typePlan} />
         <FullPlan plan={plan} typePlan={typePlan} />
       </div>
+      <Footer />
     </Panel>
   )
 }

@@ -89,7 +89,7 @@ const customPlanSlice = createSlice({
       state.customPace = { ...action.payload }
     },
     changeStatusToken: (state, action) => {
-      state.hasToken = true
+      state.hasToken = action.payload
     },
   },
   extraReducers: (builder) => {
