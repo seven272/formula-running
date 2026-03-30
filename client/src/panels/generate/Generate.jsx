@@ -22,7 +22,7 @@ import { useVkPay } from '../../utils/useVkPay'
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
   const { hasToken } = useSelector((state) => state.customPlan)
-  const {payVirtualMoney} = useVkPay()
+  const { payVirtualMoney } = useVkPay()
 
   const [dataPlan, setDataPlan] = useState({
     goal: '',
@@ -105,7 +105,7 @@ const Generate = ({ id }) => {
   }
 
   const handlePay = () => {
-    payVirtualMoney('custom', 'without Id')
+    payVirtualMoney('custom', '?')
   }
 
   useEffect(() => {
@@ -118,14 +118,32 @@ const Generate = ({ id }) => {
       <div className={styles.main_generate}>
         <div className={styles.wrapper}>
           <GenerateHeader />
-          <RaceConfig getData={setRaceConfig} />
-          <RaceGoal getData={setRaceGoal} />
-          <Schedule getData={setSchedule} />
+          <div className={styles.wrap_form}>
+            {!hasToken && (
+              <div className={styles.overlay}>
+                <p>
+                  Пожалуйста, оплатите план, чтобы разблокировать
+                  форму
+                </p>
+              </div>
+            )}
+            <RaceConfig getData={setRaceConfig} />
+            <RaceGoal getData={setRaceGoal} />
+            <Schedule getData={setSchedule} />
+          </div>
 
           {hasToken ? (
-            <button className={styles.btn} onClick={handleCreatePlan}>
-              Создать план
-            </button>
+            <div className={styles.wrap_create}>
+              <span className={styles.message_create}>
+                Создание плана было оплачено. Начинается магия!
+              </span>
+              <button
+                className={styles.btn_create}
+                onClick={handleCreatePlan}
+              >
+                Создать план
+              </button>
+            </div>
           ) : (
             <button className={styles.btn} onClick={handlePay}>
               Оплатить

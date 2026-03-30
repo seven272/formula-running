@@ -44,7 +44,6 @@ const customPlanSchema = new mongoose.Schema(
     ownerVkId: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       index: true,
     },

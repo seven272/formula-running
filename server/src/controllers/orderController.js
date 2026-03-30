@@ -132,7 +132,7 @@ const checkCustomToken = async (req, res) => {
       isUsed: false,
     })
 
-    res.json({ hasToken: !!activeOrder }) //возвращает true или false если объект или underfine
+    res.json({ hasToken: !!activeOrder }) //возвращает true или false если объект или underfine/null
   } catch (error) {
     res.status(500).json({ message: 'Ошибка проверки токена' })
   }

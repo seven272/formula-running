@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { message } from 'antd'
+import { changeStatusToken } from '../redux/slices/customPlanSlice'
 // import { changeStatusPaid } from '../redux/slices/vkUserSlice'
 
 const useVkPay = () => {
@@ -21,18 +22,19 @@ const useVkPay = () => {
       if (data.success) {
         // 2. Если VK вернул success, значит пользователь нажал "Оплатить"
         // и деньги (голоса) списались.
-
         // ВАЖНО: В этот момент бэкенд ПАРАЛЛЕЛЬНО получает callback от VK.
         // Нужно подождать секунду или обновить данные пользователя.
-        message.success(
-          'Оплата прошла успешно! Премиум доступ скоро появится.',
-        )
+        message.success('Оплата прошла успешно!')
         // Здесь вызов функции обновления баланса или статуса оплаты
-        // setLoading(true)
-        // setTimeout(() => {
-        //   dispatch(changeStatusPaid())
-        //   setLoading(false)
-        // }, 1500)
+        if (typePlan === 'custom') {
+          setLoading(true)
+          setTimeout(() => {
+            dispatch(changeStatusToken())
+            setLoading(false)
+          }, 1500)
+        } else if (typePlan === 'ready') {
+           message.success('вызываю контроллер покупки готового плана')
+        }
       }
     } catch (error) {
       // Пользователь закрыл окно или произошла ошибка (например, ошибка 13)

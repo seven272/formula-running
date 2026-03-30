@@ -88,6 +88,9 @@ const customPlanSlice = createSlice({
     setCustomPace: (state, action) => {
       state.customPace = { ...action.payload }
     },
+    changeStatusToken: (state, action) => {
+      state.hasToken = true
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -124,6 +127,7 @@ const customPlanSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchCheckToken.fulfilled, (state, action) => {
+        console.log('Значение токена оплаты плана: ' + action.payload.hasToken)
         state.isLoading = false
         state.hasToken = action.payload.hasToken
       })
@@ -133,7 +137,7 @@ const customPlanSlice = createSlice({
   },
 })
 
-export const { clearCurrentPlan, setCustomPlan, setCustomPace } =
+export const { clearCurrentPlan, setCustomPlan, setCustomPace, changeStatusToken } =
   customPlanSlice.actions
 export { fetchCreateCustomPlan, fetchGetCustomPlans, fetchCheckToken }
 export default customPlanSlice.reducer
