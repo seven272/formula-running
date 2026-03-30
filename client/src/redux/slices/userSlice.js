@@ -310,9 +310,6 @@ const checkVkAuth = (state) => {
   return Boolean(state.user.preVkId)
 }
 
-const checkProfileExists = (state) => {
-  return Boolean(state.user.hasSportProfile)
-}
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
@@ -327,7 +324,6 @@ export {
   fetchPaceUser,
   fetchGetMyProfile,
   checkVkAuth,
-  checkProfileExists,
 }
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом

@@ -16,13 +16,14 @@ import Footer from '../../components/footer/Footer'
 import {
   fetchGetMyProfile,
   fetchCreateProfile,
-  checkProfileExists,
   checkVkAuth,
-} from '../../redux/slices/userSlice' 
+} from '../../redux/slices/userSlice'
 
 const Profile = ({ id }) => {
   const dispatch = useDispatch()
-  const hasProfile = useSelector(checkProfileExists())
+  const hasProfile = useSelector(
+    (state) => state.user.hasSportProfile,
+  )
   const isAuthVk = useSelector(checkVkAuth)
   const [showSportProfile, setShowSportProfile] = useState(false)
 
@@ -32,10 +33,8 @@ const Profile = ({ id }) => {
   }
 
   useEffect(() => {
-    if (isAuthVk) {
-      dispatch(fetchGetMyProfile())
-    }
-  }, [])
+    dispatch(fetchGetMyProfile())
+  }, [dispatch])
 
   return (
     <Panel id={id}>
