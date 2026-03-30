@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { PiPaperclip } from 'react-icons/pi'
 import { Panel } from '@vkontakte/vkui'
 
@@ -11,11 +11,18 @@ import Schedule from './schedule/Schedule'
 import FinalResult from './final-result/FinalResult'
 import SamplePlan from './sample-plan/SamplePlan'
 import { showToast } from '../../redux/slices/toastSlice'
-import { fetchCreateCustomPlan } from '../../redux/slices/customPlanSlice'
+import {
+  fetchCreateCustomPlan,
+  fetchCheckToken,
+} from '../../redux/slices/customPlanSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import { useVkPay } from '../../utils/useVkPay'
+
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
+  const { hasToken } = useSelector((state) => state.customPlan)
+  const {payVirtualMoney} = useVkPay()
 
   const [dataPlan, setDataPlan] = useState({
     goal: '',
@@ -97,6 +104,14 @@ const Generate = ({ id }) => {
     }
   }
 
+  const handlePay = () => {
+    payVirtualMoney('custom', 'without Id')
+  }
+
+  useEffect(() => {
+    dispatch(fetchCheckToken())
+  }, [dispatch])
+
   return (
     <Panel id={id}>
       <Header />
@@ -107,9 +122,15 @@ const Generate = ({ id }) => {
           <RaceGoal getData={setRaceGoal} />
           <Schedule getData={setSchedule} />
 
-          <button className={styles.btn} onClick={handleCreatePlan}>
-            Создать
-          </button>
+          {hasToken ? (
+            <button className={styles.btn} onClick={handleCreatePlan}>
+              Создать план
+            </button>
+          ) : (
+            <button className={styles.btn} onClick={handlePay}>
+              Оплатить
+            </button>
+          )}
 
           <div
             className={styles.link}

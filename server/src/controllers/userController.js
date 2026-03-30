@@ -340,7 +340,8 @@ const buyPlan = async (req, res) => {
     // Ищем в базе Order запись, которую создал payVk
     const paymentRecord = await Order.findOne({
       vkId: vkId,
-      item: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
+      typePlan: 'ready',
+      planId: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
       status: 'completed',
     })
 

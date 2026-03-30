@@ -1,5 +1,3 @@
-import mongoose from 'mongoose'
-
 import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
 
@@ -23,9 +21,9 @@ const payVk = async (req, res) => {
 
   const valuesItem = item.split('_')
   //тип плана ready / custom
-  const typePlan = valuesItem[0]
+  const valueTypePlan = valuesItem[0]
   // Извлекаем чистый ID плана из строки 'ready_id'/'custom_id'
-  const cleanPlanId = valuesItem[1] || typePlan // если ID нет, берем тип
+  const cleanPlanId = valuesItem[1] || '?' // если ID нет, берем тип
 
   try {
     // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
@@ -33,7 +31,7 @@ const payVk = async (req, res) => {
       notification_type === 'get_item' ||
       notification_type === 'get_item_test'
     ) {
-      const product = ITEMS_STORE[typePlan]
+      const product = ITEMS_STORE[valueTypePlan]
 
       console.log(product)
 
@@ -78,7 +76,7 @@ const payVk = async (req, res) => {
       // 2. Создаем или находим пользователя (без выдачи плана)
       const user = await User.findOneAndUpdate(
         { vkId: vkId },
-        { $setOnInsert: { vkId: vkId } }, // Данные только при создании
+        { $setOnInsert: { vkId: vkId } }, // Если юзер не найден, то создаем и передаем данные для создания
         { upsert: true, new: true },
       )
 
@@ -86,10 +84,13 @@ const payVk = async (req, res) => {
       // Именно наличие этого Order будет основанием для выдачи плана в другом контроллере
       const newOrder = await Order.create({
         orderId: vkOrderId,
-        userId: user._id, // Привязываем к нашему внутреннему ID
+        userId: user._id, // Привязываем к внутреннему ID пользователя
         vkId: vkId,
-        item: cleanPlanId,
+        typePlan: valueTypePlan,
+        planId:
+          valueTypePlan === 'ready' ? cleanPlanId : 'without Id',
         status: 'completed',
+        isUsed: false,
       })
       // 4. Отвечаем VK. VK ожидает id заказа в системе (app_order_id)
       return res.json({
@@ -114,4 +115,27 @@ const payVk = async (req, res) => {
   }
 }
 
-export { payVk }
+const checkCustomToken = async (req, res) => {
+  const vkId = String(req.vkId)
+
+  try {
+    if (!vkId) {
+      return res
+        .status(401)
+        .json({ error: 'Необходима авторизация ВК' })
+    }
+    // Ищем хотя бы один неиспользованный оплаченный кастомный план
+    const activeOrder = await Order.exists({
+      vkId,
+      typePlan: 'custom',
+      status: 'completed',
+      isUsed: false,
+    })
+
+    res.json({ hasToken: !!activeOrder }) //возвращает true или false если объект или underfine
+  } catch (error) {
+    res.status(500).json({ message: 'Ошибка проверки токена' })
+  }
+}
+
+export { payVk, checkCustomToken }

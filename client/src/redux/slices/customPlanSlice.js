@@ -47,6 +47,21 @@ const fetchGetCustomPlans = createAsyncThunk(
   },
 )
 
+const fetchCheckToken = createAsyncThunk(
+  'customPlan/fetchCheckToken',
+  async () => {
+    try {
+      const res = await axios.get('/orders/check-token')
+      return res.data
+    } catch (error) {
+      console.log(
+        'ошибка при проверки токена оплаты кастомного плана redux ',
+        error,
+      )
+    }
+  },
+)
+
 const initialState = {
   title: '',
   customPlan: {},
@@ -55,6 +70,7 @@ const initialState = {
   listCustomPlans: [],
   isLoading: false,
   status: '',
+  hasToken: false,
 }
 
 const customPlanSlice = createSlice({
@@ -95,7 +111,6 @@ const customPlanSlice = createSlice({
       //get customs plans
       .addCase(fetchGetCustomPlans.pending, (state) => {
         state.isLoading = true
-      
       })
       .addCase(fetchGetCustomPlans.fulfilled, (state, action) => {
         state.isLoading = false
@@ -104,10 +119,21 @@ const customPlanSlice = createSlice({
       .addCase(fetchGetCustomPlans.rejected, (state) => {
         state.isLoading = false
       })
+      //check customs token
+      .addCase(fetchCheckToken.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchCheckToken.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.hasToken = action.payload.hasToken
+      })
+      .addCase(fetchCheckToken.rejected, (state) => {
+        state.isLoading = false
+      })
   },
 })
 
 export const { clearCurrentPlan, setCustomPlan, setCustomPace } =
   customPlanSlice.actions
-export { fetchCreateCustomPlan, fetchGetCustomPlans }
+export { fetchCreateCustomPlan, fetchGetCustomPlans, fetchCheckToken }
 export default customPlanSlice.reducer

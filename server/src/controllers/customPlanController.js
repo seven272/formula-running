@@ -1,4 +1,5 @@
 import CustomPlan from '../models/customPlanModel.js'
+import Order from '../models/orderModel.js'
 import User from '../models/userModel.js'
 import { generateRunningPlan } from '../utils/planGenerator.js'
 
@@ -7,14 +8,28 @@ const createCustomPlan = async (req, res) => {
   const dataPlan = req.body
 
   try {
+    // Ищем неиспользованный оплаченный чек для кастомного плана
+    const activeToken = await Order.findOne({
+      vkId: String(vkId),
+      typePlan: 'custom',
+      status: 'completed',
+      isUsed: false,
+    })
+
+    if (!activeToken) {
+      return res
+        .status(402)
+        .json({ message: 'Вначале следует оплатить создание плана' })
+    }
+
     if (!dataPlan.goal || !dataPlan.totalWeeks || !dataPlan.time) {
       return res.status(400).json({
         message: 'Недостаточно данных для генерации плана',
       })
     }
-    // 1. Находим или создаем пользователя (используем upsert для сокращения кода)
-    //Если пользователь НАЙДЕН: MongoDB просто возвращает его. Блок $setOnInsert игнорируется. Это защищает тебя от случайной перезаписи данных существующего юзера.
-    // Если пользователь НЕ найден: Создается новый документ. В него записывается 'vkId' из блока $setOnInsert (и любые другие поля, которые ты там укажешь, например balance: 0 или createdAt).
+    // Находим или создаем пользователя (используем upsert для сокращения кода)
+    //Если пользователь НАЙДЕН: MongoDB просто возвращает его. Блок $setOnInsert игнорируется. Это защищает от случайной перезаписи данных существующего юзера.
+    // Если пользователь НЕ найден: Создается новый документ. В него записывается 'vkId' из блока $setOnInsert (и любые другие поля, которые там указать, например balance: 0 или createdAt).
     let user = await User.findOneAndUpdate(
       { vkId },
       { $setOnInsert: { vkId } },
@@ -23,7 +38,7 @@ const createCustomPlan = async (req, res) => {
 
     const generatedPlan = generateRunningPlan(dataPlan)
 
-    // 2. создаю план
+    // создаю план
     const newPlan = await CustomPlan.create({
       userId: user._id,
       ownerVkId: vkId,
@@ -35,11 +50,15 @@ const createCustomPlan = async (req, res) => {
       workouts: generatedPlan.workouts,
     })
 
-    // 3. Привязываем план к пользователю (пушим в локальный объект и сохраняем)
+    // Привязываем план к пользователю (пушим в локальный объект и сохраняем)
     user.customPlans.push(newPlan._id)
     user.currentPlan = newPlan._id // Устанавливаем ID
     user.nameModel = 'CustomPlan' // Указываем модель для refPath
     await user.save()
+    // погашаем токен: теперь этот чек больше нельзя использовать
+    activeToken.isUsed = true
+    activeToken.planId = newPlan._id
+    await activeToken.save()
 
     res.status(201).json(newPlan)
   } catch (error) {
