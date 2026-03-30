@@ -11,7 +11,7 @@ const createProfile = async (req, res) => {
     // findOneAndUpdate с upsert заменяет всю логику "поиск-проверка-создание"
     const user = await User.findOneAndUpdate(
       { vkId },
-      { name, avatarUrl },
+      { name, avatarUrl, hasSportProfile: true },
       {
         new: true, // Вернуть обновленный документ
         upsert: true, // Создать, если не найден

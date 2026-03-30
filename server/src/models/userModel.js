@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema(
       unique: true,
       sparse: true,
     },
+    hasSportProfile: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       type: String,
       default: 'имя',

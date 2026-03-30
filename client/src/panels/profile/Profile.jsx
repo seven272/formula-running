@@ -18,11 +18,11 @@ import {
   fetchCreateProfile,
   checkProfileExists,
   checkVkAuth,
-} from '../../redux/slices/userSlice'
+} from '../../redux/slices/userSlice' 
 
 const Profile = ({ id }) => {
   const dispatch = useDispatch()
-  const hasProfile = useSelector(checkProfileExists)
+  const hasProfile = useSelector(checkProfileExists())
   const isAuthVk = useSelector(checkVkAuth)
   const [showSportProfile, setShowSportProfile] = useState(false)
 

@@ -43,7 +43,7 @@ const fetchCreateProfile = createAsyncThunk(
           type: 'error',
         }),
       )
-      return rejectWithValue(error)
+      return rejectWithValue(error) 
     }
   },
 )
@@ -182,6 +182,7 @@ const initialState = {
     zone5: '171-190',
   },
   pace: '00:00 | 00:00',
+  hasSportProfile: false
 }
 
 const userSlice = createSlice({
@@ -217,6 +218,7 @@ const userSlice = createSlice({
         state.vkId = action.payload.vkId
         state.name = action.payload.name
         state.avatar = action.payload.avatarUrl
+        state.hasSportProfile = action.payload.hasSportProfile
       })
       .addCase(fetchCreateProfile.rejected, (state) => {
         state.isLoading = false
@@ -262,7 +264,7 @@ const userSlice = createSlice({
         state.isLoading = false
         state.pulses = { ...action.payload }
       })
-      .addCase(fetchPulsesUser.rejected, (state, action) => {
+      .addCase(fetchPulsesUser.rejected, (state) => {
         state.isLoading = false
       })
       // pace user
@@ -274,7 +276,7 @@ const userSlice = createSlice({
         state.isLoading = false
         state.pace = action.payload.pace
       })
-      .addCase(fetchPaceUser.rejected, (state, action) => {
+      .addCase(fetchPaceUser.rejected, (state) => {
         state.isLoading = false
       })
       // get profile user
@@ -287,6 +289,7 @@ const userSlice = createSlice({
         state.vkId = action.payload?.vkId
         state.name = action.payload?.name
         state.avatar = action.payload?.avatarUrl
+        state.hasSportProfile = action.payload.hasSportProfile
         // Вложенные данные профиля
         const profile = action.payload?.profile || {}
         state.pace = profile.pace
@@ -308,7 +311,7 @@ const checkVkAuth = (state) => {
 }
 
 const checkProfileExists = (state) => {
-  return Boolean(state.user.vkId)
+  return Boolean(state.user.hasSportProfile)
 }
 
 // Слайс генерирует действия, которые экспортируются отдельно
