@@ -6,26 +6,22 @@ import PurchasedPlan from '../models/purchasedPlanModel.js'
 import Order from '../models/orderModel.js'
 
 const createProfile = async (req, res) => {
+  const { vkId, name, avatarUrl } = req.body
   try {
-    const { vkId, name, avatarUrl } = req.body
-    const user = await User.findOne({ vkId })
-
-    if (user) {
-      return res.status(403).json({
-        message: 'Пользователь уже существует в БД',
-      })
-    }
-    const newUser = await User.create({
-      vkId,
-      name,
-      avatarUrl,
-    })
-
-    res.status(201).json(newUser)
+    // findOneAndUpdate с upsert заменяет всю логику "поиск-проверка-создание"
+    const user = await User.findOneAndUpdate(
+      { vkId },
+      { name, avatarUrl },
+      {
+        new: true, // Вернуть обновленный документ
+        upsert: true, // Создать, если не найден
+      },
+    )
+    res.status(200).json(user)
   } catch (error) {
     console.error('Ошибка createProfile controller:', error)
     res.status(500).json({
-      message: 'Ошибка сервера при создании спортивного профиля',
+      message: 'Ошибка сервера при сохранении профиля',
     })
   }
 }
