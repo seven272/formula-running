@@ -1,82 +1,80 @@
 import bridge from '@vkontakte/vk-bridge'
 
-import {convertBase64FromUrl} from './convertToBase64'
+import { convertBase64FromUrl } from './convertToBase64'
 
 import ImgBlob from '../assets/images/run_plan.jpg'
 
 // размещение записи в истории пользователя
-const sharePostOnStory = async (textTop, textBotton) => {
 
-  const img = await convertBase64FromUrl(ImgBlob)
-
+const shareTrainingStory = async (props) => {
+  const trainingData = {
+    title: 'Темповая тренировка',
+    distance: '13',
+    pace: '4.23 /км',
+  }
   const urlApp = 'https://vk.com/app53406141'
-  return await bridge
-    .send('VKWebAppShowStoryBox', {
-      // Задаёт фон истории
-      background_type: 'image', // Тип фона — картинка
-      // url: 'https://example.com/v850136098/story-1.jpg', // Адрес картинки
-      blob: img, // Адрес картинки в 64 формате
-      locked: true, // Блокируем изменение размеров и положения фона
+  try {
+    // 1. Подготавливаем данные для текста
+    const title = `Тренировка: ${trainingData.title}`
+    const stats = `Дистанция: ${trainingData.distance} км | Темп: ${trainingData.pace}`
 
+    // 2. Конвертируем фон (лучше кэшировать base64, если картинка статична)
+    const img = await convertBase64FromUrl(ImgBlob)
+
+    await bridge.send('VKWebAppShowStoryBox', {
+      // Задаёт фон истории
+      background_type: 'image', // тип фона — картинка
+      blob: img, // само изображение в формате blob
       // Кнопка внизу истории для перехода в игру
       attachment: {
-        type: 'url', // Тип объекта — ссылка
-        text: 'go_to', // Константа, которая определяет текст ссылки полный список констант тут https://dev.vk.com/ru/method/stories.getVideoUploadServer
-        // "open" — «Открыть»
-        // "game" — «Играть»
-        // "go_to" — Перейти
-        url: urlApp, // Адрес игры
+        type: 'url', //тип кнопки
+        text: 'open', // текст на кнопке "Открыть", ("game" — «Играть» "go_to" — Перейти)
+        url: urlApp, //ссылка на приложение
       },
-
-      // Дополнительные изобразительные элементы
       stickers: [
-        // Текст в верхней части экрана
+        // Основной заголовок (Сверху)
         {
           sticker_type: 'native',
           sticker: {
             action_type: 'text',
             action: {
-              // Текст и его атрибуты
-              text: textTop,
-              style: 'cursive',
-              background_style: 'neon',
-              selection_color: '#4a0d13',
+              text: title,
+              style: 'border', // Четкий спортивный стиль
+              selection_color: '#000000', // Черный фон текста
             },
             transform: {
-              // Определяет положение текста
               gravity: 'center_top',
-              translation_y: 0.15,
+              translation_y: 0.1,
+              relation_width: 0.8, // Ограничиваем ширину, чтобы текст не вылезал
             },
           },
         },
-        // Текст в нижней части экрана
+        // Статистика (Чуть ниже центра или снизу)
         {
           sticker_type: 'native',
           sticker: {
             action_type: 'text',
             action: {
-              // Текст и его атрибуты
-              text: textBotton,
-              style: 'marker',
+              text: stats,
+              style: 'classic',
               background_style: 'none',
-              selection_color: '#4a0d13',
+              selection_color: '#ffffff',
             },
             transform: {
-              // Определяет положение текста
               gravity: 'center_bottom',
-              translation_y: -0.15,
+              translation_y: -0.2,
+              scale: 1.2, // Делаем акцент на цифрах
             },
           },
         },
       ],
     })
-    .then((data) => {
-      // История размещена...
-       console.log('История размещена!', data)
-    })
-    .catch((e) => {
-      console.log('Ошибка!', e)
-    })
+
+    return true
+  } catch (error) {
+    console.error('Ошибка при шеринге:', error)
+    return false
+  }
 }
 
-export { sharePostOnStory }
+export { shareTrainingStory }

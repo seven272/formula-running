@@ -5,7 +5,7 @@ import { TbShareOff, TbShare } from 'react-icons/tb'
 
 import styles from './DayPlan.module.css'
 import { fetchToggleSessionStatus } from '../../../../redux/slices/currentPlanSlice'
-import { sharePostOnStory } from '../../../../utils/vkAppShareStory'
+import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
 
 const DayPlan = ({
   weekId,
@@ -27,7 +27,7 @@ const DayPlan = ({
 
   const handleShareStory = () => {
     console.log('share vk story')
-    sharePostOnStory()
+    shareTrainingStory()
   }
 
   useEffect(() => {
