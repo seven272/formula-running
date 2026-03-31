@@ -17,6 +17,7 @@ import ShowPace from './show-pace/ShowPace.jsx'
 import Progressbar from '../../UI/progressbar/Progressbar.jsx'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
@@ -37,7 +38,7 @@ const Plan = ({ id }) => {
   }
 
   const handleShare = () => {
-    console.log('share result')
+    shareFinishPlanStory(objPlan.title)
   }
 
   useEffect(() => {
