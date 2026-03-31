@@ -132,10 +132,7 @@ const Generate = ({ id }) => {
           <div className={styles.wrap_form}>
             {!hasToken && (
               <div className={styles.overlay}>
-                <p>
-                  Пожалуйста, оплатите план, чтобы разблокировать
-                  форму
-                </p>
+                <span>Форма станет активной после оплаты</span>
               </div>
             )}
             <RaceConfig getData={setRaceConfig} />

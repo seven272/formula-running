@@ -16,7 +16,6 @@ import Footer from '../../components/footer/Footer'
 import {
   fetchGetMyProfile,
   fetchCreateProfile,
-  checkVkAuth,
 } from '../../redux/slices/userSlice'
 
 const Profile = ({ id }) => {
@@ -24,12 +23,11 @@ const Profile = ({ id }) => {
   const hasProfile = useSelector(
     (state) => state.user.hasSportProfile,
   )
-  const isAuthVk = useSelector(checkVkAuth)
-  const [showSportProfile, setShowSportProfile] = useState(false)
+  const [showBtn, setShowBtn] = useState(false)
 
   const createSportProfile = () => {
     dispatch(fetchCreateProfile())
-    setShowSportProfile(true)
+    setShowBtn(false)
   }
 
   useEffect(() => {
@@ -52,8 +50,7 @@ const Profile = ({ id }) => {
                 className={styles.btn}
                 onClick={createSportProfile}
               >
-                <FaMedal className={styles.btn_icon} /> создать и
-                заполнить спортивный профиль
+                <FaMedal className={styles.btn_icon} /> активировать спортивный профиль
               </button>
               <span className={styles.descr}>
                 * всегда под рукой будут данные о пульсе, личных
@@ -64,17 +61,23 @@ const Profile = ({ id }) => {
             </div>
           )}
 
-          {(showSportProfile || hasProfile) && (
-            <>
-              <Parameters />
+          <div className={styles.wrap_form}>
+            {!hasProfile && (
+              <div className={styles.overlay}>
+                <span>
+                  Создайте спортивный профиль, чтобы разблокировать
+                  форму
+                </span>
+              </div>
+            )}
+            <Parameters />
 
-              <Records />
+            <Records />
 
-              <Pulse />
+            <Pulse />
 
-              <Paces />
-            </>
-          )}
+            <Paces />
+          </div>
         </div>
       </div>
       <Footer />

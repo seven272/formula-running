@@ -28,7 +28,7 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   const buyPlan = (_id) => {
-    console.log(_id)
+   
     payVirtualMoney('ready', _id)
     // dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
@@ -77,11 +77,11 @@ const PreviewPlan = ({ objPlan }) => {
 
         {objPlan.isFree ? (
           <button
-            className={styles.card_btn}
+            className={styles.card_btn_free}
             onClick={() => buyFreePlan(_id)}
             disabled={isPurchased}
           >
-            купить
+            заниматься бесплатно
             <TbCurrencyDollarOff className={styles.btn_icon} />
           </button>
         ) : (

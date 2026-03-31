@@ -30,6 +30,14 @@
   color: var(--color-grey-dark);
 }
 
+.overlay span {
+  padding: 10px;
+  border: 2px solid var(--color-grey-dark);
+  background-color: var(--color-grey-light);
+  border-radius: 6px;
+}
+
+
 .wrapper {
   width: 100%;
   max-width: 515px;

@@ -14,6 +14,7 @@ import styles from './DetailsPlan.module.css'
 import { fetchBuyPlan } from '../../redux/slices/plansSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import { useVkPay } from '../../utils/useVkPay'
 
 const DetailsPlan = ({ id }) => {
   const params = useParams()
@@ -23,10 +24,9 @@ const DetailsPlan = ({ id }) => {
   const { allPlans, purchasedPlans } = useSelector(
     (state) => state.plans,
   )
-
+  const { payVirtualMoney } = useVkPay()
   const [plan, setPlan] = useState(() => {})
   const [training, setTraining] = useState(() => {})
-
   const [isPurchased, setIsPurchased] = useState(false)
 
   const findPlan = () => {
@@ -45,6 +45,11 @@ const DetailsPlan = ({ id }) => {
   }
 
   const buyPlan = () => {
+    payVirtualMoney('ready', currentId)
+    setIsPurchased((prev) => !prev)
+  }
+
+  const buyFreePlan = () => {
     dispatch(fetchBuyPlan(currentId))
     setIsPurchased((prev) => !prev)
   }
@@ -174,11 +179,11 @@ const DetailsPlan = ({ id }) => {
           <div className={styles.btn_wrap}>
             {plan?.isFree ? (
               <button
-                className={styles.card_btn}
+                className={styles.card_btn_free}
                 disabled={isPurchased}
-                onClick={buyPlan}
+                onClick={buyFreePlan}
               >
-                купить
+                заниматься бесплатно
                 <TbCurrencyDollarOff className={styles.btn_icon} />
               </button>
             ) : (
