@@ -59,8 +59,8 @@ const shareTrainingStory = async ({ title = '', descr = '' }) => {
             },
             transform: {
               gravity: 'center_bottom',
-              translation_y: -0.12,
-              scale: 0.7, // Оставляем стандартным, чтобы влезло больше строк
+              translation_y: -0.1,
+              scale: 0.6, // Оставляем стандартным, чтобы влезло больше строк
               relation_width: 0.9, // Растягиваем почти на всю ширину (90%)
             },
           },
@@ -75,7 +75,7 @@ const shareTrainingStory = async ({ title = '', descr = '' }) => {
   }
 }
 
-const shareFinishPlanStory = async ({ titlePlan = '' }) => {
+const shareFinishPlanStory = async (titlePlan = '' ) => {
   const urlApp = 'https://vk.com/app53406141'
   try {
     // 2. Конвертируем фон (лучше кэшировать base64, если картинка статична)
@@ -123,8 +123,8 @@ const shareFinishPlanStory = async ({ titlePlan = '' }) => {
             },
             transform: {
               gravity: 'center_bottom',
-              translation_y: -0.12,
-              scale: 1.3, // Оставляем стандартным, чтобы влезло больше строк
+              translation_y: -0.15,
+              scale: 1.1, // Оставляем стандартным, чтобы влезло больше строк
               relation_width: 0.9, // Растягиваем почти на всю ширину (90%)
             },
           },
