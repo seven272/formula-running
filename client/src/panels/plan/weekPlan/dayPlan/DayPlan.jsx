@@ -5,6 +5,7 @@ import { TbShareOff, TbShare } from 'react-icons/tb'
 
 import styles from './DayPlan.module.css'
 import { fetchToggleSessionStatus } from '../../../../redux/slices/currentPlanSlice'
+import { sharePostOnStory } from '../../../../utils/vkAppShareStory'
 
 const DayPlan = ({
   weekId,
@@ -26,6 +27,7 @@ const DayPlan = ({
 
   const handleShareStory = () => {
     console.log('share vk story')
+    sharePostOnStory()
   }
 
   useEffect(() => {
@@ -54,28 +56,29 @@ const DayPlan = ({
         <span className={styles.day_title}>{title}</span>
         <span className={styles.day_descr}>{descr}</span>
         {/* <div className={styles.day_actions}> */}
-          <span className={styles.day_check}>
-            <Checkbox noPadding='true' checked={checked} onChange={handleCheck} />
-          </span>
+        <span className={styles.day_check}>
+          <Checkbox
+            noPadding="true"
+            checked={checked}
+            onChange={handleCheck}
+          />
+        </span>
 
-          <div
-            className={styles.day_share}
-            title="Поделиться в Сторис"
-          >
-            {checked ? (
-              <TbShare
-                size={18}
-                className={styles.icon_share}
-                onClick={() => handleShareStory(title, descr)}
-                title="Поделиться в Сторис"
-              />
-            ) : (
-              <TbShareOff
-                size={18}
-                className={styles.icon_share_disabled}
-              />
-            )}
-          </div>
+        <div className={styles.day_share} title="Поделиться в Сторис">
+          {checked ? (
+            <TbShare
+              size={18}
+              className={styles.icon_share}
+              onClick={() => handleShareStory(title, descr)}
+              title="Поделиться в Сторис"
+            />
+          ) : (
+            <TbShareOff
+              size={18}
+              className={styles.icon_share_disabled}
+            />
+          )}
+        </div>
         {/* </div> */}
       </div>
     </div>

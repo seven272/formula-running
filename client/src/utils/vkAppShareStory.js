@@ -1,12 +1,15 @@
 import bridge from '@vkontakte/vk-bridge'
 
-import { getBase64FromUrl } from './imgToBase64'
-import ImgBlob from '../assets/images/forStory2.png'
+import {convertBase64FromUrl} from './convertToBase64'
+
+import ImgBlob from '../assets/images/run_plan.jpg'
 
 // размещение записи в истории пользователя
 const sharePostOnStory = async (textTop, textBotton) => {
-  const img = await getBase64FromUrl(ImgBlob)
-  const urlApp = 'https://vk.com/app52023743'
+
+  const img = await convertBase64FromUrl(ImgBlob)
+
+  const urlApp = 'https://vk.com/app53406141'
   return await bridge
     .send('VKWebAppShowStoryBox', {
       // Задаёт фон истории
@@ -69,6 +72,7 @@ const sharePostOnStory = async (textTop, textBotton) => {
     })
     .then((data) => {
       // История размещена...
+       console.log('История размещена!', data)
     })
     .catch((e) => {
       console.log('Ошибка!', e)
