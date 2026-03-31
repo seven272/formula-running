@@ -26,8 +26,7 @@ const DayPlan = ({
   }
 
   const handleShareStory = () => {
-    console.log('share vk story')
-    shareTrainingStory()
+    shareTrainingStory({ title, descr })
   }
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const DayPlan = ({
         </span>
         <span className={styles.day_title}>{title}</span>
         <span className={styles.day_descr}>{descr}</span>
-        {/* <div className={styles.day_actions}> */}
+
         <span className={styles.day_check}>
           <Checkbox
             noPadding="true"
@@ -79,7 +78,6 @@ const DayPlan = ({
             />
           )}
         </div>
-        {/* </div> */}
       </div>
     </div>
   )

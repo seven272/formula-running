@@ -2,21 +2,16 @@ import bridge from '@vkontakte/vk-bridge'
 
 import { convertBase64FromUrl } from './convertToBase64'
 
-import ImgBlob from '../assets/images/run_plan.jpg'
+import ImgBlob from '../assets/images/vk-ui/onboarding.png'
 
 // размещение записи в истории пользователя
 
-const shareTrainingStory = async (props) => {
-  const trainingData = {
-    title: 'Темповая тренировка',
-    distance: '13',
-    pace: '4.23 /км',
-  }
+const shareTrainingStory = async ({ title = '', descr = '' }) => {
   const urlApp = 'https://vk.com/app53406141'
   try {
     // 1. Подготавливаем данные для текста
-    const title = `Тренировка: ${trainingData.title}`
-    const stats = `Дистанция: ${trainingData.distance} км | Темп: ${trainingData.pace}`
+    const trainingTitle = `Тренировка ${title} выполнена!`
+    const trainingDescr = `${descr}`
 
     // 2. Конвертируем фон (лучше кэшировать base64, если картинка статична)
     const img = await convertBase64FromUrl(ImgBlob)
@@ -38,32 +33,34 @@ const shareTrainingStory = async (props) => {
           sticker: {
             action_type: 'text',
             action: {
-              text: title,
-              style: 'border', // Четкий спортивный стиль
-              selection_color: '#000000', // Черный фон текста
+              text: trainingTitle, // Переменная с названием
+              style: 'border', // Жирный шрифт с обводкой, хорошо читается
+              selection_color: '#ffffff',
             },
             transform: {
               gravity: 'center_top',
-              translation_y: 0.1,
-              relation_width: 0.8, // Ограничиваем ширину, чтобы текст не вылезал
+              translation_y: 0.15,
+              scale: 1.5, // ДЕЛАЕМ КРУПНЕЕ
+              relation_width: 0.8, // Ограничиваем ширину (80% экрана)
             },
           },
         },
-        // Статистика (Чуть ниже центра или снизу)
+        // Содержание тренировки (Чуть ниже центра или снизу)
         {
           sticker_type: 'native',
           sticker: {
             action_type: 'text',
             action: {
-              text: stats,
+              text: trainingDescr, // Переменная с длинным описанием
               style: 'classic',
               background_style: 'none',
               selection_color: '#ffffff',
             },
             transform: {
               gravity: 'center_bottom',
-              translation_y: -0.2,
-              scale: 1.2, // Делаем акцент на цифрах
+              translation_y: -0.25,
+              scale: 0.8, // Оставляем стандартным, чтобы влезло больше строк
+              relation_width: 0.9, // Растягиваем почти на всю ширину (90%)
             },
           },
         },
