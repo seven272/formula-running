@@ -5,7 +5,6 @@ import { FaRegStar } from 'react-icons/fa6'
 import { GiThreeFriends } from 'react-icons/gi'
 import { GrInfo } from 'react-icons/gr'
 import { TbMessageUser } from 'react-icons/tb'
-import { LiaCreativeCommonsShare } from 'react-icons/lia'
 import styles from './Footer.module.css'
 import {
   shareApp,

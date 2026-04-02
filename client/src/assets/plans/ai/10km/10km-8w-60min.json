@@ -1,0 +1,522 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 втягивание",
+    "weeklyKm": 30,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 5-7км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 4х1км в целевом темпе P5 (6:00). Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 2х2км в темпе P5, отдых 2 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 5-7км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 6-10км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 прогрессия",
+    "weeklyKm": 34,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 5-7км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 6х400м в темпе P6. Отдых 90 сек P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 15 мин непрерывно в темпе P4. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 13,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 5-7км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 6-10км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟡 закрепление",
+    "weeklyKm": 40,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция на ваше усмотрение в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 10х[1 мин P6 / 1 мин P1]. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 2х3км в темпе P4, отдых 3 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 10-13км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "base",
+    "isRecovery": true,
+    "status": "🔵 разгрузка",
+    "weeklyKm": 36,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция на ваше усмотрение в темпе P1-P2",
+        "сompleted": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 5х1км в скоростном темпе P6. Отдых 2 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 20 мин непрерывно в темпе P4. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 10-13км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 рост нагрузки",
+    "weeklyKm": 45,
+    "sessions": [
+      {
+        "id": 29,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-9км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 30,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 10х200м на максимум (P6+), отдых 2 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 31,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 32,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 2х3км в темпе P4-P5, отдых 3 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 33,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 34,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 35,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 13-16км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 выносливость",
+    "weeklyKm": 52,
+    "sessions": [
+      {
+        "id": 36,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-9 км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 37,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 8х400м в темпе P6. Отдых 90 сек P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 38,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 39,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 25 мин непрерывно в темпе P4. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 40,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 41,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 42,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 16-19км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 пик нагрузки",
+    "weeklyKm": 58,
+    "sessions": [
+      {
+        "id": 43,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-9км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 44,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 8х[1 мин P6 / 3 мин P1]. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 45,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 46,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 2х15 мин в темпе P4-P5, отдых 3 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 47,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 48,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 49,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "Дистанция 17-20км в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 51,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-9 км в темпе P2",
+        "сompleted": false
+      },
+      {
+        "id": 52,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин P1. 4х1км в целевом темпе P5 (6:00), отдых 2 мин P1. Заминка 10 мин P1",
+        "сompleted": false
+      },
+      {
+        "id": 53,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 54,
+        "day": "ЧТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Дистанция 6-8 км в темпе P1-P2",
+        "сompleted": false
+      },
+      {
+        "id": 55,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление",
+        "сompleted": false
+      },
+      {
+        "id": 56,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "Легкая разминочная пробежка 4-5км (P1)",
+        "сompleted": false
+      },
+      {
+        "id": 57,
+        "day": "ВС",
+        "title": "Соревнования",
+        "type": "event",
+        "descr": "Твои 10 км за 60 минут! Целевой темп P5. Удачи на старте!",
+        "сompleted": false
+      }
+    ]
+  }
+]

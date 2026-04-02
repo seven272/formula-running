@@ -45,6 +45,7 @@
     align-items:flex-start;
     text-align: justify;
     flex-grow: 1;
+    row-gap: 5px;
     margin-right: 10px;
     margin-left: 10px;
   }

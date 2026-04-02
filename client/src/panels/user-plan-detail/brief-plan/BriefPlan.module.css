@@ -43,13 +43,15 @@
 .text {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
+  column-gap: 10px;
   font: var(--font-ms);
   color: var(--color-grey-dark);
 }
 
-.text p {
+.text span {
   text-transform: lowercase;
+  text-align: left;
 }
 
 .icon_pdf {

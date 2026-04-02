@@ -1,0 +1,782 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 втягивание",
+    "weeklyKm": 23,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3 км в целевом темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность или легкий бег 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 адаптация",
+    "weeklyKm": 23,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3 км в целевом темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность или легкий бег 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 рост нагрузки",
+    "weeklyKm": 26,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "6 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 4 км в целевом темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "6 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность или легкий бег 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 закрепление",
+    "weeklyKm": 26,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "6 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 4 км в целевом темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "6 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность или легкий бег 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 прогрессия объема",
+    "weeklyKm": 28,
+    "sessions": [
+      {
+        "id": 29,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 30,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 31,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 4 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 32,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 33,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 34,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 35,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🔴 выход на базу",
+    "weeklyKm": 30,
+    "sessions": [
+      {
+        "id": 36,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 37,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 38,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 5 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 39,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 40,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 41,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 42,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "11 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟡 укрепление базы",
+    "weeklyKm": 33,
+    "sessions": [
+      {
+        "id": 43,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 44,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 45,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 6 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 46,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 47,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "7 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 48,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 49,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "13 км в спокойном темпе. RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 промежуточный отдых",
+    "weeklyKm": 33,
+    "sessions": [
+      {
+        "id": 50,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 51,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 52,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 7 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 53,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 54,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 55,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 56,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км (снижение нагрузки). RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 9,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟠 пиковая нагрузка",
+    "weeklyKm": 39,
+    "sessions": [
+      {
+        "id": 57,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 58,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 59,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 8 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 60,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 61,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 62,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 63,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "15 км (набор выносливости). RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 10,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 максимум объема",
+    "weeklyKm": 41,
+    "sessions": [
+      {
+        "id": 64,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 65,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 66,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 9 км в темпе ПМ. Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 67,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 68,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 69,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 70,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "16 км (пиковая дистанция). RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 11,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка (этап 1)",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 71,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 72,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 73,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "4 км в целевом темпе ПМ.",
+        "completed": false
+      },
+      {
+        "id": 74,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 75,
+        "day": "ПТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "8 км со средними усилиями. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 76,
+        "day": "СБ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 45-60 мин. RPE 4-6.",
+        "completed": false
+      },
+      {
+        "id": 77,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "11 км (снижение нагрузки). RPE 5-6.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 12,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🏁 финишная прямая",
+    "weeklyKm": 13,
+    "sessions": [
+      {
+        "id": 78,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 79,
+        "day": "ВТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км легкого бега. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 80,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 81,
+        "day": "ЧТ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "5 км легкого бега. RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 82,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 83,
+        "day": "СБ",
+        "title": "Умеренный бег",
+        "type": "run",
+        "descr": "3 км (разминка перед стартом). RPE 5-6.",
+        "completed": false
+      },
+      {
+        "id": 84,
+        "day": "ВС",
+        "title": "Полумарафон",
+        "type": "run",
+        "descr": "21.1 км. Главный старт! Удачи!",
+        "completed": false
+      }
+    ]
+  }
+]

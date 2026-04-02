@@ -1,0 +1,130 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 втягивание",
+    "weeklyKm": 10,
+    "sessions": [
+      { "id": 1, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 2, "day": "ВТ", "title": "ходьба/бег", "type": "easy", "descr": "10х[2 мин P1, 1 мин P3]", "сompleted": false },
+      { "id": 3, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 4, "day": "ЧТ", "title": "ходьба/бег", "type": "easy", "descr": "10х[2 мин P1, 1 мин P3]", "сompleted": false },
+      { "id": 5, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Укрепление стоп и кора", "сompleted": false },
+      { "id": 6, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 7, "day": "ВС", "title": "длительная", "type": "long", "descr": "15 мин бега P2", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 прогрессия",
+    "weeklyKm": 12,
+    "sessions": [
+      { "id": 8, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 9, "day": "ВТ", "title": "ходьба/бег", "type": "easy", "descr": "12х[1.5 мин P1, 1.5 мин P3]", "сompleted": false },
+      { "id": 10, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 11, "day": "ЧТ", "title": "ходьба/бег", "type": "easy", "descr": "12х[1.5 мин P1, 1.5 мин P3]", "сompleted": false },
+      { "id": 12, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Силовая на ноги", "сompleted": false },
+      { "id": 13, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 14, "day": "ВС", "title": "длительная", "type": "long", "descr": "20 мин бега P2", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟡 закрепление",
+    "weeklyKm": 15,
+    "sessions": [
+      { "id": 15, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 16, "day": "ВТ", "title": "интервалы", "type": "easy", "descr": "10х[1 мин P1, 2 мин P4]", "сompleted": false },
+      { "id": 17, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 18, "day": "ЧТ", "title": "интервалы", "type": "easy", "descr": "10х[1 мин P1, 2 мин P4]", "сompleted": false },
+      { "id": 19, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Круговая тренировка 45 мин", "сompleted": false },
+      { "id": 20, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 21, "day": "ВС", "title": "длительная", "type": "long", "descr": "25 мин бега P2-P3", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "base",
+    "isRecovery": true,
+    "status": "🔵 разгрузка",
+    "weeklyKm": 10,
+    "sessions": [
+      { "id": 22, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 23, "day": "ВТ", "title": "легкий бег", "type": "easy", "descr": "15 мин P2", "сompleted": false },
+      { "id": 24, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 25, "day": "ЧТ", "title": "короткие ускорения", "type": "speed", "descr": "10 мин P2 + 5х[30 сек P6, 1.5 мин P1]", "сompleted": false },
+      { "id": 26, "day": "ПТ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 27, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 28, "day": "ВС", "title": "тест 2 км", "type": "long", "descr": "Пробежать 2 км в темпе P5-P6", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 работа над темпом",
+    "weeklyKm": 18,
+    "sessions": [
+      { "id": 29, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 30, "day": "ВТ", "title": "темповые", "type": "tempo", "descr": "10 мин разминка. 3х[5 мин P5, 2 мин P1]", "сompleted": false },
+      { "id": 31, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 32, "day": "ЧТ", "title": "интервалы", "type": "speed", "descr": "10х[1 мин P6, 1 мин P1]", "сompleted": false },
+      { "id": 33, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Акцент на кор и спину", "сompleted": false },
+      { "id": 34, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 35, "day": "ВС", "title": "длительная", "type": "long", "descr": "35 мин бега P3", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 выносливость",
+    "weeklyKm": 22,
+    "sessions": [
+      { "id": 36, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 37, "day": "ВТ", "title": "фартлек", "type": "speed", "descr": "10 мин P2. 8х[2 мин P5, 1 мин P1]", "сompleted": false },
+      { "id": 38, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 39, "day": "ЧТ", "title": "легкий бег", "type": "easy", "descr": "25 мин P3", "сompleted": false },
+      { "id": 40, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Силовая на всё тело", "сompleted": false },
+      { "id": 41, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 42, "day": "ВС", "title": "длительная", "type": "long", "descr": "45 мин бега P3", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 пик нагрузки",
+    "weeklyKm": 25,
+    "sessions": [
+      { "id": 43, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 44, "day": "ВТ", "title": "целевой темп", "type": "speed", "descr": "10 мин P2. 4х[1 км в темпе P6, отдых 2 мин P1]", "сompleted": false },
+      { "id": 45, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 46, "day": "ЧТ", "title": "прогрессия", "type": "tempo", "descr": "10 мин P3 + 10 мин P4 + 5 мин P6", "сompleted": false },
+      { "id": 47, "day": "ПТ", "title": "ОФП", "type": "strength", "descr": "Легкий кросс-тренинг", "сompleted": false },
+      { "id": 48, "day": "СБ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 49, "day": "ВС", "title": "длительная", "type": "long", "descr": "30 мин: 15 мин P3 + 15 мин P5", "сompleted": false }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка",
+    "weeklyKm": 12,
+    "sessions": [
+      { "id": 50, "day": "ПН", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 51, "day": "ВТ", "title": "тонус", "type": "easy", "descr": "15 мин P3 + 3 ускорения по 100м", "сompleted": false },
+      { "id": 52, "day": "СР", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 53, "day": "ЧТ", "title": "разминка", "type": "easy", "descr": "10 мин P2 + растяжка", "сompleted": false },
+      { "id": 54, "day": "ПТ", "title": "отдых", "type": "rest", "descr": "Полное восстановление", "сompleted": false },
+      { "id": 55, "day": "СБ", "title": "прогулка", "type": "easy", "descr": "20 мин спокойной ходьбы", "сompleted": false },
+      { "id": 56, "day": "ВС", "title": "ЗАБЕГ 5 КМ", "type": "event", "descr": "Цель: 30:00. Темп P6 от старта до финиша.", "сompleted": false }
+    ]
+  }
+]

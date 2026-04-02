@@ -1,0 +1,1172 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 фундамент",
+    "weeklyKm": 38,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Фартлек",
+        "type": "run",
+        "descr": "33 мин: 5' (7:00) + 5' (6:00) + 6х(1' 5:10 / 2' 7:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "13 км: 2 км (7:00) + 10 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 рост объемов",
+    "weeklyKm": 41,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "47 мин: 5' (7:00) + 30' (6:00) + 12' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "Фартлек",
+        "type": "run",
+        "descr": "35 мин: 5' (7:00) + 5' (6:00) + 5х(2' 5:10 / 2' 7:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "day": "СБ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "14 км: 2 км (7:00) + 11 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "build",
+    "isRecovery": true,
+    "status": "🔵 восстановление",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полное восстановление.",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 25' (6:00) + 10' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00) или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00) или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "Фартлек",
+        "type": "run",
+        "descr": "33 мин: 5' (7:00) + 5' (6:00) + 6х(1' 5:10 / 2' 7:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00) или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "12 км: 2 км (7:00) + 9 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 прогрессия",
+    "weeklyKm": 48,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "47 мин: 5' (7:00) + 30' (6:00) + 12' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "35 мин: Разминка + 10х(30'' в гору 4:45 / 1.5' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "40 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "18 км: 2 км (7:00) + 15 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 первая вершина",
+    "weeklyKm": 54,
+    "sessions": [
+      {
+        "id": 29,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 30,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "42 мин: 5' (7:00) + 25' (6:00) + 12' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 31,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 32,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 33,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "39 мин: Разминка + 8х(90'' в гору 4:45 / 1.5' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 34,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 35,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "20 км: 2 км (7:00) + 17 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "build",
+    "isRecovery": true,
+    "status": "🔵 разгрузка",
+    "weeklyKm": 38,
+    "sessions": [
+      {
+        "id": 36,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полное восстановление.",
+        "completed": false
+      },
+      {
+        "id": 37,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "47 мин: 5' (7:00) + 30' (6:00) + 12' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 38,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 39,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 40,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "35 мин: Разминка + 10х(30'' в гору 4:45 / 1.5' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 41,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "40 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 42,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "13 км: 2 км (7:00) + 10 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟡 укрепление базы",
+    "weeklyKm": 58,
+    "sessions": [
+      {
+        "id": 43,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 44,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "55 мин: 5' (7:00) + 35' (6:00) + 15' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 45,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 46,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 47,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "39 мин: Разминка + 8х(90'' в гору 4:45 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 48,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 49,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "23 км: 2 км (7:00) + 20 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 силовой объем",
+    "weeklyKm": 65,
+    "sessions": [
+      {
+        "id": 50,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 51,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "60 мин: 5' (7:00) + 40' (6:00) + 15' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 52,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 53,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 30' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 54,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "45 мин: Разминка + 10х(60'' в гору 4:45 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 55,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 56,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "26 км: 2 км (7:00) + 23 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 9,
+    "stage": "base",
+    "isRecovery": true,
+    "status": "🔵 разгрузка",
+    "weeklyKm": 43,
+    "sessions": [
+      {
+        "id": 56,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полное восстановление.",
+        "completed": false
+      },
+      {
+        "id": 57,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "47 мин: 5' (7:00) + 30' (6:00) + 12' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 58,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00) или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 59,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00) или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 60,
+        "day": "ПТ",
+        "title": "Горки",
+        "type": "run",
+        "descr": "39 мин: Разминка + 8х(90'' в гору 4:45 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 61,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 62,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "18 км: 2 км (7:00) + 15 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 10,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 пиковая выносливость",
+    "weeklyKm": 72,
+    "sessions": [
+      {
+        "id": 63,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 64,
+        "day": "ВТ",
+        "title": "Интервальная",
+        "type": "run",
+        "descr": "64 мин: 5'(з1)+5'(з2) + 4х(8' 5:40 / 3' 7:00) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 65,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 67,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 68,
+        "day": "ПТ",
+        "title": "Короткие интервалы",
+        "type": "run",
+        "descr": "45 мин: Разминка + 10х(1' 5:00 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 69,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 70,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "29 км: 2 км (7:00) + 26 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 11,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 абсолютный максимум",
+    "weeklyKm": 78,
+    "sessions": [
+      {
+        "id": 71,
+        "day": "ПН",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 72,
+        "day": "ВТ",
+        "title": "Темповая",
+        "type": "run",
+        "descr": "44 мин: 5'(з1)+5'(з2) + 24' (5:40) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 73,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "40 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 74,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "35 мин: 5' (7:00) + 25' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 75,
+        "day": "ПТ",
+        "title": "Короткие интервалы",
+        "type": "run",
+        "descr": "47 мин: Разминка + 8х(1.5' 5:00 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 76,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 77,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "33 км: 2 км (7:00) + 30 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 12,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 разгрузка",
+    "weeklyKm": 52,
+    "sessions": [
+      {
+        "id": 78,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 79,
+        "day": "ВТ",
+        "title": "Темповая",
+        "type": "run",
+        "descr": "44 мин: 5'(з1)+5'(з2) + 24' (5:40) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 80,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "40 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 81,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 82,
+        "day": "ПТ",
+        "title": "Короткие интервалы",
+        "type": "run",
+        "descr": "39 мин: Разминка + 6х(1.5' 5:00 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 83,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 84,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "23 км: 2 км (7:00) + 20 км (6:00) + 1 км (7:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 13,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟠 работа над темпом",
+    "weeklyKm": 56,
+    "sessions": [
+      {
+        "id": 85,
+        "day": "ПН",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 86,
+        "day": "ВТ",
+        "title": "Темповая",
+        "type": "run",
+        "descr": "57 мин: 5'(з1)+5'(з2) + 32' (5:40) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 87,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 88,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 89,
+        "day": "ПТ",
+        "title": "Длинные интервалы",
+        "type": "run",
+        "descr": "39 мин: Разминка + 3х(5' 5:15 / 3' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 90,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 91,
+        "day": "ВС",
+        "title": "Длительная (фартлек)",
+        "type": "run",
+        "descr": "16.7 км: 3км разминка + 8х(400м 5:40 / 1.2км 6:00) + Заминка.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 14,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 пиковая устойчивость",
+    "weeklyKm": 68,
+    "sessions": [
+      {
+        "id": 85,
+        "day": "ПН",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 86,
+        "day": "ВТ",
+        "title": "Интервальная",
+        "type": "run",
+        "descr": "64 мин: 5'(з1)+5'(з2) + 4х(8' 5:40 / 3' 7:00) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 87,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 88,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 89,
+        "day": "ПТ",
+        "title": "Длинные интервалы",
+        "type": "run",
+        "descr": "45 мин: Разминка + 6х(3' 4:55 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 90,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 91,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "25 км: 1 км (7:00) + 22.5 км (6:00) + 1.5 км (5:40).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 15,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 симуляция марафона",
+    "weeklyKm": 75,
+    "sessions": [
+      {
+        "id": 92,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 93,
+        "day": "ВТ",
+        "title": "Темповая",
+        "type": "run",
+        "descr": "44 мин: 5'(з1)+5'(з2) + 24' (5:40) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 94,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "40 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 95,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 96,
+        "day": "ПТ",
+        "title": "Длинные интервалы",
+        "type": "run",
+        "descr": "45 мин: Разминка + 6х(3' 5:15 / 2' 7:00) + Заминка.",
+        "completed": false
+      },
+      {
+        "id": 97,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 98,
+        "day": "ВС",
+        "title": "Симуляция",
+        "type": "run",
+        "descr": "Дистанция 28 км строго в марафонском темпе 5:40.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 16,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟠 финальный аккорд",
+    "weeklyKm": 74,
+    "sessions": [
+      {
+        "id": 99,
+        "day": "ПН",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 100,
+        "day": "ВТ",
+        "title": "Интервальная",
+        "type": "run",
+        "descr": "64 мин: 5'(з1)+5'(з2) + 4х(8' 5:40 / 3' 7:00) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 101,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 102,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "45 мин: 5' (7:00) + 35' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 103,
+        "day": "ПТ",
+        "title": "Смешанные интервалы",
+        "type": "run",
+        "descr": "46 мин: Пирамида скоростей от 4:55 до 5:40. Контроль дыхания.",
+        "completed": false
+      },
+      {
+        "id": 104,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 105,
+        "day": "ВС",
+        "title": "Длительная (фартлек)",
+        "type": "run",
+        "descr": "29.6 км: 16х(400м 5:40 / 1.2км 6:00).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 17,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка (начало)",
+    "weeklyKm": 42,
+    "sessions": [
+      {
+        "id": 106,
+        "day": "ПН",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "45 мин: темп 7:00.",
+        "completed": false
+      },
+      {
+        "id": 107,
+        "day": "ВТ",
+        "title": "Интервальная",
+        "type": "run",
+        "descr": "52 мин: 5'(з1)+5'(з2) + 4х(5' 5:40 / 3' 7:00) + 5'(з2)+5'(з1).",
+        "completed": false
+      },
+      {
+        "id": 108,
+        "day": "СР",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "35 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 109,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "35 мин: 5' (7:00) + 25' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 110,
+        "day": "ПТ",
+        "title": "Смешанные интервалы",
+        "type": "run",
+        "descr": "46 мин: Тонусная работа (пирамида скоростей).",
+        "completed": false
+      },
+      {
+        "id": 111,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "35 мин: темп 7:00 или кросс-тренинг.",
+        "completed": false
+      },
+      {
+        "id": 112,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "16 км: 1 км (7:00) + 13 км (6:00) + 2 км (5:40).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 18,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🏁 финишная прямая",
+    "weeklyKm": 25,
+    "sessions": [
+      {
+        "id": 113,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 114,
+        "day": "ВТ",
+        "title": "Быстрый финиш",
+        "type": "run",
+        "descr": "40 мин: 5' (7:00) + 25' (6:00) + 10' (5:40).",
+        "completed": false
+      },
+      {
+        "id": 115,
+        "day": "СР",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "30 мин: 5' (7:00) + 20' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 116,
+        "day": "ЧТ",
+        "title": "Базовая бег",
+        "type": "run",
+        "descr": "30 мин: 5' (7:00) + 20' (6:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 117,
+        "day": "ПТ",
+        "title": "Фартлек",
+        "type": "run",
+        "descr": "31 мин: 5' (7:00) + 5' (6:00) + 4х(2' 5:10 / 2' 7:00) + 5' (7:00).",
+        "completed": false
+      },
+      {
+        "id": 118,
+        "day": "СБ",
+        "title": "Восстановительная",
+        "type": "run",
+        "descr": "20 мин: легкий бег трусцой (7:10).",
+        "completed": false
+      },
+      {
+        "id": 119,
+        "day": "ВС",
+        "title": "МАРАФОН",
+        "type": "run",
+        "descr": "42.195 км. Целевой темп: 5:41. Удачи!",
+        "completed": false
+      }
+    ]
+  }
+]

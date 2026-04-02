@@ -2,7 +2,6 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 import { FaRegFilePdf } from 'react-icons/fa6'
 
-
 import GeneratePdfButton from '../../../components/convert-pdf/pdf-generate-plan/GeneratePdfButton'
 import ReadyPdfButton from '../../../components/convert-pdf/pdf-ready-plan/ReadyPdfButton'
 import styles from './BriefPlan.module.css'
@@ -29,33 +28,34 @@ const BriefPlan = ({ plan, typePlan }) => {
       </div>
       <div className={styles.content}>
         <span className={styles.text}>
-          <strong>Название:</strong> <p>{plan.title}</p>
+          <strong>Название:</strong> <span>{plan.title}</span>
         </span>
-        {typePlan === 'paid' && (
-          <span className={styles.text}>
-            <strong>Описание:</strong> <p>{plan.subtitle}</p>
-          </span>
-        )}
+
         <span className={styles.text}>
           <strong>Дистанция:</strong>
-          <p>
-            {' '}
+          <span>
             {typePlan === 'generate'
               ? plan.distance
               : dictonaryDist[plan.distance]}
-          </p>
+          </span>
         </span>
         <span className={styles.text}>
-          <strong>Длительность, недели:</strong> <p>{plan.period}</p>
+          <strong>Длительность, недели:</strong> <span>{plan.period}</span>
         </span>
+
+        {typePlan === 'paid' && (
+          <span className={styles.text}>
+            <strong>Описание:</strong> <span>{plan.subtitle}</span>
+          </span>
+        )}
         {typePlan === 'paid' && plan?.isFree ? (
           <span className={styles.text}>
-                      <span className={styles.pdf_text2}>
-                        Бесплатный план в формате
-                      </span>
-                      <FaRegFilePdf size={20} className={styles.pdf_icon2} />
-                      <span className={styles.pdf_text2}>недоступен</span>
-                    </span>
+            <span className={styles.pdf_text2}>
+              Бесплатный план в формате
+            </span>
+            <FaRegFilePdf size={20} className={styles.pdf_icon2} />
+            <span className={styles.pdf_text2}>недоступен</span>
+          </span>
         ) : (
           <span className={styles.text}>
             {typePlan === 'generate' ? (

@@ -22,13 +22,14 @@ const AboutPlan = ({
       </div>
       <div className={styles.content_wrap}>
         <span className={styles.title}>{title}</span>
-        {description !== '' && (
-          <span className={styles.descr}>{description}</span>
-        )}
+       
         <span className={styles.descr}>дистанция: {distance}</span>
         <span className={styles.descr}>
           тренировачных недель: {period}
         </span>
+         {description !== '' && (
+          <span className={styles.descr}>{description}</span>
+        )}
       </div>
       <div className={styles.icon_wrap_close}>
         <MdClose

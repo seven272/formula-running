@@ -121,7 +121,7 @@ const DetailsPlan = ({ id }) => {
             <>
               <h2 className={styles.details__title}>{plan.title}</h2>
               <span className={styles.details__period}>
-                Срок подготовки: {plan.period}
+                Срок подготовки, недели: {plan.period}
               </span>
               <span className={styles.details__description}>
                 {plan.subtitle}

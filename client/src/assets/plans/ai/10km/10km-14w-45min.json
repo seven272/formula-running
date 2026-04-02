@@ -1,0 +1,912 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 втягивание",
+    "weeklyKm": 24,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3х(3мин 5:45 / 3мин 4:55). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "8 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 адаптация",
+    "weeklyKm": 25,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "35 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Велосипед/йога 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3х(4мин 5:45 / 4мин 4:55). Заминка 5 мин.",
+        "completed": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 13,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "7 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 нагрузка",
+    "weeklyKm": 29,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "35 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 2х(10мин 4:55 / 10мин 5:45). Заминка 5 мин.",
+        "completed": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "9 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟡 прогрессия",
+    "weeklyKm": 27,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "35 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "13 мин (5:45). 15 мин (4:55). 13 мин (5:45)",
+        "completed": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "8 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟠 интенсификация",
+    "weeklyKm": 31,
+    "sessions": [
+      {
+        "id": 29,
+        "day": "ПН",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 15 мин. 3х(1 мин 5:45 / 1 мин 4:35). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 30,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 31,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 2х(5 мин 5:45 / 10 мин 4:55). Заминка 5 мин.",
+        "completed": false
+      },
+      {
+        "id": 32,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 33,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 34,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 35,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🔵 укрепление базы",
+    "weeklyKm": 34,
+    "sessions": [
+      {
+        "id": 36,
+        "day": "ПН",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 15 мин. 3х(90 сек 5:45 / 90 сек 4:35). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 37,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 38,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 5х(3 мин 5:45 / 3 мин 4:55). Заминка 5 мин.",
+        "completed": false
+      },
+      {
+        "id": 39,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 40,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 41,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "11 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 42,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🔴 максимум объема",
+    "weeklyKm": 42,
+    "sessions": [
+      {
+        "id": 43,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 4х(60 сек 5:45 / 60 сек 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 44,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 45,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 15 мин. 5х(6 мин 5:45 / 6 мин 4:55). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 46,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 47,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "25 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 48,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "12 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 49,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка к тесту",
+    "weeklyKm": 23,
+    "sessions": [
+      {
+        "id": 50,
+        "day": "ПН",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "15 мин (5:45) / 5 мин (4:35) / 15 мин (5:45).",
+        "completed": false
+      },
+      {
+        "id": 51,
+        "day": "ВТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 52,
+        "day": "СР",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "20 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 53,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 54,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "25 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 55,
+        "day": "СБ",
+        "title": "Контрольная тренировка",
+        "type": "run",
+        "descr": "10 км в темпе 4:35/км",
+        "completed": false
+      },
+      {
+        "id": 56,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 9,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟠 новый цикл",
+    "weeklyKm": 28,
+    "sessions": [
+      {
+        "id": 57,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 3х(2 мин 5:45 / 2 мин 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 58,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 59,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3х(4 мин 5:45 / 4 мин 4:35). Заминка 5 мин.",
+        "completed": false
+      },
+      {
+        "id": 60,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 61,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 62,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 63,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 10,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟡 интенсификация",
+    "weeklyKm": 31,
+    "sessions": [
+      {
+        "id": 64,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 8х(30 сек 5:45 / 30 сек 4:20). Заминка 15 мин.",
+        "completed": false
+      },
+      {
+        "id": 65,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 66,
+        "day": "СР",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "Разминка 10 мин. 6х(3 мин 5:45 / 3 мин 4:35). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 67,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 68,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "20 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 69,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "13 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 70,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 11,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 пик объема и скорости",
+    "weeklyKm": 38,
+    "sessions": [
+      {
+        "id": 71,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 3х(60 сек 5:45 / 60 сек 4:20). Заминка 15 мин.",
+        "completed": false
+      },
+      {
+        "id": 72,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 73,
+        "day": "СР",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 3х(5 мин 5:45 / 5 мин 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 74,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 75,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "25 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 76,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "15 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 77,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 12,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟡 закрепление",
+    "weeklyKm": 29,
+    "sessions": [
+      {
+        "id": 78,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 6х(45 сек 5:45 / 45 сек 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 79,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 80,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "Разминка 10 мин. 2х(8 мин 5:45 / 8 мин 4:35). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 81,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 82,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "30 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 83,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "11 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 84,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 13,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка (начало)",
+    "weeklyKm": 22,
+    "sessions": [
+      {
+        "id": 85,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 10х(30 сек 5:45 / 30 сек 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 86,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 87,
+        "day": "СР",
+        "title": "Темповые интервалы",
+        "type": "run",
+        "descr": "10 мин (5:45) / 15 мин (4:35) / 10 мин (5:45)",
+        "completed": false
+      },
+      {
+        "id": 88,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 89,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "15 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 90,
+        "day": "СБ",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10 км в темпе 4:55/км",
+        "completed": false
+      },
+      {
+        "id": 91,
+        "day": "ВС",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 14,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🏁 финишная прямая",
+    "weeklyKm": 15,
+    "sessions": [
+      {
+        "id": 92,
+        "day": "ПН",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "Разминка 15 мин. 2х(3 мин 5:45 / 6 мин 4:20). Заминка 10 мин.",
+        "completed": false
+      },
+      {
+        "id": 93,
+        "day": "ВТ",
+        "title": "Кросс-тренинг",
+        "type": "run",
+        "descr": "Активность 30 мин.",
+        "completed": false
+      },
+      {
+        "id": 94,
+        "day": "СР",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "25 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 95,
+        "day": "ЧТ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "",
+        "completed": false
+      },
+      {
+        "id": 96,
+        "day": "ПТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "20 мин в темпе 5:45/км",
+        "completed": false
+      },
+      {
+        "id": 97,
+        "day": "СБ",
+        "title": "Отдых",
+        "type": "run",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 98,
+        "day": "ВС",
+        "title": "Соревнования",
+        "type": "run",
+        "descr": "Удачи на старте!",
+        "completed": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,262 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 низкая (втягивание)",
+    "weeklyKm": 12,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "Отдых или легкая растяжка",
+        "сompleted": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "10х[2 мин ходьба P1, 1 мин бег P2]",
+        "сompleted": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "10х[2 мин ходьба P1, 1 мин бег P2]",
+        "сompleted": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "",
+        "descr": "12 мин непрерывного бега в темпе P1-P2",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟡 средняя (адаптация)",
+    "weeklyKm": 18,
+    "sessions": [
+      {
+        "id": 8,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 9,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "15х[1 мин ходьба P1, 1 мин бег P3]",
+        "сompleted": false
+      },
+      {
+        "id": 10,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 11,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "15х[1 мин ходьба P1, 1 мин бег P3]",
+        "сompleted": false
+      },
+      {
+        "id": 12,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      { 
+        "id": 13,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 14,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "",
+        "descr": "18 мин непрерывного бега в темпе P2",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🟠 высокая (развитие)",
+    "weeklyKm": 24,
+    "sessions": [
+      {
+        "id": 15,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 16,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "15х[30 сек ходьба P1, 1.5 мин бег P4]",
+        "сompleted": false
+      },
+      {
+        "id": 17,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 18,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "15х[30 сек ходьба P1, 1.5 мин бег P4]",
+        "сompleted": false
+      },
+      {
+        "id": 19,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "",
+        "descr": "Кросс-тренинг с упором на силовые упражнения. Время тренировки 45-60 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 20,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 21,
+        "day": "ВС",
+        "title": "длительный бег",
+        "type": "",
+        "descr": "26 мин непрерывного бега в темпе P3",
+        "сompleted": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🔵 подводка (контроль)",
+    "weeklyKm": 16,
+    "sessions": [
+      {
+        "id": 22,
+        "day": "ПН",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 23,
+        "day": "ВТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "10х[1 мин ходьба P1, 2 мин бег P4]",
+        "сompleted": false
+      },
+      {
+        "id": 24,
+        "day": "СР",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 25,
+        "day": "ЧТ",
+        "title": "ходьба/бег",
+        "type": "",
+        "descr": "8х[1 мин ходьба P1, 2 мин бег P3]",
+        "сompleted": false
+      },
+      {
+        "id": 26,
+        "day": "ПТ",
+        "title": "кросс-тренинг",
+        "type": "",
+        "descr": "Легкая зарядка 20-30 минут.",
+        "сompleted": false
+      },
+      {
+        "id": 27,
+        "day": "СБ",
+        "title": "отдых или кросс-тренинг",
+        "type": "",
+        "descr": "",
+        "сompleted": false
+      },
+      {
+        "id": 28,
+        "day": "ВС",
+        "title": "ФИНАЛЬНЫЙ ЗАБЕГ",
+        "type": "",
+        "descr": "Дистанция 5 км. Бег в целевом темпе.",
+        "сompleted": false
+      }
+    ]
+  }
+]
