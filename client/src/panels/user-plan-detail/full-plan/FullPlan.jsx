@@ -34,14 +34,26 @@ const FullPlan = ({ plan, typePlan }) => {
         {plan.workouts.map((w, inx) => {
           return (
             <div className={styles.week} key={inx}>
-              <div
+              {/* <div
                 className={styles.week_header}
                 style={{
                   backgroundColor: typePlan === 'generate' ? multipliers.colors[w.stage] : '#dde8fc',
                 }}
+              > */}
+              <div
+                className={styles.week_header}
+                style={{
+                  backgroundColor: multipliers.colors[w.stage],
+                }}
               >
                 <h3>Неделя {w.weekNumber}</h3>
-                {typePlan === 'generate' && (
+                {/* {typePlan === 'generate' && (
+                  <div className={styles.week_header_wrap}>
+                    <span>период: {multipliers.stage[w.stage]}</span>
+                    <span>беговой объем: {w.weeklyKm} км</span>
+                  </div>
+                )} */}
+                {w.stage && w.weeklyKm && (
                   <div className={styles.week_header_wrap}>
                     <span>период: {multipliers.stage[w.stage]}</span>
                     <span>беговой объем: {w.weeklyKm} км</span>
