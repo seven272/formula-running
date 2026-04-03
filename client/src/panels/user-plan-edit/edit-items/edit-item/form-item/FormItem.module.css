@@ -67,8 +67,8 @@
   outline: none;
   border: none;
   font: var(--font-submenu);
-  background-color: var(--color-blue-light);
-  color: var(--color-blue);
+  background-color: var(--color-blue);
+  color: var(--color-white);
   outline: none;
   border-radius: 6px;
   cursor: pointer;

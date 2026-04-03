@@ -1,0 +1,72 @@
+.day_wrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.day {
+  width: 100%;
+  height: auto;
+  min-height: 25px;
+  display: grid;
+  grid-template-columns: 25px 120px 1fr 50px;
+  justify-content: center;
+  color: var(--color-grey-dark);
+  column-gap: 5px;
+}
+
+.day_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-s);
+  color: var(--color-blue);
+}
+.day_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+  font: var(--font-s);
+  border-left: 3px solid var(--color-white);
+  border-right: 3px solid var(--color-white);
+}
+
+.day_descr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+  font: var(--font-s);
+  padding: 5px 3px;
+}
+
+.day_wrap_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-blue);
+  border-left: 3px solid var(--color-white);
+}
+
+.href {
+  color: var(--color-grey-dark);
+}
+.href:hover {
+  text-decoration: none;
+}
+
+.background_light {
+  background-color: var(--color-blue-light);
+}
+
+.background_dark {
+  background-color: var(--color-grey-light);
+}
