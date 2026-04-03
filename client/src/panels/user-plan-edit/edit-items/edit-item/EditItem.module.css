@@ -11,7 +11,7 @@
 .day {
   width: 100%;
   height: auto;
-  min-height: 25px;
+  min-height: 30px;
   display: grid;
   grid-template-columns: 25px 120px 1fr 50px;
   justify-content: center;
@@ -48,6 +48,7 @@
 }
 
 .day_wrap_icon {
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;

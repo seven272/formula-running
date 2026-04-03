@@ -2,10 +2,12 @@ import { useState } from 'react'
 
 import styles from './FormItem.module.css'
 
-const FormItem = ({openForm}) => {
+const FormItem = ({ openForm, data }) => {
+  console.log('Полные данные дня')
+  console.log(data)
   const [workout, setWorkout] = useState({
-    title: '',
-    descr: '',
+    title: data.title,
+    descr: data.descr,
   })
 
   const handleEditWorkout = (evt) => {
@@ -16,7 +18,14 @@ const FormItem = ({openForm}) => {
     }))
   }
 
-  
+  const saveWorkout = () => {
+    const newData = {
+      ...data,
+      title: workout.title,
+      descr: workout.descr,
+    }
+    console.log(newData)
+  }
 
   return (
     <div className={styles.main_form_item}>
@@ -44,8 +53,15 @@ const FormItem = ({openForm}) => {
         </label>
       </div>
       <div className={styles.btns_wrap}>
-        <button className={styles.btn_cancel} onClick={() => openForm(false)}>Отменить</button>
-        <button className={styles.btn_save}>Сохранить</button>
+        <button
+          className={styles.btn_cancel}
+          onClick={() => openForm(false)}
+        >
+          Отменить
+        </button>
+        <button className={styles.btn_save} onClick={saveWorkout}>
+          Сохранить
+        </button>
       </div>
     </div>
   )

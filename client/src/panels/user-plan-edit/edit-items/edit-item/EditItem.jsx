@@ -36,10 +36,10 @@ const EditItem = ({ d, inx }) => {
           )}
         </span>
         <span className={styles.day_wrap_icon}>
-          <FaPencilAlt size={25} onClick={handleEditWorkout} />
+          <FaPencilAlt size={22} onClick={handleEditWorkout} />
         </span>
       </div>
-      {isOpenForm && <FormItem openForm={setIsOpenForm} />}
+      {isOpenForm && <FormItem openForm={setIsOpenForm} data={d}/>}
     </div>
   )
 }
