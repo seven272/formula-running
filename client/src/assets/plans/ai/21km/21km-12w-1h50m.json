@@ -1,0 +1,782 @@
+[
+  {
+    "weekNumber": 1,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 Цикл 1: Вкатывание",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полное восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Легкий бег + ускорения",
+        "type": "run",
+        "descr": "8км (6:00-6:10) + 5х100м быстро.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Круговая: выпады, планка, гиперэкстензия, стопа.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "10км: 2км разм. + 6км (5:30) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Сон не менее 8 часов.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Восстановительный бег",
+        "type": "run",
+        "descr": "5км в очень легком темпе (6:30).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "12км (6:15). Контроль пульса.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 2,
+    "stage": "build",
+    "isRecovery": false,
+    "status": "🟢 Цикл 1: Вкатывание",
+    "weeklyKm": 38,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "9км: 2км разм. + 8х400м (4:45) через 200м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Работа над кором и мышцами-стабилизаторами.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "8км (6:10).",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Растяжка, МФР (ролл).",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "7км (6:15).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "14км (6:15).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 3,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟢 Цикл 1: Вкатывание",
+    "weeklyKm": 42,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Фартлек",
+        "type": "run",
+        "descr": "10км: 2км разм. + 6км (чередуем 1км по 5:00 / 1км по 6:00) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Силовая на ноги: приседания, зашагивания.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "11км: 2км разм. + 7км (5:20) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Баня или массаж.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "6км (6:20).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "15км (6:15).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 4,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🟡 Разгрузочная неделя",
+    "weeklyKm": 28,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "6км (6:30).",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Растяжка",
+        "type": "strength",
+        "descr": "Йога или глубокая растяжка 40 мин.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Короткий темп",
+        "type": "run",
+        "descr": "7км: 2км разм. + 3км (5:13) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "5км (6:30).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10км (6:20).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 5,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 Цикл 2: Развитие",
+    "weeklyKm": 44,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Интервалы МПК",
+        "type": "run",
+        "descr": "11км: 3км разм. + 5х1000м (4:55) через 400м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Взрывная сила: прыжки, короткие ускорения.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "9км (6:10).",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "10км: 2км разм. + 6км (5:13) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "14км (6:10).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 6,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 Цикл 2: Развитие",
+    "weeklyKm": 48,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "12км: 3км разм. + 6х1000м (4:55) через 400м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Комплекс на спину и пресс.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Целевой темп",
+        "type": "run",
+        "descr": "12км: 2км разм. + 8км (5:13) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "8км (6:10).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительная прогрессия",
+        "type": "run",
+        "descr": "16км: 10км (6:10) + 6км (5:40).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 7,
+    "stage": "base",
+    "isRecovery": false,
+    "status": "🟠 Цикл 2: Развитие",
+    "weeklyKm": 52,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Длинные интервалы",
+        "type": "run",
+        "descr": "13км: 2км разм. + 3х2000м (5:05) через 800м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Круговая тренировка средней интенсивности.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "10км (6:10).",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "МФР, растяжка.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "12км: 2км разм. + 8км (5:10) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "17км (6:10).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 8,
+    "stage": "taper",
+    "isRecovery": true,
+    "status": "🟡 Разгрузочная неделя",
+    "weeklyKm": 32,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "8км (6:30).",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП (Легко)",
+        "type": "strength",
+        "descr": "Только растяжка и мобильность суставов.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Целевой темп",
+        "type": "run",
+        "descr": "9км: 2км разм. + 5км (5:13) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "5км (6:30).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительный бег",
+        "type": "run",
+        "descr": "10км (6:20).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 9,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 Пиковая нагрузка",
+    "weeklyKm": 55,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Интервалы",
+        "type": "run",
+        "descr": "14км: 3км разм. + 8х1000м (4:55) через 400м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП",
+        "type": "strength",
+        "descr": "Силовая на все группы мышц.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Темповый бег",
+        "type": "run",
+        "descr": "12км: 2км разм. + 8км (5:05) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "9км (6:10).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Макс. длительная",
+        "type": "run",
+        "descr": "20км (6:15). Тест экипировки и питания.",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 10,
+    "stage": "peak",
+    "isRecovery": false,
+    "status": "🔴 Пиковая нагрузка",
+    "weeklyKm": 52,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Длинные интервалы",
+        "type": "run",
+        "descr": "14км: 2км разм. + 4х2000м (5:05) через 800м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "ОФП (поддерживающее)",
+        "type": "strength",
+        "descr": "Снижаем веса, работаем на тонус.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Целевой темп",
+        "type": "run",
+        "descr": "13км: 2км разм. + 10км строго по (5:13) + 1км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "7км (6:15).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Длительная",
+        "type": "run",
+        "descr": "18км (6:10).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 11,
+    "stage": "taper",
+    "isRecovery": false,
+    "status": "🏁 Подводка",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Накопление энергии.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Короткие интервалы",
+        "type": "run",
+        "descr": "9км: 3км разм. + 5х600м (4:50) через 400м трусцы + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Растяжка",
+        "type": "strength",
+        "descr": "Мягкая мобилизация без нагрузки.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Целевой темп (коротко)",
+        "type": "run",
+        "descr": "8км: 2км разм. + 4км (5:13) + 2км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Восстановление.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Легкий бег",
+        "type": "run",
+        "descr": "6км (6:30).",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "Короткая длительная",
+        "type": "run",
+        "descr": "12км (6:20).",
+        "completed": false
+      }
+    ]
+  },
+  {
+    "weekNumber": 12,
+    "stage": "taper",
+    "isRecovery": false,
+    "status": "🏆 Неделя старта",
+    "weeklyKm": 35,
+    "sessions": [
+      {
+        "id": 1,
+        "day": "ПН",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Полный покой.",
+        "completed": false
+      },
+      {
+        "id": 2,
+        "day": "ВТ",
+        "title": "Поддержание тонуса",
+        "type": "run",
+        "descr": "6км легким бегом + 4х100м ускорения.",
+        "completed": false
+      },
+      {
+        "id": 3,
+        "day": "СР",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Психологическая разгрузка.",
+        "completed": false
+      },
+      {
+        "id": 4,
+        "day": "ЧТ",
+        "title": "Настройка",
+        "type": "run",
+        "descr": "5км: 2км разм. + 2км (5:13) + 1км зам.",
+        "completed": false
+      },
+      {
+        "id": 5,
+        "day": "ПТ",
+        "title": "Отдых",
+        "type": "rest",
+        "descr": "Углеводная загрузка начинается.",
+        "completed": false
+      },
+      {
+        "id": 6,
+        "day": "СБ",
+        "title": "Разминка (Опционально)",
+        "type": "run",
+        "descr": "2-3км очень легко + растяжка.",
+        "completed": false
+      },
+      {
+        "id": 7,
+        "day": "ВС",
+        "title": "СТАРТ: Полумарафон",
+        "type": "run",
+        "descr": "21.1 км. Цель: 1:50:00 (темп 5:13).",
+        "completed": false
+      }
+    ]
+  }
+]

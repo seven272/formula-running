@@ -4,6 +4,7 @@
     "stage": "build",
     "isRecovery": false,
     "status": "🟢 фундамент",
+    "weeklyKm": 71,
     "sessions": [
       {
         "id": 1,
@@ -68,6 +69,7 @@
     "stage": "build",
     "isRecovery": false,
     "status": "🟢 фундамент",
+    "weeklyKm": 75,
     "sessions": [
       {
         "id": 8,
@@ -132,6 +134,7 @@
     "stage": "build",
     "isRecovery": false,
     "status": "🟢 фундамент",
+    "weeklyKm": 79,
     "sessions": [
       {
         "id": 15,
@@ -196,6 +199,7 @@
     "stage": "build",
     "isRecovery": true,
     "status": "🔵 восстановление",
+    "weeklyKm": 57,
     "sessions": [
       {
         "id": 22,
@@ -260,6 +264,7 @@
     "stage": "build",
     "isRecovery": false,
     "status": "🟠 развитие",
+    "weeklyKm": 84,
     "sessions": [
       {
         "id": 29,
@@ -324,6 +329,7 @@
     "stage": "build",
     "isRecovery": false,
     "status": "🟠 развитие",
+    "weeklyKm": 88,
     "sessions": [
       {
         "id": 36,
@@ -388,6 +394,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 87,
     "sessions": [
       {
         "id": 43,
@@ -452,6 +459,7 @@
     "stage": "peak",
     "isRecovery": true,
     "status": "🔵 восстановление",
+    "weeklyKm": 67,
     "sessions": [
       {
         "id": 50,
@@ -516,6 +524,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 79,
     "sessions": [
       {
         "id": 57,
@@ -580,6 +589,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 87,
     "sessions": [
       {
         "id": 64,
@@ -644,6 +654,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 91,
     "sessions": [
       {
         "id": 71,
@@ -708,6 +719,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 91,
     "sessions": [
       {
         "id": 78,
@@ -772,6 +784,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 94,
     "sessions": [
       {
         "id": 85,
@@ -836,6 +849,7 @@
     "stage": "peak",
     "isRecovery": false,
     "status": "🔴 пик",
+    "weeklyKm": 80,
     "sessions": [
       {
         "id": 92,
@@ -900,6 +914,7 @@
     "stage": "taper",
     "isRecovery": true,
     "status": "🟡 подводка",
+    "weeklyKm": 65,
     "sessions": [
       {
         "id": 99,
@@ -964,6 +979,7 @@
     "stage": "taper",
     "isRecovery": true,
     "status": "🏁 старт",
+    "weeklyKm": 71,
     "sessions": [
       {
         "id": 106,

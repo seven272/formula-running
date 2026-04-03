@@ -5,15 +5,15 @@ import {
 } from '@vkontakte/vk-mini-apps-router'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
- 
-import styles from './UserPlanDetail.module.css'
-import BriefPlan from './brief-plan/BriefPlan'
-import FullPlan from './full-plan/FullPlan'
+
+import styles from './UserPlanEdit.module.css'
+import EditHeader from './edit-header/EditHeader'
+import EditItems from './edit-items/EditItems'
 import NotFound from '../../components/not-found/NotFound'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
-const UserPlanDetail = ({ id }) => {
+const UserPlanEdit = ({ id }) => {
   const { url } = useParams()
   const [params] = useSearchParams()
   const typePlan = params.get('type')
@@ -60,17 +60,16 @@ const UserPlanDetail = ({ id }) => {
       </Panel>
     )
   }
-
   return (
     <Panel id={id}>
       <Header />
-      <div className={styles.main_detail_plan}>
-        <BriefPlan plan={plan} typePlan={typePlan} />
-        <FullPlan plan={plan} typePlan={typePlan} />
+      <div className={styles.main_edit_plan}>
+        <EditHeader />
+        <EditItems plan={plan} typePlan={typePlan} />
       </div>
       <Footer />
     </Panel>
   )
 }
 
-export default UserPlanDetail
+export default UserPlanEdit

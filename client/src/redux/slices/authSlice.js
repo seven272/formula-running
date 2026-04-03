@@ -206,6 +206,9 @@ const authSlice = createSlice({
         state.isLoadingVk = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
+        console.log('Токен Вконтакте')
+
+        console.log(action.payload?.token)
         state.isLoadingVk = false
         state.vkToken = action.payload?.token
       })

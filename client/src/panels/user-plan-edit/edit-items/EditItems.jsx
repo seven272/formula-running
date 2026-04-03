@@ -1,11 +1,8 @@
 import { RouterLink } from '@vkontakte/vk-mini-apps-router'
 
-import SummaryPlan from '../../../components/summary-plan/SummaryPlan'
-import PacePlan from '../../../components/pace-plan/PacePlan'
-import RunningPlanChart from '../../../components/running-plan-chart/RunningPlanChart'
-import styles from './FullPlan.module.css'
+import styles from './EditItems.module.css'
 
-const FullPlan = ({ plan, typePlan }) => {
+const EditItems = ({ plan, typePlan }) => {
   const multipliers = {
     stage: {
       build: 'строительства',
@@ -21,13 +18,8 @@ const FullPlan = ({ plan, typePlan }) => {
     },
   }
   return (
-    <div className={styles.main_fullplan}>
-      <SummaryPlan />
-      {typePlan === 'generate' && (
-        <RunningPlanChart planWeeks={plan.workouts} />
-      )}
-      <PacePlan paces={plan.pace} />
-
+    <div className={styles.main_editplan}>
+      EditItems
       <div className={styles.plan}>
         <span className={styles.plan_title}>{plan.title}</span>
         {plan.workouts.map((w, inx) => {
@@ -45,7 +37,9 @@ const FullPlan = ({ plan, typePlan }) => {
                     <span>период: {multipliers.stage[w.stage]}</span>
                     <span>беговой объем: {w.weeklyKm} км</span>
                   </div>
-                ) : <></>}
+                ) : (
+                  <></>
+                )}
               </div>
               {w.sessions.map((d, inx) => {
                 return (
@@ -82,4 +76,4 @@ const FullPlan = ({ plan, typePlan }) => {
   )
 }
 
-export default FullPlan
+export default EditItems

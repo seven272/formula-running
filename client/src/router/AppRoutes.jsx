@@ -36,9 +36,14 @@ const routers = [
     panel: 'user_plans_panel',
     view: 'main_view',
   },
-    {
+  {
     path: '/userplans/:url',
     panel: 'user_plan_panel',
+    view: 'main_view',
+  },
+   {
+    path: '/userplans/edit/:url',
+    panel: 'user_plan_edit_panel',
     view: 'main_view',
   },
   {
