@@ -24,6 +24,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  column-gap: 7px;
 }
 
 .icon {
@@ -31,15 +32,10 @@
   display: block;
   color: var(--color-blue);
   cursor: pointer;
-  margin-left: 5px;
 }
 
 .icon_disabled {
-  .icon {
-    font-size: 17px;
-    display: block;
-    color: var(--color-grey);
-    cursor: pointer;
-    margin-left: 5px;
-  }
+  font-size: 17px;
+  display: block;
+  color: var(--color-grey);
 }

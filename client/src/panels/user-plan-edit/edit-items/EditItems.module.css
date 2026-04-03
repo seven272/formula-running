@@ -91,7 +91,7 @@
   height: auto;
   min-height: 25px;
   display: grid;
-  grid-template-columns: 25px 120px 1fr;
+  grid-template-columns: 25px 120px 1fr 50px;
   justify-content: center;
   color: var(--color-grey-dark);
   column-gap: 5px;
@@ -123,6 +123,15 @@
   row-gap: 5px;
   font: var(--font-s);
   padding: 5px 3px;
+}
+
+.day_wrap_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-blue);
+  border-left: 3px solid var(--color-white);
 }
 
 .href {

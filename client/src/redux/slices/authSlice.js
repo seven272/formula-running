@@ -105,7 +105,7 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
   }
 })
 
-const authWithVk = createAsyncThunk( 
+const authWithVk = createAsyncThunk(
   'auth/authWithVk',
   async (_, { rejectWithValue }) => {
     // window.location.search содержит строку вида "?vk_access_token_settings=...&vk_app_id=123&sign=xyz"
@@ -206,9 +206,8 @@ const authSlice = createSlice({
         state.isLoadingVk = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
-        console.log('Токен Вконтакте')
-
-        console.log(action.payload?.token)
+        // console.log('Токен Вконтакте')
+        // console.log(action.payload?.token)
         state.isLoadingVk = false
         state.vkToken = action.payload?.token
       })

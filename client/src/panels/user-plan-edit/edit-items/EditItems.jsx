@@ -1,8 +1,13 @@
 import { RouterLink } from '@vkontakte/vk-mini-apps-router'
+import { PiPencilLineFill } from 'react-icons/pi'
+import { useState } from 'react'
 
 import styles from './EditItems.module.css'
+import FormItem from './form-item/FormItem'
 
 const EditItems = ({ plan, typePlan }) => {
+  const [isOpenForm, setIsOpenForm] = useState(false)
+
   const multipliers = {
     stage: {
       build: 'строительства',
@@ -17,6 +22,11 @@ const EditItems = ({ plan, typePlan }) => {
       taper: '#7bf8af',
     },
   }
+
+  const handleEditWorkout = () => {
+    setIsOpenForm(true)
+  }
+
   return (
     <div className={styles.main_editplan}>
       EditItems
@@ -32,14 +42,6 @@ const EditItems = ({ plan, typePlan }) => {
                 }}
               >
                 <h3>Неделя {w.weekNumber}</h3>
-                {w.stage && w?.weeklyKm ? (
-                  <div className={styles.week_header_wrap}>
-                    <span>период: {multipliers.stage[w.stage]}</span>
-                    <span>беговой объем: {w.weeklyKm} км</span>
-                  </div>
-                ) : (
-                  <></>
-                )}
               </div>
               {w.sessions.map((d, inx) => {
                 return (
@@ -65,6 +67,15 @@ const EditItems = ({ plan, typePlan }) => {
                         </span>
                       )}
                     </span>
+                    <span className={styles.day_wrap_icon}>
+                      <PiPencilLineFill
+                        size={40}
+                        onClick={handleEditWorkout}
+                      />
+                    </span>
+                    {isOpenForm && (
+                      <FormItem openForm={setIsOpenForm} />
+                    )}
                   </div>
                 )
               })}

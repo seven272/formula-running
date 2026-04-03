@@ -31,7 +31,7 @@ const ItemPlan = ({ plan }) => {
           size={17}
           className={styles.icon_disabled}
         /> :  <PiPencilLineFill
-          size={17}
+          size={16}
           className={styles.icon}
           onClick={() => routerNavigator.push(`edit/${plan.planUrl}?type=paid`)}
         />}
