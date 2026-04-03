@@ -9,9 +9,21 @@ const FormItem = ({ openForm, data }) => {
     title: data.title,
     descr: data.descr,
   })
+  const [error, setError] = useState('')
 
   const handleEditWorkout = (evt) => {
     const { name, value } = evt.target
+    if (name === 'title' && value.length > 100) {
+      setError('Максимум 100 символов!')
+      return
+    }
+    if (name === 'descr' && value.length > 500) {
+      {
+        setError('Максимум 500 символов!')
+        return
+      }
+    }
+    setError('')
     setWorkout((prev) => ({
       ...prev,
       [name]: value,
@@ -19,17 +31,22 @@ const FormItem = ({ openForm, data }) => {
   }
 
   const saveWorkout = () => {
+    if (workout.title.length < 3) {
+      setError('Название слишком короткое (минимум 3 символа)')
+      return
+    }
     const newData = {
       ...data,
       title: workout.title,
       descr: workout.descr,
     }
+    setError('')
     console.log(newData)
   }
 
   return (
     <div className={styles.main_form_item}>
-      <div className={styles.inputs_wrap}>
+      <form className={styles.inputs_wrap}>
         <label className={`${styles.label} ${styles.label_title}`}>
           <span>Название</span>
           <input
@@ -38,6 +55,9 @@ const FormItem = ({ openForm, data }) => {
             className={`${styles.input} ${styles.input_title}`}
             value={workout.title}
             onChange={handleEditWorkout}
+            maxLength={100}
+            minLength={3}
+            required
           />
         </label>
 
@@ -49,9 +69,18 @@ const FormItem = ({ openForm, data }) => {
             className={`${styles.input} ${styles.input_descr}`}
             value={workout.descr}
             onChange={handleEditWorkout}
+            maxLength={500}
+            required
           />
         </label>
-      </div>
+      </form>
+      {error && (
+        <p
+          style={{ color: 'red', fontSize: '12px', margin: '4px 0' }}
+        >
+          {error}
+        </p>
+      )}
       <div className={styles.btns_wrap}>
         <button
           className={styles.btn_cancel}
