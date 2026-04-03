@@ -7,6 +7,8 @@ import FormItem from './form-item/FormItem'
 
 const EditItem = ({ d, inx }) => {
   const [isOpenForm, setIsOpenForm] = useState(false)
+  const [dayTitle, setDayTitle] = useState(d.title || '')
+  const [dayDescr, setDayDescr] = useState(d.descr || '')
 
   const handleEditWorkout = () => {
     setIsOpenForm(true)
@@ -19,10 +21,10 @@ const EditItem = ({ d, inx }) => {
       <div className={styles.day}>
         <span className={styles.day_name}>{d.day}</span>
         <span className={styles.day_title}>
-          <p>{d.title}</p>
+          <p>{dayTitle}</p>
         </span>
         <span className={styles.day_descr}>
-          <p>{d.descr}</p>
+          <p>{dayDescr}</p>
           {d?.isStrength && (
             <span>
               {d.strength.title}{' '}
@@ -39,7 +41,14 @@ const EditItem = ({ d, inx }) => {
           <FaPencilAlt size={22} onClick={handleEditWorkout} />
         </span>
       </div>
-      {isOpenForm && <FormItem openForm={setIsOpenForm} data={d}/>}
+      {isOpenForm && (
+        <FormItem
+          openForm={setIsOpenForm}
+          data={d}
+          setTitle={setDayTitle}
+          setDescr={setDayDescr}
+        />
+      )}
     </div>
   )
 }

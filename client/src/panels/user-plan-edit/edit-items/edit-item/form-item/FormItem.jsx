@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import styles from './FormItem.module.css'
 
-const FormItem = ({ openForm, data }) => {
+const FormItem = ({ openForm, data, setDescr, setTitle }) => {
   console.log('Полные данные дня')
   console.log(data)
   const [workout, setWorkout] = useState({
@@ -41,6 +41,9 @@ const FormItem = ({ openForm, data }) => {
       descr: workout.descr,
     }
     setError('')
+    setTitle(workout.title)
+    setDescr(workout.descr)
+    openForm(false)
     console.log(newData)
   }
 
