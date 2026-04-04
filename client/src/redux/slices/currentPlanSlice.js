@@ -52,7 +52,7 @@ const fetchChangeCurrentPlan = createAsyncThunk(
 
 const fetchToggleSessionStatus = createAsyncThunk(
   'currentPlan/fetchToggleSessionStatus',
-  async (payload, { rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => { 
     try {
       const res = await axios.patch('/user/toggle-session-staus', {
         weekId: payload.weekId,

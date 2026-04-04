@@ -2,19 +2,22 @@ import { useState } from 'react'
 
 import styles from './FormItem.module.css'
 
-const FormItem = ({ openForm, data, setDescr, setTitle }) => {
-  console.log('Полные данные дня')
-  console.log(data)
+const FormItem = ({
+  openForm,
+  initialTitle,
+  initialDescr,
+  onSave,
+}) => {
   const [workout, setWorkout] = useState({
-    title: data.title,
-    descr: data.descr,
+    title: initialTitle,
+    descr: initialDescr,
   })
   const [error, setError] = useState('')
 
   const handleEditWorkout = (evt) => {
     const { name, value } = evt.target
-    if (name === 'title' && value.length > 100) {
-      setError('Максимум 100 символов!')
+    if (name === 'title' && value.length > 50) {
+      setError('Максимум 50 символов!')
       return
     }
     if (name === 'descr' && value.length > 500) {
@@ -35,16 +38,9 @@ const FormItem = ({ openForm, data, setDescr, setTitle }) => {
       setError('Название слишком короткое (минимум 3 символа)')
       return
     }
-    const newData = {
-      ...data,
-      title: workout.title,
-      descr: workout.descr,
-    }
+
+    onSave(workout.title, workout.descr)
     setError('')
-    setTitle(workout.title)
-    setDescr(workout.descr)
-    openForm(false)
-    console.log(newData)
   }
 
   return (
@@ -58,7 +54,7 @@ const FormItem = ({ openForm, data, setDescr, setTitle }) => {
             className={`${styles.input} ${styles.input_title}`}
             value={workout.title}
             onChange={handleEditWorkout}
-            maxLength={100}
+            maxLength={50}
             minLength={3}
             required
           />

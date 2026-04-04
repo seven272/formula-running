@@ -43,7 +43,7 @@ const fetchCreateProfile = createAsyncThunk(
           type: 'error',
         }),
       )
-      return rejectWithValue(error) 
+      return rejectWithValue(error)
     }
   },
 )
@@ -156,6 +156,24 @@ const fetchPaceUser = createAsyncThunk(
   },
 )
 
+const fetchUpdateWorkoutUser = createAsyncThunk(
+  'user/fetchUpdateWorkoutUser',
+  async (payload, { rejectWithValue }) => {
+    console.log(payload)
+    try {
+      const res = await axios.patch('/user//update-workout', payload)
+
+      return res.data
+    } catch (error) {
+      console.log(
+        'ошибка при изменении тренировки плана пользователем из redux ',
+        error,
+      )
+      return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
 // Начальное значение
 
 const initialState = {
@@ -182,7 +200,7 @@ const initialState = {
     zone5: '171-190',
   },
   pace: '00:00 | 00:00',
-  hasSportProfile: false
+  hasSportProfile: false,
 }
 
 const userSlice = createSlice({
@@ -303,13 +321,23 @@ const userSlice = createSlice({
       .addCase(fetchGetMyProfile.rejected, (state) => {
         state.isLoading = false
       })
+      // pace user
+      .addCase(fetchUpdateWorkoutUser.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchUpdateWorkoutUser.fulfilled, (state, action) => {
+        state.isLoading = false
+        console.log(action.payload)
+      })
+      .addCase(fetchUpdateWorkoutUser.rejected, (state) => {
+        state.isLoading = false
+      })
   },
 })
 
 const checkVkAuth = (state) => {
   return Boolean(state.user.preVkId)
 }
-
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
@@ -323,6 +351,7 @@ export {
   fetchPulsesUser,
   fetchPaceUser,
   fetchGetMyProfile,
+  fetchUpdateWorkoutUser,
   checkVkAuth,
 }
 

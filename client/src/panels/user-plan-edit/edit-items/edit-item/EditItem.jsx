@@ -1,17 +1,35 @@
 import { useState } from 'react'
 import { RouterLink } from '@vkontakte/vk-mini-apps-router'
 import { FaPencilAlt } from 'react-icons/fa'
+import { useDispatch } from 'react-redux'
 
 import styles from './EditItem.module.css'
 import FormItem from './form-item/FormItem'
+import { fetchUpdateWorkoutUser } from '../../../../redux/slices/userSlice'
 
-const EditItem = ({ d, inx }) => {
+const EditItem = ({ d, inx, typePlan, planId, weekId }) => {
+  const dispatch = useDispatch()
   const [isOpenForm, setIsOpenForm] = useState(false)
   const [dayTitle, setDayTitle] = useState(d.title || '')
   const [dayDescr, setDayDescr] = useState(d.descr || '')
 
   const handleEditWorkout = () => {
     setIsOpenForm(true)
+  }
+
+  const saveUpdatedData = (newTitle, newDescr) => {
+    setDayTitle(newTitle)
+    setDayDescr(newDescr)
+    setIsOpenForm(false)
+
+    const newData = {
+      newWorkout: { dayId: d._id, title: newTitle, descr: newDescr },
+      typePlan,
+      planId,
+      weekId,
+    }
+    console.log(newData)
+    dispatch(fetchUpdateWorkoutUser(newData))
   }
 
   return (
@@ -44,9 +62,9 @@ const EditItem = ({ d, inx }) => {
       {isOpenForm && (
         <FormItem
           openForm={setIsOpenForm}
-          data={d}
-          setTitle={setDayTitle}
-          setDescr={setDayDescr}
+          initialTitle={dayTitle}
+          initialDescr={dayDescr}
+          onSave={saveUpdatedData}
         />
       )}
     </div>

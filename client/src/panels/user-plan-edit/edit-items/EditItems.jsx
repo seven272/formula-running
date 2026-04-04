@@ -1,11 +1,7 @@
-
-
 import styles from './EditItems.module.css'
 import EditItem from './edit-item/EditItem'
 
 const EditItems = ({ plan, typePlan }) => {
-
-
   const multipliers = {
     stage: {
       build: 'строительства',
@@ -20,7 +16,6 @@ const EditItems = ({ plan, typePlan }) => {
       taper: '#7bf8af',
     },
   }
-
 
   return (
     <div className={styles.main_editplan}>
@@ -40,15 +35,20 @@ const EditItems = ({ plan, typePlan }) => {
               </div>
               {w.sessions.map((day, inx) => {
                 return (
-                  <EditItem key={inx} d={day} inx={inx}/>
-                 
+                  <EditItem
+                    key={inx}
+                    inx={inx}
+                    typePlan={typePlan}
+                    planId={plan._id}
+                    weekId={w._id}
+                    d={day}
+                  />
                 )
               })}
             </div>
           )
         })}
       </div>
-   
     </div>
   )
 }

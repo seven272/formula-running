@@ -380,10 +380,10 @@ const buyPlan = async (req, res) => {
       ...week,
       sessions: week.sessions.map((s) => ({
         ...s,
-        completed: false, 
+        completed: false,
       })),
     }))
-    
+
     const personalCopy = await PurchasedPlan.create({
       userId: user._id,
       originalPlanId: readyPlanId,
@@ -428,6 +428,59 @@ const buyPlan = async (req, res) => {
   }
 }
 
+const updateWorkoutUser = async (req, res) => {
+  const vkId = req.vkId
+  const { typePlan, planId, weekId, newWorkout } = req.body
+
+  try {
+    const user = await User.findOne({ vkId })
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: 'Пользователь не найден' })
+    }
+    //  Динамический выбор модели
+    const ModelName =
+      typePlan === 'generate' ? 'CustomPlan' : 'PurchasedPlan'
+    const PlanModel = mongoose.model(ModelName)
+    // Динамически получаем нужную модель (CustomPlan или PurchasedPlan)
+
+    const plan = await PlanModel.findById(planId)
+
+    // Поиск недели и тренировки
+    const week = plan.workouts.find(
+      (w) => w._id.toString() === weekId,
+    )
+    if (!week)
+      return res.status(404).json({ message: 'Неделя не найдена' })
+
+    const workout = week.sessions.find(
+      (s) => s._id.toString() === newWorkout.dayId,
+    )
+    if (!workout)
+      return res
+        .status(404)
+        .json({ message: 'Тренировка не найдена' })
+
+    // Записываю  и сохраняю новую тренировку
+    workout.title = newWorkout.title
+    workout.subtitle = newWorkout.descr
+
+    plan.markModified('workouts')
+    // Сохраняю изменения
+    await plan.save()
+
+    // Возвращаем обновленный прогресс (из нашего Virtual)
+    res.status(200).json({
+      message: 'Тренировка была успешна обновлена',
+      workout,
+    })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export {
   createProfile,
   getMyProfile,
@@ -440,4 +493,5 @@ export {
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
+  updateWorkoutUser
 }
