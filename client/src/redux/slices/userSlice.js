@@ -159,7 +159,6 @@ const fetchPaceUser = createAsyncThunk(
 const fetchUpdateWorkoutUser = createAsyncThunk(
   'user/fetchUpdateWorkoutUser',
   async (payload, { rejectWithValue }) => {
-    console.log(payload)
     try {
       const res = await axios.patch('/user//update-workout', payload)
 
@@ -325,9 +324,8 @@ const userSlice = createSlice({
       .addCase(fetchUpdateWorkoutUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchUpdateWorkoutUser.fulfilled, (state, action) => {
+      .addCase(fetchUpdateWorkoutUser.fulfilled, (state) => {
         state.isLoading = false
-        console.log(action.payload)
       })
       .addCase(fetchUpdateWorkoutUser.rejected, (state) => {
         state.isLoading = false

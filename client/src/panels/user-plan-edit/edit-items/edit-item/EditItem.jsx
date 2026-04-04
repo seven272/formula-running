@@ -13,9 +13,6 @@ const EditItem = ({ d, inx, typePlan, planId, weekId }) => {
   const [dayTitle, setDayTitle] = useState(d.title || '')
   const [dayDescr, setDayDescr] = useState(d.descr || '')
 
-  const handleEditWorkout = () => {
-    setIsOpenForm(true)
-  }
 
   const saveUpdatedData = (newTitle, newDescr) => {
     setDayTitle(newTitle)
@@ -28,7 +25,6 @@ const EditItem = ({ d, inx, typePlan, planId, weekId }) => {
       planId,
       weekId,
     }
-    console.log(newData)
     dispatch(fetchUpdateWorkoutUser(newData))
   }
 
@@ -56,7 +52,10 @@ const EditItem = ({ d, inx, typePlan, planId, weekId }) => {
           )}
         </span>
         <span className={styles.day_wrap_icon}>
-          <FaPencilAlt size={22} onClick={handleEditWorkout} />
+          <FaPencilAlt
+            size={22}
+            onClick={() => setIsOpenForm(true)}
+          />
         </span>
       </div>
       {isOpenForm && (

@@ -465,7 +465,7 @@ const updateWorkoutUser = async (req, res) => {
 
     // Записываю  и сохраняю новую тренировку
     workout.title = newWorkout.title
-    workout.subtitle = newWorkout.descr
+    workout.descr = newWorkout.descr
 
     plan.markModified('workouts')
     // Сохраняю изменения
@@ -486,7 +486,7 @@ export {
   getMyProfile,
   updatePersonalParameters,
   updateRecords,
-  updateZonesPulse,
+  updateZonesPulse, 
   updatePace,
   buyPlan,
   getPurchasedPlans,

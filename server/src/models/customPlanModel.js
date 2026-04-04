@@ -83,8 +83,13 @@ const customPlanSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
+    isFree: {
+      type: Boolean,
+      default: false,
+    },
     workouts: [weekSchema],
   },
+
   {
     timestamps: true,
     minimize: false, // Преедохранитель, если данных нет, то сохранит в базу пустой объект

@@ -38,6 +38,9 @@ const createCustomPlan = async (req, res) => {
 
     const generatedPlan = generateRunningPlan(dataPlan)
 
+    // Проверяем, был ли уже бесплатный план
+    const hasAnyPlan = await CustomPlan.exists({ ownerVkId: vkId });
+
     // создаю план
     const newPlan = await CustomPlan.create({
       userId: user._id,
@@ -47,6 +50,7 @@ const createCustomPlan = async (req, res) => {
       distance: generatedPlan.distance,
       period: generatedPlan.period,
       pace: generatedPlan.pace,
+      isFree: !hasAnyPlan,
       workouts: generatedPlan.workouts,
     })
 

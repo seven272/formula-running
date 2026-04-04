@@ -124,6 +124,13 @@ const checkCustomToken = async (req, res) => {
         .status(401)
         .json({ error: 'Необходима авторизация ВК' })
     }
+    // Проверяем, генерировал ли пользователь планы когда-либо
+    const hasAnyPlan = await CustomPlan.exists({ vkId })
+
+    // Если планов еще нет — это первая (бесплатная) генерация
+    if (!hasAnyPlan) {
+      return res.json({ hasToken: true, isFree: true })
+    }
     // Ищем хотя бы один неиспользованный оплаченный кастомный план
     const activeOrder = await Order.exists({
       vkId,
@@ -132,7 +139,7 @@ const checkCustomToken = async (req, res) => {
       isUsed: false,
     })
 
-    res.json({ hasToken: !!activeOrder }) //возвращает true или false если объект или underfine/null
+    res.json({ hasToken: !!activeOrder, isFree: false }) // !!activeOrder возвращает true или false если объект или underfine/null
   } catch (error) {
     res.status(500).json({ message: 'Ошибка проверки токена' })
   }

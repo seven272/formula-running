@@ -22,7 +22,9 @@ import { useVkPay } from '../../utils/useVkPay'
 
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
-  const { hasToken } = useSelector((state) => state.customPlan)
+  const { hasToken, isFreeTry } = useSelector(
+    (state) => state.customPlan,
+  )
   const { payVirtualMoney } = useVkPay()
 
   const [dataPlan, setDataPlan] = useState({
@@ -130,7 +132,7 @@ const Generate = ({ id }) => {
         <div className={styles.wrapper}>
           <GenerateHeader />
           <div className={styles.wrap_form}>
-            {!hasToken && (
+            {!hasToken && !isFreeTry && (
               <div className={styles.overlay}>
                 <span>Форма станет активной после оплаты</span>
               </div>
@@ -139,8 +141,22 @@ const Generate = ({ id }) => {
             <RaceGoal getData={setRaceGoal} />
             <Schedule getData={setSchedule} />
           </div>
+          {/* выбираем кнопку взависимости от условий  */}
+          {isFreeTry && (
+            <div className={styles.wrap_create}>
+              <span className={styles.message_create}>
+                Ваша первая генерация — бесплатно!
+              </span>
+              <button
+                className={styles.btn_create}
+                onClick={handleCreatePlan}
+              >
+                Бонусная генерация
+              </button>
+            </div>
+          )}
 
-          {hasToken ? (
+          {hasToken && !isFreeTry && (
             <div className={styles.wrap_create}>
               <span className={styles.message_create}>
                 Создание плана было оплачено. Начинается магия!
@@ -152,7 +168,9 @@ const Generate = ({ id }) => {
                 Создать план
               </button>
             </div>
-          ) : (
+          )}
+
+          {!hasToken && !isFreeTry && (
             <button className={styles.btn} onClick={handlePay}>
               Оплатить
             </button>
