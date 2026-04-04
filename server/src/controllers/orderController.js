@@ -125,7 +125,7 @@ const checkCustomToken = async (req, res) => {
         .json({ error: 'Необходима авторизация ВК' })
     }
     // Проверяем, генерировал ли пользователь планы когда-либо
-    const hasAnyPlan = await CustomPlan.exists({ vkId })
+    const hasAnyPlan = await CustomPlan.exists({ ownerVkId: vkId })
 
     // Если планов еще нет — это первая (бесплатная) генерация
     if (!hasAnyPlan) {

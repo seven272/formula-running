@@ -128,7 +128,7 @@ const customPlanSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchCheckToken.fulfilled, (state, action) => {
-        console.log('Значение токена оплаты плана: ' + action.payload.hasToken)
+        console.log('Значение токена оплаты плана: ' + action.payload)
         state.isLoading = false
         state.hasToken = action.payload.hasToken
         state.isFreeTry = action.payload.isFree
