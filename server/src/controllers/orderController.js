@@ -1,15 +1,16 @@
 import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
+import CustomPlan from '../models/customPlanModel.js'
 
 const ITEMS_STORE = {
   ready: {
     title: 'Покупка готового плана',
-    price: 30,
+    price: 500,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
   custom: {
     title: 'Создание персонального плана',
-    price: 30,
+    price: 500,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
 }
@@ -17,7 +18,6 @@ const ITEMS_STORE = {
 const payVk = async (req, res) => {
   const { notification_type, item, user_id, order_id, status } =
     req.body
-  console.log(req.body)
 
   const valuesItem = item.split('_')
   //тип плана ready / custom
@@ -32,8 +32,6 @@ const payVk = async (req, res) => {
       notification_type === 'get_item_test'
     ) {
       const product = ITEMS_STORE[valueTypePlan]
-
-      console.log(product)
 
       if (!product) {
         // Формат ошибки по документации VK
