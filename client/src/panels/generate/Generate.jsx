@@ -197,7 +197,7 @@ const Generate = ({ id }) => {
             </div>
           )}
 
-          {!hasToken && !isFreeTry && (
+          {!hasToken && !isFreeTry && canShowPayments() && (
             <button className={styles.btn} onClick={handlePay}>
               Оплатить
             </button>
