@@ -18,7 +18,7 @@ const CurrentPlan = () => {
   const { plan, activityDates } = useSelector(
     (state) => state.currentPlan,
   )
-  console.log(plan)
+  
   const [showModal, setShowModal] = useState(false)
   const hasPlan = plan && Object.keys(plan).length > 0;
 

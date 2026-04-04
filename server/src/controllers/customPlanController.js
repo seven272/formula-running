@@ -8,6 +8,12 @@ const createCustomPlan = async (req, res) => {
   const dataPlan = req.body
 
   try {
+    if (!dataPlan.goal || !dataPlan.totalWeeks || !dataPlan.time) {
+      return res.status(400).json({
+        message: 'Недостаточно данных для генерации плана',
+      })
+    }
+
     // Ищем неиспользованный оплаченный чек для кастомного плана
     const activeToken = await Order.findOne({
       vkId: String(vkId),
@@ -16,19 +22,17 @@ const createCustomPlan = async (req, res) => {
       isUsed: false,
     })
 
-    if (!activeToken) {
+    // Проверяем, генерировал ли пользователь планы когда-либо
+    const hasAnyPlan = await CustomPlan.exists({ ownerVkId: vkId })
+
+    if (!activeToken && hasAnyPlan) {
       return res
         .status(402)
         .json({ message: 'Вначале следует оплатить создание плана' })
     }
 
-    if (!dataPlan.goal || !dataPlan.totalWeeks || !dataPlan.time) {
-      return res.status(400).json({
-        message: 'Недостаточно данных для генерации плана',
-      })
-    }
     // Находим или создаем пользователя (используем upsert для сокращения кода)
-    //Если пользователь НАЙДЕН: MongoDB просто возвращает его. Блок $setOnInsert игнорируется. Это защищает от случайной перезаписи данных существующего юзера.
+    // Если пользователь НАЙДЕН: MongoDB просто возвращает его. Блок $setOnInsert игнорируется. Это защищает от случайной перезаписи данных существующего юзера.
     // Если пользователь НЕ найден: Создается новый документ. В него записывается 'vkId' из блока $setOnInsert (и любые другие поля, которые там указать, например balance: 0 или createdAt).
     let user = await User.findOneAndUpdate(
       { vkId },
@@ -37,9 +41,6 @@ const createCustomPlan = async (req, res) => {
     )
 
     const generatedPlan = generateRunningPlan(dataPlan)
-
-    // Проверяем, был ли уже бесплатный план
-    const hasAnyPlan = await CustomPlan.exists({ ownerVkId: vkId });
 
     // создаю план
     const newPlan = await CustomPlan.create({
