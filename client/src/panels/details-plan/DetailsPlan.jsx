@@ -141,7 +141,7 @@ const DetailsPlan = ({ id }) => {
 
           {canShowPayments() === false && !plan?.isFree && (
             <div className={styles.pdf_block}>
-              <span className={styles.pdf_text2}>
+              <span className={styles.pdf_text}>
                 * данный план недоступен для приобретения в мобильном
                 приложении
               </span>

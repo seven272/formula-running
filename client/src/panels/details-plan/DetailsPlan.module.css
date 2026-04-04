@@ -277,35 +277,18 @@
 }
 
 .pdf_block {
-  width: max-content;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  align-self: flex-start;
   margin-top: 15px;
   margin-left: 15px;
 }
 .pdf_text {
-  font: var(--font-m);
-  color: var(--color-grey);
-}
-
-.pdf_icon {
-  color: var(--color-blue);
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.pdf_text2 {
   font: var(--font-ms);
   color: var(--color-grey);
 }
 
-.pdf_icon2 {
-  color: var(--color-grey);
-  margin-left: 7px;
-  margin-right: 7px;
-}
 
 @media screen and (max-width: 700px) {
   .plan__header {

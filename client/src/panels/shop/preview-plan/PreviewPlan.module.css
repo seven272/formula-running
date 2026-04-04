@@ -141,5 +141,6 @@
   text-align: left;
   font: var(--font-s);
   color: var(--color-grey);
+  margin: 5px 0;
 }
 

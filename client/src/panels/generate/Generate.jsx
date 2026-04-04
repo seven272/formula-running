@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PiPaperclip } from 'react-icons/pi'
+import { TbLock } from 'react-icons/tb'
 import { Panel } from '@vkontakte/vkui'
 
 import styles from './Generate.module.css'
@@ -40,6 +41,16 @@ const Generate = ({ id }) => {
   })
   const [showSample, setShowSample] = useState(false)
   const [showCreated, setShowCreated] = useState(false)
+
+  const canShowPayments = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const platform = urlParams.get('vk_platform')
+    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+    // и в мобильном браузере (mobile_web)
+    const allowedPlatforms = ['desktop_web', 'mobile_web']
+    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+    return allowedPlatforms.includes(platform)
+  }
 
   const setRaceConfig = (payload) => {
     setDataPlan((prev) => {
@@ -134,14 +145,18 @@ const Generate = ({ id }) => {
           <div className={styles.wrap_form}>
             {!hasToken && !isFreeTry && (
               <div className={styles.overlay}>
-                <span>Форма станет активной после оплаты</span>
+                {canShowPayments() === false ? (
+                  <span>Генерация недоступна</span>
+                ) : (
+                  <span>Форма станет активной после оплаты</span>
+                )}
               </div>
             )}
             <RaceConfig getData={setRaceConfig} />
             <RaceGoal getData={setRaceGoal} />
             <Schedule getData={setSchedule} />
           </div>
-          {/* выбираем кнопку взависимости от условий  */}
+          {/* отрисовываю кнопку взависимости от условий  */}
           {isFreeTry && (
             <div className={styles.wrap_create}>
               <span className={styles.message_create}>
@@ -152,6 +167,18 @@ const Generate = ({ id }) => {
                 onClick={handleCreatePlan}
               >
                 Бонусная генерация
+              </button>
+            </div>
+          )}
+
+          {canShowPayments() === false && !isFreeTry && (
+            <div className={styles.wrap_create}>
+              <span className={styles.message_create}>
+                Платная генерация плана в мобильном приложении
+                недоступна
+              </span>
+              <button className={styles.btn} disabled={true}>
+                <TbLock size={20} />
               </button>
             </div>
           )}
