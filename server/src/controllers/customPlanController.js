@@ -61,9 +61,11 @@ const createCustomPlan = async (req, res) => {
     user.nameModel = 'CustomPlan' // Указываем модель для refPath
     await user.save()
     // погашаем токен: теперь этот чек больше нельзя использовать
-    activeToken.isUsed = true
-    activeToken.planId = newPlan._id
-    await activeToken.save()
+    if (activeToken) {
+      activeToken.isUsed = true
+      activeToken.planId = newPlan._id
+      await activeToken.save()
+    }
 
     res.status(201).json(newPlan)
   } catch (error) {
