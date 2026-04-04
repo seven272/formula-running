@@ -7,7 +7,7 @@
   margin-bottom: 15px;
 }
 
-btn_back {
+.btn_back {
   align-self: flex-start;
   width: max-content;
   height: 20px;
@@ -31,13 +31,17 @@ btn_back {
   margin-left: 6px;
 }
 .title {
-  color: var(--color-grey);
+  color: var(--color-grey-dark);
   font: var(--font-l);
   margin: 10px 0;
 }
 
 .text {
-  color: var(--color-grey);
+  color: var(--color-grey-dark);
   text-align: center;
   font: var(--font-m);
+}
+.icon {
+  margin-left: 5px;
+  color: var(--color-grey-dark);
 }

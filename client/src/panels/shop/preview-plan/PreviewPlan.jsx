@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BiDetail } from 'react-icons/bi'
 import { IoCartOutline } from 'react-icons/io5'
-import { TbCurrencyDollarOff } from 'react-icons/tb'
+import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
@@ -22,13 +23,22 @@ const PreviewPlan = ({ objPlan }) => {
   const [isPurchased, setIsPurchased] = useState(false)
   const { payVirtualMoney } = useVkPay()
 
+  const canShowPayments = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const platform = urlParams.get('vk_platform')
+    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+    // и в мобильном браузере (mobile_web)
+    const allowedPlatforms = ['desktop_web', 'mobile_web']
+    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+    return allowedPlatforms.includes(platform)
+  }
+
   const buyFreePlan = (_id) => {
     dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
   }
 
   const buyPlan = (_id) => {
-   
     payVirtualMoney('ready', _id)
     setIsPurchased((prev) => !prev)
   }
@@ -83,7 +93,7 @@ const PreviewPlan = ({ objPlan }) => {
             заниматься бесплатно
             <TbCurrencyDollarOff className={styles.btn_icon} />
           </button>
-        ) : (
+        ) : canShowPayments() ? (
           <button
             className={styles.card_btn}
             onClick={() => buyPlan(_id)}
@@ -92,8 +102,18 @@ const PreviewPlan = ({ objPlan }) => {
             купить
             <IoCartOutline className={styles.btn_icon} />
           </button>
+        ) : (
+          <button disabled={true} className={styles.card_btn}>
+            <TbLock className={styles.btn_icon} />
+          </button>
         )}
       </div>
+      {canShowPayments() === false && (
+        <span className={styles.warning}>
+          * данный план недоступен для приобретения в мобильном
+          приложении
+        </span>
+      )}
     </div>
   )
 }

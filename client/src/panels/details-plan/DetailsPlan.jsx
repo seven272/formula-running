@@ -6,8 +6,7 @@ import {
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 import { useSelector, useDispatch } from 'react-redux'
 import { IoCartOutline } from 'react-icons/io5'
-import { TbCurrencyDollarOff } from 'react-icons/tb'
-import { FaRegFilePdf } from 'react-icons/fa6'
+import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
 import { Panel } from '@vkontakte/vkui'
 
 import styles from './DetailsPlan.module.css'
@@ -54,39 +53,15 @@ const DetailsPlan = ({ id }) => {
     setIsPurchased((prev) => !prev)
   }
 
-  // const downloadPdf = async () => {
-  //   try {
-  //     const res = await axios.get(`/plans/download/${currentId}`, {
-  //       responseType: 'blob', //дополнительно указываю тип ответа
-  //     })
-
-  //     // создаю URL blob для PDF файла. URL.createObjectURL — метод в JavaScript, который создаёт уникальный URL для объекта Blob
-  //     const url = window.URL.createObjectURL(new Blob([res.data]))
-  //     console.log(url)
-  //     // создаю ссылку
-  //     const link = document.createElement('a')
-  //     link.href = url
-  //     link.setAttribute('download', `${plan.title}.pdf`) // устанавливаю значение у атрибута download
-
-  //     // добавляю ссылку в тело документа
-  //     document.body.appendChild(link)
-
-  //     // начинаю загрузку
-  //     link.click()
-
-  //     // Ощищаю и удаляю ссылку
-  //     link.remove()
-  //     window.URL.revokeObjectURL(url)
-  //   } catch (error) {
-  //     console.error('Error downloading the PDF: ', error)
-  //     dispatch(
-  //       showToast({
-  //         message: 'Ошибка при скачивании плана',
-  //         type: 'error',
-  //       }),
-  //     )
-  //   }
-  // }
+  const canShowPayments = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const platform = urlParams.get('vk_platform')
+    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+    // и в мобильном браузере (mobile_web)
+    const allowedPlatforms = ['desktop_web', 'mobile_web']
+    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+    return allowedPlatforms.includes(platform)
+  }
 
   const checkPurchased = () => {
     const arrId = purchasedPlans.map((elem) => {
@@ -164,14 +139,11 @@ const DetailsPlan = ({ id }) => {
             </>
           )}
 
-          {!isPurchased && !plan?.isFree && (
+          {canShowPayments() === false && !plan?.isFree && (
             <div className={styles.pdf_block}>
               <span className={styles.pdf_text2}>
-                Скачать план в формате
-              </span>
-              <FaRegFilePdf size={20} className={styles.pdf_icon2} />
-              <span className={styles.pdf_text2}>
-                можно после покупки
+                * данный план недоступен для приобретения в мобильном
+                приложении
               </span>
             </div>
           )}
@@ -186,14 +158,18 @@ const DetailsPlan = ({ id }) => {
                 заниматься бесплатно
                 <TbCurrencyDollarOff className={styles.btn_icon} />
               </button>
-            ) : (
+            ) : canShowPayments() ? (
               <button
                 className={styles.card_btn}
+                onClick={() => buyPlan()}
                 disabled={isPurchased}
-                onClick={buyPlan}
               >
                 купить
                 <IoCartOutline className={styles.btn_icon} />
+              </button>
+            ) : (
+              <button disabled={true} className={styles.card_btn}>
+                <TbLock className={styles.btn_icon} />
               </button>
             )}
           </div>

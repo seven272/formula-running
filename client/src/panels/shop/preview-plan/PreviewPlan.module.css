@@ -130,11 +130,16 @@
   color: inherit;
 }
 
-
-
 .icon_favorite_wrap {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.warning {
+  width: 100%;
+  text-align: left;
+  font: var(--font-s);
+  color: var(--color-grey);
 }
 

@@ -17,10 +17,10 @@ const EditHeader = () => {
         />
         <span className={styles.btn_back_text}>к списку планов</span>
       </div>
-      <span className={styles.title}>Редактор плана</span>
+      {/* <span className={styles.title}>Редактор плана</span> */}
       <span className={styles.text}>
         Вы можете внести изменения и отредактировать любую тренировку
-        в плане нажав на иконку <FaPencilAlt size={15} />
+        в плане нажав на иконку <FaPencilAlt size={12}  className={styles.icon}/>
       </span>
     </div>
   )
