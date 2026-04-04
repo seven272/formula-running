@@ -37,7 +37,7 @@ const Footer = () => {
         <FaInfo
           title="информация"
           className={styles.icon}
-          onClick={() => setOpenModal(true)}
+          onClick={() => routerNavigator.replace('/info/offer')}
         />
         <TbMessageUser
           title="поделиться приложением"

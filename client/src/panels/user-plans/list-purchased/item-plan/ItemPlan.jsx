@@ -24,6 +24,13 @@ const ItemPlan = ({ plan }) => {
     <div className={styles.item_plan}>
       <span className={styles.title}>{plan.title}</span>
       <div className={styles.btn_wrap}>
+        <TbNotes
+          size={17}
+          className={styles.icon}
+          onClick={() =>
+            routerNavigator.push(`${plan.planUrl}?type=paid`)
+          }
+        />
         {plan.isFree ? (
           <PiPencilSlashFill
             size={17}
@@ -38,14 +45,6 @@ const ItemPlan = ({ plan }) => {
             }
           />
         )}
-
-        <TbNotes
-          size={17}
-          className={styles.icon}
-          onClick={() =>
-            routerNavigator.push(`${plan.planUrl}?type=paid`)
-          }
-        />
 
         {currentId === planId ? (
           <BsCheckCircleFill

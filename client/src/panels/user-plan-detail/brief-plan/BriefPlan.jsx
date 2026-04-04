@@ -16,7 +16,7 @@ const BriefPlan = ({ plan, typePlan }) => {
   }
   return (
     <div className={styles.main_brief}>
-      <div
+      <div 
         className={styles.btn_back}
         onClick={() => routerNavigate.back()}
       >

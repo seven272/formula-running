@@ -1,9 +1,39 @@
 .main_edit_header {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+btn_back {
+  align-self: flex-start;
+  width: max-content;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn_back_icon {
+  color: var(--color-blue);
+}
+
+.btn_back_text {
+  display: flex;
+  color: var(--color-blue);
+  font: var(--font-l);
+  margin-left: 6px;
+}
+.title {
+  color: var(--color-grey);
+  font: var(--font-l);
+  margin: 10px 0;
 }
 
 .text {

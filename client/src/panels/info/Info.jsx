@@ -9,6 +9,7 @@ import MpkInfo from './mpk-info/MpkInfo'
 import NotFound from '../../components/not-found/NotFound'
 import PulseInfo from './pulse-info/PulseInfo'
 import StrengthTraining from './strength-training/StrengthTraining'
+import Offer from './offer/Offer'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
@@ -28,6 +29,8 @@ const Info = ({ id }) => {
       setComp(<PulseInfo />)
     } else if (alias === 'strength-training') {
       setComp(<StrengthTraining />)
+    } else if (alias === 'offer') {
+      setComp(<Offer />)
     } else {
       setComp(<NotFound />)
     }

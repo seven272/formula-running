@@ -24,12 +24,18 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  column-gap: 7px;
 }
 
 .icon {
-  font-size: 18px;
+  font-size: 17px;
+  display: block;
   color: var(--color-blue);
   cursor: pointer;
-  margin-left: 5px;
-   /* margin-right: 5px; */
+}
+
+.icon_disabled {
+  font-size: 17px;
+  display: block;
+  color: var(--color-grey);
 }

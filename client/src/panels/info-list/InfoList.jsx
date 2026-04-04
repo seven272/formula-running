@@ -1,4 +1,3 @@
-
 import { Panel } from '@vkontakte/vkui'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { RiArticleLine } from 'react-icons/ri'
@@ -15,6 +14,15 @@ const InfoList = ({ id }) => {
       <div className={styles.info}>
         <h1 className={styles.title}>Полезная информация</h1>
         <div className={styles.wrapper}>
+          <div className={styles.href_wrap}>
+            <RiArticleLine className={styles.href_icon} />
+            <span
+              className={styles.href_text}
+              onClick={() => routeNavigator.push('/info/offer')}
+            >
+              Публичная оферта
+            </span>
+          </div>
           <div className={styles.href_wrap}>
             <RiArticleLine className={styles.href_icon} />
             <span

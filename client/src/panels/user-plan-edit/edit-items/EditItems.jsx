@@ -19,7 +19,6 @@ const EditItems = ({ plan, typePlan }) => {
 
   return (
     <div className={styles.main_editplan}>
-      EditItems
       <div className={styles.plan}>
         <span className={styles.plan_title}>{plan.title}</span>
         {plan.workouts.map((w, inx) => {
