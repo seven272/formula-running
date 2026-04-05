@@ -89,6 +89,7 @@ purchasedPlanSchema.pre('save', function (next) {
     const baseUrl = this.planUrl || 'plan'; // Запасной вариант, если planUrl пустой
     this.planUrl = `${baseUrl}-${this.ownerVkId}-${nanoid(5)}`;
   }
+  next()
 })
 
 export default mongoose.model('PurchasedPlan', purchasedPlanSchema)
