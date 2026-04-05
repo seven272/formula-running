@@ -91,7 +91,7 @@
   height: auto;
   min-height: 25px;
   display: grid;
-  grid-template-columns: 25px 120px 1fr;
+  grid-template-columns: 25px minmax(80px, 120px) 1fr;
   justify-content: center;
   color: var(--color-grey-dark);
   column-gap: 5px;

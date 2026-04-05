@@ -83,9 +83,12 @@ purchasedPlanSchema.virtual('activityMap').get(function () {
 //создаю url для плана
 purchasedPlanSchema.pre('save', function (next) {
   // генерирую уникальный URL
-  this.planUrl = `${this.planUrl}-${this.ownerVkId}-${nanoid(5)}`
-
-  next() 
+  // Выполняем генерацию только если это новый документ
+  // или если planUrl еще не заполнен
+  if (this.isNew || !this.planUrl) {
+    const baseUrl = this.planUrl || 'plan'; // Запасной вариант, если planUrl пустой
+    this.planUrl = `${baseUrl}-${this.ownerVkId}-${nanoid(5)}`;
+  }
 })
 
 export default mongoose.model('PurchasedPlan', purchasedPlanSchema)

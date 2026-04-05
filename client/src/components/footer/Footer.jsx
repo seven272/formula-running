@@ -35,7 +35,7 @@ const Footer = () => {
           onClick={() => routerNavigator.replace('/info')}
         />
         <FaInfo
-          title="информация"
+          title="оферта"
           className={styles.icon}
           onClick={() => routerNavigator.replace('/info/offer')}
         />
