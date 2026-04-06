@@ -24,8 +24,8 @@ const DetailsPlan = ({ id }) => {
     (state) => state.plans,
   )
   const { payVirtualMoney } = useVkPay()
-  const [plan, setPlan] = useState(() => {})
-  const [training, setTraining] = useState(() => {})
+  const [plan, setPlan] = useState({})
+  const [training, setTraining] = useState([])
   const [isPurchased, setIsPurchased] = useState(false)
 
   const findPlan = () => {
@@ -116,6 +116,7 @@ const DetailsPlan = ({ id }) => {
               </div>
               <ul className={styles.plan__days}>
                 {training &&
+                  training.length > 0 &&
                   training.map((elem) => {
                     return (
                       <li key={elem.id} className={styles.plan__day}>
