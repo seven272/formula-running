@@ -1,9 +1,8 @@
-import React from 'react'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
 import styles from './PulseInfo.module.css'
-import PulseImg from '../../../assets/images/components/info/pulse-zones.jpeg'
+import PulseImg from '../../../assets/images/components/info/pulse-zones.jpg'
 
 const PulseInfo = () => {
   const routeNavigator = useRouteNavigator()

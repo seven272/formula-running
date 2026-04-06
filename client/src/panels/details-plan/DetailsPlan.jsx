@@ -139,14 +139,14 @@ const DetailsPlan = ({ id }) => {
             </>
           )}
 
-          {canShowPayments() === false && !plan?.isFree && (
-            <div className={styles.pdf_block}>
-              <span className={styles.pdf_text}>
-                * данный план недоступен для приобретения в мобильном
-                приложении
-              </span>
-            </div>
-          )}
+          {/* // {canShowPayments() === false && !plan?.isFree && (
+          //   <div className={styles.pdf_block}>
+          //     <span className={styles.pdf_text}>
+          //       * данный план недоступен для приобретения в мобильном
+          //       приложении
+          //     </span>
+          //   </div>
+          // )} */}
 
           <div className={styles.btn_wrap}>
             {plan?.isFree ? (
