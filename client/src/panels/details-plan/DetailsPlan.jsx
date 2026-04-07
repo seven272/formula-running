@@ -11,7 +11,10 @@ import { Panel } from '@vkontakte/vkui'
 import { ScreenSpinner } from '@vkontakte/vkui'
 
 import styles from './DetailsPlan.module.css'
-import { fetchBuyPlan } from '../../redux/slices/plansSlice'
+import {
+  fetchBuyPlan,
+  fetchGetAllPlans,
+} from '../../redux/slices/plansSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { useVkPay } from '../../utils/useVkPay'
@@ -51,7 +54,6 @@ const DetailsPlan = ({ id }) => {
     if (workouts && workouts[0] && workouts[0].sessions) {
       setTraining(workouts[0].sessions)
     }
-    
   }
 
   const buyPlan = () => {
@@ -82,6 +84,9 @@ const DetailsPlan = ({ id }) => {
 
     setIsPurchased(value)
   }
+  useEffect(() => {
+    dispatch(fetchGetAllPlans())
+  }, [dispatch])
 
   useEffect(() => {
     findPlan()
@@ -94,7 +99,6 @@ const DetailsPlan = ({ id }) => {
         <ScreenSpinner />
       </Panel>
     )
-    // Или используйте <ScreenSpinner /> от VKUI
   }
 
   return (

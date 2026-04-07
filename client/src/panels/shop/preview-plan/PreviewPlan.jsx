@@ -6,7 +6,7 @@ import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
+import { fetchBuyPlan, fetchGetAllPlans } from '../../../redux/slices/plansSlice'
 import templatePlanImg from '../../../assets/images/template_plan.png'
 import { useVkPay } from '../../../utils/useVkPay'
 import styles from './PreviewPlan.module.css'
