@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { IoCartOutline } from 'react-icons/io5'
 import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
 import { Panel } from '@vkontakte/vkui'
+import { ScreenSpinner } from '@vkontakte/vkui'
 
 import styles from './DetailsPlan.module.css'
 import { fetchBuyPlan } from '../../redux/slices/plansSlice'
@@ -30,17 +31,27 @@ const DetailsPlan = ({ id }) => {
 
   const findPlan = () => {
     // находим нужный план сравнивая ид элемента и данные их хука useParams
-    const currentPlan = allPlans.find((elem) => {
-      return elem._id === currentId
-    })
+    const currentPlan = allPlans.find(
+      (elem) => elem._id === currentId,
+    )
 
+    // 1. Добавляем защиту: если план не найден, выходим из функции
+    if (!currentPlan) return
+
+    // 2. Безопасно извлекаем workouts
+    const rawWorkouts = currentPlan.workouts
     const workouts =
-      typeof currentPlan.workouts === 'string'
-        ? JSON.parse(currentPlan.workouts)
-        : currentPlan.workouts
+      typeof rawWorkouts === 'string'
+        ? JSON.parse(rawWorkouts)
+        : rawWorkouts
 
     setPlan(currentPlan)
-    setTraining(workouts[0].sessions)
+
+    // 3. Защита на случай, если в workouts нет данных или нет нулевого элемента
+    if (workouts && workouts[0] && workouts[0].sessions) {
+      setTraining(workouts[0].sessions)
+    }
+    
   }
 
   const buyPlan = () => {
@@ -75,7 +86,16 @@ const DetailsPlan = ({ id }) => {
   useEffect(() => {
     findPlan()
     checkPurchased()
-  }, [])
+  }, [allPlans, currentId])
+
+  if (!plan || Object.keys(plan).length === 0) {
+    return (
+      <Panel id={id}>
+        <ScreenSpinner />
+      </Panel>
+    )
+    // Или используйте <ScreenSpinner /> от VKUI
+  }
 
   return (
     <Panel id={id}>
