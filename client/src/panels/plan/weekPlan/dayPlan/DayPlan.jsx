@@ -3,6 +3,7 @@ import { Checkbox } from '@vkontakte/vkui'
 import { useDispatch } from 'react-redux'
 import { TbShareOff, TbShare } from 'react-icons/tb'
 
+
 import styles from './DayPlan.module.css'
 import { fetchToggleSessionStatus } from '../../../../redux/slices/currentPlanSlice'
 import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
@@ -21,7 +22,7 @@ const DayPlan = ({
   const [checked, setChecked] = useState(completed)
 
   const handleCheck = (evt) => {
-    // setChecked(evt.target.checked)
+    setChecked(evt.target.checked)
     dispatch(fetchToggleSessionStatus({ weekId, sessionId: _id }))
   }
 

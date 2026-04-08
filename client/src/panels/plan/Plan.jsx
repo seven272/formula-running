@@ -5,7 +5,7 @@ import { MdOutlineRunCircle } from 'react-icons/md'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
-import { Panel } from '@vkontakte/vkui'
+import { Panel, Alert } from '@vkontakte/vkui'
 
 import WeekPlan from './weekPlan/WeekPlan.jsx'
 import styles from './Plan.module.css'
@@ -29,11 +29,11 @@ const Plan = ({ id }) => {
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
   )
-  // const [plan, setPlan] = useState({})
   const [showBlockAbout, setShowBlockAbout] = useState(false)
   const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [isAlertOpen, setIsAlertOpen] = useState(false)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -46,19 +46,13 @@ const Plan = ({ id }) => {
   }
 
   const handleReset = () => {
-    dispatch(fetchResetProgressPlan(plan._id))
+    // dispatch(fetchResetProgressPlan(plan._id))
+    setIsAlertOpen(true)
   }
 
   useEffect(() => {
     dispatch(fetchGetCurrentPlan())
   }, [])
-
-  // useEffect(() => {
-  //   if (Object.keys(plan).length !== 0) {
-  //     const arr = [...plan.workouts]
-  //     setPlan(arr)
-  //   }
-  // }, [plan])
 
   if (Object.keys(plan.workouts).length === 0) {
     setTimeout(() => {
@@ -100,10 +94,7 @@ const Plan = ({ id }) => {
             />
           )}
           {showBlockCalcPace && (
-            <ShowPace
-              show={setShowBlockCalcPace}
-              paces={plan.pace}
-            />
+            <ShowPace show={setShowBlockCalcPace} paces={plan.pace} />
           )}
           <div className={styles.plan_header}>
             <span className={styles.plan_title}>
@@ -170,6 +161,24 @@ const Plan = ({ id }) => {
           <PlanFooter />
         </div>
       </div>
+      {isAlertOpen && (
+        <Alert
+          actions={[
+            { title: 'Отмена', mode: 'cancel' },
+            {
+              title: 'Обнулить',
+              mode: 'destructive',
+              action: () =>
+                dispatch(fetchResetProgressPlan(plan._id)),
+            },
+          ]}
+          dismissLabel="Отмена"
+          onClosed={() => setIsAlertOpen(false)}
+          title="Сброс прогресса"
+          description="Вы уверены, что хотите обнулить весь прогресс плана?"
+        />
+      )}
+
       <Footer />
     </Panel>
   )
