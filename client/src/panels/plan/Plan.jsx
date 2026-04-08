@@ -122,7 +122,7 @@ const Plan = ({ id }) => {
             />
           </div>
           {Object.keys(plan).length !== 0 &&
-            objPlan.plan((week, inx) => {
+            plan.map((week, inx) => {
               return (
                 <WeekPlan
                   key={inx}
