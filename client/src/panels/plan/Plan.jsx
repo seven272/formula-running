@@ -101,6 +101,7 @@ const Plan = ({ id }) => {
 
   return (
     <Panel id={id}>
+      {alert}
       <Header />
       <div className={styles.plan}>
         <div className={styles.plan_wrapper}>
@@ -175,7 +176,6 @@ const Plan = ({ id }) => {
               >
                 <BiReset size={25} />
               </button>
-              {alert}
             </div>
           )}
 
