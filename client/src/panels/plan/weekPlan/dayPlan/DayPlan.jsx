@@ -21,7 +21,7 @@ const DayPlan = ({
   const [checked, setChecked] = useState(completed)
 
   const handleCheck = (evt) => {
-    setChecked(evt.target.checked)
+    // setChecked(evt.target.checked)
     dispatch(fetchToggleSessionStatus({ weekId, sessionId: _id }))
   }
 

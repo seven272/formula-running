@@ -25,11 +25,11 @@ import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
-  const objPlan = useSelector((state) => state.currentPlan.plan)
+  const plan = useSelector((state) => state.currentPlan.plan)
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
   )
-  const [plan, setPlan] = useState({})
+  // const [plan, setPlan] = useState({})
   const [showBlockAbout, setShowBlockAbout] = useState(false)
   const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
   const [page, setPage] = useState(0)
@@ -42,28 +42,29 @@ const Plan = ({ id }) => {
   }
 
   const handleShare = () => {
-    shareFinishPlanStory(objPlan.title)
+    shareFinishPlanStory(plan.title)
   }
 
   const handleReset = () => {
-    dispatch(fetchResetProgressPlan(objPlan._id))
+    dispatch(fetchResetProgressPlan(plan._id))
   }
 
   useEffect(() => {
     dispatch(fetchGetCurrentPlan())
   }, [])
 
-  useEffect(() => {
-    if (Object.keys(objPlan).length !== 0) {
-      const arr = [...objPlan.workouts]
-      setPlan(arr)
-    }
-  }, [objPlan])
+  // useEffect(() => {
+  //   if (Object.keys(plan).length !== 0) {
+  //     const arr = [...plan.workouts]
+  //     setPlan(arr)
+  //   }
+  // }, [plan])
 
-  if (Object.keys(plan).length === 0) {
+  if (Object.keys(plan.workouts).length === 0) {
     setTimeout(() => {
       setIsLoading(false)
     }, 2000)
+
     return (
       <div className={styles.error_block}>
         {isLoading ? (
@@ -91,22 +92,22 @@ const Plan = ({ id }) => {
         <div className={styles.plan_wrapper}>
           {showBlockAbout && (
             <AboutPlan
-              title={objPlan.title}
-              description={objPlan.subtitle}
-              distance={objPlan.distance}
-              period={objPlan.period}
+              title={plan.title}
+              description={plan.subtitle}
+              distance={plan.distance}
+              period={plan.period}
               show={(val) => setShowBlockAbout(val)}
             />
           )}
           {showBlockCalcPace && (
             <ShowPace
               show={setShowBlockCalcPace}
-              paces={objPlan.pace}
+              paces={plan.pace}
             />
           )}
           <div className={styles.plan_header}>
             <span className={styles.plan_title}>
-              {Object.keys(plan).length !== 0 && objPlan.title}
+              {Object.keys(plan.workouts).length !== 0 && plan.title}
             </span>
             <IoMdInformationCircleOutline
               className={styles.plan__icon}
@@ -121,8 +122,8 @@ const Plan = ({ id }) => {
               onClick={() => setShowBlockCalcPace(true)}
             />
           </div>
-          {Object.keys(plan).length !== 0 &&
-            plan.map((week, inx) => {
+          {Object.keys(plan.workouts).length !== 0 &&
+            plan.workouts.map((week, inx) => {
               return (
                 <WeekPlan
                   key={inx}
@@ -136,7 +137,7 @@ const Plan = ({ id }) => {
           <Pagination
             paginate={paginate}
             elementsPerPage={1}
-            totalElements={plan.length}
+            totalElements={plan.workouts.length}
             activePage={page}
           />
           {percent === 100 ? (
