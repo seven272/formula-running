@@ -55,7 +55,7 @@ const Plan = ({ id }) => {
 
   useEffect(() => {
     if (Object.keys(objPlan).length !== 0) {
-      const arr = objPlan.workouts
+      const arr = [...objPlan.workouts]
       setPlan(arr)
     }
   }, [objPlan])
@@ -121,8 +121,8 @@ const Plan = ({ id }) => {
               onClick={() => setShowBlockCalcPace(true)}
             />
           </div>
-          {Object.keys(objPlan.workouts).length !== 0 &&
-            objPlan.workouts.map((week, inx) => {
+          {Object.keys(plan).length !== 0 &&
+            objPlan.plan((week, inx) => {
               return (
                 <WeekPlan
                   key={inx}
@@ -161,7 +161,7 @@ const Plan = ({ id }) => {
                 className={styles.btn_reset_progress}
                 onClick={handleReset}
               >
-                <BiReset size={20} />
+                <BiReset size={25} />
               </button>
             </div>
           )}

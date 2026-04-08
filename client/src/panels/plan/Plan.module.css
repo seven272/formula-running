@@ -113,6 +113,7 @@
   justify-content: space-between;
   align-items: center;
   column-gap: 10px;
+  margin-bottom: 15px;
 }
 
 .progress_container {
@@ -121,8 +122,8 @@
 }
 
 .btn_reset_progress {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   display: flex;
   justify-content: center;
   align-items: center;

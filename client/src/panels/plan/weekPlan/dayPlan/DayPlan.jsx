@@ -64,7 +64,7 @@ const DayPlan = ({
         </span>
 
         <div className={styles.day_share} title="Поделиться в Сторис">
-          {checked ? (
+          {checked ? ( 
             <TbShare
               size={18}
               className={styles.icon_share}
