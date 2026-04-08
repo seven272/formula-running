@@ -121,8 +121,8 @@ const Plan = ({ id }) => {
               onClick={() => setShowBlockCalcPace(true)}
             />
           </div>
-          {Object.keys(plan).length !== 0 &&
-            plan.map((week, inx) => {
+          {Object.keys(objPlan.workouts).length !== 0 &&
+            objPlan.workouts.map((week, inx) => {
               return (
                 <WeekPlan
                   key={inx}
@@ -156,13 +156,13 @@ const Plan = ({ id }) => {
             <div className={styles.progress_wrap}>
               <div className={styles.progress_container}>
                 <Progressbar completed={percent} />
-                <button
-                  className={styles.btn_reset_progress}
-                  onClick={handleReset}
-                >
-                  <BiReset size={20} />
-                </button>
               </div>
+              <button
+                className={styles.btn_reset_progress}
+                onClick={handleReset}
+              >
+                <BiReset size={20} />
+              </button>
             </div>
           )}
 
