@@ -6,6 +6,7 @@ import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
 import { Panel, Alert } from '@vkontakte/vkui'
+import {  Modal } from 'antd';
 
 import WeekPlan from './weekPlan/WeekPlan.jsx'
 import styles from './Plan.module.css'
@@ -33,7 +34,7 @@ const Plan = ({ id }) => {
   const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const [alert, setAlert] = useState(null)
+   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -50,26 +51,18 @@ const Plan = ({ id }) => {
     
   }
 
-  const showAlert = () => {
-    if (alert) return
-    setAlert(
-      <Alert
-        onClosed={() => setAlert(null)}
-        dismissLabel="Отмена"
-        actions={[
-          { title: 'Отмена', mode: 'cancel' },
-          {
-            title: 'Обнулить',
-            mode: 'destructive',
-            action: () => dispatch(fetchResetProgressPlan(plan._id)),
-          },
-        ]}
-        title="Сброс прогресса"
-        description="Вы уверены, что хотите обнулить весь прогресс плана?"
-      />,
-    )
-  }
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+    dispatch(fetchResetProgressPlan(plan._id))
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
+ 
   useEffect(() => {
     dispatch(fetchGetCurrentPlan())
   }, [])
@@ -172,7 +165,7 @@ const Plan = ({ id }) => {
               </div>
               <button
                 className={styles.btn_reset_progress}
-                onClick={showAlert}
+                onClick={showModal}
               >
                 <BiReset size={25} />
               </button>
@@ -181,6 +174,16 @@ const Plan = ({ id }) => {
 
           <PlanFooter />
         </div>
+        <Modal
+        title="Сброс прогресса"
+        closable={{ 'aria-label': 'Custom Close Button' }}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <p>Вы уверены, что хотите сбросить прогресс по всем тренировкам в этом плане?</p>
+      
+      </Modal>
       </div>
       <Footer />
     </Panel>
