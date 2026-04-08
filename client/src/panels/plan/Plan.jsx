@@ -33,7 +33,7 @@ const Plan = ({ id }) => {
   const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const [isAlertOpen, setIsAlertOpen] = useState(false)
+  const [alert, setAlert] = useState(null)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -47,7 +47,27 @@ const Plan = ({ id }) => {
 
   const handleReset = () => {
     // dispatch(fetchResetProgressPlan(plan._id))
-    setIsAlertOpen(true)
+    
+  }
+
+  const showAlert = () => {
+    if (alert) return
+    setAlert(
+      <Alert
+        onClosed={() => setAlert(null)}
+        dismissLabel="Отмена"
+        actions={[
+          { title: 'Отмена', mode: 'cancel' },
+          {
+            title: 'Обнулить',
+            mode: 'destructive',
+            action: () => dispatch(fetchResetProgressPlan(plan._id)),
+          },
+        ]}
+        title="Сброс прогресса"
+        description="Вы уверены, что хотите обнулить весь прогресс плана?"
+      />,
+    )
   }
 
   useEffect(() => {
@@ -151,34 +171,17 @@ const Plan = ({ id }) => {
               </div>
               <button
                 className={styles.btn_reset_progress}
-                onClick={handleReset}
+                onClick={showAlert}
               >
                 <BiReset size={25} />
               </button>
+              {alert}
             </div>
           )}
 
           <PlanFooter />
         </div>
       </div>
-      {isAlertOpen && (
-        <Alert
-          actions={[
-            { title: 'Отмена', mode: 'cancel' },
-            {
-              title: 'Обнулить',
-              mode: 'destructive',
-              action: () =>
-                dispatch(fetchResetProgressPlan(plan._id)),
-            },
-          ]}
-          dismissLabel="Отмена"
-          onClosed={() => setIsAlertOpen(false)}
-          title="Сброс прогресса"
-          description="Вы уверены, что хотите обнулить весь прогресс плана?"
-        />
-      )}
-
       <Footer />
     </Panel>
   )
