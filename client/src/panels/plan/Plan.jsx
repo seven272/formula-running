@@ -53,7 +53,7 @@ const Plan = ({ id }) => {
     setIsModalOpen(false)
     dispatch(fetchResetProgressPlan(plan._id))
   }
-  
+
   const handleCancelReset = () => {
     setIsModalOpen(false)
   }
@@ -179,7 +179,7 @@ const Plan = ({ id }) => {
           onCancel={handleCancelReset}
         >
           <span>
-            Вы уверены, что хотите сбросить прогресс по всем
+            Вы уверены, что хотите обнулить прогресс по всем
             тренировкам в этом плане?
           </span>
         </Modal>

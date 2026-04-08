@@ -3,7 +3,6 @@ import { Checkbox } from '@vkontakte/vkui'
 import { useDispatch } from 'react-redux'
 import { TbShareOff, TbShare } from 'react-icons/tb'
 
-
 import styles from './DayPlan.module.css'
 import { fetchToggleSessionStatus } from '../../../../redux/slices/currentPlanSlice'
 import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
@@ -18,7 +17,7 @@ const DayPlan = ({
   numberDayInWeek,
 }) => {
   const dispatch = useDispatch()
-  const [isDarkBackground, setIsDarkBackground] = useState(true)
+  // const [isDarkBackground, setIsDarkBackground] = useState(true)
   const [checked, setChecked] = useState(completed)
 
   const handleCheck = (evt) => {
@@ -30,23 +29,26 @@ const DayPlan = ({
     shareTrainingStory({ title, descr })
   }
 
-  useEffect(() => {
-    const checkParity = () => {
-      if (numberDayInWeek % 2 === 0) {
-        setIsDarkBackground(false)
-      } else {
-        setIsDarkBackground(true)
-      }
-    }
-    checkParity()
-  }, [])
+  // useEffect(() => {
+  //   const checkParity = () => {
+  //     if (numberDayInWeek % 2 === 0) {
+  //       setIsDarkBackground(false)
+  //     } else {
+  //       setIsDarkBackground(true)
+  //     }
+  //   }
+  //   checkParity()
+  // }, [])
 
+  useEffect(() => {
+    setChecked(completed)
+  }, [completed])
+
+  const isDark = numberDayInWeek % 2 !== 0
   return (
     <div
       className={`${styles.day} ${
-        isDarkBackground
-          ? styles.background_dark
-          : styles.background_light
+        isDark ? styles.background_dark : styles.background_light
       }`}
     >
       <div className={styles.day_wrapper}>
@@ -65,7 +67,7 @@ const DayPlan = ({
         </span>
 
         <div className={styles.day_share} title="Поделиться в Сторис">
-          {checked ? ( 
+          {checked ? (
             <TbShare
               size={18}
               className={styles.icon_share}
