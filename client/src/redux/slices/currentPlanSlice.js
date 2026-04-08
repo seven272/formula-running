@@ -147,6 +147,7 @@ const currentPlanSlice = createSlice({
         (state, action) => {
           state.isLoading = false
           state.progress = { ...action.payload.progress }
+          state.plan = action.payload.plan
         },
       )
       .addCase(fetchToggleSessionStatus.rejected, (state) => {

@@ -321,6 +321,7 @@ const toggleSessionStatus = async (req, res) => {
     res.status(200).json({
       newStatus: session.completed,
       progress: plan.progress, // { percent, completed, total }
+      plan: plan
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
