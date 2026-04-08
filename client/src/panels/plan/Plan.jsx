@@ -4,6 +4,7 @@ import { RouterLink } from '@vkontakte/vk-mini-apps-router'
 import { MdOutlineRunCircle } from 'react-icons/md'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { TfiCup } from 'react-icons/tfi'
+import { BiReset } from 'react-icons/bi'
 import { Panel } from '@vkontakte/vkui'
 
 import WeekPlan from './weekPlan/WeekPlan.jsx'
@@ -11,7 +12,10 @@ import styles from './Plan.module.css'
 import Pagination from '../../components/pagination/Pagination.jsx'
 import PlanFooter from './plan-footer/PlanFooter.jsx'
 import AboutPlan from './about-plan/AboutPlan.jsx'
-import { fetchGetCurrentPlan } from '../../redux/slices/currentPlanSlice.js'
+import {
+  fetchGetCurrentPlan,
+  fetchResetProgressPlan,
+} from '../../redux/slices/currentPlanSlice.js'
 import Loader from '../../UI/loader/Loader.jsx'
 import ShowPace from './show-pace/ShowPace.jsx'
 import Progressbar from '../../UI/progressbar/Progressbar.jsx'
@@ -39,6 +43,10 @@ const Plan = ({ id }) => {
 
   const handleShare = () => {
     shareFinishPlanStory(objPlan.title)
+  }
+
+  const handleReset = () => {
+    dispatch(fetchResetProgressPlan(objPlan._id))
   }
 
   useEffect(() => {
@@ -145,7 +153,17 @@ const Plan = ({ id }) => {
               </div>
             </div>
           ) : (
-            <Progressbar completed={percent} />
+            <div className={styles.progress_wrap}>
+              <div className={styles.progress_container}>
+                <Progressbar completed={percent} />
+                <button
+                  className={styles.btn_reset_progress}
+                  onClick={handleReset}
+                >
+                  <BiReset size={20} />
+                </button>
+              </div>
+            </div>
           )}
 
           <PlanFooter />

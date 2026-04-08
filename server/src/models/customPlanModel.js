@@ -22,7 +22,7 @@ const sessionSchema = new mongoose.Schema(
 )
 
 const weekSchema = new mongoose.Schema({
-  weekNumber: { type: Number, required: true },
+  weekNumber: { type: Number, required: true }, 
   stage: {
     type: String,
     enum: ['base', 'build', 'peak', 'taper'],

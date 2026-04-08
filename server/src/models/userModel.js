@@ -101,7 +101,7 @@ const userSchema = new mongoose.Schema(
     ],
     currentPlan: {
       type: mongoose.Schema.Types.ObjectId,
-      refPath: 'nameModel', //казываею путь к полю с названием модели
+      refPath: 'nameModel', //указываею путь к полю с названием модели
     },
     // Поле, которое говорит Mongoose, в какой коллекции искать ID
     nameModel: {

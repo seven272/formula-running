@@ -327,6 +327,51 @@ const toggleSessionStatus = async (req, res) => {
   }
 }
 
+const resetProgress = async (req, res) => {
+  const vkId = req.vkId
+  const { planId } = req.body
+
+  try {
+    const user = await User.findOne({ vkId })
+
+    if (
+      !user ||
+      !user.currentPlan ||
+      planId.toString() !== user.currentPlan.toString()
+    ) {
+      return res
+        .status(404)
+        .json({ message: 'Активный план не выбран' })
+    }
+
+    // Динамически получаем нужную модель (CustomPlan или PurchasedPlan)
+    const PlanModel = mongoose.model(user.nameModel)
+
+    const updatedPlan = await PlanModel.findOneAndUpdate(
+      { _id: planId },
+      {
+        $set: {
+          'workouts.$[].sessions.$[].completed': false,
+          'workouts.$[].sessions.$[].completedAt': null,
+        },
+      },
+      {
+        new: true, // ВАЖНО: возвращает документ ПОСЛЕ обновления (по умолчанию возвращает ДО)
+        runValidators: true, // применяет правила валидации схемы при обновлении
+      },
+    )
+
+    // Возвращаем обновленный прогресс (из нашего Virtual)
+    res.status(200).json({
+      message: 'прогресс успешно обнулен',
+      progress: updatedPlan.progress, // { percent, completed, total }
+      plan: updatedPlan
+    })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 const buyPlan = async (req, res) => {
   const vkId = req.vkId
   const readyPlanId = req.body.readyPlanId
@@ -486,12 +531,13 @@ export {
   getMyProfile,
   updatePersonalParameters,
   updateRecords,
-  updateZonesPulse, 
+  updateZonesPulse,
   updatePace,
   buyPlan,
   getPurchasedPlans,
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
-  updateWorkoutUser
+  updateWorkoutUser,
+  resetProgress
 }

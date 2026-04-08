@@ -52,7 +52,7 @@ const fetchChangeCurrentPlan = createAsyncThunk(
 
 const fetchToggleSessionStatus = createAsyncThunk(
   'currentPlan/fetchToggleSessionStatus',
-  async (payload, { rejectWithValue }) => { 
+  async (payload, { rejectWithValue }) => {
     try {
       const res = await axios.patch('/user/toggle-session-staus', {
         weekId: payload.weekId,
@@ -65,6 +65,23 @@ const fetchToggleSessionStatus = createAsyncThunk(
         'ошибка при переключении статуса тренировки из redux ',
         error,
       )
+      return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
+const fetchResetProgressPlan = createAsyncThunk(
+  'currentPlan/fetchResetProgressPlan',
+  async (planId, { rejectWithValue }) => {
+    console.log(planId)
+    try {
+      const res = await axios.patch('/user/reset-progress-plan', {
+        planId: planId,
+      })
+      console.log(res.data)
+      return res.data
+    } catch (error) {
+      console.log('ошибка при сбросе прогресса плана redux ', error)
       return rejectWithValue(error.response?.data || error.message)
     }
   },
@@ -112,7 +129,6 @@ const currentPlanSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchChangeCurrentPlan.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.isLoading = false
         state.currentId = action.payload.currentPlan._id
         state.plan = action.payload.currentPlan
@@ -126,16 +142,37 @@ const currentPlanSlice = createSlice({
       .addCase(fetchToggleSessionStatus.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchToggleSessionStatus.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.progress = {...action.payload.progress}
-      })
+      .addCase(
+        fetchToggleSessionStatus.fulfilled,
+        (state, action) => {
+          state.isLoading = false
+          state.progress = { ...action.payload.progress }
+        },
+      )
       .addCase(fetchToggleSessionStatus.rejected, (state) => {
+        state.isLoading = false
+      })
+      //reset progress plan
+      .addCase(fetchResetProgressPlan.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchResetProgressPlan.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.progress = { ...action.payload.progress }
+        state.plan = action.payload.plan
+      })
+      .addCase(fetchResetProgressPlan.rejected, (state) => {
         state.isLoading = false
       })
   },
 })
 const checkIsAuth = (state) => Boolean(state.auth.token)
 export const { clearCurrentPlan } = currentPlanSlice.actions
-export { fetchChangeCurrentPlan, fetchGetCurrentPlan, fetchToggleSessionStatus, checkIsAuth }
+export {
+  fetchChangeCurrentPlan,
+  fetchGetCurrentPlan,
+  fetchToggleSessionStatus,
+  fetchResetProgressPlan,
+  checkIsAuth,
+}
 export default currentPlanSlice.reducer

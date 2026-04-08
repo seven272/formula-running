@@ -10,8 +10,6 @@
   width: 100%;
   max-width: 515px;
   padding: 10px 5px;
-
-  /* border: 1px solid blue; */
 }
 .plan_header {
   width: 100%;
@@ -107,4 +105,30 @@
 .compliment_text_btn {
   color: var(--color-blue);
   font: var(--font-s);
+}
+
+.progress_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.progress_container {
+  width: 90%;
+  height: auto;
+}
+
+.btn_reset_progress {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-blue);
 }
