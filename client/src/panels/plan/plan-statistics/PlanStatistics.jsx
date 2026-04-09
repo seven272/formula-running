@@ -106,7 +106,7 @@ const PlanStatistics = ({ plan, onClose }) => {
         </div>
 
         <div className={styles.chart_container}>
-          <p className={styles.chart_label}>Всего за план</p>
+          <p className={styles.chart_label}>Оценка самочувтсвия, всего за план</p>
           <MoodPieChart plan={plan} />
         </div>
       </div>

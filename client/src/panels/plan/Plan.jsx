@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RouterLink } from '@vkontakte/vk-mini-apps-router'
 import { MdOutlineRunCircle } from 'react-icons/md'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
-import { FaChartLine } from 'react-icons/fa'
+import { LuChartLine } from 'react-icons/lu'
 import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
 import { Panel } from '@vkontakte/vkui'
@@ -125,7 +125,7 @@ const Plan = ({ id }) => {
                 title="детали плана"
                 onClick={() => setShowBlockAbout(true)}
               />
-              <FaChartLine
+              <LuChartLine
                 className={styles.plan__icon}
                 size={22}
                 title="статистика"
