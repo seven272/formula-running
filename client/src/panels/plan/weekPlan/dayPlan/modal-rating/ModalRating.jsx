@@ -4,12 +4,10 @@ import { TbMoodSmile } from 'react-icons/tb'
 
 import styles from './ModalRating.module.css'
 
-
 const ModalRating = ({ getData }) => {
   const [valueRating, setValueRating] = useState(null)
   const [valueMood, setValueMood] = useState(null)
   const [openModal, setOpenModal] = useState(false)
-
 
   const dictionaryRating = [
     { title: '2', value: 2 },
@@ -21,9 +19,9 @@ const ModalRating = ({ getData }) => {
   ]
 
   const dictionaryMood = [
-    { title: '😞', value: 1 },
-    { title: '😐', value: 3 },
-    { title: '🙂', value: 5 },
+    { title: '😞 тяжело', value: 1 },
+    { title: '😐 нормально', value: 3 },
+    { title: '🙂 отлично', value: 5 },
   ]
   const showModal = () => {
     setOpenModal(true)
@@ -45,7 +43,6 @@ const ModalRating = ({ getData }) => {
     setOpenModal(false)
   }
 
- 
   return (
     <>
       <TbMoodSmile
@@ -55,45 +52,30 @@ const ModalRating = ({ getData }) => {
       />
       <Modal
         open={openModal}
-        title="Оцените тренировку..."
+        title="Оцените тренировку"
         okText="Оценить"
         cancelText="Отменить"
         onOk={handleOk}
         onCancel={handleCancel}
-        //     footer={() => (
-        //       <>
-        //         <button
-        //           className={styles.btn_cancel}
-        //           onClick={handleCancel}
-        //           disabled={false}
-        //         >
-        //           Отменить
-        //         </button>
-
-        //         <button
-        //           className={styles.btn_ok}
-        //           onClick={handleOk}
-        //           disabled={false}
-        //         >
-        //           Установить
-        //         </button>
-        //       </>
-        //     )}
       >
         <div className={styles.form}>
           <div className={styles.rating_wrapper}>
             <span className={styles.rating_title}>
-              Как оцениваете выполнение тренировки?
+              Поставьте себе оценку за тенировку?
             </span>
             <ul className={styles.rating_btns}>
               {dictionaryRating.map((elem) => {
                 return (
                   <li
                     key={elem.value}
-                    className={styles.rating_btn}
+                    className={
+                      elem.value === valueRating
+                        ? styles.rating_btn_active
+                        : styles.rating_btn
+                    }
                     onClick={() => setValueRating(elem.value)}
                   >
-                    {elem.title}
+                    <span>{elem.title}</span>
                   </li>
                 )
               })}
@@ -112,7 +94,7 @@ const ModalRating = ({ getData }) => {
                     className={styles.mood_btn}
                     onClick={() => setValueMood(elem.value)}
                   >
-                    {elem.title}
+                   <span>{elem.title}</span> 
                   </li>
                 )
               })}

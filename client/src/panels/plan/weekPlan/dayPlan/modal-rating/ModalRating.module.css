@@ -13,7 +13,8 @@
   row-gap: 15px;
 }
 
-.rating_wrapper {
+.rating_wrapper,
+.mood_wrapper {
   width: 100%;
   padding: 0 5px;
   display: flex;
@@ -23,14 +24,16 @@
   row-gap: 5px;
 }
 
-.rating_title, .mood_title {
+.rating_title,
+.mood_title {
   width: 100%;
-  font: var(--font-submenu);
+  font: var(--font-m);
   text-align: left;
   color: var(--color-grey-dark);
 }
 
-.rating_btns, .mood_btns {
+.rating_btns,
+.mood_btns {
   width: 100%;
   list-style-type: none;
   padding: 0;
@@ -40,56 +43,58 @@
   column-gap: 7px;
 }
 
-.rating_btn, .mood_btn {
-  font: var(font-l);
-  padding: 2px;
+.rating_btn {
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-grey-dark);
-  border: 1px solid var(--color-grey-dark);
-}
-
-
-
-
-
-
-.btn_cancel {
-  width: max-content;
-  height: 30px;
-  padding: 0 15px;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-text-grey);
-  color: var(--color-text-grey);
+  color: var(--color-grey);
+  border: 1px solid var(--color-grey);
   border-radius: 6px;
   cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.5s;
-  box-sizing: border-box;
-  margin-right: 15px;
-}
-.btn_cancel:hover {
-  opacity: 0.7;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
 }
 
-.btn_ok {
-  width: max-content;
+.rating_btn_active {
+  width: 30px;
   height: 30px;
-  padding: 0 15px;
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  color: var(--color-white);
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
   border-radius: 6px;
   cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.5s;
-  box-sizing: border-box;
 }
 
-.btn_ok:hover {
-  opacity: 0.7;
+.rating_btn span {
+  font: var(font-l);
+}
+
+.mood_btn {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-grey);
+  border: 1px solid var(--color-grey);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mood_btn_active {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.mood_btn span {
+  font: var(font-ms);
 }
