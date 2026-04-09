@@ -11,7 +11,9 @@ const PlanStatistics = ({ plan, onClose }) => {
       plan?.workouts?.flatMap((week) => week.sessions) || []
 
     // 2. Фильтруем выполненные
-    const completed = allSessions.filter((s) => s.completed)
+    const completed = allSessions.filter(
+      (s) => s.completed && s.type !== 'rest',
+    )
 
     const totalCount = allSessions.length
     const doneCount = completed.length

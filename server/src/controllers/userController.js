@@ -407,6 +407,8 @@ const resetProgress = async (req, res) => {
       {
         $set: {
           'workouts.$[].sessions.$[].completed': false,
+          'workouts.$[].sessions.$[].rating': null,
+          'workouts.$[].sessions.$[].mood': null,
           'workouts.$[].sessions.$[].completedAt': null,
         },
       },
