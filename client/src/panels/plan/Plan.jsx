@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RouterLink } from '@vkontakte/vk-mini-apps-router'
 import { MdOutlineRunCircle } from 'react-icons/md'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
+import { FaChartLine } from 'react-icons/fa'
 import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
 import { Panel } from '@vkontakte/vkui'
@@ -19,6 +20,7 @@ import {
 } from '../../redux/slices/currentPlanSlice.js'
 import Loader from '../../UI/loader/Loader.jsx'
 import ShowPace from './show-pace/ShowPace.jsx'
+import PlanStatistics from './plan-statistics/PlanStatistics.jsx'
 import Progressbar from '../../UI/progressbar/Progressbar.jsx'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -32,6 +34,8 @@ const Plan = ({ id }) => {
   )
   const [showBlockAbout, setShowBlockAbout] = useState(false)
   const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
+  const [showBlockStatistics, setShowBlockStatistics] =
+    useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -89,7 +93,6 @@ const Plan = ({ id }) => {
 
   return (
     <Panel id={id}>
-      {alert}
       <Header />
       <div className={styles.plan}>
         <div className={styles.plan_wrapper}>
@@ -102,6 +105,7 @@ const Plan = ({ id }) => {
               show={(val) => setShowBlockAbout(val)}
             />
           )}
+          {showBlockStatistics && <PlanStatistics plan={plan} />}
           {showBlockCalcPace && (
             <ShowPace show={setShowBlockCalcPace} paces={plan.pace} />
           )}
@@ -109,18 +113,26 @@ const Plan = ({ id }) => {
             <span className={styles.plan_title}>
               {Object.keys(plan.workouts).length !== 0 && plan.title}
             </span>
-            <IoMdInformationCircleOutline
-              className={styles.plan__icon}
-              size={17}
-              title="детали плана"
-              onClick={() => setShowBlockAbout(true)}
-            />
-            <MdOutlineRunCircle
-              className={styles.plan__icon}
-              size={17}
-              title="тренировачный темп"
-              onClick={() => setShowBlockCalcPace(true)}
-            />
+            <div className={styles.plan_header_icons}>
+              <IoMdInformationCircleOutline
+                className={styles.plan__icon}
+                size={25}
+                title="детали плана"
+                onClick={() => setShowBlockAbout(true)}
+              />
+              <FaChartLine
+                className={styles.plan__icon}
+                size={25}
+                title="статистика"
+                onClick={() => setShowBlockStatistics(true)}
+              />
+              <MdOutlineRunCircle
+                className={styles.plan__icon}
+                size={25}
+                title="тренировачный темп"
+                onClick={() => setShowBlockCalcPace(true)}
+              />
+            </div>
           </div>
           {Object.keys(plan.workouts).length !== 0 &&
             plan.workouts.map((week, inx) => {

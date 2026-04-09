@@ -14,6 +14,7 @@
 .plan_header {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px 3px;
@@ -27,6 +28,15 @@
 }
 .plan_title {
   color: var(--color-blue);
+}
+
+.plan_header_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .plan__descr {
@@ -47,8 +57,6 @@
 }
 
 .plan__icon {
-  /* width: 15px;
-  height: 15px; */
   color: var(--color-blue);
   margin-left: 10px;
   cursor: pointer;

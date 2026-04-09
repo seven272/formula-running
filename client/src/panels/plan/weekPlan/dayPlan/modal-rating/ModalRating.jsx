@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Modal } from 'antd'
 import { TbMoodSmile } from 'react-icons/tb'
 
@@ -29,8 +29,8 @@ const ModalRating = ({ getData }) => {
 
   const handleOk = () => {
     getData({
-      rating: valueRating,
-      mood: valueMood,
+      rating: valueRating || 0,
+      mood: valueMood || 0,
     })
     setValueRating(null)
     setValueMood(null)
@@ -84,14 +84,18 @@ const ModalRating = ({ getData }) => {
 
           <div className={styles.mood_wrapper}>
             <span className={styles.mood_title}>
-              Оцените свое самочувствие?
+              Как далась тренировка?
             </span>
             <ul className={styles.mood_btns}>
               {dictionaryMood.map((elem) => {
                 return (
                   <li
                     key={elem.value}
-                    className={styles.mood_btn}
+                    className={
+                      elem.value === valueMood
+                        ? styles.mood_btn_active
+                        : styles.mood_btn
+                    }
                     onClick={() => setValueMood(elem.value)}
                   >
                    <span>{elem.title}</span> 
