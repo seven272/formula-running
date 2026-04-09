@@ -8,12 +8,12 @@ const PlanStatistics = ({ plan, onClose }) => {
   const stats = useMemo(() => {
     // 1. Собираем все тренировки из всех недель в один плоский массив
     const allSessions =
-      plan?.workouts?.flatMap((week) => week.sessions) || []
+      plan?.workouts
+        ?.flatMap((week) => week.sessions)
+        .filter((s) => s.type !== 'rest') || []
 
     // 2. Фильтруем выполненные
-    const completed = allSessions.filter(
-      (s) => s.completed && s.type !== 'rest',
-    )
+    const completed = allSessions.filter((s) => s.completed)
 
     const totalCount = allSessions.length
     const doneCount = completed.length
