@@ -13,7 +13,8 @@ import {
   getCurrentPlan,
   toggleSessionStatus,
   updateWorkoutUser,
-  resetProgress
+  resetProgress,
+  updateSessionStatus
 } from '../controllers/userController.js'
 
 import checkVkId from '../middleware/сheckVkId.js'
@@ -39,9 +40,10 @@ router.post('/buy', checkVkId, buyPlan)
 router.get('/purchased', checkVkId, getPurchasedPlans)
 router.get('/get-current-plan', checkVkId, getCurrentPlan)
 router.put('/change-current-plan', checkVkId, changeCurrentPlan)
-router.patch('/toggle-session-staus', checkVkId, toggleSessionStatus)
+router.patch('/toggle-session-status', checkVkId, toggleSessionStatus)
 router.patch('/update-workout', checkVkId, updateWorkoutUser)
 router.patch('/reset-progress-plan', checkVkId, resetProgress)
+router.patch('/update-session-status', checkVkId, updateSessionStatus)
 
 
 

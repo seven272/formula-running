@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Checkbox } from '@vkontakte/vkui'
 import { useDispatch } from 'react-redux'
-import { TbShareOff, TbShare } from 'react-icons/tb'
+import { TbShareOff, TbShare, TbMoodSmile, TbMoodOff } from 'react-icons/tb'
+
 
 import styles from './DayPlan.module.css'
-import { fetchToggleSessionStatus } from '../../../../redux/slices/currentPlanSlice'
+import { fetchToggleSessionStatus, fetchUpdateSessionStatus } from '../../../../redux/slices/currentPlanSlice'
 import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
 
 const DayPlan = ({
@@ -17,7 +18,6 @@ const DayPlan = ({
   numberDayInWeek,
 }) => {
   const dispatch = useDispatch()
-  // const [isDarkBackground, setIsDarkBackground] = useState(true)
   const [checked, setChecked] = useState(completed)
 
   const handleCheck = (evt) => {
@@ -28,17 +28,9 @@ const DayPlan = ({
   const handleShareStory = () => {
     shareTrainingStory({ title, descr })
   }
-
-  // useEffect(() => {
-  //   const checkParity = () => {
-  //     if (numberDayInWeek % 2 === 0) {
-  //       setIsDarkBackground(false)
-  //     } else {
-  //       setIsDarkBackground(true)
-  //     }
-  //   }
-  //   checkParity()
-  // }, [])
+  const handleRatingSession = () => {
+    dispatch(fetchUpdateSessionStatus({ weekId, sessionId: _id, rating, mood}))
+  }
 
   useEffect(() => {
     setChecked(completed)
@@ -65,6 +57,22 @@ const DayPlan = ({
             onChange={handleCheck}
           />
         </span>
+
+         <div className={styles.day_rating} title="Оценить тренировку">
+          {checked ? (
+            <TbMoodSmile
+              size={18}
+              className={styles.icon_rating}
+              onClick={() => handleRatingSession()}
+              title="Оценить тренировку"
+            />
+          ) : (
+            <TbMoodOff
+              size={18}
+              className={styles.icon_rating_disabled}
+            />
+          )}
+        </div>
 
         <div className={styles.day_share} title="Поделиться в Сторис">
           {checked ? (

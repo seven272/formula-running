@@ -54,7 +54,7 @@ const fetchToggleSessionStatus = createAsyncThunk(
   'currentPlan/fetchToggleSessionStatus',
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await axios.patch('/user/toggle-session-staus', {
+      const res = await axios.patch('/user/toggle-session-status', {
         weekId: payload.weekId,
         sessionId: payload.sessionId,
       })
@@ -82,6 +82,28 @@ const fetchResetProgressPlan = createAsyncThunk(
       return res.data
     } catch (error) {
       console.log('ошибка при сбросе прогресса плана redux ', error)
+      return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
+const fetchUpdateSessionStatus = createAsyncThunk(
+  'currentPlan/fetchUpdateSessionStatus',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const res = await axios.patch('/user/update-session-status', {
+        weekId: payload.weekId,
+        sessionId: payload.sessionId,
+        rating: payload.rating,
+        mood: payload.mood,
+      })
+
+      return res.data
+    } catch (error) {
+      console.log(
+        'ошибка при переключении статуса тренировки из redux ',
+        error,
+      )
       return rejectWithValue(error.response?.data || error.message)
     }
   },
@@ -165,6 +187,20 @@ const currentPlanSlice = createSlice({
       .addCase(fetchResetProgressPlan.rejected, (state) => {
         state.isLoading = false
       })
+      //toggle session status
+      .addCase(fetchUpdateSessionStatus.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(
+        fetchUpdateSessionStatus.fulfilled,
+        (state, action) => {
+          state.isLoading = false
+          state.plan = action.payload.plan
+        },
+      )
+      .addCase(fetchUpdateSessionStatus.rejected, (state) => {
+        state.isLoading = false
+      })
   },
 })
 const checkIsAuth = (state) => Boolean(state.auth.token)
@@ -174,6 +210,7 @@ export {
   fetchGetCurrentPlan,
   fetchToggleSessionStatus,
   fetchResetProgressPlan,
+  fetchUpdateSessionStatus,
   checkIsAuth,
 }
 export default currentPlanSlice.reducer

@@ -321,10 +321,62 @@ const toggleSessionStatus = async (req, res) => {
     res.status(200).json({
       newStatus: session.completed,
       progress: plan.progress, // { percent, completed, total }
-      plan: plan
+      plan: plan,
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
+  }
+}
+
+const updateSessionStatus = async (req, res) => {
+  const vkId = req.vkId
+  const { weekId, sessionId, rating, mood } = req.body
+
+  try {
+    const user = await User.findOne({ vkId })
+
+    if (!user || !user.currentPlan) {
+      return res
+        .status(404)
+        .json({ message: 'Активный план не выбран' })
+    }
+
+    // Динамически получаем нужную модель (CustomPlan или PurchasedPlan)
+    const PlanModel = mongoose.model(user.nameModel)
+
+    // user.currentPlan — это и есть ID плана (если нет populate)
+    const plan = await PlanModel.findById(user.currentPlan)
+
+    // Поиск недели и сессии через встроенный метод .id()
+    const week = plan.workouts.find(
+      (w) => w._id.toString() === weekId,
+    )
+    if (!week)
+      return res.status(404).json({ message: 'Неделя не найдена' })
+
+    const session = week.sessions.find(
+      (s) => s._id.toString() === sessionId.toString(),
+    )
+    if (!session)
+      return res
+        .status(404)
+        .json({ message: 'Тренировка не найдена' })
+
+    session.rating = rating
+    session.mood = mood
+    // для глубокого мониторинга изменений вложенных массивов
+    plan.markModified('workouts')
+    // Сохраняю изменения
+    await plan.save()
+
+    // Возвращаем обновленный план
+    res.status(200).json({
+      message: 'Данные тренировки успешно обновлены',
+      plan,
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Ошибка обновления тренировки' })
   }
 }
 
@@ -366,7 +418,7 @@ const resetProgress = async (req, res) => {
     res.status(200).json({
       message: 'прогресс успешно обнулен',
       progress: updatedPlan.progress, // { percent, completed, total }
-      plan: updatedPlan
+      plan: updatedPlan,
     })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -540,5 +592,6 @@ export {
   getCurrentPlan,
   toggleSessionStatus,
   updateWorkoutUser,
-  resetProgress
+  resetProgress,
+  updateSessionStatus
 }

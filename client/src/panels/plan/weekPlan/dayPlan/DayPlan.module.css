@@ -21,7 +21,7 @@
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 25px minmax(80px, 120px) 1fr 40px 35px;
+  grid-template-columns: 25px minmax(60px, 110px) 1fr 40px 35px 35px;
   justify-content: center;
 }
 
@@ -61,7 +61,6 @@
   justify-content: center;
   align-items: center;
   color: var(--color-blue);
-  border-right: 2px solid var(--color-white);
 }
 
 .day_actions {
@@ -70,13 +69,20 @@
   column-gap: 1px;
 }
 
-.day_share {
-   display: flex;
+.day_rating {
+  display: flex;
   justify-content: center;
   align-items: center;
-  /* width: max-content; */
   cursor: pointer;
- 
+  border-right: 2px solid var(--color-white);
+  border-left: 2px solid var(--color-white);
+}
+
+.day_share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .icon_share {
@@ -86,7 +92,7 @@
   animation: fadeIn 0.3s ease; /* Плавное появление кнопки */
 }
 
-.icon_share_disabled {
+.icon_share_disabled, .icon_rating_disabled {
   color: var(--color-grey-vk);
   cursor: pointer;
   animation: fadeIn 0.3s ease; /* Плавное появление кнопки */
@@ -105,7 +111,7 @@
 
 @media screen and (max-width: 700px) {
   .day_wrapper {
-   grid-template-columns: 25px 120px 1fr 40px 35px;
+    grid-template-columns: 25px 120px 1fr 40px 35px;
   }
 
   .day_descr {
