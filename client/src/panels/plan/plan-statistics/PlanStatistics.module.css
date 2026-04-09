@@ -1,4 +1,10 @@
 .stats_container {
+  width: 100%;
+  max-width: 515px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   background: #ffffff;
   border-radius: 16px;
   padding: 16px;
@@ -12,10 +18,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
   color: var(--color-grey);
   border: 2px solid var(--color-grey);
   border-radius: 6px;
+  background: none;
+  font: var(--font-m);
   cursor: pointer;
+  margin: 0 auto 15px auto;
 }
 
 .progress_section {
@@ -85,5 +95,16 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 30px;
   row-gap: 50px;
+}
+
+.chart_container {
+  width: 100%;
+  max-width: 515px;
+}
+
+.chart_label {
+  color: var(--color-grey);
+  font: var(--font-menu);
 }

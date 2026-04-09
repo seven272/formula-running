@@ -63,7 +63,7 @@ const PlanStatistics = ({ plan, onClose }) => {
   return (
     <div className={styles.stats_container}>
       <button className={styles.btn_close} onClick={onClose}>
-        закрыть
+        Закрыть
       </button>
       <div className={styles.progress_section}>
         <div className={styles.progress_labels}>
@@ -101,7 +101,7 @@ const PlanStatistics = ({ plan, onClose }) => {
 
       <div className={styles.charts_row}>
         <div className={styles.chart_container}>
-          <p className={styles.chart_label}>Динамика (последние 7)</p>
+          <p className={styles.chart_label}>Динамика (последние 7 тренировок)</p>
           <WorkoutChart plan={plan} />
         </div>
 
