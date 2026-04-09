@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Checkbox } from '@vkontakte/vkui'
 import { useDispatch } from 'react-redux'
-import { TbShareOff, TbShare, TbMoodSmile, TbMoodOff } from 'react-icons/tb'
-
+import { TbShareOff, TbShare, TbMoodOff } from 'react-icons/tb'
 
 import styles from './DayPlan.module.css'
-import { fetchToggleSessionStatus, fetchUpdateSessionStatus } from '../../../../redux/slices/currentPlanSlice'
+import {
+  fetchToggleSessionStatus,
+  fetchUpdateSessionStatus,
+} from '../../../../redux/slices/currentPlanSlice'
 import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
+import ModalRating from './modal-rating/ModalRating'
 
 const DayPlan = ({
   weekId,
@@ -28,8 +31,17 @@ const DayPlan = ({
   const handleShareStory = () => {
     shareTrainingStory({ title, descr })
   }
-  const handleRatingSession = () => {
-    dispatch(fetchUpdateSessionStatus({ weekId, sessionId: _id, rating, mood}))
+  const handleRatingSession = ({ rating = 0, mood = '' }) => {
+    console.log(rating)
+    console.log(mood)
+    dispatch(
+      fetchUpdateSessionStatus({
+        weekId,
+        sessionId: _id,
+        rating,
+        mood,
+      }),
+    )
   }
 
   useEffect(() => {
@@ -58,14 +70,9 @@ const DayPlan = ({
           />
         </span>
 
-         <div className={styles.day_rating} title="Оценить тренировку">
+        <div className={styles.day_rating} title="Оценить тренировку">
           {checked ? (
-            <TbMoodSmile
-              size={18}
-              className={styles.icon_rating}
-              onClick={() => handleRatingSession()}
-              title="Оценить тренировку"
-            />
+            <ModalRating getData={handleRatingSession} />
           ) : (
             <TbMoodOff
               size={18}

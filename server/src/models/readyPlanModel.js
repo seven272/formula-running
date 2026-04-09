@@ -6,13 +6,13 @@ const sessionSchema = new mongoose.Schema(
     day: { type: String, required: true }, // "Пн", "Вт"...
     type: { type: String, required: true }, // "easy", "interval"...
     title: { type: String, required: true },
-    descr: { type: String, default: '' }, 
+    descr: { type: String, default: '' },
     km: { type: Number, default: 0 },
     load: { type: Number, default: 0 },
     rating: { type: Number, default: 0 },
-    mood: { type: String, default: '' },
+    mood: { type: Number, default: 0 },
     completed: { type: Boolean, default: false }, // статус выполнения
-    completedAt: { type: Date, default: null }
+    completedAt: { type: Date, default: null },
   },
   { _id: true }, // _id поможет нам находить конкретную тренировку для Toggle
 )
@@ -64,11 +64,11 @@ const readyPlanSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
-     pace: {
+    pace: {
       type: Object,
       required: true,
     },
-     time: {
+    time: {
       type: Object,
       required: false,
     },

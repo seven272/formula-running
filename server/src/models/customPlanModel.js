@@ -11,7 +11,7 @@ const sessionSchema = new mongoose.Schema(
     km: { type: Number, default: 0 },
     load: { type: Number, default: 0 },
     rating: { type: Number, default: 0 },
-    mood: { type: String, default: '' },
+    mood: { type: Number, default: 0 },
     completed: { type: Boolean, default: false }, // статус выполнения
     completedAt: { type: Date, default: null },
     isStrength: { type: Boolean, default: false },

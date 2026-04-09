@@ -21,7 +21,7 @@
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 25px minmax(60px, 110px) 1fr 40px 35px 35px;
+  grid-template-columns: 25px minmax(60px, 90px) 1fr 40px 35px 35px;
   justify-content: center;
 }
 
