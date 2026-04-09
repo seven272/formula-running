@@ -6,6 +6,18 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.btn_close {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-grey);
+  border: 2px solid var(--color-grey);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 .progress_section {
   margin-bottom: 16px;
 }
@@ -53,6 +65,25 @@
   text-align: center;
 }
 
-.card_icon { font-size: 20px; margin-bottom: 4px; }
-.card_value { font-weight: 700; font-size: 18px; color: #2c3e50; }
-.card_label { font-size: 11px; color: #939393; text-transform: uppercase; }
+.card_icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.card_value {
+  font-weight: 700;
+  font-size: 18px;
+  color: #2c3e50;
+}
+.card_label {
+  font-size: 11px;
+  color: #939393;
+  text-transform: uppercase;
+}
+
+.charts_row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 50px;
+}

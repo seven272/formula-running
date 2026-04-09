@@ -1,7 +1,10 @@
 import React, { useMemo } from 'react'
+
+import WorkoutChart from './workout-chart/WorkoutChart'
+import MoodPieChart from './mood-pie-chart/MoodPieChart'
 import styles from './PlanStatistics.module.css'
 
-const PlanStatistics = ({ plan }) => {
+const PlanStatistics = ({ plan, onClose }) => {
   const stats = useMemo(() => {
     // 1. Собираем все тренировки из всех недель в один плоский массив
     const allSessions =
@@ -59,6 +62,9 @@ const PlanStatistics = ({ plan }) => {
 
   return (
     <div className={styles.stats_container}>
+      <button className={styles.btn_close} onClick={onClose}>
+        закрыть
+      </button>
       <div className={styles.progress_section}>
         <div className={styles.progress_labels}>
           <span>Прогресс плана</span>
@@ -90,6 +96,18 @@ const PlanStatistics = ({ plan }) => {
             {stats.topMood}
           </span>
           <span className={styles.card_label}>Самочувствие</span>
+        </div>
+      </div>
+
+      <div className={styles.charts_row}>
+        <div className={styles.chart_container}>
+          <p className={styles.chart_label}>Динамика (последние 7)</p>
+          <WorkoutChart plan={plan} />
+        </div>
+
+        <div className={styles.chart_container}>
+          <p className={styles.chart_label}>Всего за план</p>
+          <MoodPieChart plan={plan} />
         </div>
       </div>
     </div>

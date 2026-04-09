@@ -86,7 +86,7 @@ const ModalRating = ({ getData }) => {
 
           <div className={styles.mood_wrapper}>
             <span className={styles.mood_title}>
-              Как далась тренировка?
+              Самочувствие после тренировки?
             </span>
             <ul className={styles.mood_btns}>
               {dictionaryMood.map((elem) => {
@@ -100,7 +100,7 @@ const ModalRating = ({ getData }) => {
                     }
                     onClick={() => setValueMood(elem.value)}
                   >
-                   <span>{elem.title}</span> 
+                   <span className={styles.mood_btn_text}>{elem.title}</span> 
                   </li>
                 )
               })}

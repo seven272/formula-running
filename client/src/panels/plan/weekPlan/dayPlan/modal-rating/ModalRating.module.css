@@ -40,7 +40,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 7px;
+  column-gap: 10px;
 }
 
 .rating_btn {
@@ -67,7 +67,7 @@
   cursor: pointer;
 }
 
-.rating_btn span {
+.rating_btn_text {
   font: var(--font-l);
 }
 
@@ -78,7 +78,7 @@
   justify-content: center;
   align-items: center;
   color: var(--color-grey);
-  border: 1px solid var(--color-grey);
+  /* border: 1px solid var(--color-grey); */
   border-radius: 6px;
   cursor: pointer;
 }
@@ -95,6 +95,6 @@
   cursor: pointer;
 }
 
-.mood_btn span {
+.mood_btn_text {
   font: var(--font-l);
 }

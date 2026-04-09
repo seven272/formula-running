@@ -105,7 +105,12 @@ const Plan = ({ id }) => {
               show={(val) => setShowBlockAbout(val)}
             />
           )}
-          {showBlockStatistics && <PlanStatistics plan={plan} />}
+          {showBlockStatistics && (
+            <PlanStatistics
+              plan={plan}
+              onClose={() => setShowBlockStatistics(false)}
+            />
+          )}
           {showBlockCalcPace && (
             <ShowPace show={setShowBlockCalcPace} paces={plan.pace} />
           )}
@@ -116,19 +121,19 @@ const Plan = ({ id }) => {
             <div className={styles.plan_header_icons}>
               <IoMdInformationCircleOutline
                 className={styles.plan__icon}
-                size={25}
+                size={22}
                 title="детали плана"
                 onClick={() => setShowBlockAbout(true)}
               />
               <FaChartLine
                 className={styles.plan__icon}
-                size={25}
+                size={22}
                 title="статистика"
                 onClick={() => setShowBlockStatistics(true)}
               />
               <MdOutlineRunCircle
                 className={styles.plan__icon}
-                size={25}
+                size={22}
                 title="тренировачный темп"
                 onClick={() => setShowBlockCalcPace(true)}
               />
