@@ -31,15 +31,15 @@ const DayPlan = ({
   const handleShareStory = () => {
     shareTrainingStory({ title, descr })
   }
-  const handleRatingSession = ({ rating = 0, mood = '' }) => {
-    console.log(rating)
-    console.log(mood)
+  const handleRatingSession = (data) => {
+    console.log(data.rating)
+    console.log(data.mood)
     dispatch(
       fetchUpdateSessionStatus({
         weekId,
         sessionId: _id,
-        rating,
-        mood,
+        rating: data.rating,
+        mood: data.mood,
       }),
     )
   }

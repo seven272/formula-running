@@ -49,7 +49,7 @@ const ModalRating = ({ getData }) => {
   return (
     <>
       <TbMoodSmile
-        size={40}
+        size={18}
         className={styles.icon}
         onClick={showModal}
       />
