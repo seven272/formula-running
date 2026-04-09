@@ -31,8 +31,8 @@ const ModalRating = ({ getData }) => {
 
   const handleOk = () => {
     getData({
-      rating: valueRating || 0,
-      mood: valueMood || 0,
+      rating: valueRating || null,
+      mood: valueMood || null,
     })
     setValueRating(null)
     setValueMood(null)

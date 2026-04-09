@@ -16,7 +16,7 @@ const WorkoutChart = ({ plan }) => {
 
   // 2. Берем последние 7 выполненных для динамики
   const data = allSessions
-    .filter((s) => s.completed)
+    .filter(s => s.completed && s.rating !== null && s.mood !== null)
     .slice(-7)
     .map((s, index) => ({
       name: `Тр. ${index + 1}`,

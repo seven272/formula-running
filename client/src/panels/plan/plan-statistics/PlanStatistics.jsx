@@ -18,14 +18,17 @@ const PlanStatistics = ({ plan, onClose }) => {
     const percent =
       totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
 
+    //  Фильтруем только те завершенные тренировки, где есть рейтинг (не null)
+    const ratedSessions = completed.filter((s) => s.rating !== null)
+
     // 3. Средняя оценка
     const avgRating =
-      doneCount > 0
+      ratedSessions.length > 0
         ? (
-            completed.reduce((acc, s) => acc + (s.rating || 0), 0) /
-            doneCount
+            ratedSessions.reduce((acc, s) => acc + s.rating, 0) /
+            ratedSessions.length
           ).toFixed(1)
-        : 0
+        : '—' // Возвращаем прочерк, если оценок еще нет
 
     // 4. Расшифровка настроения (так как в БД это Number)
     const moodLabels = {
@@ -38,7 +41,7 @@ const PlanStatistics = ({ plan, onClose }) => {
 
     // 5. Считаем преобладающее настроение
     const moodMap = completed.reduce((acc, s) => {
-      if (s.mood) {
+      if (s.mood !== null) {
         acc[s.mood] = (acc[s.mood] || 0) + 1
       }
       return acc
@@ -101,12 +104,16 @@ const PlanStatistics = ({ plan, onClose }) => {
 
       <div className={styles.charts_row}>
         <div className={styles.chart_container}>
-          <p className={styles.chart_label}>Динамика (последние 7 тренировок)</p>
+          <p className={styles.chart_label}>
+            Динамика (последние 7 тренировок)
+          </p>
           <WorkoutChart plan={plan} />
         </div>
 
         <div className={styles.chart_container}>
-          <p className={styles.chart_label}>Оценка самочувтсвия, всего за план</p>
+          <p className={styles.chart_label}>
+            Оценка самочувтсвия, всего за план
+          </p>
           <MoodPieChart plan={plan} />
         </div>
       </div>

@@ -311,6 +311,8 @@ const toggleSessionStatus = async (req, res) => {
       session.completedAt = new Date() // Ставим штамп времени
     } else {
       session.completedAt = null // Очищаем, если галочку сняли
+      session.rating = null
+      session.mood = null
     }
     // для глубокого мониторинга изменений вложенных массивов
     plan.markModified('workouts')

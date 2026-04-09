@@ -10,8 +10,8 @@ const sessionSchema = new mongoose.Schema(
     descr: { type: String, default: '' },
     km: { type: Number, default: 0 },
     load: { type: Number, default: 0 },
-    rating: { type: Number, default: 0 },
-    mood: { type: Number, default: 0 },
+    rating: { type: Number, default: null },
+    mood: { type: Number, default: null },
     completed: { type: Boolean, default: false }, // статус выполнения
     completedAt: { type: Date, default: null },
     isStrength: { type: Boolean, default: false },

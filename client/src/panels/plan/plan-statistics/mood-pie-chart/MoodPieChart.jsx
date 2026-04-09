@@ -11,7 +11,7 @@ const MoodPieChart = ({ plan }) => {
   const moodData = React.useMemo(() => {
     const allSessions =
       plan?.workouts?.flatMap((week) => week.sessions) || []
-    const completed = allSessions.filter((s) => s.completed && s.mood)
+    const completed = allSessions.filter((s) => s.completed && s.mood !== 0)
 
     const moodLabels = {
       1: 'Очень устал',
