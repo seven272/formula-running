@@ -19,9 +19,11 @@ const ModalRating = ({ getData }) => {
   ]
 
   const dictionaryMood = [
-    { title: '😞 тяжело', value: 1 },
-    { title: '😐 нормально', value: 3 },
-    { title: '🙂 отлично', value: 5 },
+    { title: '😫', value: 1 },
+    { title: '😞', value: 2 },
+    { title: '😐', value: 3 },
+    { title: '🙂', value: 4 },
+    { title: '😀', value: 5 },
   ]
   const showModal = () => {
     setOpenModal(true)

@@ -68,11 +68,11 @@
 }
 
 .rating_btn span {
-  font: var(font-l);
+  font: var(--font-l);
 }
 
 .mood_btn {
-  width: 90px;
+  width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -84,7 +84,7 @@
 }
 
 .mood_btn_active {
-  width: 90px;
+  width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -96,5 +96,5 @@
 }
 
 .mood_btn span {
-  font: var(font-ms);
+  font: var(--font-l);
 }
