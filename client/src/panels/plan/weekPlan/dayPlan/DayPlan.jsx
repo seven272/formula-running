@@ -62,9 +62,9 @@ const DayPlan = ({
 
         <span className={styles.day_check}>
           <Checkbox
-            label="Я принимаю условия соглашения"
             value={isSelected}
             changed={handleCheck}
+            isDisabled={false}
           />
         </span>
 
