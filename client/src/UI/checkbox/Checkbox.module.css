@@ -17,8 +17,8 @@
 
 /* Базовый стиль кастомного квадратика */
 .checkmark {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   border: 2px solid var(--color-grey);
   border-radius: 4px;
   background-color: var(--color-white);

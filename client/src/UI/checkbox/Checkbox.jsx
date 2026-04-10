@@ -8,7 +8,7 @@ const Checkbox = ({
   ...props
 }) => {
   return (
-    <label className={styles.custom_checkbox}>
+    <label className={styles.checkbox_label}>
       <input
         {...props}
         type="checkbox"

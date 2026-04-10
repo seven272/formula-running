@@ -31,8 +31,10 @@ const WorkoutChart = ({ plan }) => {
     return (
       <div
         style={{
+          width: '100%',
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           columnGap: '10px',
           color: '#808080',
         }}
