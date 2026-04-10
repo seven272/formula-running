@@ -1,67 +1,70 @@
-/* Скрываем стандартный инпут, но оставляем его доступным для скринридеров */
-.real_checkbox {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-}
-
-.custom_checkbox {
-  display: flex;
+.checkbox_label {
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
-  /* gap: 8px; */
+  user-select: none;
 }
 
-/* Квадратик чекбокса */
+/* Полностью скрываем реальный инпут, но оставляем его рабочим */
+.real_checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+/* Базовый стиль кастомного квадратика */
 .checkmark {
   width: 20px;
   height: 20px;
   border: 2px solid #ccc;
   border-radius: 4px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  flex-shrink: 0; /* Чтобы не сжимался */
   position: relative;
-  transition: all 0.2s;
 }
 
-/* Стили при наведении */
-.custom_checkbox:hover .checkmark {
+/* Наведение на всю область лейбла */
+.checkbox_label:hover .checkmark {
   border-color: #007bff;
 }
 
-/* Что происходит, когда инпут ВЫБРАН */
-.real_checkbox:checked + .custom_checkbox .checkmark {
+/* МАГИЯ: Когда скрытый инпут CHECKED, меняем стиль следующего за ним .checkmark */
+.real_checkbox:checked + .checkmark {
   background-color: #007bff;
   border-color: #007bff;
 }
 
-/* Рисуем галочку через псевдоэлемент */
+/* Рисуем галочку внутри */
 .checkmark::after {
-  content: '';
+  content: "";
   position: absolute;
-  display: none;
-  /* Рисуем Г-образную линию и поворачиваем её */
   left: 6px;
   top: 2px;
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
 }
 
-/* Показываем галочку только если инпут выбран */
-.real_checkbox:checked + .custom_checkbox .checkmark::after {
-  display: block;
+/* Показываем галочку при CHECKED */
+.real_checkbox:checked + .checkmark::after {
+  transform: rotate(45deg) scale(1);
 }
 
-/* Добавляем обводку при фокусе (для доступности с клавиатуры) */
-.real_checkbox:focus-visible + .custom_checkbox .checkmark {
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+/* Фокус для доступности (Tab) */
+.real_checkbox:focus-visible + .checkmark {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
-/* Стили для заблокированного состояния */
-.real_checkbox:disabled + .custom_checkbox {
-  opacity: 0.5;
+/* Состояние Disabled */
+.real_checkbox:disabled + .checkmark {
+  background-color: #f0f0f0;
+  border-color: #ddd;
   cursor: not-allowed;
 }

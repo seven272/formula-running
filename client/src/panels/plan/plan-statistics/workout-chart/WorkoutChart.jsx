@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts'
+import { BsDatabaseDash } from 'react-icons/bs'
 
 const WorkoutChart = ({ plan }) => {
   // 1. "Разглаживаем" все сессии из всех недель в один массив
@@ -27,7 +28,22 @@ const WorkoutChart = ({ plan }) => {
     }))
 
   if (data.length < 2)
-    return <span>Мало данных. Нужны минимум 2 тренировки.</span>
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          columnGap: '10px',
+          color: '#808080',
+        }}
+      >
+        <BsDatabaseDash size={25} />{' '}
+        <span>
+          Мало данных. Нужны минимум 2 тренировки c оценкой и
+          самочувтсвием.
+        </span>
+      </div>
+    )
 
   return (
     <div style={{ width: '100%', height: 220 }}>
