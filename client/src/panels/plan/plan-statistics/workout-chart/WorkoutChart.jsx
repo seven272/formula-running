@@ -37,8 +37,13 @@ const WorkoutChart = ({ plan }) => {
           color: '#808080',
         }}
       >
-        <BsDatabaseDash size={25} />{' '}
-        <span>
+        <BsDatabaseDash size={25} />
+        <span
+          style={{
+            width: '100%',
+            textAlign: 'left',
+          }}
+        >
           Мало данных. Нужны минимум 2 тренировки c оценкой и
           самочувтсвием.
         </span>

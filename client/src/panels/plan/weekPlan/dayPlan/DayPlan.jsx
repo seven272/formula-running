@@ -73,7 +73,7 @@ const DayPlan = ({
             <ModalRating getData={handleRatingSession} />
           ) : (
             <TbMoodOff
-              size={20}
+              size={25}
               className={styles.icon_rating_disabled}
             />
           )}
@@ -82,14 +82,14 @@ const DayPlan = ({
         <div className={styles.day_share} title="Поделиться в Сторис">
           {isSelected ? (
             <TbShare
-              size={20}
+              size={25}
               className={styles.icon_share}
               onClick={() => handleShareStory(title, descr)}
               title="Поделиться в Сторис"
             />
           ) : (
             <TbShareOff
-              size={20}
+              size={25}
               className={styles.icon_share_disabled}
             />
           )}

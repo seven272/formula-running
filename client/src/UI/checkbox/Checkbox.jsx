@@ -8,21 +8,18 @@ const Checkbox = ({
   ...props
 }) => {
   return (
-    <div className={styles.checkbox_wrapper}>
-      <label className={styles.custom_checkbox}>
-        {/* label — обертка */}
-        <input
-          {...props}
-          type="checkbox"
-          className={styles.real_checkbox}
-          checked={value}
-          onChange={(evt) => changed(evt.target.checked)}
-          disabled={isDisabled}
-        />
-        <span className={styles.checkmark}></span>
-        {label && <span className={styles.label_text}>{label}</span>}
-      </label>
-    </div>
+    <label className={styles.custom_checkbox}>
+      <input
+        {...props}
+        type="checkbox"
+        className={styles.real_checkbox}
+        checked={value}
+        onChange={(evt) => changed(evt.target.checked)}
+        disabled={isDisabled}
+      />
+      <span className={styles.checkmark}></span>
+      {label && <span className={styles.label_text}>{label}</span>}
+    </label>
   )
 }
 
