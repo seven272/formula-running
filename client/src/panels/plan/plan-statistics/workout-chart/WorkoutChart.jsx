@@ -16,7 +16,9 @@ const WorkoutChart = ({ plan }) => {
 
   // 2. Берем последние 7 выполненных для динамики
   const data = allSessions
-    .filter(s => s.completed && s.rating !== null && s.mood !== null)
+    .filter(
+      (s) => s.completed && s.rating !== null && s.mood !== null,
+    )
     .slice(-7)
     .map((s, index) => ({
       name: `Тр. ${index + 1}`,
@@ -24,7 +26,8 @@ const WorkoutChart = ({ plan }) => {
       mood: s.mood || 0, // В БД это число 1-5
     }))
 
-  if (data.length < 2) return null
+  if (data.length < 2)
+    return <span>Мало данных. Нужны минимум 2 тренировки.</span>
 
   return (
     <div style={{ width: '100%', height: 220 }}>

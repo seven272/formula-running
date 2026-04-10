@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Checkbox } from '@vkontakte/vkui'
 import { useDispatch } from 'react-redux'
 import { TbShareOff, TbShare, TbMoodOff } from 'react-icons/tb'
 
@@ -10,6 +9,7 @@ import {
 } from '../../../../redux/slices/currentPlanSlice'
 import { shareTrainingStory } from '../../../../utils/vkAppShareStory'
 import ModalRating from './modal-rating/ModalRating'
+import Checkbox from '../../../../UI/checkbox/Checkbox'
 
 const DayPlan = ({
   weekId,
@@ -21,10 +21,10 @@ const DayPlan = ({
   numberDayInWeek,
 }) => {
   const dispatch = useDispatch()
-  const [checked, setChecked] = useState(completed)
+  const [isSelected, setIsSelected] = useState(completed)
 
-  const handleCheck = (evt) => {
-    setChecked(evt.target.checked)
+  const handleCheck = (newValue) => {
+    setIsSelected(newValue)
     dispatch(fetchToggleSessionStatus({ weekId, sessionId: _id }))
   }
 
@@ -32,8 +32,6 @@ const DayPlan = ({
     shareTrainingStory({ title, descr })
   }
   const handleRatingSession = (data) => {
-    console.log(data.rating)
-    console.log(data.mood)
     dispatch(
       fetchUpdateSessionStatus({
         weekId,
@@ -45,7 +43,7 @@ const DayPlan = ({
   }
 
   useEffect(() => {
-    setChecked(completed)
+    setIsSelected(completed)
   }, [completed])
 
   const isDark = numberDayInWeek % 2 !== 0
@@ -64,34 +62,34 @@ const DayPlan = ({
 
         <span className={styles.day_check}>
           <Checkbox
-            noPadding="true"
-            checked={checked}
-            onChange={handleCheck}
+            label="Я принимаю условия соглашения"
+            value={isSelected}
+            changed={handleCheck}
           />
         </span>
 
         <div className={styles.day_rating} title="Оценить тренировку">
-          {checked ? (
+          {isSelected ? (
             <ModalRating getData={handleRatingSession} />
           ) : (
             <TbMoodOff
-              size={18}
+              size={20}
               className={styles.icon_rating_disabled}
             />
           )}
         </div>
 
         <div className={styles.day_share} title="Поделиться в Сторис">
-          {checked ? (
+          {isSelected ? (
             <TbShare
-              size={18}
+              size={20}
               className={styles.icon_share}
               onClick={() => handleShareStory(title, descr)}
               title="Поделиться в Сторис"
             />
           ) : (
             <TbShareOff
-              size={18}
+              size={20}
               className={styles.icon_share_disabled}
             />
           )}

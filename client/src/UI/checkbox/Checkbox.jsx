@@ -1,29 +1,26 @@
-import React, { useState } from 'react'
-
 import styles from './Checkbox.module.css'
 
-const Checkbox = ({ label = '', value, isDisabled = false, id, changed }) => {
-  // устанавливаем возможность задать выбранный инпут или нет при встраивании в какой-то компонет, затем это устанвливаем как значение по умолчанию
-  const defaultChecked = value ? true : false
-  // создаем стейт для превращиние чекбокса в управляемый инпут
-  const [isChecked, setIsChecked] = useState(defaultChecked)
-
-  const handleCheckbox = () => {
-    setIsChecked((prev) => !prev)
-    changed() 
-  } 
-
+const Checkbox = ({
+  label,
+  value,
+  isDisabled,
+  changed,
+  ...props
+}) => {
   return (
     <div className={styles.checkbox_wrapper}>
-      <label className={styles.checkbox_label}>
-        <input 
-          type="checkbox" 
-          className={isChecked ? styles.checked : ''}
-          checked={value}
-          onChange={handleCheckbox}
-          disabled={isDisabled}
-        />
-        <span>{label}</span>
+      <input
+        {...props}
+        type="checkbox"
+        className={styles.real_checkbox} // Скрываем
+        checked={value}
+        onChange={(evt) => changed(evt.target.checked)}
+        disabled={isDisabled}
+      />
+      <label className={styles.custom_checkbox}>
+        <span className={styles.checkmark}></span>
+        {/* Рисуем здесь */}
+        {label && <span className={styles.label_text}>{label}</span>}
       </label>
     </div>
   )

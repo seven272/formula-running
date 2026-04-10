@@ -1,7 +1,7 @@
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-import { FaRunning } from 'react-icons/fa'
 import { VscGraph } from 'react-icons/vsc'
 import { FaHeartPulse } from 'react-icons/fa6'
+import { GiStrong } from "react-icons/gi";
 
 import styles from './PlanFooter.module.css'
 
@@ -30,11 +30,11 @@ const PlanFooter = () => {
       <li
         className={styles.item}
         onClick={() => {
-          routeNavigator.push('/info/pace')
+          routeNavigator.push('/info/strength-training')
         }}
       >
-        <FaRunning size={18} className={styles.icon} />
-        <span>Темп</span>
+        <GiStrong size={18} className={styles.icon} />
+        <span>Силовые</span>
       </li>
     </ul>
   )

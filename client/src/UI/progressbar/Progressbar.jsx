@@ -8,9 +8,6 @@ const Progressbar = ({ completed }) => {
 
   return (
     <div className={styles.progressbar}>
-      {/* <span className={styles.title}> */}
-        {/* План выполнен на <span>{`${completed}%`}</span> */}
-      {/* </span> */}
       <div className={styles.container}>
         <div className={styles.filler} style={fillerWidth}>
           <span className={styles.label}>{`${completed}%`}</span>
