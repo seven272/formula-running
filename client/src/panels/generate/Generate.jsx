@@ -130,7 +130,7 @@ const Generate = ({ id }) => {
   }
 
   const handlePay = () => {
-    payFiatMoney('custom', '?')
+    payFiatMoney('custom', '?', 10)
   }
 
   useEffect(() => {

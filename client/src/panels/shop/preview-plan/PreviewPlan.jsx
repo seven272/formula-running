@@ -40,7 +40,7 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   const buyPlan = (_id) => {
-    payFiatMoney('ready', _id)
+    payFiatMoney('ready', _id, 10)
     setIsPurchased((prev) => !prev)
   }
 

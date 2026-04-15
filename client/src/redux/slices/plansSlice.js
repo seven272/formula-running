@@ -66,7 +66,7 @@ const fetchGetPurchasedPlans = createAsyncThunk(
 const fetchBuyPlan = createAsyncThunk(
   'plans/fetchBuyPlan',
   async (_id, { dispatch, getState }) => {
-    const state = getState()
+    const state = getState() 
     const userVkId = state.user.vkId
     try {
       const res = await axios.post('/user/buy', {

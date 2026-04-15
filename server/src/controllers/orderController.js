@@ -182,7 +182,7 @@ const vkPayFiat = async (req, res) => {
         { upsert: true, new: true },
       )
 
-      // Создаем запись о покупке (совместимо с вашей схемой)
+      // Создаем запись о покупке 
       await Order.create({
         orderId: vkOrderId,
         userId: user._id,

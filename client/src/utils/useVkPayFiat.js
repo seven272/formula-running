@@ -10,17 +10,17 @@ const useVkPayFiat = () => {
   const [loading, setLoading] = useState(false)
 
   // Добавляем параметр amount (цена в рублях)
-  const payFiatMoney = async (typePlan, planId, amount = 500) => {
+  const payFiatMoney = async (typePlan, planId, amount = 10) => {
     try {
       setLoading(true)
 
       // 1. Вызываем окно оплаты VK Pay
       const data = await bridge.send('VKWebAppOpenPayForm', {
-        app_id: 53406141, // ЗАМЕНИТЕ НА ВАШ ID ПРИЛОЖЕНИЯ
+        app_id: 53406141, //  ID ПРИЛОЖЕНИЯ
         action: 'pay-to-group',
         params: {
           amount: amount, // сумма в рублях
-          description: `Оплата плана: ${typePlan}`,
+          description: `${typePlan === 'ready' ? 'Покупка готового тренированого плана' : 'Оплата генерации тренировачного плана'}`,
           group_id: 228182555, // ID вашего сообщества
           data: `${typePlan}_${planId}`, // Передаем метку для бэкенда
         },

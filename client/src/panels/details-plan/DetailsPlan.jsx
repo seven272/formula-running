@@ -58,7 +58,7 @@ const DetailsPlan = ({ id }) => {
   }
 
   const buyPlan = () => {
-    payFiatMoney('ready', currentId)
+    payFiatMoney('ready', currentId, 10)
     setIsPurchased((prev) => !prev)
   }
 
