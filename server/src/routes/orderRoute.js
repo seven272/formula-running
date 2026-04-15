@@ -8,13 +8,14 @@ vkPayFiat
 
 
 import vkPayMiddleware from '../middleware/vkPayMiddleware.js'
+import vkCheckKeyGroup from '../middleware/vkCheckKeyGroup.js'
 import checkVkId from '../middleware/сheckVkId.js'
 
 const router = express.Router()
 
 //роуты авторизации
 router.post('/pay-vk', vkPayMiddleware, payVk)
-router.post('/fiat-pay-vk', vkPayFiat)
+router.post('/fiat-pay-vk', vkCheckKeyGroup, vkPayFiat)
 router.get('/check-token', checkVkId, checkCustomToken)
 
 export default router
