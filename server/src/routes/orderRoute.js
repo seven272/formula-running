@@ -3,7 +3,7 @@ import express from 'express'
 import {
 payVk,
 checkCustomToken,
-confirmVkpay
+vkPayFiat
 } from '../controllers/orderController.js'
 
 
@@ -14,7 +14,7 @@ const router = express.Router()
 
 //роуты авторизации
 router.post('/pay-vk', vkPayMiddleware, payVk)
-router.post('/vkpay-confirm', confirmVkpay)
+router.post('/fiat-pay-vk', vkPayFiat)
 router.get('/check-token', checkVkId, checkCustomToken)
 
 export default router

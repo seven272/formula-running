@@ -143,16 +143,46 @@ const checkCustomToken = async (req, res) => {
   }
 }
 
-const confirmVkpay = async (req, res) => {
-  const { type } = req.body
+const vkPayFiat = async (req, res) => {
+  const { type, object, group_id } = req.body
 
+  // 1. Подтверждение адреса (уже сделали)
   if (type === 'confirmation') {
-    // Возвращаем строку подтверждения
-    return res.status(200).send('0b88cf02')
+    return res.send('0b88cf02')
   }
 
-  // Обработка других событий (платежей)
-  res.status(200).send('ok')
+  // 2. Обработка платежа
+  if (type === 'vkpay_transaction') {
+    const {
+      from_id, // Кто оплатил (ID пользователя)
+      amount, // Сумма в копейках (1500 руб = 150000)
+      description, // Описание
+      data, // Ваша метка (например, 'plan_id_101'), которую вы передавали в SDK
+    } = object
+
+    // ВАЖНО: Сумма приходит в МИНОРНЫХ единицах (копейках)
+    const amountInRub = amount / 100
+
+    try {
+      // ЗДЕСЬ ВАША ЛОГИКА:
+      // 1. Проверяем в базе, что такой план существует и цена совпадает
+      // 2. Помечаем в базе данных, что пользователь [from_id] купил план [data]
+      // 3. Отправляем пользователю сообщение в ВК: "Оплата прошла! Ваш план доступен."
+
+      console.log(
+        `Пользователь ${from_id} купил ${data} за ${amountInRub} руб.`,
+      )
+
+      // Возвращаем "ok", чтобы ВК перестал слать уведомления об этом платеже
+      return res.send('ok')
+    } catch (error) {
+      console.error('Ошибка при выдаче доступа:', error)
+      return res.status(500).send('internal error')
+    }
+  }
+
+  // Обязательно возвращаем "ok" для всех остальных типов событий
+  res.send('ok')
 }
 
-export { payVk, checkCustomToken, confirmVkpay }
+export { payVk, checkCustomToken, vkPayFiat }
