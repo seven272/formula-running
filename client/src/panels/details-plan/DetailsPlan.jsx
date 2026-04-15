@@ -17,7 +17,8 @@ import {
 } from '../../redux/slices/plansSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import { useVkPay } from '../../utils/useVkPay'
+// import { useVkPay } from '../../utils/useVkPay'
+import { useVkPayFiat } from '../../utils/useVkPayFiat'
 
 const DetailsPlan = ({ id }) => {
   const params = useParams()
@@ -27,7 +28,7 @@ const DetailsPlan = ({ id }) => {
   const { allPlans, purchasedPlans } = useSelector(
     (state) => state.plans,
   )
-  const { payVirtualMoney } = useVkPay()
+  const { payFiatMoney } = useVkPayFiat()
   const [plan, setPlan] = useState({})
   const [training, setTraining] = useState([])
   const [isPurchased, setIsPurchased] = useState(false)
@@ -57,7 +58,7 @@ const DetailsPlan = ({ id }) => {
   }
 
   const buyPlan = () => {
-    payVirtualMoney('ready', currentId)
+    payFiatMoney('ready', currentId)
     setIsPurchased((prev) => !prev)
   }
 

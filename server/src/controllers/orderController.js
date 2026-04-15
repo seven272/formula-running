@@ -151,38 +151,62 @@ const vkPayFiat = async (req, res) => {
     return res.send('0b88cf02')
   }
 
-  // 2. Обработка платежа
-  if (type === 'vkpay_transaction') {
-    const {
-      from_id, // Кто оплатил (ID пользователя)
-      amount, // Сумма в копейках (1500 руб = 150000)
-      description, // Описание
-      data, // Ваша метка (например, 'plan_id_101'), которую вы передавали в SDK
-    } = object
+  try {
+    // 2. Обработка успешного платежа
+    if (type === 'vkpay_transaction') {
+      const {
+        from_id, // vkId пользователя
+        order_id, // Уникальный ID транзакции VK Pay
+        amount, // Сумма в копейках
+        data, // Наша строка 'ready_id' или 'custom_id'
+      } = object
 
-    // ВАЖНО: Сумма приходит в МИНОРНЫХ единицах (копейках)
-    const amountInRub = amount / 100
+      // Парсим данные как в старом коде
+      const valuesItem = data ? data.split('_') : []
+      const valueTypePlan = valuesItem[0] || 'ready'
+      const cleanPlanId = valuesItem[1] || 'without Id'
 
-    try {
-      // ЗДЕСЬ ВАША ЛОГИКА:
-      // 1. Проверяем в базе, что такой план существует и цена совпадает
-      // 2. Помечаем в базе данных, что пользователь [from_id] купил план [data]
-      // 3. Отправляем пользователю сообщение в ВК: "Оплата прошла! Ваш план доступен."
+      const vkOrderId = String(order_id)
+      const vkId = String(from_id)
 
-      console.log(
-        `Пользователь ${from_id} купил ${data} за ${amountInRub} руб.`,
+      // Проверка на дубликаты (защита от повторных уведомлений)
+      const existing = await Order.findOne({ orderId: vkOrderId })
+      if (existing) {
+        return res.send('ok') // Обязательно 'ok'
+      }
+
+      // Находим или создаем пользователя
+      const user = await User.findOneAndUpdate(
+        { vkId: vkId },
+        { $setOnInsert: { vkId: vkId } },
+        { upsert: true, new: true },
       )
 
-      // Возвращаем "ok", чтобы ВК перестал слать уведомления об этом платеже
-      return res.send('ok')
-    } catch (error) {
-      console.error('Ошибка при выдаче доступа:', error)
-      return res.status(500).send('internal error')
-    }
-  }
+      // Создаем запись о покупке (совместимо с вашей схемой)
+      await Order.create({
+        orderId: vkOrderId,
+        userId: user._id,
+        vkId: vkId,
+        typePlan: valueTypePlan,
+        planId:
+          valueTypePlan === 'ready' ? cleanPlanId : 'without Id',
+        status: 'completed',
+        isUsed: false,
+      })
 
-  // Обязательно возвращаем "ok" для всех остальных типов событий
-  res.send('ok')
+      // 3. Отвечаем ВК, что уведомление получено успешно
+      return res.send('ok')
+    }
+
+    // На все остальные события (например, подписка на сообщество и т.д.)
+    return res.send('ok')
+  } catch (error) {
+    console.error('Ошибка в обработке VK Pay:', error)
+    // В Callback API даже при ошибке лучше вернуть 200,
+    // чтобы ВК не завалил сервер повторными запросами,
+    // либо логировать ошибку отдельно.
+    return res.status(500).send('internal error')
+  }
 }
 
 export { payVk, checkCustomToken, vkPayFiat }

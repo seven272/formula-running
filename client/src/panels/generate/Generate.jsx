@@ -19,14 +19,15 @@ import {
 } from '../../redux/slices/customPlanSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import { useVkPay } from '../../utils/useVkPay'
+// import { useVkPay } from '../../utils/useVkPay'
+import { useVkPayFiat } from '../../utils/useVkPayFiat'
 
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
   const { hasToken, isFreeTry } = useSelector(
     (state) => state.customPlan,
   )
-  const { payVirtualMoney } = useVkPay()
+  const { payFiatMoney } = useVkPayFiat()
 
   const [dataPlan, setDataPlan] = useState({
     goal: '',
@@ -129,7 +130,7 @@ const Generate = ({ id }) => {
   }
 
   const handlePay = () => {
-    payVirtualMoney('custom', '?')
+    payFiatMoney('custom', '?')
   }
 
   useEffect(() => {

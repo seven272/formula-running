@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
 import templatePlanImg from '../../../assets/images/template_plan.png'
-import { useVkPay } from '../../../utils/useVkPay'
+// import { useVkPay } from '../../../utils/useVkPay'
+import { useVkPayFiat } from '../../../utils/useVkPayFiat'
 import styles from './PreviewPlan.module.css'
 
 const URL = import.meta.env.VITE_PUBLIC_URL
@@ -21,7 +22,7 @@ const PreviewPlan = ({ objPlan }) => {
     (state) => state.plans.purchasedPlans || [],
   )
   const [isPurchased, setIsPurchased] = useState(false)
-  const { payVirtualMoney } = useVkPay()
+  const { payFiatMoney } = useVkPayFiat()
 
   const canShowPayments = () => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -39,7 +40,7 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   const buyPlan = (_id) => {
-    payVirtualMoney('ready', _id)
+    payFiatMoney('ready', _id)
     setIsPurchased((prev) => !prev)
   }
 
