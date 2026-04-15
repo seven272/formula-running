@@ -21,7 +21,7 @@ dotenv.config()
 const PORT = process.env.PORT || 5010
 //текущая папка
 const __dirname = import.meta.dirname
-
+ 
 //Middlewares
 //разрешаю запросы к серверу с других ip адресов CORS POLICY
 app.use(cors(corsOptions))

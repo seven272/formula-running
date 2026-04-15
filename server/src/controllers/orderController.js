@@ -143,4 +143,16 @@ const checkCustomToken = async (req, res) => {
   }
 }
 
-export { payVk, checkCustomToken }
+const confirmVkpay = async (req, res) => {
+  const { type } = req.body
+
+  if (type === 'confirmation') {
+    // Возвращаем строку подтверждения
+    return res.status(200).send('0b88cf02')
+  }
+
+  // Обработка других событий (платежей)
+  res.status(200).send('ok')
+}
+
+export { payVk, checkCustomToken, confirmVkpay }
