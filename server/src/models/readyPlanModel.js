@@ -75,7 +75,6 @@ const readyPlanSchema = new mongoose.Schema(
     isFree: {
       type: Boolean,
       default: false,
-      required: true,
     },
     workouts: {
       type: [weekSchema],

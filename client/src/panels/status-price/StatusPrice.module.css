@@ -1,0 +1,85 @@
+.container {
+  padding: 20px;
+  /* background: #f0f2f5; Светло-серый фон как в ВК */
+  border-radius: 12px;
+}
+
+.title {
+  text-align: center;
+  font: var(--font-l);
+  color: var(--color-grey);
+
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* 2 колонки для компактности */
+  gap: 12px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-grey);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-grey);
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-blue); /* Ваш основной синий */
+  margin: 8px 0;
+}
+
+.features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 12px 0;
+  flex-grow: 1;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.features li span {
+  color: #818c99;
+}
+
+.no {
+  opacity: 0.5;
+}
+.yes {
+  font-weight: 500;
+}
+
+.buy_btn {
+  background: var(--color-blue);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.buy_btn:active {
+  opacity: 0.8;
+}
+

@@ -1,66 +1,59 @@
 import bridge from '@vkontakte/vk-bridge'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-
 import { message } from 'antd'
-import { changeStatusToken } from '../redux/slices/customPlanSlice'
-import { fetchBuyPlan } from '../redux/slices/plansSlice'
+
+// Предположим, вы создадите новый экшен для обновления профиля
+import { fetchUpdateUserTier } from '../redux/slices/userSlice'
 
 const useVkPay = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
-  const payVirtualMoney = async (typePlan, planId) => {
-    
+  const buyUserTier = async (tierId) => {
+    setLoading(true)
     try {
-      // 1. Вызываем нативное окно оплаты VK
+      // 1. Вызываем окно оплаты VK.
+      // В item теперь передаем статус, например: "tier_pro"
       const data = await bridge.send('VKWebAppShowOrderBox', {
-        type: 'item', // Всегда должно быть 'item'
-        item: `${typePlan}_${planId}`, // тип плана(ready/custom) и идентификатор товара
+        type: 'item',
+        item: `tier_${tierId}`,
       })
-      console.log(data)
+
       if (data.success) {
-        // 2. Если VK вернул success, значит пользователь нажал "Оплатить"
-        // и деньги (голоса) списались.
-        // ВАЖНО: В этот момент бэкенд ПАРАЛЛЕЛЬНО получает callback от VK.
-        // Нужно подождать секунду или обновить данные пользователя.
-        message.success('Оплата прошла успешно!')
-        // Здесь вызов функции обновления баланса или статуса оплаты
-        if (typePlan === 'custom') {
-          setLoading(true)
-          setTimeout(() => {
-            dispatch(changeStatusToken(true))
-            setLoading(false)
-          }, 1500)
-        } else if (typePlan === 'ready') {
-          setLoading(true)
-          setTimeout(() => {
-            dispatch(fetchBuyPlan(planId))
-            setLoading(false)
-          }, 1500)
-        } else {
-          setLoading(true)
-          setTimeout(() => {
+        message.success(
+          'Оплата прошла успешно! Ваш статус обновляется...',
+        )
+
+        // 2. Имитируем небольшую задержку, чтобы бэкенд успел обработать callback от VK
+        setTimeout(async () => {
+          try {
+            // 3. Запрашиваем обновление данных пользователя с бэкенда.
+            // Бэкенд проверит транзакцию и вернет новый tier и новые лимиты.
+            await dispatch(fetchUpdateUserTier()).unwrap()
+            message.success('Новые возможности доступны!')
+          } catch (err) {
             message.error(
-              'Что-то пошло не так после получения платежа...',
+              'Ошибка при обновлении статуса в приложении',
             )
+          } finally {
             setLoading(false)
-          }, 3500)
-        }
+          }
+        }, 2000)
       }
     } catch (error) {
-      // Пользователь закрыл окно или произошла ошибка (например, ошибка 13)
+      setLoading(false)
       console.error('Ошибка при оплате:', error)
       if (error.error_data && error.error_data.error_code === 4) {
-        message.warning('Покупка отменена пользователем')
+        message.warning('Покупка отменена')
       } else {
-        message.error('Произошла ошибка при связи с сервером VK')
+        message.error('Ошибка связи с VK')
       }
     }
   }
 
   return {
-    payVirtualMoney,
+    buyUserTier,
     loading,
   }
 }

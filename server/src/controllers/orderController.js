@@ -3,14 +3,25 @@ import Order from '../models/orderModel.js'
 import CustomPlan from '../models/customPlanModel.js'
 
 const ITEMS_STORE = {
-  ready: {
-    title: 'Покупка готового плана',
-    price: 500,
+  tier_athlete: {
+    title: 'Статус: Атлет',
+    price: 3,
+    customLimit: 3,
+    readyLimit: 3,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
-  custom: {
-    title: 'Создание персонального плана',
-    price: 500,
+  tier_pro: {
+    title: 'Статус: Профи',
+    price: 7,
+    customLimit: 10,
+    readyLimit: 5,
+    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+  },
+  tier_champion: {
+    title: 'Статус: Чемпион',
+    price: 12,
+    customLimit: 15,
+    readyLimit: 10,
     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
   },
 }
@@ -19,19 +30,14 @@ const payVk = async (req, res) => {
   const { notification_type, item, user_id, order_id, status } =
     req.body
 
-  const valuesItem = item.split('_')
-  //тип плана ready / custom
-  const valueTypePlan = valuesItem[0]
-  // Извлекаем чистый ID плана из строки 'ready_id'/'custom_id'
-  const cleanPlanId = valuesItem[1] || '?' // если ID нет, берем тип
-
   try {
     // ЗАПРОС ИНФОРМАЦИИ О ТОВАРЕ
     if (
       notification_type === 'get_item' ||
       notification_type === 'get_item_test'
     ) {
-      const product = ITEMS_STORE[valueTypePlan]
+
+      const product = ITEMS_STORE[item]
 
       if (!product) {
         // Формат ошибки по документации VK
@@ -59,6 +65,10 @@ const payVk = async (req, res) => {
       const vkOrderId = String(order_id)
       const vkId = String(user_id)
 
+       const product = ITEMS_STORE[item];
+       if (!product) return res.json({ error: { error_code: 20, error_msg: 'Данные тира не найдены' } });
+      const newTier = item.replace('tier_', '');
+
       //Проверка на дубликаты заказов. Проверяем, не обрабатывали ли мы этот order_id ранее
       const existing = await Order.findOne({ orderId: vkOrderId })
       if (existing) {
@@ -74,9 +84,16 @@ const payVk = async (req, res) => {
       // 2. Создаем или находим пользователя (без выдачи плана)
       const user = await User.findOneAndUpdate(
         { vkId: vkId },
-        { $setOnInsert: { vkId: vkId } }, // Если юзер не найден, то создаем и передаем данные для создания
-        { upsert: true, new: true },
-      )
+        {
+          $set: {
+            tier: newTier,
+            customPlansLimit: product.customLimit,
+            readyPlansLimit: product.readyLimit,
+          }
+        },
+        { upsert: true, new: true }
+      );
+
 
       // 3. Создаем запись о покупке
       // Именно наличие этого Order будет основанием для выдачи плана в другом контроллере
@@ -84,11 +101,9 @@ const payVk = async (req, res) => {
         orderId: vkOrderId,
         userId: user._id, // Привязываем к внутреннему ID пользователя
         vkId: vkId,
-        typePlan: valueTypePlan,
-        planId:
-          valueTypePlan === 'ready' ? cleanPlanId : 'without Id',
+        typeOrder: 'tier_upgrade',
+        tierId: item,
         status: 'completed',
-        isUsed: false,
       })
       // 4. Отвечаем VK. VK ожидает id заказа в системе (app_order_id)
       return res.json({
@@ -182,7 +197,7 @@ const vkPayFiat = async (req, res) => {
         { upsert: true, new: true },
       )
 
-      // Создаем запись о покупке 
+      // Создаем запись о покупке
       await Order.create({
         orderId: vkOrderId,
         userId: user._id,

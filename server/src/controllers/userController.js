@@ -429,107 +429,6 @@ const resetProgress = async (req, res) => {
   }
 }
 
-const buyPlan = async (req, res) => {
-  const vkId = req.vkId
-  const readyPlanId = req.body.readyPlanId
-
-  try {
-    const template = await ReadyPlan.findById(readyPlanId)
-    if (!template) {
-      return res.status(404).json({ message: 'План не найден' })
-    }
-    const user = await User.findOne({ vkId })
-    //проверяю существует или авторизован юзер
-    if (!user) {
-      return res.status(403).json({
-        message: 'Необходимо авторизоваться, чтобы купить план',
-      })
-    }
-    //если план не бесплатный проверяем успешность оплаты,ищем в базе Order запись, которую создал payVk
-    if (!template.isFree) {
-      const paymentRecord = await Order.findOne({
-        vkId: vkId,
-        typePlan: 'ready',
-        planId: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
-        status: 'completed',
-      })
-
-      // Если записи нет — значит, оплаты не было (или она еще не дошла)
-      if (!paymentRecord) {
-        return res.status(402).json({
-          message:
-            'План не оплачен. Пожалуйста, сначала совершите покупку.',
-          error_code: 'PAYMENT_REQUIRED',
-        })
-      }
-    }
-    //проверяю есть уже этот план в купленных или нет
-    if (
-      user.purchasedReadyPlans
-        .map((id) => id.toString())
-        .includes(readyPlanId)
-    ) {
-      return res
-        .status(409)
-        .json({ message: 'Вы купили этот план ранее' })
-    }
-
-    // Превращаем весь шаблон в обычный объект сразу
-    const templateObj = template.toObject()
-
-    // Глубокое клонированин тренировок с дефолтным статусом о выполнении false
-    const clonedWorkouts = templateObj.workouts.map((week) => ({
-      ...week,
-      sessions: week.sessions.map((s) => ({
-        ...s,
-        completed: false,
-      })),
-    }))
-
-    const personalCopy = await PurchasedPlan.create({
-      userId: user._id,
-      originalPlanId: readyPlanId,
-      ownerVkId: vkId,
-      workouts: clonedWorkouts,
-      title: template.title,
-      subtitle: template.subtitle,
-      typeSport: template.typeSport,
-      distance: template.distance,
-      period: template.period,
-      time: template.time,
-      pace: template.pace,
-      planUrl: template.planUrl,
-      pictureUrl: template.pictureUrl,
-      isFree: template.isFree,
-    })
-
-    // Обновляем юзера
-    await User.updateOne(
-      {
-        _id: user._id,
-        purchasedReadyPlans: { $ne: readyPlanId }, // Обновим, только если этого плана еще нет
-      },
-      {
-        $push: {
-          purchasedCopiedPlans: personalCopy._id,
-          purchasedReadyPlans: readyPlanId,
-        },
-        $set: {
-          currentPlan: personalCopy._id,
-          nameModel: 'PurchasedPlan',
-        },
-      },
-    )
-
-    res.status(200).json(personalCopy)
-  } catch (error) {
-    console.error('Ошибка buyPlan controller:', error)
-    res.status(500).json({
-      message: 'Ошибка сервера при покупке плана',
-    })
-  }
-}
-
 const updateWorkoutUser = async (req, res) => {
   const vkId = req.vkId
   const { typePlan, planId, weekId, newWorkout } = req.body
@@ -583,19 +482,202 @@ const updateWorkoutUser = async (req, res) => {
   }
 }
 
+const addReadyPlan = async (req, res) => {
+  const vkId = req.vkId
+  const readyPlanId = req.body.readyPlanId
+
+  try {
+    // 1. Ищем шаблон плана
+    const template = await ReadyPlan.findById(readyPlanId)
+    if (!template) {
+      return res.status(404).json({ message: 'План не найден' })
+    }
+
+    // 2. Находим пользователя
+    const user = await User.findOne({ vkId })
+    if (!user) {
+      return res.status(403).json({ message: 'Пользователь не найден' })
+    }
+
+    // 3. ПРОВЕРКА ДУБЛИКАТА
+    // Проверяем, нет ли уже этого плана в библиотеке пользователя
+    const isAlreadyOwned = user.purchasedReadyPlans
+      .map((id) => id.toString())
+      .includes(readyPlanId)
+
+    if (isAlreadyOwned) {
+      return res.status(409).json({ message: 'Этот план уже есть в вашей библиотеке' })
+    }
+
+    // 4. ПРОВЕРКА ЛИМИТА СЛОТОВ
+    // Сравниваем количество добавленных планов с лимитом текущего статуса
+    const currentReadyCount = user.purchasedReadyPlans.length
+
+    if (currentReadyCount >= user.readyPlansLimit) {
+      return res.status(403).json({
+        message: `Ваш статус "${user.tier}" позволяет иметь не более ${user.readyPlansLimit} готовых планов. Повысьте статус, чтобы добавить больше!`,
+        error_code: 'READY_LIMIT_EXCEEDED',
+      })
+    }
+
+    // 5. КЛОНИРОВАНИЕ ПЛАНА (Создаем персональную копию)
+    const templateObj = template.toObject()
+    const clonedWorkouts = templateObj.workouts.map((week) => ({
+      ...week,
+      sessions: week.sessions.map((s) => ({
+        ...s,
+        completed: false, // Все тренировки в копии по умолчанию не выполнены
+      })),
+    }))
+
+    const personalCopy = await PurchasedPlan.create({
+      userId: user._id,
+      originalPlanId: readyPlanId,
+      ownerVkId: vkId,
+      workouts: clonedWorkouts,
+      title: template.title,
+      subtitle: template.subtitle,
+      typeSport: template.typeSport,
+      distance: template.distance,
+      period: template.period,
+      time: template.time,
+      pace: template.pace,
+      planUrl: template.planUrl,
+      pictureUrl: template.pictureUrl,
+    })
+
+    // 6. ОБНОВЛЕНИЕ ПРОФИЛЯ ПОЛЬЗОВАТЕЛЯ
+    // Добавляем ID шаблона и ID копии, ставим план как текущий
+    user.purchasedReadyPlans.push(readyPlanId)
+    user.purchasedCopiedPlans.push(personalCopy._id)
+    user.currentPlan = personalCopy._id
+    user.nameModel = 'PurchasedPlan'
+    
+    await user.save()
+
+    res.status(200).json(personalCopy)
+  } catch (error) {
+    console.error('Ошибка addReadyPlan controller:', error)
+    res.status(500).json({
+      message: 'Ошибка сервера при добавлении плана',
+    })
+  }
+}
+
+// const buyPlan = async (req, res) => {
+//   const vkId = req.vkId
+//   const readyPlanId = req.body.readyPlanId
+
+//   try {
+//     const template = await ReadyPlan.findById(readyPlanId)
+//     if (!template) {
+//       return res.status(404).json({ message: 'План не найден' })
+//     }
+//     const user = await User.findOne({ vkId })
+//     //проверяю существует или авторизован юзер
+//     if (!user) {
+//       return res.status(403).json({
+//         message: 'Необходимо авторизоваться, чтобы купить план',
+//       })
+//     }
+//     //если план не бесплатный проверяем успешность оплаты,ищем в базе Order запись, которую создал payVk
+//     if (!template.isFree) {
+//       const paymentRecord = await Order.findOne({
+//         vkId: vkId,
+//         typePlan: 'ready',
+//         planId: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
+//         status: 'completed',
+//       })
+
+//       // Если записи нет — значит, оплаты не было (или она еще не дошла)
+//       if (!paymentRecord) {
+//         return res.status(402).json({
+//           message:
+//             'План не оплачен. Пожалуйста, сначала совершите покупку.',
+//           error_code: 'PAYMENT_REQUIRED',
+//         })
+//       }
+//     }
+//     //проверяю есть уже этот план в купленных или нет
+//     if (
+//       user.purchasedReadyPlans
+//         .map((id) => id.toString())
+//         .includes(readyPlanId)
+//     ) {
+//       return res
+//         .status(409)
+//         .json({ message: 'Вы купили этот план ранее' })
+//     }
+
+//     // Превращаем весь шаблон в обычный объект сразу
+//     const templateObj = template.toObject()
+
+//     // Глубокое клонированин тренировок с дефолтным статусом о выполнении false
+//     const clonedWorkouts = templateObj.workouts.map((week) => ({
+//       ...week,
+//       sessions: week.sessions.map((s) => ({
+//         ...s,
+//         completed: false,
+//       })),
+//     }))
+
+//     const personalCopy = await PurchasedPlan.create({
+//       userId: user._id,
+//       originalPlanId: readyPlanId,
+//       ownerVkId: vkId,
+//       workouts: clonedWorkouts,
+//       title: template.title,
+//       subtitle: template.subtitle,
+//       typeSport: template.typeSport,
+//       distance: template.distance,
+//       period: template.period,
+//       time: template.time,
+//       pace: template.pace,
+//       planUrl: template.planUrl,
+//       pictureUrl: template.pictureUrl,
+//       isFree: template.isFree,
+//     })
+
+//     // Обновляем юзера
+//     await User.updateOne(
+//       {
+//         _id: user._id,
+//         purchasedReadyPlans: { $ne: readyPlanId }, // Обновим, только если этого плана еще нет
+//       },
+//       {
+//         $push: {
+//           purchasedCopiedPlans: personalCopy._id,
+//           purchasedReadyPlans: readyPlanId,
+//         },
+//         $set: {
+//           currentPlan: personalCopy._id,
+//           nameModel: 'PurchasedPlan',
+//         },
+//       },
+//     )
+
+//     res.status(200).json(personalCopy)
+//   } catch (error) {
+//     console.error('Ошибка buyPlan controller:', error)
+//     res.status(500).json({
+//       message: 'Ошибка сервера при покупке плана',
+//     })
+//   }
+// }
+
 export {
   createProfile,
   getMyProfile,
   updatePersonalParameters,
   updateRecords,
   updateZonesPulse,
-  updatePace,
-  buyPlan,
+  updatePace, 
   getPurchasedPlans,
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
   updateWorkoutUser,
   resetProgress,
-  updateSessionStatus
+  updateSessionStatus,
+  addReadyPlan
 }

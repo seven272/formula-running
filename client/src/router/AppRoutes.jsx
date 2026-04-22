@@ -71,6 +71,11 @@ const routers = [
     panel: 'generate_panel',
     view: 'main_view',
   },
+  {
+    path: '/status',
+    panel: 'status_panel',
+    view: 'main_view',
+  },
 ]
 
 const router = createHashRouter(routers)

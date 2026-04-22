@@ -36,6 +36,14 @@
   align-items: flex-start;
 }
 
+.top_block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 950px) {
   .header {
     width: 100%;

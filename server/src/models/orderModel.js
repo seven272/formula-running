@@ -5,21 +5,21 @@ const orderSchema = new mongoose.Schema(
     orderId: { type: String, required: true, unique: true }, // ID транзакции от VK
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Ссылка на наш объект User
     vkId: { type: String, required: true }, // Для удобного поиска
-    planId: { type: String, required: true }, // 'ready_plan' или 'custom_plan'
-    typePlan: {
+    tierId: { type: String, required: false },
+    typeOrder: {
       type: String,
-      enum: ['ready', 'custom'],
-      default: 'ready',
+      default: '',
     },
     status: {
       type: String,
       enum: ['created', 'completed'],
       default: 'created',
     }, //елси оплата прошла успешно - completed, если сбой или отмена пользователем в процесее оплаты то created
-     isUsed: {
+    // Поле пригодится, если надо бует логировать активацию
+    isUsed: {
       type: Boolean,
-      default: false,
-    }, //чек дающий право на генерацию плана, нужен только для кастомных планов
+      default: true,
+    },
   },
   { timestamps: true },
 )

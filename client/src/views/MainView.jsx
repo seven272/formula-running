@@ -17,6 +17,7 @@ import Admin from '../panels/admin/Admin'
 import Generate from '../panels/generate/Generate'
 import UserPlanDetail from '../panels/user-plan-detail/UserPlanDetail'
 import UserPlanEdit from '../panels/user-plan-edit/UserPlanEdit'
+import StatusPrice from '../panels/status-price/StatusPrice'
 
 import { clearToast } from '../redux/slices/toastSlice'
 
@@ -58,6 +59,7 @@ const MainView = ({ activePanel, id }) => {
         <Admin id="admin_panel" />
         <UserPlanDetail id="user_plan_panel" />
         <UserPlanEdit id="user_plan_edit_panel" />
+        <StatusPrice id="status_panel" />
       </View>
 
       <Toaster position="bottom-center" reverseOrder={false} />

@@ -160,12 +160,29 @@ const fetchUpdateWorkoutUser = createAsyncThunk(
   'user/fetchUpdateWorkoutUser',
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await axios.patch('/user//update-workout', payload)
+      const res = await axios.patch('/user/update-workout', payload)
 
       return res.data
     } catch (error) {
       console.log(
         'ошибка при изменении тренировки плана пользователем из redux ',
+        error,
+      )
+      return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
+const fetchUpdateUserTier = createAsyncThunk(
+  'user/fetchUpdateUserTier',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get('/user/get-profile')
+
+      return res.data
+    } catch (error) {
+      console.log(
+        'ошибка при покупке статуса из redux ',
         error,
       )
       return rejectWithValue(error.response?.data || error.message)
@@ -180,6 +197,9 @@ const initialState = {
   vkId: '',
   name: '',
   avatar: '',
+  tier: 'amateur',         
+  customPlansLimit: 1,    
+  readyPlansLimit: 1,    
   profile: {
     age: '',
     weight: '',
@@ -330,6 +350,21 @@ const userSlice = createSlice({
       .addCase(fetchUpdateWorkoutUser.rejected, (state) => {
         state.isLoading = false
       })
+      .addCase(fetchUpdateUserTier.pending, (state) => {
+        state.isLoading = true
+      })
+      // update tier
+      .addCase(fetchUpdateUserTier.fulfilled, (state, action) => {
+        state.isLoading = false
+        // Обновляем статус и лимиты из ответа сервера
+        state.tier = action.payload.tier
+        state.customPlansLimit = action.payload.customPlansLimit
+        state.readyPlansLimit = action.payload.readyPlansLimit
+      })
+      .addCase(fetchUpdateUserTier.rejected, (state, action) => {
+        state.isLoading = false
+        // state.error = action.payload
+      })
   },
 })
 
@@ -350,6 +385,7 @@ export {
   fetchPaceUser,
   fetchGetMyProfile,
   fetchUpdateWorkoutUser,
+  fetchUpdateUserTier,
   checkVkAuth,
 }
 

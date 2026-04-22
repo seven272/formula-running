@@ -6,7 +6,7 @@
   align-items: flex-start;
 }
 .title {
-  font: var(--font-l);
+  font: var(--font-l); 
   color: var(--color-black);
 }
 

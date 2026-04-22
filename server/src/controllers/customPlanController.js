@@ -13,32 +13,25 @@ const createCustomPlan = async (req, res) => {
         message: 'Недостаточно данных для генерации плана',
       })
     }
+  
+    // 1. Находим пользователя и его лимиты
+    // Нам нужно знать, сколько планов он УЖЕ создал
+    let user = await User.findOne({ vkId })
 
-    // Ищем неиспользованный оплаченный чек для кастомного плана
-    const activeToken = await Order.findOne({
-      vkId: String(vkId),
-      typePlan: 'custom',
-      status: 'completed',
-      isUsed: false,
-    })
-
-    // Проверяем, генерировал ли пользователь планы когда-либо
-    const hasAnyPlan = await CustomPlan.exists({ ownerVkId: vkId })
-
-    if (!activeToken && hasAnyPlan) {
-      return res
-        .status(402)
-        .json({ message: 'Вначале следует оплатить создание плана' })
+    // Если пользователя нет в базе (странно, но возможно), создаем как аматёра
+    if (!user) {
+      user = await User.create({ vkId })
     }
 
-    // Находим или создаем пользователя (используем upsert для сокращения кода)
-    // Если пользователь НАЙДЕН: MongoDB просто возвращает его. Блок $setOnInsert игнорируется. Это защищает от случайной перезаписи данных существующего юзера.
-    // Если пользователь НЕ найден: Создается новый документ. В него записывается 'vkId' из блока $setOnInsert (и любые другие поля, которые там указать, например balance: 0 или createdAt).
-    let user = await User.findOneAndUpdate(
-      { vkId },
-      { $setOnInsert: { vkId } },
-      { upsert: true, new: true },
-    )
+    // Сравниваем количество созданных планов с лимитом текущего статуса
+    const createdCount = user.customPlans.length
+
+    if (createdCount >= user.customPlansLimit) {
+      return res.status(403).json({
+        message: `Превышен лимит генераций для статуса ${user.tier}. У вас доступно ${user.customPlansLimit} планов. Повысьте статус, чтобы создавать больше.`,
+        error_code: 'LIMIT_EXCEEDED',
+      })
+    }
 
     const generatedPlan = generateRunningPlan(dataPlan)
 
@@ -51,7 +44,7 @@ const createCustomPlan = async (req, res) => {
       distance: generatedPlan.distance,
       period: generatedPlan.period,
       pace: generatedPlan.pace,
-      isFree: !hasAnyPlan,
+      isFree: false,
       workouts: generatedPlan.workouts,
     })
 
@@ -60,13 +53,6 @@ const createCustomPlan = async (req, res) => {
     user.currentPlan = newPlan._id // Устанавливаем ID
     user.nameModel = 'CustomPlan' // Указываем модель для refPath
     await user.save()
-    // погашаем токен: теперь этот чек больше нельзя использовать
-    if (activeToken) {
-      activeToken.isUsed = true
-      activeToken.planId = newPlan._id
-      await activeToken.save()
-    }
-
     res.status(201).json(newPlan)
   } catch (error) {
     console.error('Ошибка createCustomPlan controller:', error)

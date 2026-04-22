@@ -7,14 +7,14 @@ import {
   updateRecords,
   updateZonesPulse,
   updatePace,
-  buyPlan,
   getPurchasedPlans,
   changeCurrentPlan,
   getCurrentPlan,
   toggleSessionStatus,
   updateWorkoutUser,
   resetProgress,
-  updateSessionStatus
+  updateSessionStatus,
+  addReadyPlan
 } from '../controllers/userController.js'
 
 import checkVkId from '../middleware/сheckVkId.js'
@@ -31,12 +31,12 @@ router.post('/upload/avatar', upload.single('avatar'), (req, res) => {
 })
 
 router.post('/create-profile', checkVkId, createProfile)
+router.post('/buy', checkVkId, addReadyPlan)
 router.get('/get-profile', checkVkId, getMyProfile)
 router.put('/personal-param', checkVkId, updatePersonalParameters)
 router.put('/records', checkVkId, updateRecords)
 router.put('/pulse', checkVkId, updateZonesPulse)
 router.put('/pace', checkVkId, updatePace)
-router.post('/buy', checkVkId, buyPlan)
 router.get('/purchased', checkVkId, getPurchasedPlans)
 router.get('/get-current-plan', checkVkId, getCurrentPlan)
 router.put('/change-current-plan', checkVkId, changeCurrentPlan)
