@@ -5,8 +5,8 @@ import {
 } from '@vkontakte/vk-mini-apps-router'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 import { useSelector, useDispatch } from 'react-redux'
-import { IoCartOutline } from 'react-icons/io5'
-import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
+import { MdOutlineStarBorder } from 'react-icons/md'
+import { TbLock } from 'react-icons/tb'
 import { Panel } from '@vkontakte/vkui'
 import { ScreenSpinner } from '@vkontakte/vkui'
 
@@ -17,21 +17,21 @@ import {
 } from '../../redux/slices/plansSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-// import { useVkPay } from '../../utils/useVkPay'
-import { useVkPayFiat } from '../../utils/useVkPayFiat'
 
 const DetailsPlan = ({ id }) => {
   const params = useParams()
   const dispatch = useDispatch()
+  const routeNavigator = useRouteNavigator()
   const currentId = params.id
   const routerNavigate = useRouteNavigator()
   const { allPlans, purchasedPlans } = useSelector(
     (state) => state.plans,
   )
-  const { payFiatMoney } = useVkPayFiat()
+  const { readyPlansLimit } = useSelector((state) => state.user)
   const [plan, setPlan] = useState({})
   const [training, setTraining] = useState([])
   const [isPurchased, setIsPurchased] = useState(false)
+    const hasLimit = purchasedPlans.length < readyPlansLimit
 
   const findPlan = () => {
     // находим нужный план сравнивая ид элемента и данные их хука useParams
@@ -58,24 +58,19 @@ const DetailsPlan = ({ id }) => {
   }
 
   const buyPlan = () => {
-    payFiatMoney('ready', currentId, 10)
-    setIsPurchased((prev) => !prev)
-  }
-
-  const buyFreePlan = () => {
     dispatch(fetchBuyPlan(currentId))
     setIsPurchased((prev) => !prev)
   }
 
-  const canShowPayments = () => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const platform = urlParams.get('vk_platform')
-    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
-    // и в мобильном браузере (mobile_web)
-    const allowedPlatforms = ['desktop_web', 'mobile_web']
-    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
-    return allowedPlatforms.includes(platform)
-  }
+  // const canShowPayments = () => {
+  //   const urlParams = new URLSearchParams(window.location.search)
+  //   const platform = urlParams.get('vk_platform')
+  //   // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+  //   // и в мобильном браузере (mobile_web)
+  //   const allowedPlatforms = ['desktop_web', 'mobile_web']
+  //   //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+  //   return allowedPlatforms.includes(platform)
+  // }
 
   const checkPurchased = () => {
     const arrId = purchasedPlans.map((elem) => {
@@ -175,27 +170,22 @@ const DetailsPlan = ({ id }) => {
           // )} */}
 
           <div className={styles.btn_wrap}>
-            {plan?.isFree ? (
-              <button
-                className={styles.card_btn_free}
-                disabled={isPurchased}
-                onClick={buyFreePlan}
-              >
-                заниматься бесплатно
-                <TbCurrencyDollarOff className={styles.btn_icon} />
+            {isPurchased ? (
+              <button className={styles.card_btn} disabled>
+                Уже у вас{' '}
+                <MdOutlineStarBorder className={styles.btn_icon} />
               </button>
-            ) : canShowPayments() ? (
-              <button
-                className={styles.card_btn}
-                onClick={() => buyPlan()}
-                disabled={isPurchased}
-              >
-                купить
-                <IoCartOutline className={styles.btn_icon} />
+            ) : hasLimit ? (
+              <button className={styles.card_btn} onClick={buyPlan}>
+                Заниматься{' '}
+                <MdOutlineStarBorder className={styles.btn_icon} />
               </button>
             ) : (
-              <button disabled={true} className={styles.card_btn}>
-                <TbLock className={styles.btn_icon} />
+              <button
+                className={styles.card_btn}
+                onClick={() => routeNavigator.push('/status')}
+              >
+                Улучшить статус <TbLock className={styles.btn_icon} />
               </button>
             )}
           </div>

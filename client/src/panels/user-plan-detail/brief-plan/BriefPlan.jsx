@@ -1,6 +1,7 @@
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 import { FaRegFilePdf } from 'react-icons/fa6'
+import { useSelector } from 'react-redux'
 
 import GeneratePdfButton from '../../../components/convert-pdf/pdf-generate-plan/GeneratePdfButton'
 import ReadyPdfButton from '../../../components/convert-pdf/pdf-ready-plan/ReadyPdfButton'
@@ -8,6 +9,8 @@ import styles from './BriefPlan.module.css'
 
 const BriefPlan = ({ plan, typePlan }) => {
   const routerNavigate = useRouteNavigator()
+   const userTier =
+      useSelector((state) => state.user.tier) || 'amateur'
   const dictonaryDist = {
     '5км': '5 километров',
     '10км': '10 километров',
@@ -48,10 +51,11 @@ const BriefPlan = ({ plan, typePlan }) => {
             <strong>Описание:</strong> <span>{plan.subtitle}</span>
           </span>
         )}
-        {typePlan === 'paid' && plan?.isFree ? (
+
+        {userTier === 'amateur' ? (
           <span className={styles.text}>
             <span className={styles.pdf_text2}>
-              Бесплатный план в формате
+              Для вашего статуса план в формате
             </span>
             <FaRegFilePdf size={20} className={styles.pdf_icon2} />
             <span className={styles.pdf_text2}>недоступен</span>

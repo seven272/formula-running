@@ -55,10 +55,16 @@
   gap: 10px;
 }
 
-.plan__icon {
+.plan_icon {
   color: var(--color-blue);
   margin-left: 10px;
   cursor: pointer;
+}
+
+.plan_icon_disabled {
+  color: var(--color-grey);
+  margin-left: 10px;
+  cursor: not-allowed;
 }
 
 .error_block {

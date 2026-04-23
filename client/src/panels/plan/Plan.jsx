@@ -29,6 +29,8 @@ import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
   const plan = useSelector((state) => state.currentPlan.plan)
+   const userTier =
+    useSelector((state) => state.user.tier) || 'amateur'
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
   )
@@ -120,19 +122,25 @@ const Plan = ({ id }) => {
             </span>
             <div className={styles.plan_header_icons}>
               <IoMdInformationCircleOutline
-                className={styles.plan__icon}
+                className={styles.plan_icon}
                 size={22}
                 title="детали плана"
                 onClick={() => setShowBlockAbout(true)}
               />
-              <LuChartLine
-                className={styles.plan__icon}
+              {userTier === 'amateur' ? <LuChartLine
+                className={styles.plan_icon_disabled}
+                size={22}
+                title="статистика"
+                
+              /> : <LuChartLine
+                className={styles.plan_icon}
                 size={22}
                 title="статистика"
                 onClick={() => setShowBlockStatistics(true)}
-              />
+              />}
+              
               <MdOutlineRunCircle
-                className={styles.plan__icon}
+                className={styles.plan_icon}
                 size={22}
                 title="тренировачный темп"
                 onClick={() => setShowBlockCalcPace(true)}

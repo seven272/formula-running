@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BiDetail } from 'react-icons/bi'
-import { MdSportsScore } from 'react-icons/md'
+import { MdOutlineStarBorder } from "react-icons/md";
 import { TbLock } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -57,27 +57,27 @@ const PreviewPlan = ({ objPlan }) => {
 
       <div className={styles.card__btn_wrap}>
         <button className={styles.card_btn} onClick={openDetailsPlan}>
-          детали
+          Детали
           <BiDetail className={styles.btn_icon} />
         </button>
 
         {isPurchased ? (
-          <button className={styles.card_btn_active} disabled>
-            Уже в библиотеке <MdSportsScore />
+          <button className={styles.card_btn} disabled>
+            Уже у вас <MdOutlineStarBorder className={styles.btn_icon}/>
           </button>
         ) : hasLimit ? (
           <button
             className={styles.card_btn}
             onClick={() => buyPlan(_id)}
           >
-            Заниматься <MdSportsScore />
+            Заниматься <MdOutlineStarBorder className={styles.btn_icon}/>
           </button>
         ) : (
           <button
-            className={styles.card_btn_upgrade}
+            className={styles.card_btn}
             onClick={() => routeNavigator.push('/status')}
           >
-            Улучшить статус <TbLock />
+            Улучшить статус <TbLock className={styles.btn_icon}/>
           </button>
         )}
       </div>

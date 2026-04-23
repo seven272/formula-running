@@ -4,12 +4,15 @@ import { BsCheckCircle, BsCheckCircleFill } from 'react-icons/bs'
 import { PiPencilLineFill, PiPencilSlashFill } from 'react-icons/pi'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
+
 import styles from './ItemPlan.module.css'
 import { fetchChangeCurrentPlan } from '../../../../redux/slices/currentPlanSlice'
 
 const ItemPlan = ({ plan }) => {
   const routerNavigator = useRouteNavigator()
   const dispatch = useDispatch()
+  const userTier =
+    useSelector((state) => state.user.tier) || 'amateur'
 
   const { currentId } = useSelector((state) => state.currentPlan)
   const planId = plan._id
@@ -31,7 +34,7 @@ const ItemPlan = ({ plan }) => {
             routerNavigator.push(`${plan.planUrl}?type=paid`)
           }
         />
-        {plan.isFree ? (
+        {userTier === 'amateur' ? (
           <PiPencilSlashFill
             size={17}
             className={styles.icon_disabled}

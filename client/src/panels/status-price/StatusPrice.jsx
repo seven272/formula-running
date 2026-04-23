@@ -25,7 +25,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 3, // Голоса ВК
+    price: 5, // Голоса ВК
   },
   {
     id: 'pro',
@@ -35,7 +35,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 7,
+    price: 10,
   },
   {
     id: 'champion',
@@ -45,7 +45,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 12,
+    price: 15,
   },
 ]
 
@@ -80,17 +80,17 @@ const StatusPrice = ({ id }) => {
                 </li>
                 <li className={tier.pdf ? styles.yes : styles.no}>
                   {tier.pdf
-                    ? '✅ PDF версия плана'
+                    ? '🔵 PDF версия плана'
                     : '❌ PDF версия плана'}
                 </li>
                 <li className={tier.stats ? styles.yes : styles.no}>
                   {tier.stats
-                    ? '✅ Доступ к статистике тренировок'
+                    ? '🔵 Доступ к статистике тренировок'
                     : '❌ Доступ к статистике тренировок'}
                 </li>
                 <li className={tier.edit ? styles.yes : styles.no}>
                   {tier.edit
-                    ? '✅ Редактирование плана'
+                    ? '🔵 Редактирование плана'
                     : '❌ Редактирование плана'}
                 </li>
               </ul>

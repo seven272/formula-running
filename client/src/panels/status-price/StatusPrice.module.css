@@ -1,23 +1,20 @@
 .container {
-  padding: 20px;
-  /* background: #f0f2f5; Светло-серый фон как в ВК */
+  max-width: 515px;
+  padding: 20px 0;
   border-radius: 12px;
+  margin: 0 auto;
 }
 
 .title {
   text-align: center;
   font: var(--font-l);
   color: var(--color-grey);
-
   margin-bottom: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* 2 колонки для компактности */
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
@@ -40,7 +37,7 @@
 .price {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-blue); /* Ваш основной синий */
+  color: var(--color-blue);
   margin: 8px 0;
 }
 
@@ -57,10 +54,16 @@
   line-height: 1.6;
 }
 
-.features li span {
-  color: #818c99;
+.features li {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+.features li span {
+  color: var(--color-grey);
+}
 .no {
   opacity: 0.5;
 }
@@ -83,3 +86,10 @@
   opacity: 0.8;
 }
 
+@media screen and (max-width: 500px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+  }
+}

@@ -7,7 +7,7 @@ const ListPurchased = ({ list }) => {
   
   return (
     <div className={styles.list_plans}>
-      <span className={styles.title}>Купленные планы</span>
+      <span className={styles.title}>Готовые планы</span>
       {list && list.length > 0 ? (
         list.map((item) => {
           return (

@@ -1,5 +1,7 @@
 import React from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+import { useSelector } from 'react-redux'
+
 import styles from './UserStatus.module.css'
 
 const STATUS_MAP = {
@@ -9,9 +11,10 @@ const STATUS_MAP = {
   champion: 'Чемпион',
 }
 
-const UserStatus = ({ userTier = 'amateur' }) => {
+const UserStatus = () => {
   const routerNavigator = useRouteNavigator()
-
+  const userTier =
+    useSelector((state) => state.user.tier) || 'amateur'
   return (
     <div
       className={`${styles.main_user_status} ${styles[userTier]}`}

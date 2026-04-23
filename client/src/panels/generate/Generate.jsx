@@ -15,9 +15,9 @@ import SamplePlan from './sample-plan/SamplePlan'
 import { showToast } from '../../redux/slices/toastSlice'
 import {
   fetchCreateCustomPlan,
-  fetchGetCustomPlans,
-  fetchCheckToken,
-  changeStatusToken,
+  // fetchGetCustomPlans,
+  // fetchCheckToken,
+  // changeStatusToken,
 } from '../../redux/slices/customPlanSlice'
 import { fetchUpdateUserTier } from '../../redux/slices/userSlice'
 import Header from '../../components/header/Header'
@@ -29,7 +29,7 @@ import Footer from '../../components/footer/Footer'
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
-  const { tier, customPlansLimit } = useSelector(
+  const { customPlansLimit } = useSelector(
     (state) => state.user,
   )
   const listCustomPlans = useSelector((state) => state.customPlan.listCustomPlans || []) 
