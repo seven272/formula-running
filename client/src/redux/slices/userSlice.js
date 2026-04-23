@@ -197,9 +197,9 @@ const initialState = {
   vkId: '',
   name: '',
   avatar: '',
-  tier: 'amateur',         
-  customPlansLimit: 1,    
-  readyPlansLimit: 1,    
+  tier: 'amateur',
+  customPlansLimit: 1,
+  readyPlansLimit: 1,
   profile: {
     age: '',
     weight: '',
@@ -327,6 +327,9 @@ const userSlice = createSlice({
         state.name = action.payload?.name
         state.avatar = action.payload?.avatarUrl
         state.hasSportProfile = action.payload.hasSportProfile
+        state.tier = action.payload.tier
+        state.customPlansLimit = action.payload.customPlansLimit
+        state.readyPlansLimit = action.payload.readyPlansLimit
         // Вложенные данные профиля
         const profile = action.payload?.profile || {}
         state.pace = profile.pace

@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BiDetail } from 'react-icons/bi'
-import { IoCartOutline } from 'react-icons/io5'
-import { TbCurrencyDollarOff, TbLock } from 'react-icons/tb'
-
+import { MdSportsScore } from 'react-icons/md'
+import { TbLock } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
 import templatePlanImg from '../../../assets/images/template_plan.png'
-// import { useVkPay } from '../../../utils/useVkPay'
-import { useVkPayFiat } from '../../../utils/useVkPayFiat'
 import styles from './PreviewPlan.module.css'
 
 const URL = import.meta.env.VITE_PUBLIC_URL
@@ -21,26 +18,12 @@ const PreviewPlan = ({ objPlan }) => {
   const purchasedPlans = useSelector(
     (state) => state.plans.purchasedPlans || [],
   )
+  const { readyPlansLimit } = useSelector((state) => state.user)
   const [isPurchased, setIsPurchased] = useState(false)
-  const { payFiatMoney } = useVkPayFiat()
-
-  const canShowPayments = () => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const platform = urlParams.get('vk_platform')
-    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
-    // и в мобильном браузере (mobile_web)
-    const allowedPlatforms = ['desktop_web', 'mobile_web']
-    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
-    return allowedPlatforms.includes(platform)
-  }
-
-  const buyFreePlan = (_id) => {
-    dispatch(fetchBuyPlan(_id))
-    setIsPurchased((prev) => !prev)
-  }
+  const hasLimit = purchasedPlans.length < readyPlansLimit
 
   const buyPlan = (_id) => {
-    payFiatMoney('ready', _id, 10)
+    dispatch(fetchBuyPlan(_id))
     setIsPurchased((prev) => !prev)
   }
 
@@ -50,17 +33,10 @@ const PreviewPlan = ({ objPlan }) => {
     })
   }
 
-  const checkPurchased = () => {
-    const arrId = purchasedPlans.map((elem) => {
-      return elem.originalPlanId
-    })
-    const value = arrId.includes(_id)
-    setIsPurchased(value)
-  }
-
   useEffect(() => {
-    checkPurchased()
-  }, [])
+    const arrId = purchasedPlans.map((elem) => elem.originalPlanId)
+    setIsPurchased(arrId.includes(_id))
+  }, [purchasedPlans, _id])
 
   return (
     <div className={styles.card}>
@@ -85,36 +61,29 @@ const PreviewPlan = ({ objPlan }) => {
           <BiDetail className={styles.btn_icon} />
         </button>
 
-        {objPlan.isFree ? (
-          <button
-            className={styles.card_btn_free}
-            onClick={() => buyFreePlan(_id)}
-            disabled={isPurchased}
-          >
-            заниматься бесплатно
-            <TbCurrencyDollarOff className={styles.btn_icon} />
+        {isPurchased ? (
+          <button className={styles.card_btn_active} disabled>
+            Уже в библиотеке <MdSportsScore />
           </button>
-        ) : canShowPayments() ? (
+        ) : hasLimit ? (
           <button
             className={styles.card_btn}
             onClick={() => buyPlan(_id)}
-            disabled={isPurchased}
           >
-            купить
-            <IoCartOutline className={styles.btn_icon} />
+            Заниматься <MdSportsScore />
           </button>
         ) : (
-          <button disabled={true} className={styles.card_btn}>
-            <TbLock className={styles.btn_icon} />
+          <button
+            className={styles.card_btn_upgrade}
+            onClick={() => routeNavigator.push('/status')}
+          >
+            Улучшить статус <TbLock />
           </button>
         )}
       </div>
-      {canShowPayments() === false && (
-        <span className={styles.warning}>
-          * данный план недоступен для приобретения в мобильном
-          приложении
-        </span>
-      )}
+
+      <span className={styles.warning}>
+      </span>
     </div>
   )
 }

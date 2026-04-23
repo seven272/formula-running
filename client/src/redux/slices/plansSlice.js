@@ -197,7 +197,7 @@ const fetchDownloadPlan = createAsyncThunk(
 const initialState = {
   currentPlan: '',
   allPlans: [],
-  freePlans: [],
+  freePlans: [], 
   paidPlans: [],
   purchasedPlans: [],
   isLoading: null,

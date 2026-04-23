@@ -111,7 +111,7 @@ const customPlanSlice = createSlice({
       .addCase(fetchCreateCustomPlan.rejected, (state) => {
         state.isLoading = false
         state.status = 'failed'
-      })
+      }) 
       //get customs plans
       .addCase(fetchGetCustomPlans.pending, (state) => {
         state.isLoading = true

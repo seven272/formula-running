@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PiPaperclip } from 'react-icons/pi'
-import { TbLock } from 'react-icons/tb'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { Panel } from '@vkontakte/vkui'
+// import { TbLock } from 'react-icons/tb'
 
 import styles from './Generate.module.css'
 import GenerateHeader from './generate-header/GenerateHeader'
@@ -14,20 +15,25 @@ import SamplePlan from './sample-plan/SamplePlan'
 import { showToast } from '../../redux/slices/toastSlice'
 import {
   fetchCreateCustomPlan,
+  fetchGetCustomPlans,
   fetchCheckToken,
   changeStatusToken,
 } from '../../redux/slices/customPlanSlice'
+import { fetchUpdateUserTier } from '../../redux/slices/userSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+
 // import { useVkPay } from '../../utils/useVkPay'
-import { useVkPayFiat } from '../../utils/useVkPayFiat'
+// import { useVkPayFiat } from '../../utils/useVkPayFiat'
 
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
-  const { hasToken, isFreeTry } = useSelector(
-    (state) => state.customPlan,
+  const routerNavigator = useRouteNavigator()
+  const { tier, customPlansLimit } = useSelector(
+    (state) => state.user,
   )
-  const { payFiatMoney } = useVkPayFiat()
+  const listCustomPlans = useSelector((state) => state.customPlan.listCustomPlans || []) 
+  // const { payFiatMoney } = useVkPayFiat()
 
   const [dataPlan, setDataPlan] = useState({
     goal: '',
@@ -42,16 +48,19 @@ const Generate = ({ id }) => {
   })
   const [showSample, setShowSample] = useState(false)
   const [showCreated, setShowCreated] = useState(false)
+  console.log(listCustomPlans)
+  const hasLimit = listCustomPlans.length < customPlansLimit
 
-  const canShowPayments = () => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const platform = urlParams.get('vk_platform')
-    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
-    // и в мобильном браузере (mobile_web)
-    const allowedPlatforms = ['desktop_web', 'mobile_web']
-    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
-    return allowedPlatforms.includes(platform)
-  }
+  //проверка типа ВК платформы
+  // const canShowPayments = () => {
+  //   const urlParams = new URLSearchParams(window.location.search)
+  //   const platform = urlParams.get('vk_platform')
+  //   // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+  //   // и в мобильном браузере (mobile_web)
+  //   const allowedPlatforms = ['desktop_web', 'mobile_web']
+  //   //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+  //   return allowedPlatforms.includes(platform)
+  // }
 
   const setRaceConfig = (payload) => {
     setDataPlan((prev) => {
@@ -118,23 +127,26 @@ const Generate = ({ id }) => {
       dispatch(fetchCreateCustomPlan(dataPlan))
         .unwrap()
         .then(() => {
-          dispatch(changeStatusToken(false))
+          dispatch(fetchUpdateUserTier())
         })
         .catch((err) => {
-          console.error(
-            'План не создан, статус токена не изменен',
-            err,
+          dispatch(
+            showToast({
+              type: 'error',
+              message: err.message || 'Ошибка генерации',
+            }),
           )
         })
     }
   }
 
-  const handlePay = () => {
-    payFiatMoney('custom', '?', 10)
-  }
+  // const handlePay = () => {
+  //   payFiatMoney('custom', '?', 10)
+  // }
 
   useEffect(() => {
-    dispatch(fetchCheckToken())
+    // dispatch(fetchCheckToken())
+    // dispatch(fetchGetCustomPlans())
   }, [dispatch])
 
   return (
@@ -144,13 +156,24 @@ const Generate = ({ id }) => {
         <div className={styles.wrapper}>
           <GenerateHeader />
           <div className={styles.wrap_form}>
-            {!hasToken && !isFreeTry && (
+            {!hasLimit && (
               <div className={styles.overlay}>
-                {canShowPayments() === false ? (
-                  <span>Генерация недоступна</span>
-                ) : (
-                  <span>Форма станет активной после оплаты</span>
-                )}
+                <div className={styles.limit_info}>
+                  <span>
+                    Лимит исчерпан: {listCustomPlans.length} из{' '}
+                    {customPlansLimit}
+                  </span>
+                  <p>
+                    Чтобы создавать больше планов, перейдите на новый
+                    уровень
+                  </p>
+                  <button
+                    className={styles.btn_upgrade_overlay}
+                    onClick={() => routerNavigator.push('/status')}
+                  >
+                    Повысить статус
+                  </button>
+                </div>
               </div>
             )}
             <RaceConfig getData={setRaceConfig} />
@@ -158,7 +181,28 @@ const Generate = ({ id }) => {
             <Schedule getData={setSchedule} />
           </div>
           {/* отрисовываю кнопку взависимости от условий  */}
-          {isFreeTry && (
+          <div className={styles.wrap_create}>
+            <div className={styles.counter_label}>
+              Использовано генераций:{' '}
+              <strong>
+                {listCustomPlans.length} / {customPlansLimit}
+              </strong>
+            </div>
+
+            {hasLimit ? (
+              <button
+                className={styles.btn_create}
+                onClick={handleCreatePlan}
+              >
+                Создать план
+              </button>
+            ) : (
+              <button className={styles.btn_disabled} disabled>
+                Лимит исчерпан
+              </button>
+            )}
+          </div>
+          {/* {isFreeTry && (
             <div className={styles.wrap_create}>
               <span className={styles.message_create}>
                 Ваша первая генерация — бесплатно!
@@ -170,9 +214,9 @@ const Generate = ({ id }) => {
                 Бонусная генерация
               </button>
             </div>
-          )}
+          )} */}
 
-          {canShowPayments() === false && !isFreeTry && (
+          {/* {canShowPayments() === false && !isFreeTry && (
             <div className={styles.wrap_create}>
               <span className={styles.message_create}>
                 Платная генерация плана в мобильном приложении
@@ -182,9 +226,9 @@ const Generate = ({ id }) => {
                 <TbLock size={20} />
               </button>
             </div>
-          )}
+          )} */}
 
-          {hasToken && !isFreeTry && (
+          {/* {hasToken && !isFreeTry && (
             <div className={styles.wrap_create}>
               <span className={styles.message_create}>
                 Создание плана было оплачено. Начинается магия!
@@ -196,13 +240,13 @@ const Generate = ({ id }) => {
                 Создать план
               </button>
             </div>
-          )}
+          )} */}
 
-          {!hasToken && !isFreeTry && canShowPayments() && (
+          {/* {!hasToken && !isFreeTry && canShowPayments() && (
             <button className={styles.btn} onClick={handlePay}>
               Оплатить
             </button>
-          )}
+          )} */}
 
           <div
             className={styles.link}
