@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import styles from './UserStatus.module.css'
 
-const STATUS_MAP = {
+const STATUS_MAP = { 
   amateur: 'Физкультурник',
   athlete: 'Атлет',
   pro: 'Профи',

@@ -12,6 +12,8 @@ const ItemPlan = ({ plan }) => {
   const routerNavigator = useRouteNavigator()
 
   const { currentId } = useSelector((state) => state.currentPlan)
+  const userTier =
+    useSelector((state) => state.user.tier) || 'amateur'
   const planId = plan._id
 
   const changeCurrentPlan = () => {
@@ -31,7 +33,7 @@ const ItemPlan = ({ plan }) => {
             routerNavigator.push(`${plan.planUrl}?type=generate`)
           }
         />
-        {plan.isFree ? (
+        {userTier === 'amateur' ? ( 
           <PiPencilSlashFill
             size={17}
             className={styles.icon_disabled}
