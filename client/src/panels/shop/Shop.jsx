@@ -37,14 +37,14 @@ const Shop = ({ id }) => {
       if (value === 'all') return allPlans
       if (value === 'unavailable') {
         const filteredPlans = allPlans.filter((plan) =>
-          purchasedPlans.some((elem) => elem._id === plan._id),
+          purchasedPlans.some((elem) => elem.originalPlanId === plan._id),
         )
         return filteredPlans
       }
 
       if (value === 'available') {
         const filteredPlans = allPlans.filter((plan) =>
-          !purchasedPlans.some((elem) => elem._id === plan._id),
+          !purchasedPlans.some((elem) => elem.originalPlanId === plan._id),
         )
         return filteredPlans
       }

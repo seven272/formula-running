@@ -5,7 +5,7 @@ import {
   getAllPlans,
   deletePlan,
   updatePlan,
-  getFreePlans,
+  getFreePlans, 
   downloadPlan,
   getPaidPlans
 } from '../controllers/readyPlanController.js'

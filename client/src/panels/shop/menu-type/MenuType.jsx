@@ -1,6 +1,6 @@
-import {  MdReceiptLong } from 'react-icons/md'
 import { GoPlusCircle } from "react-icons/go";
 import { FiCheckCircle } from "react-icons/fi";
+import { IoListCircleOutline } from "react-icons/io5";
 
 import styles from './MenuType.module.css'
 
@@ -31,7 +31,7 @@ const MenuType = ({ filter, onSelectFilter }) => {
             }
             onClick={() => getAllPlans('all')}
           >
-            <MdReceiptLong className={styles.icon} />
+            <IoListCircleOutline className={styles.icon} />
             <span className={styles.text}>все</span>
           </li>
           <li
