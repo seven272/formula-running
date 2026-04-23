@@ -1,5 +1,6 @@
-import { MdOutlineMoneyOffCsred, MdReceiptLong } from 'react-icons/md'
-import { MdAttachMoney } from 'react-icons/md'
+import {  MdReceiptLong } from 'react-icons/md'
+import { GoPlusCircle } from "react-icons/go";
+import { FiCheckCircle } from "react-icons/fi";
 
 import styles from './MenuType.module.css'
 
@@ -9,11 +10,11 @@ const MenuType = ({ filter, onSelectFilter }) => {
     onSelectFilter(value)
   }
 
-  const getFreePlans = (value) => {
+  const getUnavailablePlans = (value) => {
     onSelectFilter(value)
-  }
+  } 
 
-  const getPaidPlans = (value) => {
+  const getAvailablePlans = (value) => {
     onSelectFilter(value)
   }
 
@@ -35,25 +36,25 @@ const MenuType = ({ filter, onSelectFilter }) => {
           </li>
           <li
             className={
-              filter.value === 'free'
+              filter.value === 'unavailable'
                 ? styles.item_active
                 : styles.item
             }
-            onClick={() => getFreePlans('free')}
+            onClick={() => getUnavailablePlans('unavailable')}
           >
-            <MdOutlineMoneyOffCsred className={styles.icon} />
-            <span className={styles.text}>бесплатные</span>
+            <FiCheckCircle className={styles.icon} />
+            <span className={styles.text}>активированные</span>
           </li>
           <li
             className={
-              filter.value === 'paid'
+              filter.value === 'available'
                 ? styles.item_active
                 : styles.item
             }
-            onClick={() => getPaidPlans('paid')}
+            onClick={() => getAvailablePlans('available')}
           >
-            <MdAttachMoney className={styles.icon} />
-            <span className={styles.text}>платные</span>
+            <GoPlusCircle className={styles.icon} />
+            <span className={styles.text}>доступные</span>
           </li>
         </ul>
       </div>

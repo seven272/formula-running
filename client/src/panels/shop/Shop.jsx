@@ -18,7 +18,9 @@ import {
 
 const Shop = ({ id }) => {
   const dispatch = useDispatch()
-  const { allPlans } = useSelector((state) => state.plans)
+  const { allPlans, purchasedPlans } = useSelector(
+    (state) => state.plans,
+  )
   const [filter, setFilter] = useState({ type: '', value: '' })
 
   const handleClear = () => {
@@ -33,10 +35,19 @@ const Shop = ({ id }) => {
     // Фильтрация по категории (платные/бесплатные/все)
     if (type === 'category') {
       if (value === 'all') return allPlans
-      if (value === 'free')
-        return allPlans.filter((plan) => plan.isFree === true)
-      if (value === 'paid')
-        return allPlans.filter((plan) => plan.isFree === false)
+      if (value === 'unavailable') {
+        const filteredPlans = allPlans.filter((plan) =>
+          purchasedPlans.some((elem) => elem._id === plan._id),
+        )
+        return filteredPlans
+      }
+
+      if (value === 'available') {
+        const filteredPlans = allPlans.filter((plan) =>
+          !purchasedPlans.some((elem) => elem._id === plan._id),
+        )
+        return filteredPlans
+      }
     }
 
     // Фильтрация по дистанции
