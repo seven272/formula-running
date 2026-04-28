@@ -25,7 +25,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 5, // Голоса ВК
+    price: 500, // рублей
   },
   {
     id: 'pro',
@@ -35,7 +35,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 10,
+    price: 1000,
   },
   {
     id: 'champion',
@@ -45,7 +45,7 @@ const TIERS = [
     pdf: true,
     stats: true,
     edit: true,
-    price: 15,
+    price: 1500,
   },
 ]
 
@@ -66,7 +66,7 @@ const StatusPrice = ({ id }) => {
                 <h3>{tier.title}</h3>
                 <div className={styles.price}>
                   {tier.price > 0
-                    ? `${tier.price} голосов`
+                    ? `${tier.price} рублей`
                     : 'Бесплатно'}
                 </div>
               </div>
