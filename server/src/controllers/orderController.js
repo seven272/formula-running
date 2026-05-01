@@ -266,7 +266,7 @@ const createPaymentYooKassa = async (req, res) => {
 
     // Создаем запись "создано" в вашей коллекции Order
     const order = await Order.create({
-      orderId: 'pending',
+      orderId: idempotenceKey,
       userId: user._id,
       vkId,
       tierId,
