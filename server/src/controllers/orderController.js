@@ -8,9 +8,9 @@ import CustomPlan from '../models/customPlanModel.js'
 const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments';
 
 const TIER_SETTINGS = {
-  athlete: { custom: 3, ready: 3, price: '500.00' },
-  pro: { custom: 10, ready: 5, price: '1000.00' },
-  champion: { custom: 15, ready: 10, price: '1500.00' },
+  athlete: { custom: 3, ready: 3, price: '10.00', title: 'Атлет'  },
+  pro: { custom: 10, ready: 5, price: '15.00', title: 'Профи' },
+  champion: { custom: 15, ready: 10, price: '25.00', title: 'Чемпион'},
 }
 
 // const ITEMS_STORE = {
@@ -277,7 +277,7 @@ const createPaymentYooKassa = async (req, res) => {
           type: 'redirect',
           return_url: `https://vk.com/app53406141`,
         },
-        description: `Оплата уровня ${tierId} (VK ID: ${vkId})`,
+        description: `Оплата статуса ${TIER_SETTINGS[tierId].title} в приложении Формула Бега`,
         metadata: {
           orderDbId: order._id.toString(),
           userId: user._id,
