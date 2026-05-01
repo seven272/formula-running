@@ -5,7 +5,7 @@ import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
 import CustomPlan from '../models/customPlanModel.js'
 
-
+const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments';
 
 const TIER_SETTINGS = {
   athlete: { custom: 3, ready: 3, price: '500.00' },
