@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const orderSchema = new mongoose.Schema(
   {
-    orderId: { type: String, required: true, unique: true }, // ID транзакции от VK
+    orderId: { type: String}, // ID транзакции от VK
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Ссылка на наш объект User
     vkId: { type: String, required: true }, // Для удобного поиска
     tierId: { type: String, required: false },

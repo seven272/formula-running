@@ -5,12 +5,17 @@ import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
 import CustomPlan from '../models/customPlanModel.js'
 
-const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments';
+const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments'
 
 const TIER_SETTINGS = {
-  athlete: { custom: 3, ready: 3, price: '10.00', title: 'Атлет'  },
+  athlete: { custom: 3, ready: 3, price: '10.00', title: 'Атлет' },
   pro: { custom: 10, ready: 5, price: '15.00', title: 'Профи' },
-  champion: { custom: 15, ready: 10, price: '25.00', title: 'Чемпион'},
+  champion: {
+    custom: 15,
+    ready: 10,
+    price: '25.00',
+    title: 'Чемпион',
+  },
 }
 
 // const ITEMS_STORE = {
@@ -244,9 +249,10 @@ const createPaymentYooKassa = async (req, res) => {
     const tier = TIER_SETTINGS[tierId]
 
     if (!tier)
-      return res.status(400).json({ message: 'Неверный тариф' })
+      return res.status(400).json({ message: 'Неверный статус' })
 
     const idempotenceKey = uuidv4()
+
     const auth = Buffer.from(
       `${process.env.YOOKASSA_SHOP_ID}:${process.env.YOOKASSA_SECRET_KEY}`,
     ).toString('base64')
@@ -260,7 +266,7 @@ const createPaymentYooKassa = async (req, res) => {
 
     // Создаем запись "создано" в вашей коллекции Order
     const order = await Order.create({
-      orderId: idempotenceKey,
+      orderId: 'pending',
       userId: user._id,
       vkId,
       tierId,
@@ -279,8 +285,8 @@ const createPaymentYooKassa = async (req, res) => {
         },
         description: `Оплата статуса ${TIER_SETTINGS[tierId].title} в приложении Формула Бега`,
         metadata: {
-          orderDbId: order._id.toString(),
-          userId: user._id,
+          mongoOrderId: order._id.toString(),
+          dbUserId: user._id,
           tierId: tierId,
         },
       },
@@ -308,19 +314,21 @@ const createPaymentYooKassa = async (req, res) => {
 const handleWebhookYooKassa = async (req, res) => {
   try {
     const { event, object } = req.body
-
+    console.log('Данные из хука юкасса')
+    console.log(event)
+    console.log(object.metadata)
     if (event === 'payment.succeeded') {
-      const { orderDbId, userId, tierId } = object.metadata
+      const { mongoOrderId, dbUserId, tierId } = object.metadata
       const settings = TIER_SETTINGS[tierId]
 
       // 1. Обновляем статус заказа в вашей БД
-      await Order.findByIdAndUpdate(orderDbId, {
+      await Order.findByIdAndUpdate(mongoOrderId, {
         status: 'completed',
       })
 
       // 2. Обновляем лимиты и статус пользователя в коллекции User
       await User.findByIdAndUpdate(
-        { _id: userId },
+        {dbUserId},
         {
           tier: tierId,
           customPlansLimit: settings.custom,
@@ -328,7 +336,7 @@ const handleWebhookYooKassa = async (req, res) => {
         },
       )
 
-      console.log(`User ${userId} upgraded to ${tierId}`)
+      console.log(`User ${dbUserId} upgraded to ${tierId}`)
     }
 
     // ЮKassa всегда ждет 200 OK в ответ
