@@ -1,6 +1,7 @@
 import React from 'react'
 import { Panel } from '@vkontakte/vkui'
 import { useDispatch, useSelector } from 'react-redux'
+import bridge from '@vkontakte/vk-bridge'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -55,12 +56,27 @@ const StatusPrice = ({ id }) => {
   const dispatch = useDispatch()
   const { vkId, userId } = useSelector((state) => state.user)
 
-  const handleBuy = (tierId) => {
-    dispatch(
-      fetchPaymentLink({
-        tierId,
-      }),
-    )
+  const handleBuy = async (tierId) => {
+    try {
+      // 1. Получаем URL от бэкенда
+      const confirmationUrl = await dispatch(
+        fetchPaymentLink({ tierId }),
+      ).unwrap()
+
+      if (confirmationUrl) {
+        // 2. Самый надежный метод для открытия ЮKassa в ВК
+        try {
+          await bridge.send('VKWebAppOpenExternalApp', {
+            url: confirmationUrl,
+          })
+        } catch (bridgeError) {
+          // Резервный вариант, если Bridge не сработал (например, в обычном браузере)
+          window.open(confirmationUrl, '_blank')
+        }
+      }
+    } catch (error) {
+      console.error('Ошибка при получении ссылки:', error)
+    }
   }
 
   return (
