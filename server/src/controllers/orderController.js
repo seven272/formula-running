@@ -327,14 +327,11 @@ const handleWebhookYooKassa = async (req, res) => {
       })
 
       // 2. Обновляем лимиты и статус пользователя в коллекции User
-      await User.findByIdAndUpdate(
-        {dbUserId},
-        {
-          tier: tierId,
-          customPlansLimit: settings.custom,
-          readyPlansLimit: settings.ready,
-        },
-      )
+      await User.findByIdAndUpdate(dbUserId, {
+        tier: tierId,
+        customPlansLimit: settings.custom,
+        readyPlansLimit: settings.ready,
+      })
 
       console.log(`User ${dbUserId} upgraded to ${tierId}`)
     }

@@ -16,6 +16,6 @@ const router = express.Router()
 // router.post('/fiat-pay-vk', vkCheckKeyGroup, vkPayFiat)
 // router.get('/check-token', checkVkId, checkCustomToken)
 router.post('/create-payment', checkVkId, createPaymentYooKassa)
-router.get('/webhook', checkVkId, handleWebhookYooKassa)
+router.get('/webhook', handleWebhookYooKassa)
 
 export default router
