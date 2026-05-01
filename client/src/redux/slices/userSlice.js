@@ -181,11 +181,22 @@ const fetchUpdateUserTier = createAsyncThunk(
 
       return res.data
     } catch (error) {
-      console.log(
-        'ошибка при покупке статуса из redux ',
-        error,
-      )
+      console.log('ошибка при покупке статуса из redux ', error)
       return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
+const fetchPaymentLink = createAsyncThunk(
+  'user/fetchPaymentLink',
+  async ({ tierId }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('/user/create-payment', {
+        tierId,
+      })
+      return response.data.confirmationUrl
+    } catch (err) {
+      return rejectWithValue(err.response.data)
     }
   },
 )
@@ -194,6 +205,7 @@ const fetchUpdateUserTier = createAsyncThunk(
 
 const initialState = {
   preVkId: '',
+  userId:'',
   vkId: '',
   name: '',
   avatar: '',
@@ -252,6 +264,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchCreateProfile.fulfilled, (state, action) => {
         state.isLoading = false
+        state.userId = action.payload._id
         state.vkId = action.payload.vkId
         state.name = action.payload.name
         state.avatar = action.payload.avatarUrl
@@ -323,6 +336,7 @@ const userSlice = createSlice({
       .addCase(fetchGetMyProfile.fulfilled, (state, action) => {
         state.isLoading = false
         // Базовые данные
+        state.userId = action.payload?._id
         state.vkId = action.payload?.vkId
         state.name = action.payload?.name
         state.avatar = action.payload?.avatarUrl
@@ -364,9 +378,21 @@ const userSlice = createSlice({
         state.customPlansLimit = action.payload.customPlansLimit
         state.readyPlansLimit = action.payload.readyPlansLimit
       })
-      .addCase(fetchUpdateUserTier.rejected, (state, action) => {
+      .addCase(fetchUpdateUserTier.rejected, (state) => {
         state.isLoading = false
         // state.error = action.payload
+      })
+      //оплата юкасса
+      .addCase(fetchPaymentLink.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(fetchPaymentLink.fulfilled, (state, action) => {
+        state.loading = false
+        // Перенаправляем пользователя на оплату
+        window.location.href = action.payload
+      })
+      .addCase(fetchPaymentLink.rejected, (state) => {
+        state.loading = false
       })
   },
 })
@@ -389,6 +415,7 @@ export {
   fetchGetMyProfile,
   fetchUpdateWorkoutUser,
   fetchUpdateUserTier,
+  fetchPaymentLink,
   checkVkAuth,
 }
 

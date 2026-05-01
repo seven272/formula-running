@@ -1,30 +1,41 @@
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid'
+
 import User from '../models/userModel.js'
 import Order from '../models/orderModel.js'
 import CustomPlan from '../models/customPlanModel.js'
 
-const ITEMS_STORE = {
-  tier_athlete: {
-    title: 'Статус: Атлет',
-    price: 3,
-    customLimit: 3,
-    readyLimit: 3,
-    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-  },
-  tier_pro: {
-    title: 'Статус: Профи',
-    price: 7,
-    customLimit: 10,
-    readyLimit: 5,
-    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-  },
-  tier_champion: {
-    title: 'Статус: Чемпион',
-    price: 12,
-    customLimit: 15,
-    readyLimit: 10,
-    photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-  },
+
+
+const TIER_SETTINGS = {
+  athlete: { custom: 3, ready: 3, price: '500.00' },
+  pro: { custom: 10, ready: 5, price: '1000.00' },
+  champion: { custom: 15, ready: 10, price: '1500.00' },
 }
+
+// const ITEMS_STORE = {
+//   tier_athlete: {
+//     title: 'Статус: Атлет',
+//     price: 3,
+//     customLimit: 3,
+//     readyLimit: 3,
+//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+//   },
+//   tier_pro: {
+//     title: 'Статус: Профи',
+//     price: 7,
+//     customLimit: 10,
+//     readyLimit: 5,
+//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+//   },
+//   tier_champion: {
+//     title: 'Статус: Чемпион',
+//     price: 12,
+//     customLimit: 15,
+//     readyLimit: 10,
+//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
+//   },
+// }
 
 const payVk = async (req, res) => {
   const { notification_type, item, user_id, order_id, status } =
@@ -36,7 +47,6 @@ const payVk = async (req, res) => {
       notification_type === 'get_item' ||
       notification_type === 'get_item_test'
     ) {
-
       const product = ITEMS_STORE[item]
 
       if (!product) {
@@ -65,9 +75,15 @@ const payVk = async (req, res) => {
       const vkOrderId = String(order_id)
       const vkId = String(user_id)
 
-       const product = ITEMS_STORE[item];
-       if (!product) return res.json({ error: { error_code: 20, error_msg: 'Данные тира не найдены' } });
-      const newTier = item.replace('tier_', '');
+      const product = ITEMS_STORE[item]
+      if (!product)
+        return res.json({
+          error: {
+            error_code: 20,
+            error_msg: 'Данные тира не найдены',
+          },
+        })
+      const newTier = item.replace('tier_', '')
 
       //Проверка на дубликаты заказов. Проверяем, не обрабатывали ли мы этот order_id ранее
       const existing = await Order.findOne({ orderId: vkOrderId })
@@ -89,11 +105,10 @@ const payVk = async (req, res) => {
             tier: newTier,
             customPlansLimit: product.customLimit,
             readyPlansLimit: product.readyLimit,
-          }
+          },
         },
-        { upsert: true, new: true }
-      );
-
+        { upsert: true, new: true },
+      )
 
       // 3. Создаем запись о покупке
       // Именно наличие этого Order будет основанием для выдачи плана в другом контроллере
@@ -127,7 +142,6 @@ const payVk = async (req, res) => {
     })
   }
 }
-
 const checkCustomToken = async (req, res) => {
   const vkId = String(req.vkId)
 
@@ -157,7 +171,6 @@ const checkCustomToken = async (req, res) => {
     res.status(500).json({ message: 'Ошибка проверки токена' })
   }
 }
-
 const vkPayFiat = async (req, res) => {
   const { type, object, group_id } = req.body
 
@@ -224,4 +237,106 @@ const vkPayFiat = async (req, res) => {
   }
 }
 
-export { payVk, checkCustomToken, vkPayFiat }
+const createPaymentYooKassa = async (req, res) => {
+  try {
+    const vkId = req.vkId
+    const { tierId } = req.body
+    const tier = TIER_SETTINGS[tierId]
+
+    if (!tier)
+      return res.status(400).json({ message: 'Неверный тариф' })
+
+    const idempotenceKey = uuidv4()
+    const auth = Buffer.from(
+      `${process.env.YOOKASSA_SHOP_ID}:${process.env.YOOKASSA_SECRET_KEY}`,
+    ).toString('base64')
+
+    // Находим или создаем пользователя
+    const user = await User.findOneAndUpdate(
+      { vkId: vkId },
+      { $setOnInsert: { vkId: vkId } },
+      { upsert: true, new: true },
+    )
+
+    // Создаем запись "создано" в вашей коллекции Order
+    const order = await Order.create({
+      orderId: idempotenceKey,
+      userId: user._id,
+      vkId,
+      tierId,
+      typeOrder: 'tier_upgrade',
+      status: 'created',
+    })
+
+    const response = await axios.post(
+      YOOKASSA_API_URL,
+      {
+        amount: { value: tier.price, currency: 'RUB' },
+        capture: true,
+        confirmation: {
+          type: 'redirect',
+          return_url: `https://vk.com/app53406141`,
+        },
+        description: `Оплата уровня ${tierId} (VK ID: ${vkId})`,
+        metadata: {
+          orderDbId: order._id.toString(),
+          userId: user._id,
+          tierId: tierId,
+        },
+      },
+      {
+        headers: {
+          Authorization: `Basic ${auth}`,
+          'Idempotence-Key': idempotenceKey,
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+
+    res.json({
+      confirmationUrl: response.data.confirmation.confirmation_url,
+    })
+  } catch (error) {
+    console.error(
+      'Payment Create Error:',
+      error.response?.data || error.message,
+    )
+    res.status(500).json({ message: 'Ошибка формирования платежа' })
+  }
+}
+
+const handleWebhookYooKassa = async (req, res) => {
+  try {
+    const { event, object } = req.body
+
+    if (event === 'payment.succeeded') {
+      const { orderDbId, userId, tierId } = object.metadata
+      const settings = TIER_SETTINGS[tierId]
+
+      // 1. Обновляем статус заказа в вашей БД
+      await Order.findByIdAndUpdate(orderDbId, {
+        status: 'completed',
+      })
+
+      // 2. Обновляем лимиты и статус пользователя в коллекции User
+      await User.findByIdAndUpdate(
+        { _id: userId },
+        {
+          tier: tierId,
+          customPlansLimit: settings.custom,
+          readyPlansLimit: settings.ready,
+        },
+      )
+
+      console.log(`User ${userId} upgraded to ${tierId}`)
+    }
+
+    // ЮKassa всегда ждет 200 OK в ответ
+    res.status(200).send('OK')
+  } catch (error) {
+    console.error('Webhook Error:', error)
+    res.status(500).send('Internal Server Error')
+  }
+}
+
+export { createPaymentYooKassa, handleWebhookYooKassa }

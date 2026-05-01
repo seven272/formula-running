@@ -1,10 +1,12 @@
 import React from 'react'
 import { Panel } from '@vkontakte/vkui'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import styles from './StatusPrice.module.css'
-import { useVkPay } from '../../utils/useVkPay'
+
+import { fetchPaymentLink } from '../../redux/slices/userSlice'
 
 const TIERS = [
   {
@@ -50,7 +52,17 @@ const TIERS = [
 ]
 
 const StatusPrice = ({ id }) => {
-  const { buyUserTier, loading } = useVkPay()
+  const dispatch = useDispatch()
+  const { vkId, userId } = useSelector((state) => state.user)
+
+  const handleBuy = (tierId) => {
+    dispatch(
+      fetchPaymentLink({
+        tierId,
+      }),
+    )
+  }
+
   return (
     <Panel id={id}>
       <Header />
@@ -98,8 +110,8 @@ const StatusPrice = ({ id }) => {
               {tier.price > 0 && (
                 <button
                   className={styles.buy_btn}
-                  disabled={loading}
-                  onClick={() => buyUserTier(tier.id)}
+                  disabled={false}
+                  onClick={() => handleBuy(tier.id)}
                 >
                   Выбрать
                 </button>
