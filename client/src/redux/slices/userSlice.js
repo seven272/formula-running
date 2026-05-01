@@ -191,7 +191,7 @@ const fetchPaymentLink = createAsyncThunk(
   'user/fetchPaymentLink',
   async ({ tierId }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/user/create-payment', {
+      const response = await axios.post('/orders/create-payment', {
         tierId,
       })
       return response.data.confirmationUrl
