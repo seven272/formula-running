@@ -24,7 +24,7 @@ const PreviewPlanOld = ({ objPlan }) => {
   const [isPurchased, setIsPurchased] = useState(false)
   const { payFiatMoney } = useVkPayFiat()
 
-  const canShowPayments = () => {
+  const canShowPayments = () => { 
     const urlParams = new URLSearchParams(window.location.search)
     const platform = urlParams.get('vk_platform')
     // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)

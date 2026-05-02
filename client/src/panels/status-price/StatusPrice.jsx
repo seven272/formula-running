@@ -1,7 +1,7 @@
-import React from 'react'
-import { Panel } from '@vkontakte/vkui'
-import { useDispatch, useSelector } from 'react-redux'
 import bridge from '@vkontakte/vk-bridge'
+import { Panel } from '@vkontakte/vkui'
+import { useDispatch } from 'react-redux'
+import { TbLock } from 'react-icons/tb'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -54,7 +54,16 @@ const TIERS = [
 
 const StatusPrice = ({ id }) => {
   const dispatch = useDispatch()
-  const { vkId, userId } = useSelector((state) => state.user)
+
+  const canShowPayments = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const platform = urlParams.get('vk_platform')
+    // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
+    // и в мобильном браузере (mobile_web)
+    const allowedPlatforms = ['desktop_web', 'mobile_web']
+    //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
+    return allowedPlatforms.includes(platform)
+  }
 
   const handleBuy = async (tierId) => {
     try {
@@ -123,18 +132,25 @@ const StatusPrice = ({ id }) => {
                 </li>
               </ul>
 
-              {tier.price > 0 && (
-                <button
-                  className={styles.buy_btn}
-                  disabled={false}
-                  onClick={() => handleBuy(tier.id)}
-                >
-                  Выбрать
-                </button>
-              )}
+              {tier.price > 0 &&
+                (canShowPayments() ? (
+                  <button
+                    className={styles.buy_btn}
+                    disabled={false}
+                    onClick={() => handleBuy(tier.id)}
+                  >
+                    Выбрать
+                  </button>
+                ) : (
+                  <button className={styles.buy_btn} disabled={true}>
+                    <TbLock size={20}/>
+                  </button>
+                ))}
             </div>
           ))}
         </div>
+        {/* {!canShowPayments() && <span className={styles.warning}>*оплата в мобильном приложении недоступна</span>} */}
+        
       </div>
       <Footer />
     </Panel>

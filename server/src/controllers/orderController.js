@@ -314,9 +314,7 @@ const createPaymentYooKassa = async (req, res) => {
 const handleWebhookYooKassa = async (req, res) => {
   try {
     const { event, object } = req.body
-    console.log('Данные из хука юкасса')
-    console.log(event)
-    console.log(object.metadata)
+   
     if (event === 'payment.succeeded') {
       const { mongoOrderId, dbUserId, tierId } = object.metadata
       const settings = TIER_SETTINGS[tierId]
