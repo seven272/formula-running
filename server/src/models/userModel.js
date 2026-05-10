@@ -8,18 +8,18 @@ const userSchema = new mongoose.Schema(
       unique: true,
       sparse: true,
     },
-      tier: {
+    tier: {
       type: String,
       enum: ['amateur', 'athlete', 'pro', 'champion'],
       default: 'amateur',
     },
     customPlansLimit: {
       type: Number,
-      default: 1, 
+      default: 1,
     },
     readyPlansLimit: {
       type: Number,
-      default: 1, 
+      default: 1,
     },
     hasSportProfile: {
       type: Boolean,
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      default: 'имя', 
+      default: 'имя',
     },
     avatarUrl: String,
     profile: {

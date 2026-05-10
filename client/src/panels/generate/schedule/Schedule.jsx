@@ -67,7 +67,7 @@ const Schedule = ({ getData }) => {
 
   return (
     <div className={styles.main_schedule}>
-      <span className={styles.title}>Тренировачное расписание</span>
+      <span className={styles.title}>Тренировочное расписание</span>
 
       <div className={styles.days}>
         <span className={styles.days_title}>

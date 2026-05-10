@@ -6,7 +6,8 @@ import PurchasedPlan from '../models/purchasedPlanModel.js'
 import Order from '../models/orderModel.js'
 
 const createProfile = async (req, res) => {
-  const { vkId, name, avatarUrl } = req.body
+  const vkId = req.vkId
+  const { name, avatarUrl } = req.body
   try {
     // findOneAndUpdate с upsert заменяет всю логику "поиск-проверка-создание"
     const user = await User.findOneAndUpdate(
@@ -496,7 +497,9 @@ const addReadyPlan = async (req, res) => {
     // 2. Находим пользователя
     const user = await User.findOne({ vkId })
     if (!user) {
-      return res.status(403).json({ message: 'Пользователь не найден' })
+      return res
+        .status(403)
+        .json({ message: 'Пользователь не найден' })
     }
 
     // 3. ПРОВЕРКА ДУБЛИКАТА
@@ -506,7 +509,9 @@ const addReadyPlan = async (req, res) => {
       .includes(readyPlanId)
 
     if (isAlreadyOwned) {
-      return res.status(409).json({ message: 'Этот план уже есть в вашей библиотеке' })
+      return res
+        .status(409)
+        .json({ message: 'Этот план уже есть в вашей библиотеке' })
     }
 
     // 4. ПРОВЕРКА ЛИМИТА СЛОТОВ
@@ -552,7 +557,7 @@ const addReadyPlan = async (req, res) => {
     user.purchasedCopiedPlans.push(personalCopy._id)
     user.currentPlan = personalCopy._id
     user.nameModel = 'PurchasedPlan'
-    
+
     await user.save()
 
     res.status(200).json(personalCopy)
@@ -671,7 +676,7 @@ export {
   updatePersonalParameters,
   updateRecords,
   updateZonesPulse,
-  updatePace, 
+  updatePace,
   getPurchasedPlans,
   changeCurrentPlan,
   getCurrentPlan,
@@ -679,5 +684,5 @@ export {
   updateWorkoutUser,
   resetProgress,
   updateSessionStatus,
-  addReadyPlan
+  addReadyPlan,
 }

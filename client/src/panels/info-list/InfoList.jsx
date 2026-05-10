@@ -49,7 +49,7 @@ const InfoList = ({ id }) => {
               className={styles.href_text}
               onClick={() => routeNavigator.push('/info/pace')}
             >
-              Определение тренировачного темпа
+              Определение тренировочного темпа
             </span>
           </div>
           <div className={styles.href_wrap}>

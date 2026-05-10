@@ -329,7 +329,7 @@ const handleWebhookYooKassa = async (req, res) => {
         tier: tierId,
         customPlansLimit: settings.custom,
         readyPlansLimit: settings.ready,
-      })
+      }) 
 
       console.log(`User ${dbUserId} upgraded to ${tierId}`)
     }

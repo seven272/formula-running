@@ -30,7 +30,7 @@ router.post('/upload/avatar', upload.single('avatar'), (req, res) => {
   })
 })
 
-router.post('/create-profile', checkVkId, createProfile)
+router.post('/create-profile', checkVkId, createProfile) 
 router.post('/buy', checkVkId, addReadyPlan)
 router.get('/get-profile', checkVkId, getMyProfile)
 router.put('/personal-param', checkVkId, updatePersonalParameters)

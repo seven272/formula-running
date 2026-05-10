@@ -17,7 +17,7 @@ const verifyVkSignature = (req, res, next) => {
       : launchParams,
   )
 
-  const queryParams = {}
+  const queryParams = {} 
   for (const [key, value] of urlParams.entries()) {
     queryParams[key] = value
   }

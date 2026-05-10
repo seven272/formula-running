@@ -19,7 +19,6 @@ const fetchCreateProfile = createAsyncThunk(
       // Данные пользователя получены
       if (data.id) {
         const res = await axios.post('/user/create-profile', {
-          vkId: String(data.id),
           name: data.first_name,
           avatarUrl: data.photo_100,
         })

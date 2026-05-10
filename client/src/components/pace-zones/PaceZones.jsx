@@ -31,7 +31,7 @@ const PaceZones = () => {
   return (
     <div className={styles.pace_zones}>
       <span className={styles.title}>
-        Выберите свое лушее время на дистанции 5 км или 10 км
+        Выберите свое лучшее время на дистанции 5 км или 10 км
       </span>
       <span className={styles.title_value}>5км | 10км</span>
       <select
