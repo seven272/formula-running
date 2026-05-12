@@ -116,32 +116,23 @@ const logout = async (req, res) => {
 
 const getMe = async (req, res) => {
   try {
-    const user = await Auth.findById(req.userId)
+    const user = await Auth.findById(req.userId).lean()
 
     if (!user) {
-      return res.json({
+      return res.status(404).json({
         message: 'Такого пользователя не существует.',
       })
     }
 
-    const token = jwt.sign(
-      {
-        id: user._id,
-      },
-      JWT_SECRET,
-      { expiresIn: '30d' },
-    )
-
-    res.json({
-      message: 'Данные о авторизации получены',
+    res.status(200).json({
+      message: 'Данные получены',
       user,
-      token,
     })
   } catch (error) {
-    res.status(403).json({ message: 'Нет доступа' })
+    console.error(error)
+    res.status(500).json({ message: 'Ошибка сервера' })
   }
 }
-
 const getStatistics = async (req, res) => {
   try {
     const users = await User.find({})

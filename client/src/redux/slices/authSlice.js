@@ -93,7 +93,7 @@ const logoutUser = createAsyncThunk(
   },
 )
 
-const getMe = createAsyncThunk('auth/getMe', async () => {
+const getMe = createAsyncThunk('auth/getMe', async (_, { rejectWithValue }) => {
   try {
     const res = await axios.get('/auth/me')
     return res.data
@@ -102,6 +102,7 @@ const getMe = createAsyncThunk('auth/getMe', async () => {
       'ошибка при получении данных пользователя redux ',
       error,
     )
+    return rejectWithValue(error.response?.data || error.message)
   }
 })
 
@@ -129,7 +130,7 @@ const initialState = {
   isLoading: null,
   message: null,
   vkToken: null,
-  isLoadingVk: null,
+  isLoadingVk: true,
 }
 
 const authSlice = createSlice({
@@ -206,8 +207,6 @@ const authSlice = createSlice({
         state.isLoadingVk = true
       })
       .addCase(authWithVk.fulfilled, (state, action) => {
-        // console.log('Токен Вконтакте')
-        // console.log(action.payload?.token)
         state.isLoadingVk = false
         state.vkToken = action.payload?.token
       })

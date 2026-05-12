@@ -28,49 +28,28 @@ const DetailsPlan = ({ id }) => {
     (state) => state.plans,
   )
   const { readyPlansLimit } = useSelector((state) => state.user)
-  // const [plan, setPlan] = useState({})
-  // const [training, setTraining] = useState([])
+  const vkToken = useSelector((state) => state.auth.vkToken)
   const [isPurchased, setIsPurchased] = useState(false)
-  const hasLimit = purchasedPlans.length < readyPlansLimit
+  const hasLimit = vkToken
+    ? (purchasedPlans?.length || 0) < (readyPlansLimit || 0)
+    : true
 
   // Находим план сразу в теле компонента (memoization)
-const plan = allPlans.find((elem) => elem._id === currentId);
+  const plan = allPlans.find((elem) => elem._id === currentId)
 
-// Безопасно вычисляем тренировки
-const training = plan?.workouts 
-  ? (typeof plan.workouts === 'string' ? JSON.parse(plan.workouts) : plan.workouts)[0]?.sessions 
-  : [];
+  // Безопасно вычисляем тренировки
+  const training = plan?.workouts
+    ? (typeof plan.workouts === 'string'
+        ? JSON.parse(plan.workouts)
+        : plan.workouts)[0]?.sessions
+    : []
 
   useEffect(() => {
-  // Грузим планы только если их еще нет в сторе
-  if (allPlans.length === 0) {
-    dispatch(fetchGetAllPlans());
-  }
-}, [dispatch, allPlans.length]);
-
-  // const findPlan = () => {
-  //   // находим нужный план сравнивая ид элемента и данные их хука useParams
-  //   const currentPlan = allPlans.find(
-  //     (elem) => elem._id === currentId,
-  //   )
-
-  //   // 1. Добавляем защиту: если план не найден, выходим из функции
-  //   if (!currentPlan) return
-
-  //   // 2. Безопасно извлекаем workouts
-  //   const rawWorkouts = currentPlan.workouts
-  //   const workouts =
-  //     typeof rawWorkouts === 'string'
-  //       ? JSON.parse(rawWorkouts)
-  //       : rawWorkouts
-
-  //   setPlan(currentPlan)
-
-  //   // 3. Защита на случай, если в workouts нет данных или нет нулевого элемента
-  //   if (workouts && workouts[0] && workouts[0].sessions) {
-  //     setTraining(workouts[0].sessions)
-  //   }
-  // }
+    // Грузим планы только если их еще нет в сторе
+    if (allPlans.length === 0) {
+      dispatch(fetchGetAllPlans())
+    }
+  }, [dispatch, allPlans?.length])
 
   const buyPlan = () => {
     dispatch(fetchBuyPlan(currentId))
@@ -85,35 +64,30 @@ const training = plan?.workouts
 
     setIsPurchased(value)
   }
-  // useEffect(() => {
-  //   dispatch(fetchGetAllPlans())
-  // }, [dispatch])
 
   useEffect(() => {
-    // findPlan()
     checkPurchased()
   }, [allPlans, currentId])
 
-  // if (!plan || Object.keys(plan).length === 0) {
-  //   return (
-  //     <Panel id={id}>
-  //       <ScreenSpinner />
-  //     </Panel>
-  //   )
-  // }
-
   // Обработка отсутствия плана
-if (!plan) {
-  if (isLoading) return <Panel id={id}><ScreenSpinner /></Panel>;
-  
-  // Если загрузка прошла, а плана нет — значит ID неверный, редиректим
-  return (
-    <Panel id={id}>
-       <div className={styles.error}>План не найден или был удален</div>
-       <button onClick={() => routeNavigator.back()}>Назад</button>
-    </Panel>
-  );
-}
+  if (!plan) {
+    if (isLoading)
+      return (
+        <Panel id={id}>
+          <ScreenSpinner />
+        </Panel>
+      )
+
+    // Если загрузка прошла, а плана нет — значит ID неверный, редиректим
+    return (
+      <Panel id={id}>
+        <div className={styles.error}>
+          План не найден или был удален
+        </div>
+        <button onClick={() => routeNavigator.back()}>Назад</button>
+      </Panel>
+    )
+  }
   return (
     <Panel id={id}>
       <Header />
@@ -153,12 +127,12 @@ if (!plan) {
               </div>
               <ul className={styles.plan__days}>
                 {training &&
-                  training.length > 0 &&
+                  training?.length > 0 &&
                   training.map((elem, inx) => {
                     return (
                       <li key={elem.id} className={styles.plan__day}>
                         <span className={styles.plan__day_number}>
-                          {inx+1}
+                          {inx + 1}
                         </span>
                         <span className={styles.plan__day_day}>
                           {elem.day}
@@ -177,24 +151,30 @@ if (!plan) {
             </>
           )}
 
-
           <div className={styles.btn_wrap}>
             {isPurchased ? (
               <button className={styles.card_btn} disabled>
                 Уже у вас{' '}
-                <MdOutlineStarBorder className={styles.btn_icon} />
+                <MdOutlineStarBorder
+                  size={15}
+                  className={styles.btn_icon}
+                />
               </button>
             ) : hasLimit ? (
               <button className={styles.card_btn} onClick={buyPlan}>
                 Заниматься{' '}
-                <MdOutlineStarBorder className={styles.btn_icon} />
+                <MdOutlineStarBorder
+                  size={15}
+                  className={styles.btn_icon}
+                />
               </button>
             ) : (
               <button
                 className={styles.card_btn}
                 onClick={() => routeNavigator.push('/status')}
               >
-                Улучшить статус <TbLock className={styles.btn_icon} />
+                Улучшить статус{' '}
+                <TbLock size={15} className={styles.btn_icon} />
               </button>
             )}
           </div>

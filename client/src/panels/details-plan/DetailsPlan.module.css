@@ -197,7 +197,6 @@
 .card_btn {
   width: max-content;
   padding: 8px 18px;
-  min-width: max-content;
   display: flex;
   flex-direction: row;
   justify-content: center;

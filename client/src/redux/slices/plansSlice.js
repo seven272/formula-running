@@ -5,12 +5,13 @@ import { showToast } from './toastSlice.js'
 //получаю все планы из БД
 const fetchGetAllPlans = createAsyncThunk(
   'plans/fetchAllPlans',
-  async () => {
+  async (_, { rejectWithValue }) => {
     try {
       const res = await axios.get('/plans/all')
       return res.data
     } catch (error) {
       console.log('ошибка при загрузке все планов из redux ', error)
+      return rejectWithValue(error.response?.data || 'Ошибка загрузки');
     }
   },
 )

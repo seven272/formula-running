@@ -2,7 +2,7 @@ import { Root, SplitLayout } from '@vkontakte/vkui'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router'
-import { ScreenSpinner } from '@vkontakte/vkui'
+import { ScreenSpinner } from '@vkontakte/vkui' 
 
 import MainView from './views/MainView'
 import { getMe, authWithVk } from './redux/slices/authSlice'
