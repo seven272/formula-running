@@ -62,7 +62,7 @@ const CalculatePace = ({ show }) => {
           onClick={handleClose}
         />
       </div>
-      <h3 className={styles.title}>Расчет тренировачного темпа</h3>
+      <h3 className={styles.title}>Расчет тренировочного темпа</h3>
       <span className={`${styles.text} ${styles.subtitle_select}`}>
         Выберите дистанцию
       </span>

@@ -24,53 +24,58 @@ const DetailsPlan = ({ id }) => {
   const routeNavigator = useRouteNavigator()
   const currentId = params.id
   const routerNavigate = useRouteNavigator()
-  const { allPlans, purchasedPlans } = useSelector(
+  const { allPlans, purchasedPlans, isLoading } = useSelector(
     (state) => state.plans,
   )
   const { readyPlansLimit } = useSelector((state) => state.user)
-  const [plan, setPlan] = useState({})
-  const [training, setTraining] = useState([])
+  // const [plan, setPlan] = useState({})
+  // const [training, setTraining] = useState([])
   const [isPurchased, setIsPurchased] = useState(false)
-    const hasLimit = purchasedPlans.length < readyPlansLimit
+  const hasLimit = purchasedPlans.length < readyPlansLimit
 
-  const findPlan = () => {
-    // находим нужный план сравнивая ид элемента и данные их хука useParams
-    const currentPlan = allPlans.find(
-      (elem) => elem._id === currentId,
-    )
+  // Находим план сразу в теле компонента (memoization)
+const plan = allPlans.find((elem) => elem._id === currentId);
 
-    // 1. Добавляем защиту: если план не найден, выходим из функции
-    if (!currentPlan) return
+// Безопасно вычисляем тренировки
+const training = plan?.workouts 
+  ? (typeof plan.workouts === 'string' ? JSON.parse(plan.workouts) : plan.workouts)[0]?.sessions 
+  : [];
 
-    // 2. Безопасно извлекаем workouts
-    const rawWorkouts = currentPlan.workouts
-    const workouts =
-      typeof rawWorkouts === 'string'
-        ? JSON.parse(rawWorkouts)
-        : rawWorkouts
-
-    setPlan(currentPlan)
-
-    // 3. Защита на случай, если в workouts нет данных или нет нулевого элемента
-    if (workouts && workouts[0] && workouts[0].sessions) {
-      setTraining(workouts[0].sessions)
-    }
+  useEffect(() => {
+  // Грузим планы только если их еще нет в сторе
+  if (allPlans.length === 0) {
+    dispatch(fetchGetAllPlans());
   }
+}, [dispatch, allPlans.length]);
+
+  // const findPlan = () => {
+  //   // находим нужный план сравнивая ид элемента и данные их хука useParams
+  //   const currentPlan = allPlans.find(
+  //     (elem) => elem._id === currentId,
+  //   )
+
+  //   // 1. Добавляем защиту: если план не найден, выходим из функции
+  //   if (!currentPlan) return
+
+  //   // 2. Безопасно извлекаем workouts
+  //   const rawWorkouts = currentPlan.workouts
+  //   const workouts =
+  //     typeof rawWorkouts === 'string'
+  //       ? JSON.parse(rawWorkouts)
+  //       : rawWorkouts
+
+  //   setPlan(currentPlan)
+
+  //   // 3. Защита на случай, если в workouts нет данных или нет нулевого элемента
+  //   if (workouts && workouts[0] && workouts[0].sessions) {
+  //     setTraining(workouts[0].sessions)
+  //   }
+  // }
 
   const buyPlan = () => {
     dispatch(fetchBuyPlan(currentId))
     setIsPurchased((prev) => !prev)
   }
-
-  // const canShowPayments = () => {
-  //   const urlParams = new URLSearchParams(window.location.search)
-  //   const platform = urlParams.get('vk_platform')
-  //   // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
-  //   // и в мобильном браузере (mobile_web)
-  //   const allowedPlatforms = ['desktop_web', 'mobile_web']
-  //   //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
-  //   return allowedPlatforms.includes(platform)
-  // }
 
   const checkPurchased = () => {
     const arrId = purchasedPlans.map((elem) => {
@@ -80,23 +85,35 @@ const DetailsPlan = ({ id }) => {
 
     setIsPurchased(value)
   }
-  useEffect(() => {
-    dispatch(fetchGetAllPlans())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchGetAllPlans())
+  // }, [dispatch])
 
   useEffect(() => {
-    findPlan()
+    // findPlan()
     checkPurchased()
   }, [allPlans, currentId])
 
-  if (!plan || Object.keys(plan).length === 0) {
-    return (
-      <Panel id={id}>
-        <ScreenSpinner />
-      </Panel>
-    )
-  }
+  // if (!plan || Object.keys(plan).length === 0) {
+  //   return (
+  //     <Panel id={id}>
+  //       <ScreenSpinner />
+  //     </Panel>
+  //   )
+  // }
 
+  // Обработка отсутствия плана
+if (!plan) {
+  if (isLoading) return <Panel id={id}><ScreenSpinner /></Panel>;
+  
+  // Если загрузка прошла, а плана нет — значит ID неверный, редиректим
+  return (
+    <Panel id={id}>
+       <div className={styles.error}>План не найден или был удален</div>
+       <button onClick={() => routeNavigator.back()}>Назад</button>
+    </Panel>
+  );
+}
   return (
     <Panel id={id}>
       <Header />
@@ -160,14 +177,6 @@ const DetailsPlan = ({ id }) => {
             </>
           )}
 
-          {/* // {canShowPayments() === false && !plan?.isFree && (
-          //   <div className={styles.pdf_block}>
-          //     <span className={styles.pdf_text}>
-          //       * данный план недоступен для приобретения в мобильном
-          //       приложении
-          //     </span>
-          //   </div>
-          // )} */}
 
           <div className={styles.btn_wrap}>
             {isPurchased ? (
