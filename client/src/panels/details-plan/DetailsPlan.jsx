@@ -30,9 +30,8 @@ const DetailsPlan = ({ id }) => {
   const { readyPlansLimit } = useSelector((state) => state.user)
   const vkToken = useSelector((state) => state.auth.vkToken)
   const [isPurchased, setIsPurchased] = useState(false)
-  const hasLimit = vkToken
-    ? (purchasedPlans?.length || 0) < (readyPlansLimit || 0)
-    : true
+  const hasLimit =
+    (purchasedPlans?.length || 0) < (readyPlansLimit || 0)
 
   // Находим план сразу в теле компонента (memoization)
   const plan = allPlans.find((elem) => elem._id === currentId)
@@ -41,7 +40,7 @@ const DetailsPlan = ({ id }) => {
   const training = plan?.workouts
     ? (typeof plan.workouts === 'string'
         ? JSON.parse(plan.workouts)
-        : plan.workouts)[0]?.sessions
+        : plan.workouts)?.[0]?.sessions || []
     : []
 
   useEffect(() => {
@@ -57,7 +56,7 @@ const DetailsPlan = ({ id }) => {
   }
 
   const checkPurchased = () => {
-    const arrId = purchasedPlans.map((elem) => {
+    const arrId = (purchasedPlans || []).map((elem) => {
       return elem.originalPlanId
     })
     const value = arrId.includes(currentId)
@@ -67,7 +66,13 @@ const DetailsPlan = ({ id }) => {
 
   useEffect(() => {
     checkPurchased()
-  }, [allPlans, currentId])
+  }, [allPlans, purchasedPlans, currentId])
+
+  const redirectToVK = () => {
+
+  const url = `https://vk.com/app53406141`;
+  window.location.href = url;
+};
 
   // Обработка отсутствия плана
   if (!plan) {
@@ -152,7 +157,14 @@ const DetailsPlan = ({ id }) => {
           )}
 
           <div className={styles.btn_wrap}>
-            {isPurchased ? (
+            {!vkToken ? (
+              <button
+                className={styles.card_btn}
+                onClick={redirectToVK}
+              >
+                Войти через ВКонтакте
+              </button>
+            ) : isPurchased ? (
               <button className={styles.card_btn} disabled>
                 Уже у вас{' '}
                 <MdOutlineStarBorder

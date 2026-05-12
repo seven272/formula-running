@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import { Spinner } from '@vkontakte/vkui'
 import { useSelector } from 'react-redux'
 
@@ -12,9 +12,13 @@ const ResultSort = ({ sortList }) => {
   const { readyPlansLimit } = useSelector((state) => state.user)
   const [isLoad, setIsLoad] = useState(true)
 
-  setTimeout(() => {
-    setIsLoad(false)
-  }, [300])
+  const totalLimit = readyPlansLimit || 1; // Защита от деления на 0
+const currentProgress = Math.min((purchasedPlans.length / totalLimit) * 100, 100);
+
+useEffect(() => {
+  const timer = setTimeout(() => setIsLoad(false), 300);
+  return () => clearTimeout(timer); // Очистка таймера
+}, []);
 
   if (isLoad) {
     return <Spinner />
@@ -33,7 +37,7 @@ const ResultSort = ({ sortList }) => {
           <div
             className={styles.progress_fill}
             style={{
-              width: `${(purchasedPlans.length / readyPlansLimit) * 100}%`,
+              width: `${currentProgress}%`,
             }}
           ></div>
         </div>

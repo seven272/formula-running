@@ -10,7 +10,7 @@ import templatePlanImg from '../../../assets/images/template_plan.png'
 import styles from './PreviewPlan.module.css'
 
 const URL = import.meta.env.VITE_PUBLIC_URL
-
+ 
 const PreviewPlan = ({ objPlan }) => {
   const { title, pictureUrl, _id } = objPlan
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const PreviewPlan = ({ objPlan }) => {
   )
   const { readyPlansLimit } = useSelector((state) => state.user)
   const [isPurchased, setIsPurchased] = useState(false)
-  const hasLimit = purchasedPlans.length < readyPlansLimit
+  const hasLimit = (purchasedPlans?.length || 0) < (readyPlansLimit || 0);
 
   const buyPlan = (_id) => {
     dispatch(fetchBuyPlan(_id))
@@ -34,7 +34,7 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   useEffect(() => {
-    const arrId = purchasedPlans.map((elem) => elem.originalPlanId)
+    const arrId = (purchasedPlans || []).map((elem) => elem.originalPlanId)
     setIsPurchased(arrId.includes(_id))
   }, [purchasedPlans, _id])
 
