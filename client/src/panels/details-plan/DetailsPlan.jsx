@@ -154,11 +154,11 @@ if (!plan) {
               <ul className={styles.plan__days}>
                 {training &&
                   training.length > 0 &&
-                  training.map((elem) => {
+                  training.map((elem, inx) => {
                     return (
                       <li key={elem.id} className={styles.plan__day}>
                         <span className={styles.plan__day_number}>
-                          {elem.id}
+                          {inx+1}
                         </span>
                         <span className={styles.plan__day_day}>
                           {elem.day}
