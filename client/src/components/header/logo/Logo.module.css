@@ -1,5 +1,5 @@
 .main {
-  width: 100%;
+  width: max-content;
   max-width: 515px;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@
   justify-content: flex-start;
   align-items: center;
   color: var(--color-white);
-  margin: 10px 0 15px 10px;
+  margin: 10px 0 15px 0;
 }
 
 

@@ -174,7 +174,7 @@ const Plan = ({ id }) => {
               <div className={styles.btn_wrap} onClick={handleShare}>
                 <TfiCup size={40} className={styles.cup_icon} />
                 <span className={styles.compliment_text_btn}>
-                  в сторис
+                  в историю
                 </span>
               </div>
             </div>

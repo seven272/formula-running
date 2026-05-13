@@ -79,13 +79,13 @@ const DayPlan = ({
           )}
         </div>
 
-        <div className={styles.day_share} title="Поделиться в Сторис">
+        <div className={styles.day_share} title="Поделиться в истории">
           {isSelected ? (
             <TbShare
               size={22}
               className={styles.icon_share}
               onClick={() => handleShareStory(title, descr)}
-              title="Поделиться в Сторис"
+              title="Поделиться в истории"
             />
           ) : (
             <TbShareOff

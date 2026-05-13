@@ -3,9 +3,10 @@ import { TbNotes } from 'react-icons/tb'
 import { BsCheckCircle, BsCheckCircleFill } from 'react-icons/bs'
 import { PiPencilLineFill, PiPencilSlashFill } from 'react-icons/pi'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-
+import { useState } from 'react'
 
 import styles from './ItemPlan.module.css'
+import Modal from '../../../../UI/modal/Modal'
 import { fetchChangeCurrentPlan } from '../../../../redux/slices/currentPlanSlice'
 
 const ItemPlan = ({ plan }) => {
@@ -13,7 +14,7 @@ const ItemPlan = ({ plan }) => {
   const dispatch = useDispatch()
   const userTier =
     useSelector((state) => state.user.tier) || 'amateur'
-
+  const [showModal, setShowModal] = useState(false)
   const { currentId } = useSelector((state) => state.currentPlan)
   const planId = plan._id
 
@@ -38,6 +39,7 @@ const ItemPlan = ({ plan }) => {
           <PiPencilSlashFill
             size={17}
             className={styles.icon_disabled}
+            onClick={() => setShowModal(true)}
           />
         ) : (
           <PiPencilLineFill
@@ -63,6 +65,12 @@ const ItemPlan = ({ plan }) => {
           />
         )}
       </div>
+      <Modal
+        active={showModal}
+        setActive={(val) => setShowModal(val)}
+      >
+        Не доступно для уровня Физкультурник
+      </Modal>
     </div>
   )
 }
