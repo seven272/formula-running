@@ -52,21 +52,28 @@
 }
 
 @media screen and (max-width: 450px) {
-
-   .header_main {
+  .header_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 383px;
     padding: 15px 0;
   }
-}
+  .header_other {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .top_block {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 2px;
-  box-sizing: border-box;
-  margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
 }
-
-

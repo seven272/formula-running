@@ -38,4 +38,5 @@
   font-size: 17px;
   display: block;
   color: var(--color-grey);
+  cursor: pointer;
 }
