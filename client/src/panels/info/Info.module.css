@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 0 10px;
 }
 .title {
   font: var(--font-l); 

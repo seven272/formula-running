@@ -30,14 +30,6 @@
   color: var(--color-grey-dark);
 }
 
-/* .overlay span {
-  padding: 10px;
-  border: 2px solid var(--color-grey-dark);
-  background-color: var(--color-grey-light);
-  border-radius: 6px;
-} */
-
-
 .limit_info {
   text-align: center;
   padding: 20px;
@@ -48,8 +40,8 @@
 }
 
 .limit_info span {
-font: var(--font-l);
-color: var(--color-grey);
+  font: var(--font-l);
+  color: var(--color-grey);
   display: block;
   margin-bottom: 8px;
 }
@@ -68,7 +60,6 @@ color: var(--color-grey);
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
-  
 }
 
 .wrapper {
@@ -130,7 +121,6 @@ color: var(--color-grey);
   cursor: not-allowed;
 }
 
-
 .link {
   width: max-content;
   display: flex;
@@ -150,7 +140,6 @@ color: var(--color-grey);
   color: var(--color-blue);
 }
 
-
 .counter_label {
   font-size: 13px;
   color: var(--color-grey);
@@ -161,4 +150,3 @@ color: var(--color-grey);
 .counter_label strong {
   color: var(--color-blue);
 }
-

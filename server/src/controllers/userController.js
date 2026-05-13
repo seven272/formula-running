@@ -73,6 +73,16 @@ const updatePersonalParameters = async (req, res) => {
       height: user.profile.height,
     })
   } catch (error) {
+    // ПЕРЕХВАТЫВАЕМ ОШИБКУ ВАЛИДАЦИИ MONGOOSE
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(
+        (err) => err.message,
+      )
+      return res.status(400).json({
+        message: 'Ошибка валидации данных',
+        errors: messages,
+      })
+    }
     console.error(
       'Ошибка updatePersonalParameters controller:',
       error,

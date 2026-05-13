@@ -35,16 +35,22 @@ const userSchema = new mongoose.Schema(
         type: Number,
         default: 0,
         required: false,
+        min: [0, 'Возраст не может быть отрицательным'],
+        max: [100, 'Указан слишком большой возраст'],
       },
       height: {
         type: Number,
         default: 0,
         required: false,
+        min: [0, 'Рост не может быть отрицательным'],
+        max: [300, 'Указан слишком большой рост'],
       },
       weight: {
         type: Number,
         default: 0,
         required: false,
+        min: [0, 'Вес не может быть отрицательным'],
+        max: [500, 'Указан слишком большой вес'],
       },
       records: {
         five: {

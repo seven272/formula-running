@@ -11,7 +11,9 @@ const fetchGetAllPlans = createAsyncThunk(
       return res.data
     } catch (error) {
       console.log('ошибка при загрузке все планов из redux ', error)
-      return rejectWithValue(error.response?.data || 'Ошибка загрузки');
+      return rejectWithValue(
+        error.response?.data || 'Ошибка загрузки',
+      )
     }
   },
 )
@@ -66,28 +68,20 @@ const fetchGetPurchasedPlans = createAsyncThunk(
 //купить план
 const fetchBuyPlan = createAsyncThunk(
   'plans/fetchBuyPlan',
-  async (_id, { dispatch, getState }) => {
-    const state = getState() 
+  async (_id, { getState, rejectWithValue }) => {
+    const state = getState()
     const userVkId = state.user.vkId
     try {
       const res = await axios.post('/user/buy', {
         readyPlanId: _id,
         userVkId: userVkId,
       })
-      dispatch(
-        showToast({
-          message: 'План успешно куплен!',
-          type: 'success',
-        }),
-      )
+
       return res.data
     } catch (error) {
       console.log('ошибка при покупке плана. Redux ', error)
-      dispatch(
-        showToast({
-          message: 'Ошибка. План нельзя купить повторно',
-          type: 'error',
-        }),
+      return rejectWithValue(
+        error.response?.data?.message || 'Ошибка при активации плана',
       )
     }
   },
@@ -198,7 +192,7 @@ const fetchDownloadPlan = createAsyncThunk(
 const initialState = {
   currentPlan: '',
   allPlans: [],
-  freePlans: [], 
+  freePlans: [],
   paidPlans: [],
   purchasedPlans: [],
   isLoading: null,
@@ -208,9 +202,7 @@ const initialState = {
 const plansSlice = createSlice({
   name: 'plans',
   initialState,
-  reducers: {
-  
-  },
+  reducers: {},
   extraReducers: (builder) => {
     //get all plans
     builder

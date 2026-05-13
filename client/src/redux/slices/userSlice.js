@@ -385,7 +385,7 @@ const userSlice = createSlice({
       .addCase(fetchPaymentLink.pending, (state) => {
         state.loading = true
       })
-      .addCase(fetchPaymentLink.fulfilled, (state, action) => {
+      .addCase(fetchPaymentLink.fulfilled, (state) => {
         state.loading = false
         // Перенаправляем пользователя на оплату
         // window.location.href = action.payload

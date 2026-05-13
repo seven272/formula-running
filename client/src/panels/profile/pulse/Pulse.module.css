@@ -91,7 +91,7 @@
 }
 @media screen and (max-width: 850px) {
   .items {
-    width: 95%;
+    width: 100%;
   }
   .item {
     width: 100%;

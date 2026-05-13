@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { BiDetail } from 'react-icons/bi'
-import { MdOutlineStarBorder } from "react-icons/md";
+import { MdOutlineStarBorder } from 'react-icons/md'
 import { TbLock } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchBuyPlan } from '../../../redux/slices/plansSlice'
 import templatePlanImg from '../../../assets/images/template_plan.png'
 import styles from './PreviewPlan.module.css'
+import { showToast } from '../../../redux/slices/toastSlice'
 
 const URL = import.meta.env.VITE_PUBLIC_URL
- 
+
 const PreviewPlan = ({ objPlan }) => {
   const { title, pictureUrl, _id } = objPlan
   const dispatch = useDispatch()
@@ -20,11 +21,29 @@ const PreviewPlan = ({ objPlan }) => {
   )
   const { readyPlansLimit } = useSelector((state) => state.user)
   const [isPurchased, setIsPurchased] = useState(false)
-  const hasLimit = (purchasedPlans?.length || 0) < (readyPlansLimit || 0);
+  const hasLimit =
+    (purchasedPlans?.length || 0) < (readyPlansLimit || 0)
 
-  const buyPlan = (_id) => {
-    dispatch(fetchBuyPlan(_id))
-    setIsPurchased((prev) => !prev)
+  const buyPlan = async (_id) => {
+    try {
+      await dispatch(fetchBuyPlan(_id)).unwrap()
+      dispatch(
+        showToast({
+          message: 'План успешно активирован!',
+          type: 'success',
+        }),
+      )
+
+      setIsPurchased((prev) => !prev)
+    } catch (error) {
+      console.log(error)
+      dispatch(
+        showToast({
+          message: 'Ошибка при активации плана',
+          type: 'error',
+        }),
+      )
+    }
   }
 
   const openDetailsPlan = () => {
@@ -34,7 +53,9 @@ const PreviewPlan = ({ objPlan }) => {
   }
 
   useEffect(() => {
-    const arrId = (purchasedPlans || []).map((elem) => elem.originalPlanId)
+    const arrId = (purchasedPlans || []).map(
+      (elem) => elem.originalPlanId,
+    )
     setIsPurchased(arrId.includes(_id))
   }, [purchasedPlans, _id])
 
@@ -63,27 +84,28 @@ const PreviewPlan = ({ objPlan }) => {
 
         {isPurchased ? (
           <button className={styles.card_btn} disabled>
-            Уже у вас <MdOutlineStarBorder className={styles.btn_icon}/>
+            Уже у вас{' '}
+            <MdOutlineStarBorder className={styles.btn_icon} />
           </button>
         ) : hasLimit ? (
           <button
             className={styles.card_btn}
             onClick={() => buyPlan(_id)}
           >
-            Заниматься <MdOutlineStarBorder className={styles.btn_icon}/>
+            Заниматься{' '}
+            <MdOutlineStarBorder className={styles.btn_icon} />
           </button>
         ) : (
           <button
             className={styles.card_btn}
             onClick={() => routeNavigator.push('/status')}
           >
-            Улучшить статус <TbLock className={styles.btn_icon}/>
+            Улучшить статус <TbLock className={styles.btn_icon} />
           </button>
         )}
       </div>
 
-      <span className={styles.warning}>
-      </span>
+      <span className={styles.warning}></span>
     </div>
   )
 }

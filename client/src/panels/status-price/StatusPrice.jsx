@@ -6,7 +6,6 @@ import { TbLock } from 'react-icons/tb'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import styles from './StatusPrice.module.css'
-
 import { fetchPaymentLink } from '../../redux/slices/userSlice'
 
 const TIERS = [
@@ -67,24 +66,43 @@ const StatusPrice = ({ id }) => {
 
   const handleBuy = async (tierId) => {
     try {
-      // 1. Получаем URL от бэкенда
       const confirmationUrl = await dispatch(
         fetchPaymentLink({ tierId }),
       ).unwrap()
 
-      if (confirmationUrl) {
-        // 2. Самый надежный метод для открытия ЮKassa в ВК
-        try {
-          await bridge.send('VKWebAppOpenExternalApp', {
-            url: confirmationUrl,
-          })
-        } catch (bridgeError) {
-          // Резервный вариант, если Bridge не сработал (например, в обычном браузере)
-          window.open(confirmationUrl, '_blank')
+      if (!confirmationUrl) return
+
+      try {
+        // 1. Пытаемся открыть через VK Bridge (для нативного приложения)
+        await bridge.send('VKWebAppOpenURL', {
+          url: confirmationUrl,
+        })
+      } catch (bridgeError) {
+        console.warn(
+          'VK Bridge не сработал, переходим к браузерным методам',
+        )
+
+        // 2. Пытаемся открыть в новой вкладке (для десктопа и обычных условий)
+        const popup = window.open(confirmationUrl, '_blank')
+
+        // 3. ПРОВЕРКА: если popup равен null или у него нет фокуса — значит, сработал блокировщик окон
+        if (
+          !popup ||
+          popup.closed ||
+          typeof popup.closed === 'undefined'
+        ) {
+          console.warn(
+            'Всплывающее окно заблокировано мобильным браузером. Перенаправляем в текущей вкладке.',
+          )
+
+          // Резервный вариант: открываем в этой же вкладке
+          window.location.href = confirmationUrl
         }
       }
+     
     } catch (error) {
       console.error('Ошибка при получении ссылки:', error)
+     
     }
   }
 
@@ -143,14 +161,13 @@ const StatusPrice = ({ id }) => {
                   </button>
                 ) : (
                   <button className={styles.buy_btn} disabled={true}>
-                    <TbLock size={20}/>
+                    <TbLock size={20} />
                   </button>
                 ))}
             </div>
           ))}
         </div>
         {/* {!canShowPayments() && <span className={styles.warning}>*оплата в мобильном приложении недоступна</span>} */}
-        
       </div>
       <Footer />
     </Panel>
