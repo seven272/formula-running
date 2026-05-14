@@ -89,7 +89,7 @@ const DetailsPlan = ({ id }) => {
         <div className={styles.error}>
           План не найден или был удален
         </div>
-        <button onClick={() => routeNavigator.back()}>Назад</button>
+        <button onClick={() => routeNavigator.push('/shop')}>Назад</button>
       </Panel>
     )
   }

@@ -1,18 +1,19 @@
 .paces {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-  
-  .title {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font: var(--font-menu);
-    color: var(--font-color);
-    margin-bottom: 20px;
-  }
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  background-color: var(--color-white);
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font: var(--font-menu);
+  color: var(--font-color-dark);
+  margin-bottom: 20px;
+}

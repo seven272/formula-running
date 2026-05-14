@@ -27,10 +27,14 @@
   border: 1px solid var(--color-grey);
   margin-bottom: 20px;
   font: var(--font-ms);
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
 .select_form option {
   font: var(--font-ms);
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 .items {
   width: 100%;

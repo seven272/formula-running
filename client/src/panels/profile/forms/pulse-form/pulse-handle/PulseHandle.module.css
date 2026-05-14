@@ -51,6 +51,7 @@
     padding-left: 7px;
     font: var(--font-ms);
     color: var(--color-black);
+    background-color: var(--color-white);
   }
 
   .btn_save {

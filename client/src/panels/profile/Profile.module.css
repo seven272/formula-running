@@ -5,6 +5,7 @@
   justify-content: center;
   margin-top: 50px;
   padding: 0 10px;
+  background-color: var(--color-white);
 }
 
 .profile_wrap {
@@ -15,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--color-white);
 }
 .wrap_form {
   position: relative;

@@ -11,13 +11,14 @@ overflow: hidden;
 
 .title {
   font: var(--font-menu);
+  font-size: 16px;
   color: var(--color-white);
   text-align: left;
   margin-bottom: 6px;
 }
 
 .descr {
-  font: var(--font-ms);
+  font: var(--font-m);
   color: var(--color-white);
   text-align: justify;
 }

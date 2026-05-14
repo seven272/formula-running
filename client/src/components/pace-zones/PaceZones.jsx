@@ -35,7 +35,7 @@ const PaceZones = () => {
       </span>
       <span className={styles.title_value}>5км | 10км</span>
       <select
-        defaultValue={pace}
+        defaultValue={pace} 
         className={styles.select_form}
         name="objectPace"
         onChange={handleChooseBestTime}

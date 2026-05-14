@@ -30,7 +30,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setInx((prevInx) => (prevInx + 1) % plans.length)
-    }, 5500)
+    }, 6500)
 
     return () => clearInterval(interval) //очищаем таймер при удалении компонента
   }, [plans.length])
