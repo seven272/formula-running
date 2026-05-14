@@ -13,7 +13,7 @@ body {
   justify-content: center;
   align-items: center; */
   margin: 0 auto;
-  color: var(--font-color);
+  color: var(--font-color-dark);
   background-color: var(--color-white);
   font: var(--font-m);
 }

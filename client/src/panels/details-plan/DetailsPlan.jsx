@@ -69,10 +69,9 @@ const DetailsPlan = ({ id }) => {
   }, [allPlans, purchasedPlans, currentId])
 
   const redirectToVK = () => {
-
-  const url = `https://vk.com/app53406141`;
-  window.location.href = url;
-};
+    const url = `https://vk.com/app53406141`
+    window.location.href = url
+  }
 
   // Обработка отсутствия плана
   if (!plan) {
@@ -89,7 +88,9 @@ const DetailsPlan = ({ id }) => {
         <div className={styles.error}>
           План не найден или был удален
         </div>
-        <button onClick={() => routeNavigator.push('/shop')}>Назад</button>
+        <button onClick={() => routeNavigator.push('/shop')}>
+          Назад
+        </button>
       </Panel>
     )
   }
@@ -100,7 +101,7 @@ const DetailsPlan = ({ id }) => {
         <div className={styles.wrapper}>
           <div
             className={styles.back}
-            onClick={() => routerNavigate.back()}
+            onClick={() => routeNavigator.push('/shop')}
           >
             <BsBoxArrowInLeft
               size={20}

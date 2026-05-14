@@ -34,7 +34,7 @@
 
 .item__title {
   font: var(--font-menu);
-  color: var(--font-color);
+  color: var(--font-color-dark);
 }
 
 
