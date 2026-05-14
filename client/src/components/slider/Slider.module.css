@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-overflow: hidden;
+  overflow: hidden;
 }
 
 .title {
@@ -18,7 +18,7 @@ overflow: hidden;
 }
 
 .descr {
-  font: var(--font-m);
+  font: var(--font-ms);
   color: var(--color-white);
   text-align: justify;
 }
@@ -39,7 +39,9 @@ overflow: hidden;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 15px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn:hover {
@@ -52,8 +54,6 @@ overflow: hidden;
   transform: translateY(0);
 }
 
-
 .icon {
   color: var(--color-white);
 }
-
