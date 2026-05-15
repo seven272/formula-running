@@ -69,7 +69,7 @@
 }
 .no {
   color: var(--color-grey);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .yes {
   font-weight: 500;
