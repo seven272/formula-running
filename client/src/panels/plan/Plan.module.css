@@ -64,7 +64,7 @@
 .plan_icon_disabled {
   color: var(--color-grey);
   margin-left: 10px;
-  cursor: not-allowed;
+  cursor: pointer;
 }
 
 .error_block {

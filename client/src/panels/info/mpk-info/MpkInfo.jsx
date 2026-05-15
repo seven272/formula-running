@@ -12,7 +12,7 @@ const MpkInfo = () => {
       <div className={styles.wrap}>
         <button className={styles.btn_back} onClick={() => routeNavigator.push('/info')}>
           <BsBoxArrowInLeft className={styles.btn_icon} />
-          назад 
+          назад  
         </button>
         <h3 className={styles.title}>
           МПК тренировки или интервальный бег

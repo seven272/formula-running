@@ -117,7 +117,7 @@ const StatusPrice = ({ id }) => {
               key={tier.id}
               className={`${styles.card} ${styles[tier.id]}`}
             >
-              <div className={styles.header}>
+              <div className={styles.header}> 
                 <h3>{tier.title}</h3>
                 <div className={styles.price}>
                   {tier.price > 0

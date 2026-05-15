@@ -22,6 +22,7 @@
 .time__subtitle {
   font: var(--font-s);
   color: var(--color-gray-dark);
+  margin-bottom: 3px;
 }
 
 

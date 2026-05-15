@@ -1,8 +1,12 @@
 import React, { useRef, useEffect } from 'react'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+import { BsBoxArrowInLeft } from 'react-icons/bs'
+
 import styles from './Offer.module.css'
 
 const Offer = () => {
   const canvasRef = useRef(null)
+  const routeNavigator = useRouteNavigator()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -45,6 +49,13 @@ const Offer = () => {
   return (
     <div className={styles.main_offer}>
       <div className={styles.wrap}>
+        <button
+          className={styles.btn_back}
+          onClick={() => routeNavigator.push('/info')}
+        >
+          <BsBoxArrowInLeft className={styles.btn_icon} />
+          назад
+        </button>
         <div className={styles.section}>
           <span className={styles.title}>
             ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ПЕРСОНАЛЬНЫХ ДАННЫХ
@@ -92,9 +103,9 @@ const Offer = () => {
               доступа к функционалу Сервиса и исполнения соглашений.
             </p>
             <p>
-              3.2. Идентификация Пользователя осуществляется для предоставления
-              персонализированных планов бега, связи с Пользователем,
-              аналитики использования сервиса.
+              3.2. Идентификация Пользователя осуществляется для
+              предоставления персонализированных планов бега, связи с
+              Пользователем, аналитики использования сервиса.
             </p>
             <span className={styles.subtitle}>
               4. УСЛОВИЯ ОБРАБОТКИ И ПЕРЕДАЧИ ТРЕТЬИМ ЛИЦАМ
@@ -117,10 +128,9 @@ const Offer = () => {
               5. ИЗМЕНЕНИЕ ПОЛИТИКИ
             </span>
             <p>
-              5.1. Администрация Сервиса имеет право
-              вносить изменения в настоящую Политику в одностороннем
-              порядке. Новая редакция вступает в силу с момента ее
-              размещения.
+              5.1. Администрация Сервиса имеет право вносить изменения
+              в настоящую Политику в одностороннем порядке. Новая
+              редакция вступает в силу с момента ее размещения.
             </p>
           </div>
         </div>
@@ -209,7 +219,7 @@ const Offer = () => {
             <span className={styles.subtitle}>
               6. РЕКВИЗИТЫ ПРОДАВЦА
             </span>
-           
+
             {/* <!-- Контейнер для отрисовки всех реквизитов --> */}
             <div style={{ padding: '5px 0' }}>
               <canvas

@@ -10,7 +10,7 @@ const InputTime = ({ title, name, getTime }) => {
 
   //два аргумента по умолчанию от антдесижн time, timeString: обьект с множетсовм данных и время в строковом формате
   const onChangeTime = (time, timeString) => {
-    console.log(time, timeString)
+  
     getTime({ name: name, value: timeString })
   }
 

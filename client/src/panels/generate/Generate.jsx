@@ -15,7 +15,7 @@ import SamplePlan from './sample-plan/SamplePlan'
 import { showToast } from '../../redux/slices/toastSlice'
 import {
   fetchCreateCustomPlan,
-  // fetchGetCustomPlans,
+  fetchGetCustomPlans,
   // fetchCheckToken,
   // changeStatusToken,
 } from '../../redux/slices/customPlanSlice'
@@ -23,18 +23,13 @@ import { fetchUpdateUserTier } from '../../redux/slices/userSlice'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 
-// import { useVkPay } from '../../utils/useVkPay'
-// import { useVkPayFiat } from '../../utils/useVkPayFiat'
-
 const Generate = ({ id }) => {
   const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
-  const { customPlansLimit } = useSelector(
-    (state) => state.user,
+  const { customPlansLimit } = useSelector((state) => state.user)
+  const listCustomPlans = useSelector(
+    (state) => state.customPlan.listCustomPlans || [],
   )
-  const listCustomPlans = useSelector((state) => state.customPlan.listCustomPlans || []) 
-  // const { payFiatMoney } = useVkPayFiat()
-
   const [dataPlan, setDataPlan] = useState({
     goal: '',
     totalWeeks: null,
@@ -48,19 +43,8 @@ const Generate = ({ id }) => {
   })
   const [showSample, setShowSample] = useState(false)
   const [showCreated, setShowCreated] = useState(false)
-  console.log(listCustomPlans)
-  const hasLimit = listCustomPlans.length < customPlansLimit
 
-  //проверка типа ВК платформы
-  // const canShowPayments = () => {
-  //   const urlParams = new URLSearchParams(window.location.search)
-  //   const platform = urlParams.get('vk_platform')
-  //   // Оплата разрешена ТОЛЬКО на десктопе (desktop_web)
-  //   // и в мобильном браузере (mobile_web)
-  //   const allowedPlatforms = ['desktop_web', 'mobile_web']
-  //   //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
-  //   return allowedPlatforms.includes(platform)
-  // }
+  const hasLimit = listCustomPlans.length < customPlansLimit
 
   const setRaceConfig = (payload) => {
     setDataPlan((prev) => {
@@ -128,25 +112,27 @@ const Generate = ({ id }) => {
         .unwrap()
         .then(() => {
           dispatch(fetchUpdateUserTier())
+          dispatch(
+            showToast({
+              message: 'План создан',
+              type: 'success',
+            }),
+          )
         })
         .catch((err) => {
+          console.log(err)
           dispatch(
             showToast({
               type: 'error',
-              message: err.message || 'Ошибка генерации',
+              message: 'Ошибка генерации плана',
             }),
           )
         })
     }
   }
 
-  // const handlePay = () => {
-  //   payFiatMoney('custom', '?', 10)
-  // }
-
   useEffect(() => {
-    // dispatch(fetchCheckToken())
-    // dispatch(fetchGetCustomPlans())
+    dispatch(fetchGetCustomPlans())
   }, [dispatch])
 
   return (
@@ -202,51 +188,6 @@ const Generate = ({ id }) => {
               </button>
             )}
           </div>
-          {/* {isFreeTry && (
-            <div className={styles.wrap_create}>
-              <span className={styles.message_create}>
-                Ваша первая генерация — бесплатно!
-              </span>
-              <button
-                className={styles.btn_create}
-                onClick={handleCreatePlan}
-              >
-                Бонусная генерация
-              </button>
-            </div>
-          )} */}
-
-          {/* {canShowPayments() === false && !isFreeTry && (
-            <div className={styles.wrap_create}>
-              <span className={styles.message_create}>
-                Платная генерация плана в мобильном приложении
-                недоступна
-              </span>
-              <button className={styles.btn} disabled={true}>
-                <TbLock size={20} />
-              </button>
-            </div>
-          )} */}
-
-          {/* {hasToken && !isFreeTry && (
-            <div className={styles.wrap_create}>
-              <span className={styles.message_create}>
-                Создание плана было оплачено. Начинается магия!
-              </span>
-              <button
-                className={styles.btn_create}
-                onClick={handleCreatePlan}
-              >
-                Создать план
-              </button>
-            </div>
-          )} */}
-
-          {/* {!hasToken && !isFreeTry && canShowPayments() && (
-            <button className={styles.btn} onClick={handlePay}>
-              Оплатить
-            </button>
-          )} */}
 
           <div
             className={styles.link}

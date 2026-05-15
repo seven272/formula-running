@@ -20,7 +20,8 @@
 }
 
 .card {
-  background: #fff;
+  background-color: var(--color-white);
+  background: var(--color-white);
   border-radius: 15px;
   padding: 16px;
   display: flex;
@@ -60,16 +61,19 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: var(--color-grey);
 }
 
 .features li span {
-  color: var(--color-grey);
+  color: var(--color-grey-dark);
 }
 .no {
+  color: var(--color-grey);
   opacity: 0.5;
 }
 .yes {
   font-weight: 500;
+  color: var(--color-grey);
 }
 
 .buy_btn {

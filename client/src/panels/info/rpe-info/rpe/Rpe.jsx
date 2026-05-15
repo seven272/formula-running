@@ -20,10 +20,7 @@ const Rpe = () => {
     <div className={styles.rpe}>
       <div className={styles.title_wrap}>
         <span className={styles.title}>Пульсовые зоны и RPE</span>
-        {/* <RouterLink to="/info" className={styles.link}>
-          <span>Подробнее про RPE</span>
-          <GoQuestion size={15} />
-        </RouterLink> */}
+        
       </div>
 
       <ul className={styles.items}>

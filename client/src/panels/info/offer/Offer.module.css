@@ -14,6 +14,27 @@
   color: var(--color-grey);
 }
 
+.btn_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--color-blue);
+  font: var(--font-ml);
+  padding: 5px 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn_icon {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  color: var(--color-blue);
+}
+
 .section {
   width: 100%;
   display: flex;

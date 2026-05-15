@@ -1,32 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../utils/axios.js'
-import { showToast } from './toastSlice.js'
 
 const fetchCreateCustomPlan = createAsyncThunk(
   'customPlan/fetchCreateCustomPlan',
-  async (dataPlan, { dispatch, rejectWithValue }) => {
+  async (dataPlan, { rejectWithValue }) => {
     try {
       const res = await axios.post(`/custom-plans/create`, dataPlan)
-
-      if (res.data) {
-        dispatch(
-          showToast({
-            message: 'План создан',
-            type: 'success',
-          }),
-        )
-      }
-
-      console.log(res.data)
       return res.data
     } catch (error) {
       console.log('ошибка при создании плана. Redux ', error)
-      dispatch(
-        showToast({
-          message: 'Ошибка при создании плана',
-          type: 'error',
-        }),
-      )
       return rejectWithValue(error)
     }
   },
@@ -71,7 +53,7 @@ const initialState = {
   isLoading: false,
   status: '',
   hasToken: false,
-  isFreeTry: false
+  isFreeTry: false,
 }
 
 const customPlanSlice = createSlice({
@@ -111,7 +93,7 @@ const customPlanSlice = createSlice({
       .addCase(fetchCreateCustomPlan.rejected, (state) => {
         state.isLoading = false
         state.status = 'failed'
-      }) 
+      })
       //get customs plans
       .addCase(fetchGetCustomPlans.pending, (state) => {
         state.isLoading = true
@@ -139,7 +121,11 @@ const customPlanSlice = createSlice({
   },
 })
 
-export const { clearCurrentPlan, setCustomPlan, setCustomPace, changeStatusToken } =
-  customPlanSlice.actions
+export const {
+  clearCurrentPlan,
+  setCustomPlan,
+  setCustomPace,
+  changeStatusToken,
+} = customPlanSlice.actions
 export { fetchCreateCustomPlan, fetchGetCustomPlans, fetchCheckToken }
 export default customPlanSlice.reducer

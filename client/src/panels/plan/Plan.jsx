@@ -25,11 +25,12 @@ import Progressbar from '../../UI/progressbar/Progressbar.jsx'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
+import MyModal from '../../UI/modal/Modal.jsx'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
   const plan = useSelector((state) => state.currentPlan.plan)
-   const userTier =
+  const userTier =
     useSelector((state) => state.user.tier) || 'amateur'
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
@@ -41,6 +42,7 @@ const Plan = ({ id }) => {
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [showMyModal, setShowMyModal] = useState(false)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -127,18 +129,22 @@ const Plan = ({ id }) => {
                 title="детали плана"
                 onClick={() => setShowBlockAbout(true)}
               />
-              {userTier === 'amateur' ? <LuChartLine
-                className={styles.plan_icon_disabled}
-                size={22}
-                title="статистика"
-                
-              /> : <LuChartLine
-                className={styles.plan_icon}
-                size={22}
-                title="статистика"
-                onClick={() => setShowBlockStatistics(true)}
-              />}
-              
+              {userTier === 'amateur' ? (
+                <LuChartLine
+                  className={styles.plan_icon_disabled}
+                  size={22}
+                  title="статистика"
+                  onClick={() => setShowMyModal(true)}
+                />
+              ) : (
+                <LuChartLine
+                  className={styles.plan_icon}
+                  size={22}
+                  title="статистика"
+                  onClick={() => setShowBlockStatistics(true)}
+                />
+              )}
+
               <MdOutlineRunCircle
                 className={styles.plan_icon}
                 size={22}
@@ -208,6 +214,12 @@ const Plan = ({ id }) => {
             тренировкам в этом плане?
           </span>
         </Modal>
+        <MyModal
+          active={showMyModal}
+          setActive={(val) => setShowMyModal(val)}
+        >
+          Не доступно для уровня Физкультурник
+        </MyModal>
       </div>
       <Footer />
     </Panel>

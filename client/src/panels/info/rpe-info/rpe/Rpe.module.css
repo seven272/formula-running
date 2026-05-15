@@ -40,6 +40,7 @@
 }
 
 .description {
+ 
   font: var(--font-s);
   color: var(--font-color);
   
@@ -99,6 +100,7 @@
 @media screen and (max-width: 850px) {
   .items {
     width: 95%;
+    padding: 0 5px;
   }
   .item {
     width: 100%;
@@ -113,7 +115,9 @@
   .description {
     font: var(--font-s);
     color: var(--font-color);
-    text-align: start;
+    display: flex;
+  justify-content: center;
+  align-items: center;
     line-height: 1.3;
   }
 }
