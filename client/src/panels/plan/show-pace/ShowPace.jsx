@@ -1,18 +1,16 @@
-
 import { MdClose } from 'react-icons/md'
 
 import styles from './ShowPace.module.css'
 
-
 const ShowPace = ({ show, paces }) => {
   return (
     <div className={styles.main_paceplan}>
-       <div className={styles.icon_wrap_close}>
-              <MdClose
-                className={styles.icon_close}
-                onClick={()=> show(false)}
-              />
-            </div>
+      <div className={styles.icon_wrap_close}>
+        <MdClose
+          className={styles.icon_close}
+          onClick={() => show(false)}
+        />
+      </div>
       <h3 className={styles.title}>темп бега</h3>
       <ul className={styles.items}>
         <li className={styles.item}>

@@ -13,7 +13,17 @@ const createCustomPlan = async (req, res) => {
         message: 'Недостаточно данных для генерации плана',
       })
     }
-  
+    console.log(dataPlan.goal)
+    if (
+      dataPlan.goal !== '42km' ||
+      dataPlan.goal !== '21km' ||
+      dataPlan.goal !== '10km'
+    ) {
+      return res.status(400).json({
+        message: 'Невалидная дистанция плана',
+      })
+    }
+
     // 1. Находим пользователя и его лимиты
     // Нам нужно знать, сколько планов он УЖЕ создал
     let user = await User.findOne({ vkId })

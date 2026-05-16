@@ -33,17 +33,6 @@ const RaceConfig = ({ getData }) => {
         </span>
 
         <div className={styles.distance_items}>
-          {/* <span
-            className={
-              distance === '5km'
-                ? `${styles.distance_item_active}`
-                : `${styles.distance_item}`
-            }
-            onClick={() => setDistance('5km')}
-          >
-            5 км
-          </span> */}
-
           <span
             className={
               distance === '10km'
