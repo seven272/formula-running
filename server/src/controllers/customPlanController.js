@@ -13,12 +13,8 @@ const createCustomPlan = async (req, res) => {
         message: 'Недостаточно данных для генерации плана',
       })
     }
-    console.log(dataPlan.goal)
-    if (
-      dataPlan.goal !== '42km' ||
-      dataPlan.goal !== '21km' ||
-      dataPlan.goal !== '10km'
-    ) {
+    const validGoals = ['42km', '21km', '10km']
+    if (!validGoals.includes(dataPlan.goal)) {
       return res.status(400).json({
         message: 'Невалидная дистанция плана',
       })
