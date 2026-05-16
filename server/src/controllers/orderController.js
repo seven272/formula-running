@@ -8,39 +8,16 @@ import CustomPlan from '../models/customPlanModel.js'
 const YOOKASSA_API_URL = 'https://api.yookassa.ru/v3/payments'
 
 const TIER_SETTINGS = {
-  athlete: { custom: 3, ready: 3, price: '10.00', title: 'Атлет' },
-  pro: { custom: 10, ready: 5, price: '15.00', title: 'Профи' },
+  athlete: { custom: 3, ready: 3, price: '500.00', title: 'Атлет' },
+  pro: { custom: 10, ready: 5, price: '1000.00', title: 'Профи' },
   champion: {
     custom: 15,
     ready: 10,
-    price: '25.00',
+    price: '1500.00',
     title: 'Чемпион',
   },
 }
 
-// const ITEMS_STORE = {
-//   tier_athlete: {
-//     title: 'Статус: Атлет',
-//     price: 3,
-//     customLimit: 3,
-//     readyLimit: 3,
-//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-//   },
-//   tier_pro: {
-//     title: 'Статус: Профи',
-//     price: 7,
-//     customLimit: 10,
-//     readyLimit: 5,
-//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-//   },
-//   tier_champion: {
-//     title: 'Статус: Чемпион',
-//     price: 12,
-//     customLimit: 15,
-//     readyLimit: 10,
-//     photo_url: 'https://sportplans.ru/static/other/buy-icon.png',
-//   },
-// }
 
 const payVk = async (req, res) => {
   const { notification_type, item, user_id, order_id, status } =

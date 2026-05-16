@@ -89,6 +89,7 @@ const customPlanSlice = createSlice({
         state.customPace = { ...action.payload.pace }
         state.title = action.payload.title
         state.status = 'success'
+        state.listCustomPlans.push(action.payload) 
       })
       .addCase(fetchCreateCustomPlan.rejected, (state) => {
         state.isLoading = false
