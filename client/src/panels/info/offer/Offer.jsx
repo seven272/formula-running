@@ -4,7 +4,7 @@ import { BsBoxArrowInLeft } from 'react-icons/bs'
 
 import styles from './Offer.module.css'
 
-const Offer = () => {
+const Offer = () => { 
   const canvasRef = useRef(null)
   const routeNavigator = useRouteNavigator()
 

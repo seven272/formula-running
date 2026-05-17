@@ -6,6 +6,28 @@
   justify-content: center;
 }
 
+.btn_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: start;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--color-blue);
+  font: var(--font-ml);
+  padding: 5px 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn_back_icon {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  color: var(--color-blue);
+}
+
 .plan_wrapper {
   width: 100%;
   max-width: 515px;

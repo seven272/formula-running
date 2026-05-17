@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RouterLink } from '@vkontakte/vk-mini-apps-router'
+import {
+  RouterLink,
+  useRouteNavigator,
+} from '@vkontakte/vk-mini-apps-router'
+
 import { MdOutlineRunCircle } from 'react-icons/md'
 import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { LuChartLine } from 'react-icons/lu'
@@ -8,6 +12,7 @@ import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
 import { Panel } from '@vkontakte/vkui'
 import { Modal } from 'antd'
+import { BsBoxArrowInLeft } from 'react-icons/bs'
 
 import WeekPlan from './weekPlan/WeekPlan.jsx'
 import styles from './Plan.module.css'
@@ -29,6 +34,7 @@ import MyModal from '../../UI/modal/Modal.jsx'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
+  const routeNavigator = useRouteNavigator()
   const plan = useSelector((state) => state.currentPlan.plan)
   const userTier =
     useSelector((state) => state.user.tier) || 'amateur'
@@ -99,6 +105,13 @@ const Plan = ({ id }) => {
     <Panel id={id}>
       <Header />
       <div className={styles.plan}>
+        <button
+          className={styles.btn_back}
+          onClick={() => routeNavigator.push('/userplans')}
+        >
+          <BsBoxArrowInLeft className={styles.btn_back_icon} />
+          назад
+        </button>
         <div className={styles.plan_wrapper}>
           {showBlockAbout && (
             <AboutPlan
