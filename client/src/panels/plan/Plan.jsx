@@ -105,14 +105,14 @@ const Plan = ({ id }) => {
     <Panel id={id}>
       <Header />
       <div className={styles.plan}>
-        <button
-          className={styles.btn_back}
-          onClick={() => routeNavigator.push('/userplans')}
-        >
-          <BsBoxArrowInLeft className={styles.btn_back_icon} />
-          назад
-        </button>
         <div className={styles.plan_wrapper}>
+          <button
+            className={styles.btn_back}
+            onClick={() => routeNavigator.push('/userplans')}
+          >
+            <BsBoxArrowInLeft className={styles.btn_back_icon} />
+            назад
+          </button>
           {showBlockAbout && (
             <AboutPlan
               title={plan.title}
