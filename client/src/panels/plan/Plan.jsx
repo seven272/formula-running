@@ -144,9 +144,7 @@ const Plan = ({ id }) => {
             <BsBoxArrowInLeft className={styles.btn_back_icon} />
             назад
           </button>
-
           <PlanHeader plan={plan} />
-
           {Object.keys(plan.workouts).length !== 0 &&
             plan.workouts.map((week, inx) => {
               return (
@@ -159,14 +157,13 @@ const Plan = ({ id }) => {
                 />
               )
             })}
-
           <Pagination
             paginate={paginate}
             elementsPerPage={1}
             totalElements={plan.workouts.length}
             activePage={page}
           />
-          {percent === 100 ? (
+          {percent === 100 && (
             <div className={styles.compliment}>
               <div className={styles.compliment_card}>
                 <span className={styles.compliment_text}>
@@ -186,19 +183,18 @@ const Plan = ({ id }) => {
                 </button>
               </div>
             </div>
-          ) : (
-            <div className={styles.progress_wrap}>
-              <div className={styles.progress_container}>
-                <Progressbar completed={percent} />
-              </div>
-              <button
-                className={styles.btn_reset_progress}
-                onClick={showModal}
-              >
-                <BiReset size={25} />
-              </button>
-            </div>
           )}
+          <div className={styles.progress_wrap}>
+            <div className={styles.progress_container}>
+              <Progressbar completed={percent} />
+            </div>
+            <button
+              className={styles.btn_reset_progress}
+              onClick={showModal}
+            >
+              <BiReset size={25} />
+            </button>
+          </div>
 
           <PlanFooter />
         </div>

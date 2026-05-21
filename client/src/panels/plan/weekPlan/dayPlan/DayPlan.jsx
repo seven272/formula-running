@@ -99,7 +99,6 @@ const DayPlan = ({
             className={styles.day_title}
             style={{ color: 'var(--color-grey)' }}
           >
-            Ожидание старта плана
           </span>
           <span
             className={styles.day_descr}
