@@ -49,18 +49,31 @@ const DayPlan = ({
   }, [completed])
 
   // Функция для расчета красивой даты тренировки
-  const getFormattedDate = () => {
+    const getFormattedDate = () => {
     if (!startDate) return '' // Если даты нет, ничего не выводим
 
-    const date = new Date(startDate)
-    // Считаем смещение в днях для конкретной тренировки
+    const start = new Date(startDate)
+    
+    // Получаем реальный день недели даты старта (1 - Пн, 2 - Вт ... 7 - Вс)
+    const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
+
+    // Находим точную дату ПОНЕДЕЛЬНИКА самой первой недели плана.
+    // Если старт в среду (3), мы отнимаем 2 дня (3 - 1), чтобы уйти на понедельник этой же недели.
+    const firstMonday = new Date(start)
+    firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
+
+    // Теперь считаем чистое смещение от этого виртуального "первого понедельника"
+    // Неделя 0, День 1 (Пн) -> смещение 0 дней.
+    // Неделя 0, День 3 (Ср) -> смещение 2 дня.
+    // Неделя 1, День 1 (Пн) -> смещение 7 дней.
     const daysOffset = weekNumber * 7 + (numberDayInWeek - 1)
 
-    // Прибавляем смещение к стартовой дате
-    date.setDate(date.getDate() + daysOffset)
+    // Прибавляем смещение к первому понедельнику
+    const finalDate = new Date(firstMonday)
+    finalDate.setDate(firstMonday.getDate() + daysOffset)
 
-    // Форматируем дату, например: "12 мая" или "05.11"
-    return date.toLocaleDateString('ru-RU', {
+    // Форматируем дату, например: "12 мая"
+    return finalDate.toLocaleDateString('ru-RU', {
       day: 'numeric',
       month: 'short',
     })
@@ -77,7 +90,7 @@ const DayPlan = ({
     >
       <div className={styles.day_wrapper}>
         <span className={styles.day_name}>
-          {numberDayInWeek} {day}{' '}
+          {day}{' '}
           {trainingDate && `, ${trainingDate}`}
         </span>
         <span className={styles.day_title}>{title}</span>

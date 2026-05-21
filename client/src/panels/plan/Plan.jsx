@@ -10,43 +10,31 @@ import { Panel } from '@vkontakte/vkui'
 import { Modal } from 'antd'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 
-
 import WeekPlan from './weekPlan/WeekPlan.jsx'
 import styles from './Plan.module.css'
 import Pagination from '../../components/pagination/Pagination.jsx'
 import PlanFooter from './plan-footer/PlanFooter.jsx'
-// import AboutPlan from './plan-header/about-plan/AboutPlan.jsx'
 import {
   fetchGetCurrentPlan,
   fetchResetProgressPlan,
 } from '../../redux/slices/currentPlanSlice.js'
 import Loader from '../../UI/loader/Loader.jsx'
-// import ShowPace from './plan-header/show-pace/ShowPace.jsx'
-// import PlanStatistics from './plan-header/plan-statistics/PlanStatistics.jsx'
 import Progressbar from '../../UI/progressbar/Progressbar.jsx'
 import PlanHeader from './plan-header/PlanHeader.jsx'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
-// import MyModal from '../../UI/modal/Modal.jsx'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
   const routeNavigator = useRouteNavigator()
   const plan = useSelector((state) => state.currentPlan.plan)
-  // const userTier =
-  //   useSelector((state) => state.user.tier) || 'amateur'
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
   )
-  // const [showBlockAbout, setShowBlockAbout] = useState(false)
-  // const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
-  // const [showBlockStatistics, setShowBlockStatistics] =
-  //   useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  // const [showMyModal, setShowMyModal] = useState(false)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -72,7 +60,48 @@ const Plan = ({ id }) => {
 
   useEffect(() => {
     dispatch(fetchGetCurrentPlan())
-  }, [])
+  }, [dispatch])
+
+  // Добавляем новый useEffect, который сработает, когда план загрузится в Redux
+  useEffect(() => {
+    // Проверяем, что план загружен, в нем есть тренировки и установлена дата старта
+    if (
+      plan &&
+      plan.workouts &&
+      plan.workouts.length > 0 &&
+      plan.startDate
+    ) {
+      const now = new Date()
+      const start = new Date(plan.startDate)
+
+      // Находим понедельник недели старта, чтобы расчет был точным
+      const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
+      const firstMonday = new Date(start)
+      firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
+
+      // Сбрасываем время у дат для чистого сравнения дней
+      now.setHours(0, 0, 0, 0)
+      firstMonday.setHours(0, 0, 0, 0)
+
+      // Разница в миллисекундах переводим в дни
+      const diffTime = now.getTime() - firstMonday.getTime()
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+
+      // Считаем индекс текущей недели (целое деление на 7)
+      const currentWeekIndex = Math.floor(diffDays / 7)
+
+      // Если план уже идет, проверяем, чтобы индекс не выходил за рамки массива тренировок
+      if (
+        currentWeekIndex >= 0 &&
+        currentWeekIndex < plan.workouts.length
+      ) {
+        setPage(currentWeekIndex)
+      } else if (currentWeekIndex >= plan.workouts.length) {
+        // Если все недели прошли, открываем последнюю неделю плана
+        setPage(plan.workouts.length - 1)
+      }
+    }
+  }, [plan]) // Сработает каждый раз, когда plan обновляется (при загрузке, смене или сбросе даты)
 
   if (Object.keys(plan.workouts).length === 0) {
     setTimeout(() => {
@@ -111,61 +140,9 @@ const Plan = ({ id }) => {
             <BsBoxArrowInLeft className={styles.btn_back_icon} />
             назад
           </button>
-          {/* {showBlockAbout && (
-            <AboutPlan
-              title={plan.title}
-              description={plan.subtitle}
-              distance={plan.distance}
-              period={plan.period}
-              show={(val) => setShowBlockAbout(val)}
-            />
-          )}
-          {showBlockStatistics && (
-            <PlanStatistics
-              plan={plan}
-              onClose={() => setShowBlockStatistics(false)}
-            />
-          )}
-          {showBlockCalcPace && (
-            <ShowPace show={setShowBlockCalcPace} paces={plan.pace} />
-          )} */}
 
-          <PlanHeader plan={plan}/>
-          {/* <div className={styles.plan_header}>
-            <span className={styles.plan_title}>
-              {Object.keys(plan.workouts).length !== 0 && plan.title}
-            </span>
-            <div className={styles.plan_header_icons}>
-              <IoMdInformationCircleOutline
-                className={styles.plan_icon}
-                size={22}
-                title="детали плана"
-                onClick={() => setShowBlockAbout(true)}
-              />
-              {userTier === 'amateur' ? (
-                <LuChartLine
-                  className={styles.plan_icon_disabled}
-                  size={22}
-                  title="статистика"
-                  onClick={() => setShowMyModal(true)}
-                />
-              ) : (
-                <LuChartLine
-                  className={styles.plan_icon}
-                  size={22}
-                  title="статистика"
-                  onClick={() => setShowBlockStatistics(true)}
-                />
-              )}
+          <PlanHeader plan={plan} />
 
-              <MdOutlineRunCircle
-                className={styles.plan_icon}
-                size={22}
-                title="тренировачный темп"
-                onClick={() => setShowBlockCalcPace(true)}
-              />
-            </div>
-          </div> */}
           {Object.keys(plan.workouts).length !== 0 &&
             plan.workouts.map((week, inx) => {
               return (
@@ -228,12 +205,6 @@ const Plan = ({ id }) => {
             тренировкам в этом плане?
           </span>
         </Modal>
-        {/* <MyModal
-          active={showMyModal}
-          setActive={(val) => setShowMyModal(val)}
-        >
-          Не доступно для уровня Физкультурник
-        </MyModal> */}
       </div>
       <Footer />
     </Panel>
