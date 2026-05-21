@@ -49,34 +49,35 @@ const DayPlan = ({
   }, [completed])
 
   // Функция для расчета красивой даты тренировки
-    const getFormattedDate = () => {
-    if (!startDate) return '' // Если даты нет, ничего не выводим
+  const getFormattedDate = () => {
+    if (!startDate) return '' // Если даты нет, вернем пустую строку
 
     const start = new Date(startDate)
     
-    // Получаем реальный день недели даты старта (1 - Пн, 2 - Вт ... 7 - Вс)
+    // Определяем день недели даты старта (1 - Пн, ..., 7 - Вс)
     const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
 
-    // Находим точную дату ПОНЕДЕЛЬНИКА самой первой недели плана.
-    // Если старт в среду (3), мы отнимаем 2 дня (3 - 1), чтобы уйти на понедельник этой же недели.
+    // Вычисляем виртуальный понедельник первой недели
     const firstMonday = new Date(start)
     firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
 
-    // Теперь считаем чистое смещение от этого виртуального "первого понедельника"
-    // Неделя 0, День 1 (Пн) -> смещение 0 дней.
-    // Неделя 0, День 3 (Ср) -> смещение 2 дня.
-    // Неделя 1, День 1 (Пн) -> смещение 7 дней.
+    // Считаем общее смещение в днях для текущей тренировки
     const daysOffset = weekNumber * 7 + (numberDayInWeek - 1)
 
-    // Прибавляем смещение к первому понедельнику
+    // Получаем финальную дату для этого дня
     const finalDate = new Date(firstMonday)
     finalDate.setDate(firstMonday.getDate() + daysOffset)
 
-    // Форматируем дату, например: "12 мая"
-    return finalDate.toLocaleDateString('ru-RU', {
+    // Форматируем: "Пн, 12 мая" или "Ср, 20 мая"
+    // 'short' для weekday выдаст "пн", "вт", "ср" и т.д.
+    const formatted = finalDate.toLocaleDateString('ru-RU', {
+      weekday: 'short',
       day: 'numeric',
       month: 'short',
     })
+
+    // Делаем первую букву дня недели заглавной (например, "Пн, 12 мая")
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1)
   }
 
   const trainingDate = getFormattedDate()
@@ -90,8 +91,7 @@ const DayPlan = ({
     >
       <div className={styles.day_wrapper}>
         <span className={styles.day_name}>
-          {day}{' '}
-          {trainingDate && `, ${trainingDate}`}
+          {trainingDate ? trainingDate : day}
         </span>
         <span className={styles.day_title}>{title}</span>
         <span className={styles.day_descr}>{descr}</span>
