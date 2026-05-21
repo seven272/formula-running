@@ -78,7 +78,11 @@ const DayPlan = ({
       month: 'short',
     })
 
-    return `<span>${formattedWeekday}</span> <span>${formattedDateOnly}</span>`
+     return (
+    <>
+      <span>{formattedWeekday}</span> <span>{formattedDateOnly}</span>
+    </>
+  )
   }
   const trainingDate = getFormattedDate()
 
