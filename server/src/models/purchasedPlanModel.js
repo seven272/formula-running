@@ -28,6 +28,10 @@ const purchasedPlanSchema = new mongoose.Schema(
       required: false,
     },
     workouts: { type: Array, default: [] }, // Сюда копируем всё с completed: false
+    startDate: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -35,7 +39,6 @@ const purchasedPlanSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 )
-
 
 // виртуальный прогресс по количеству тренировок
 purchasedPlanSchema.virtual('progress').get(function () {
@@ -86,8 +89,8 @@ purchasedPlanSchema.pre('save', function (next) {
   // Выполняем генерацию только если это новый документ
   // или если planUrl еще не заполнен
   if (this.isNew || !this.planUrl) {
-    const baseUrl = this.planUrl || 'plan'; // Запасной вариант, если planUrl пустой
-    this.planUrl = `${baseUrl}-${this.ownerVkId}-${nanoid(5)}`;
+    const baseUrl = this.planUrl || 'plan' // Запасной вариант, если planUrl пустой
+    this.planUrl = `${baseUrl}-${this.ownerVkId}-${nanoid(5)}`
   }
   next()
 })

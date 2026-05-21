@@ -19,6 +19,8 @@ const DayPlan = ({
   descr,
   completed,
   numberDayInWeek,
+  weekNumber,
+  startDate,
 }) => {
   const dispatch = useDispatch()
   const [isSelected, setIsSelected] = useState(completed)
@@ -46,6 +48,26 @@ const DayPlan = ({
     setIsSelected(completed)
   }, [completed])
 
+  // Функция для расчета красивой даты тренировки
+  const getFormattedDate = () => {
+    if (!startDate) return '' // Если даты нет, ничего не выводим
+
+    const date = new Date(startDate)
+    // Считаем смещение в днях для конкретной тренировки
+    const daysOffset = weekNumber * 7 + (numberDayInWeek - 1)
+
+    // Прибавляем смещение к стартовой дате
+    date.setDate(date.getDate() + daysOffset)
+
+    // Форматируем дату, например: "12 мая" или "05.11"
+    return date.toLocaleDateString('ru-RU', {
+      day: 'numeric',
+      month: 'short',
+    })
+  }
+
+  const trainingDate = getFormattedDate()
+
   const isDark = numberDayInWeek % 2 !== 0
   return (
     <div
@@ -55,7 +77,8 @@ const DayPlan = ({
     >
       <div className={styles.day_wrapper}>
         <span className={styles.day_name}>
-          {numberDayInWeek} {day}
+          {numberDayInWeek} {day}{' '}
+          {trainingDate && `, ${trainingDate}`}
         </span>
         <span className={styles.day_title}>{title}</span>
         <span className={styles.day_descr}>{descr}</span>
@@ -79,7 +102,10 @@ const DayPlan = ({
           )}
         </div>
 
-        <div className={styles.day_share} title="Поделиться в истории">
+        <div
+          className={styles.day_share}
+          title="Поделиться в истории"
+        >
           {isSelected ? (
             <TbShare
               size={22}

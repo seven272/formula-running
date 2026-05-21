@@ -33,7 +33,7 @@
   max-width: 515px;
   padding: 10px 5px;
 }
-.plan_header {
+/* .plan_header {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@
   align-items: center;
   column-gap: 10px;
   margin-top: 10px;
-}
+} */
 
 .plan__descr {
   width: 80%;
@@ -77,7 +77,7 @@
   gap: 10px;
 }
 
-.plan_icon {
+/* .plan_icon {
   color: var(--color-blue);
   margin-left: 10px;
   cursor: pointer;
@@ -87,7 +87,7 @@
   color: var(--color-grey);
   margin-left: 10px;
   cursor: pointer;
-}
+} */
 
 .error_block {
   width: 100%;

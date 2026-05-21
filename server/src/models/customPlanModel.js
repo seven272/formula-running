@@ -90,6 +90,10 @@ const customPlanSchema = new mongoose.Schema(
       default: false,
     },
     workouts: [weekSchema],
+    startDate: {
+      type: Date,
+      default: null,
+    },
   },
 
   {

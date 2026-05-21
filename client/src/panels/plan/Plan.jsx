@@ -4,51 +4,49 @@ import {
   RouterLink,
   useRouteNavigator,
 } from '@vkontakte/vk-mini-apps-router'
-
-import { MdOutlineRunCircle } from 'react-icons/md'
-import { IoMdInformationCircleOutline } from 'react-icons/io'
-import { LuChartLine } from 'react-icons/lu'
 import { TfiCup } from 'react-icons/tfi'
 import { BiReset } from 'react-icons/bi'
 import { Panel } from '@vkontakte/vkui'
 import { Modal } from 'antd'
 import { BsBoxArrowInLeft } from 'react-icons/bs'
 
+
 import WeekPlan from './weekPlan/WeekPlan.jsx'
 import styles from './Plan.module.css'
 import Pagination from '../../components/pagination/Pagination.jsx'
 import PlanFooter from './plan-footer/PlanFooter.jsx'
-import AboutPlan from './about-plan/AboutPlan.jsx'
+// import AboutPlan from './plan-header/about-plan/AboutPlan.jsx'
 import {
   fetchGetCurrentPlan,
   fetchResetProgressPlan,
 } from '../../redux/slices/currentPlanSlice.js'
 import Loader from '../../UI/loader/Loader.jsx'
-import ShowPace from './show-pace/ShowPace.jsx'
-import PlanStatistics from './plan-statistics/PlanStatistics.jsx'
+// import ShowPace from './plan-header/show-pace/ShowPace.jsx'
+// import PlanStatistics from './plan-header/plan-statistics/PlanStatistics.jsx'
 import Progressbar from '../../UI/progressbar/Progressbar.jsx'
+import PlanHeader from './plan-header/PlanHeader.jsx'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { shareFinishPlanStory } from '../../utils/vkAppShareStory.js'
-import MyModal from '../../UI/modal/Modal.jsx'
+// import MyModal from '../../UI/modal/Modal.jsx'
 
 const Plan = ({ id }) => {
   const dispatch = useDispatch()
   const routeNavigator = useRouteNavigator()
   const plan = useSelector((state) => state.currentPlan.plan)
-  const userTier =
-    useSelector((state) => state.user.tier) || 'amateur'
+  // const userTier =
+  //   useSelector((state) => state.user.tier) || 'amateur'
   const percent = useSelector(
     (state) => state.currentPlan.progress.percent,
   )
-  const [showBlockAbout, setShowBlockAbout] = useState(false)
-  const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
-  const [showBlockStatistics, setShowBlockStatistics] =
-    useState(false)
+  // const [showBlockAbout, setShowBlockAbout] = useState(false)
+  // const [showBlockCalcPace, setShowBlockCalcPace] = useState(false)
+  // const [showBlockStatistics, setShowBlockStatistics] =
+  //   useState(false)
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [showMyModal, setShowMyModal] = useState(false)
+  // const [showMyModal, setShowMyModal] = useState(false)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -113,7 +111,7 @@ const Plan = ({ id }) => {
             <BsBoxArrowInLeft className={styles.btn_back_icon} />
             назад
           </button>
-          {showBlockAbout && (
+          {/* {showBlockAbout && (
             <AboutPlan
               title={plan.title}
               description={plan.subtitle}
@@ -130,8 +128,10 @@ const Plan = ({ id }) => {
           )}
           {showBlockCalcPace && (
             <ShowPace show={setShowBlockCalcPace} paces={plan.pace} />
-          )}
-          <div className={styles.plan_header}>
+          )} */}
+
+          <PlanHeader plan={plan}/>
+          {/* <div className={styles.plan_header}>
             <span className={styles.plan_title}>
               {Object.keys(plan.workouts).length !== 0 && plan.title}
             </span>
@@ -165,7 +165,7 @@ const Plan = ({ id }) => {
                 onClick={() => setShowBlockCalcPace(true)}
               />
             </div>
-          </div>
+          </div> */}
           {Object.keys(plan.workouts).length !== 0 &&
             plan.workouts.map((week, inx) => {
               return (
@@ -173,6 +173,7 @@ const Plan = ({ id }) => {
                   key={inx}
                   week={week}
                   weekNumber={inx}
+                  startDate={plan.startDate}
                   paginatePage={page}
                 />
               )
@@ -227,12 +228,12 @@ const Plan = ({ id }) => {
             тренировкам в этом плане?
           </span>
         </Modal>
-        <MyModal
+        {/* <MyModal
           active={showMyModal}
           setActive={(val) => setShowMyModal(val)}
         >
           Не доступно для уровня Физкультурник
-        </MyModal>
+        </MyModal> */}
       </div>
       <Footer />
     </Panel>

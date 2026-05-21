@@ -417,6 +417,7 @@ const resetProgress = async (req, res) => {
       { _id: planId },
       {
         $set: {
+          startDate: null,
           'workouts.$[].sessions.$[].completed': false,
           'workouts.$[].sessions.$[].rating': null,
           'workouts.$[].sessions.$[].mood': null,
@@ -579,106 +580,64 @@ const addReadyPlan = async (req, res) => {
   }
 }
 
-// const buyPlan = async (req, res) => {
-//   const vkId = req.vkId
-//   const readyPlanId = req.body.readyPlanId
+const setPlanStartDate = async (req, res) => {
+  const vkId = req.vkId
+  const { planId, startDate } = req.body // <--- modelName больше не нужен!
 
-//   try {
-//     const template = await ReadyPlan.findById(readyPlanId)
-//     if (!template) {
-//       return res.status(404).json({ message: 'План не найден' })
-//     }
-//     const user = await User.findOne({ vkId })
-//     //проверяю существует или авторизован юзер
-//     if (!user) {
-//       return res.status(403).json({
-//         message: 'Необходимо авторизоваться, чтобы купить план',
-//       })
-//     }
-//     //если план не бесплатный проверяем успешность оплаты,ищем в базе Order запись, которую создал payVk
-//     if (!template.isFree) {
-//       const paymentRecord = await Order.findOne({
-//         vkId: vkId,
-//         typePlan: 'ready',
-//         planId: String(readyPlanId), // Ищем именно ID плана, который мы вырезали через split('_')
-//         status: 'completed',
-//       })
+  try {
+    if (!startDate && startDate !== null) {
+      return res
+        .status(400)
+        .json({ message: 'Дата старта не передана' })
+    }
 
-//       // Если записи нет — значит, оплаты не было (или она еще не дошла)
-//       if (!paymentRecord) {
-//         return res.status(402).json({
-//           message:
-//             'План не оплачен. Пожалуйста, сначала совершите покупку.',
-//           error_code: 'PAYMENT_REQUIRED',
-//         })
-//       }
-//     }
-//     //проверяю есть уже этот план в купленных или нет
-//     if (
-//       user.purchasedReadyPlans
-//         .map((id) => id.toString())
-//         .includes(readyPlanId)
-//     ) {
-//       return res
-//         .status(409)
-//         .json({ message: 'Вы купили этот план ранее' })
-//     }
+    // Ищем пользователя
+    const user = await User.findOne({ vkId })
 
-//     // Превращаем весь шаблон в обычный объект сразу
-//     const templateObj = template.toObject()
+    if (!user) {
+      return res
+        .status(404)
+        .json({ message: 'Пользователь не найден' })
+    }
 
-//     // Глубокое клонированин тренировок с дефолтным статусом о выполнении false
-//     const clonedWorkouts = templateObj.workouts.map((week) => ({
-//       ...week,
-//       sessions: week.sessions.map((s) => ({
-//         ...s,
-//         completed: false,
-//       })),
-//     }))
+    //  Автоматически определяем, к какой модели относится planId
+    let modelName = null
 
-//     const personalCopy = await PurchasedPlan.create({
-//       userId: user._id,
-//       originalPlanId: readyPlanId,
-//       ownerVkId: vkId,
-//       workouts: clonedWorkouts,
-//       title: template.title,
-//       subtitle: template.subtitle,
-//       typeSport: template.typeSport,
-//       distance: template.distance,
-//       period: template.period,
-//       time: template.time,
-//       pace: template.pace,
-//       planUrl: template.planUrl,
-//       pictureUrl: template.pictureUrl,
-//       isFree: template.isFree,
-//     })
+    if (user.purchasedCopiedPlans.includes(planId)) {
+      modelName = 'PurchasedPlan'
+    } else if (user.customPlans.includes(planId)) {
+      modelName = 'CustomPlan'
+    }
 
-//     // Обновляем юзера
-//     await User.updateOne(
-//       {
-//         _id: user._id,
-//         purchasedReadyPlans: { $ne: readyPlanId }, // Обновим, только если этого плана еще нет
-//       },
-//       {
-//         $push: {
-//           purchasedCopiedPlans: personalCopy._id,
-//           purchasedReadyPlans: readyPlanId,
-//         },
-//         $set: {
-//           currentPlan: personalCopy._id,
-//           nameModel: 'PurchasedPlan',
-//         },
-//       },
-//     )
+    // Если ID плана не найден ни в одном из массивов пользователя — доступ запрещен
+    if (!modelName) {
+      return res
+        .status(403)
+        .json({ message: 'Доступ запрещен или план не найден' })
+    }
 
-//     res.status(200).json(personalCopy)
-//   } catch (error) {
-//     console.error('Ошибка buyPlan controller:', error)
-//     res.status(500).json({
-//       message: 'Ошибка сервера при покупке плана',
-//     })
-//   }
-// }
+    // 3. Обновляем дату в динамически определенной модели
+    const TargetModel = mongoose.model(modelName)
+    const updatedDate =
+      startDate === null ? null : new Date(startDate)
+
+    const updatedPlan = await TargetModel.findByIdAndUpdate(
+      planId,
+      { startDate: updatedDate },
+      { new: true },
+    )
+
+    res.json({
+      message: 'Дата старта успешно обновлена',
+      plan: updatedPlan,
+    })
+  } catch (error) {
+    console.error('Ошибка в setPlanStartDate controller:', error)
+    res
+      .status(500)
+      .json({ message: 'Ошибка сервера при установке даты' })
+  }
+}
 
 export {
   createProfile,
@@ -695,4 +654,5 @@ export {
   resetProgress,
   updateSessionStatus,
   addReadyPlan,
+  setPlanStartDate,
 }

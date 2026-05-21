@@ -3,7 +3,12 @@ import React from 'react'
 import DayPlan from './dayPlan/DayPlan'
 import styles from './WeekPlan.module.css'
 
-const WeekPlan = ({ week, paginatePage = 0, weekNumber }) => {
+const WeekPlan = ({
+  week,
+  paginatePage = 0,
+  weekNumber,
+  startDate,
+}) => {
   return (
     <>
       {weekNumber === paginatePage && (
@@ -15,7 +20,13 @@ const WeekPlan = ({ week, paginatePage = 0, weekNumber }) => {
           {week.sessions.map((day, inx) => {
             return (
               <div key={inx} className={styles.week}>
-                <DayPlan {...day} numberDayInWeek={inx + 1} weekId = {week._id} />
+                <DayPlan
+                  {...day}
+                  numberDayInWeek={inx + 1}
+                  weekId={week._id}
+                  weekNumber={weekNumber}
+                  startDate={startDate}
+                />
               </div>
             )
           })}

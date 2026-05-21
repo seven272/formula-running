@@ -109,6 +109,38 @@ const fetchUpdateSessionStatus = createAsyncThunk(
   },
 )
 
+const fetchSetPlanStartDate = createAsyncThunk(
+  'currentPlan/fetchSetPlanStartDate',
+  async (payload, { dispatch, rejectWithValue }) => {
+    try {
+      const res = await axios.patch('/user/set-plan-start-date', {
+        planId: payload.planId,
+        startDate: payload.startDate,
+      })
+
+      dispatch(
+        showToast({
+          message: payload.startDate
+            ? 'Календарь тренировок обновлен'
+            : 'Даты плана сброшены',
+          type: 'success',
+        }),
+      )
+
+      return res.data
+    } catch (error) {
+      console.log('ошибка при установке даты плана из redux ', error)
+      dispatch(
+        showToast({
+          message: 'Ошибка при сохранении даты',
+          type: 'error',
+        }),
+      )
+      return rejectWithValue(error.response?.data || error.message)
+    }
+  },
+)
+
 const initialState = {
   currentId: '',
   plan: {},
@@ -201,6 +233,18 @@ const currentPlanSlice = createSlice({
       .addCase(fetchUpdateSessionStatus.rejected, (state) => {
         state.isLoading = false
       })
+      //update start plan data
+      .addCase(fetchSetPlanStartDate.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchSetPlanStartDate.fulfilled, (state, action) => {
+        state.isLoading = false
+        // Самое важное: обновляем план в стейте, бэкенд вернул его с новой startDate
+        state.plan = action.payload.plan
+      })
+      .addCase(fetchSetPlanStartDate.rejected, (state) => {
+        state.isLoading = false
+      })
   },
 })
 const checkIsAuth = (state) => Boolean(state.auth.token)
@@ -211,6 +255,7 @@ export {
   fetchToggleSessionStatus,
   fetchResetProgressPlan,
   fetchUpdateSessionStatus,
+  fetchSetPlanStartDate,
   checkIsAuth,
 }
 export default currentPlanSlice.reducer
