@@ -8,8 +8,9 @@ const WeekPlan = ({
   weekNumber,
   startDate,
 }) => {
+  
   const renderSessions = () => {
-    // Если дата старта не назначена, или это НЕ первая неделя (не 0) — рендерим как раньше
+    // Если дата старта не назначена, или это НЕ первая неделя — рендерим всё в стандартном режиме
     if (!startDate || weekNumber !== 0) {
       return week.sessions.map((day, inx) => (
         <div key={inx} className={styles.week}>
@@ -24,14 +25,13 @@ const WeekPlan = ({
       ))
     }
 
-    // ЛОГИКА ДЛЯ ПЕРВОЙ НЕДЕЛИ С ДАТОЙ СТАРТА
+    // ИСПРАВЛЕННАЯ ЛОГИКА ДЛЯ ПЕРВОЙ НЕДЕЛИ
     const start = new Date(startDate)
-    // Получаем день недели старта: 1 - Пн, 2 - Вт ... 7 - Вс
     const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
 
     const elements = []
 
-    // 1. Генерируем пустые дни ожидания ДО дня старта плана
+    // 1. Генерируем пустые дни ожидания ДО дня старта плана (их нет в БД, это просто заглушки в UI)
     for (let i = 1; i < startDayOfWeek; i++) {
       elements.push(
         <div key={`empty-${i}`} className={styles.week}>
@@ -39,8 +39,7 @@ const WeekPlan = ({
             numberDayInWeek={i}
             weekNumber={weekNumber}
             startDate={startDate}
-            isEmptyBeforeStart={true} // Флаг для пустых дней
-            // Защитные дефолтные пропсы:
+            isEmptyBeforeStart={true}
             completed={false}
             title="Отдых"
             descr="Ожидание старта плана"
@@ -52,26 +51,22 @@ const WeekPlan = ({
       )
     }
 
-    // 2. Выводим реальные тренировки плана, начиная со дня старта
+    // 2. Выводим ВСЕ реальные тренировки из базы данных без каких-либо исключений и обрезок
     week.sessions.forEach((day, inx) => {
-      // Порядковый номер дня в неделе теперь рассчитывается динамически
+      // Порядковый номер планомерно растет дальше, обеспечивая правильный расчет даты в календаре
       const currentDayNumber = startDayOfWeek + inx
 
-      // Защита: в неделе всего 7 дней. Если тренировок автора больше, чем осталось дней в неделе,
-      // они не должны сломать сетку (перенесутся по датам дальше)
-      if (currentDayNumber <= 7) {
-        elements.push(
-          <div key={`real-${inx}`} className={styles.week}>
-            <DayPlan
-              {...day}
-              numberDayInWeek={currentDayNumber}
-              weekId={week._id}
-              weekNumber={weekNumber}
-              startDate={startDate}
-            />
-          </div>,
-        )
-      }
+      elements.push(
+        <div key={`real-${inx}`} className={styles.week}>
+          <DayPlan
+            {...day}
+            numberDayInWeek={currentDayNumber} // Даты рассчитаются идеально
+            weekId={week._id}
+            weekNumber={weekNumber}
+            startDate={startDate}
+          />
+        </div>,
+      )
     })
 
     return elements
