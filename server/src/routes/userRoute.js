@@ -45,7 +45,7 @@ router.patch('/toggle-session-status', checkVkId, toggleSessionStatus)
 router.patch('/update-workout', checkVkId, updateWorkoutUser)
 router.patch('/reset-progress-plan', checkVkId, resetProgress)
 router.patch('/update-session-status', checkVkId, updateSessionStatus)
-router.patch('/user/set-plan-start-date', checkVkId, setPlanStartDate)
+router.patch('/set-plan-start-date', checkVkId, setPlanStartDate)
 
 
 
