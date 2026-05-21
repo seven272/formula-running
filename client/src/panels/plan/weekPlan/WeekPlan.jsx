@@ -40,6 +40,13 @@ const WeekPlan = ({
             weekNumber={weekNumber}
             startDate={startDate}
             isEmptyBeforeStart={true} // Флаг для пустых дней
+            // Защитные дефолтные пропсы:
+            completed={false}
+            title="Отдых"
+            descr="Ожидание старта плана"
+            day="--"
+            _id={`empty-id-${i}`}
+            weekId={week._id}
           />
         </div>,
       )

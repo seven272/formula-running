@@ -35,6 +35,7 @@ const Plan = ({ id }) => {
   const [page, setPage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [hasCalculatedPage, setHasCalculatedPage] = useState(false)
 
   const paginate = (pageNumber) => {
     setTimeout(() => {
@@ -64,6 +65,7 @@ const Plan = ({ id }) => {
 
   // Добавляем новый useEffect, который сработает, когда план загрузится в Redux
   useEffect(() => {
+    if (hasCalculatedPage) return
     // Проверяем, что план загружен, в нем есть тренировки и установлена дата старта
     if (
       plan &&
@@ -100,8 +102,10 @@ const Plan = ({ id }) => {
         // Если все недели прошли, открываем последнюю неделю плана
         setPage(plan.workouts.length - 1)
       }
+      // Фиксируем, что первичная настройка недели выполнена успешна
+      setHasCalculatedPage(true)
     }
-  }, [plan]) // Сработает каждый раз, когда plan обновляется (при загрузке, смене или сбросе даты)
+  }, [plan, hasCalculatedPage]) // Сработает каждый раз, когда plan обновляется (при загрузке, смене или сбросе даты)
 
   if (Object.keys(plan.workouts).length === 0) {
     setTimeout(() => {
