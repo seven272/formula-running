@@ -69,7 +69,6 @@ const DayPlan = ({
     finalDate.setDate(firstMonday.getDate() + daysOffset)
 
     // Форматируем: "Пн, 12 мая" или "Ср, 20 мая"
-    // 'short' для weekday выдаст "пн", "вт", "ср" и т.д.
     const formatted = finalDate.toLocaleDateString('ru-RU', {
       weekday: 'short',
       day: 'numeric',
