@@ -27,11 +27,11 @@
 
 .day_name {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font: var(--font-s);
   color: var(--color-blue);
-  text-transform: lowercase;
   border-right: 2px solid var(--color-white);
   padding: 5px 10px;
 }
