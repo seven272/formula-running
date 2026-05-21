@@ -21,7 +21,7 @@ const DayPlan = ({
   numberDayInWeek,
   weekNumber,
   startDate,
-  isEmptyBeforeStart = false, 
+  isEmptyBeforeStart = false,
 }) => {
   const dispatch = useDispatch()
   const [isSelected, setIsSelected] = useState(completed)
@@ -50,7 +50,7 @@ const DayPlan = ({
   }, [completed])
 
   // Функция для расчета красивой даты тренировки
- const getFormattedDate = () => {
+  const getFormattedDate = () => {
     if (!startDate) return ''
 
     const start = new Date(startDate)
@@ -67,15 +67,18 @@ const DayPlan = ({
     finalDate.setDate(firstMonday.getDate() + daysOffset)
 
     // Форматируем: "Сб, 23 мая"
-    const realWeekday = finalDate.toLocaleDateString('ru-RU', { weekday: 'short' })
-    const formattedWeekday = realWeekday.charAt(0).toUpperCase() + realWeekday.slice(1)
+    const realWeekday = finalDate.toLocaleDateString('ru-RU', {
+      weekday: 'short',
+    })
+    const formattedWeekday =
+      realWeekday.charAt(0).toUpperCase() + realWeekday.slice(1)
 
     const formattedDateOnly = finalDate.toLocaleDateString('ru-RU', {
       day: 'numeric',
       month: 'short',
     })
 
-    return `${formattedWeekday} ${formattedDateOnly}`
+    return `<span>${formattedWeekday}</span> <span>${formattedDateOnly}</span>`
   }
   const trainingDate = getFormattedDate()
 
@@ -83,22 +86,31 @@ const DayPlan = ({
 
   if (isEmptyBeforeStart) {
     return (
-      <div className={`${styles.day} ${isDark ? styles.background_dark : styles.background_light}`}>
+      <div
+        className={`${styles.day} ${isDark ? styles.background_dark : styles.background_light}`}
+      >
         <div className={styles.day_wrapper}>
-          <span className={styles.day_name}>
-             {trainingDate}
-          </span>
-          <span className={styles.day_title} style={{ color: 'var(--color-grey)' }}>
+          <span className={styles.day_name}>{trainingDate}</span>
+          <span
+            className={styles.day_title}
+            style={{ color: 'var(--color-grey)' }}
+          >
             Ожидание старта плана
           </span>
-          <span className={styles.day_descr} style={{ fontStyle: 'italic' }}>
-            Этот день недели идет до выбранной вами даты начала тренировок.
+          <span
+            className={styles.day_descr}
+            style={{
+              color: 'var(--color-grey)',
+              textAlign: 'center',
+            }}
+          >
+            Ожидание старта плана
           </span>
         </div>
       </div>
     )
   }
-// СТАНДАРТНОЕ ОТОБРАЖЕНИЕ РЕАЛЬНОЙ ТРЕНИРОВКИ ПЛАНА
+  // СТАНДАРТНОЕ ОТОБРАЖЕНИЕ РЕАЛЬНОЙ ТРЕНИРОВКИ ПЛАНА
   return (
     <div
       className={`${styles.day} ${

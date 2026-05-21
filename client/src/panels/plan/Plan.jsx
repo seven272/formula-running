@@ -164,15 +164,22 @@ const Plan = ({ id }) => {
           />
           {percent === 100 ? (
             <div className={styles.compliment}>
-              <span className={styles.compliment_text}>
-                Поздравляем! Вы завершили план тренировок и готовы к
-                старту. Самое время поделиться этим достижением.
-              </span>
-              <div className={styles.btn_wrap} onClick={handleShare}>
-                <TfiCup size={40} className={styles.cup_icon} />
-                <span className={styles.compliment_text_btn}>
-                  в историю
+              <div className={styles.compliment_card}>
+                <span className={styles.compliment_text}>
+                  Поздравляем! Вы успешно завершили весь план
+                  тренировок и полностью готовы к старту. Самое время
+                  поделиться этим достижением с друзьями!
                 </span>
+
+                <button
+                  className={styles.btn_share_story}
+                  onClick={handleShare}
+                >
+                  <TfiCup size={24} className={styles.cup_icon} />
+                  <span className={styles.compliment_text_btn}>
+                    Поделиться успехом в Истории
+                  </span>
+                </button>
               </div>
             </div>
           ) : (

@@ -33,32 +33,6 @@
   max-width: 515px;
   padding: 10px 5px;
 }
-/* .plan_header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 3px;
-  font: var(--font-submenu);
-  background-color: var(--color-grey-light);
-  color: var(--color-blue);
-  text-align: center;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  text-transform: uppercase;
-}
-.plan_title {
-  color: var(--color-blue);
-}
-
-.plan_header_icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 10px;
-  margin-top: 10px;
-} */
 
 .plan__descr {
   width: 80%;
@@ -77,17 +51,7 @@
   gap: 10px;
 }
 
-/* .plan_icon {
-  color: var(--color-blue);
-  margin-left: 10px;
-  cursor: pointer;
-}
 
-.plan_icon_disabled {
-  color: var(--color-grey);
-  margin-left: 10px;
-  cursor: pointer;
-} */
 
 .error_block {
   width: 100%;
@@ -114,32 +78,82 @@
   width: 100%;
   height: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
-.compliment_text {
-  font: var(--font-ms);
-  color: var(--color-grey);
-}
-.cup_icon {
-  color: var(--color-blue);
-}
-
-.btn_wrap {
-  width: max-content;
-  cursor: pointer;
+/* Красивая наградная карточка */
+.compliment_card {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(0, 119, 255, 0.05) 0%, rgba(0, 119, 255, 0.02) 100%);
+  border: 1px dashed var(--color-blue);
+  border-radius: 12px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  row-gap: 15px;
+  text-align: center;
 }
+
+.compliment_text {
+  font: var(--font-ms);
+  color: var(--color-black);
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+/* Современная кнопка CTA в стиле VK */
+.btn_share_story {
+  width: max-content;
+  min-width: 260px;
+  height: 48px;
+  background-color: var(--color-blue);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.2);
+}
+
+/* Эффект наведения */
+.btn_share_story:hover {
+  background-color: #0066dd; /* Чуть темнее основного синего */
+  box-shadow: 0 6px 16px rgba(0, 119, 255, 0.3);
+}
+
+/* Эффект клика (нажатия) */
+.btn_share_story:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 119, 255, 0.2);
+}
+
+/* Иконка внутри кнопки белая для контраста */
+.cup_icon {
+  color: #ffffff;
+  animation: pulse 2s infinite ease-in-out; /* Легкая анимация покачивания кубка */
+}
+
 .compliment_text_btn {
-  color: var(--color-blue);
+  color: #ffffff;
   font: var(--font-s);
+  font-weight: 600; /* Делаем текст кнопки более читаемым */
+  letter-spacing: 0.3px;
+}
+
+/* Анимация пульсации для кубка, чтобы привлечь внимание */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 .progress_wrap {
