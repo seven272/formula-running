@@ -33,12 +33,25 @@ const SecondStart = () => {
         <span>к тренировкам</span>
         <PiShootingStarThin size={15} />
       </button>
-      <div className={styles.img_wrap}>
+      {/* <div className={styles.img_wrap}>
         <img
           className={styles.img}
           src={Img}
           alt="банер главной страницы"
         />
+      </div> */}
+      <div className={styles.hero_banner}>
+        <img
+          className={styles.img}
+          src={Img}
+          alt="Банер главной страницы"
+        />
+        <div className={styles.hero_overlay}>
+          <h1 className={styles.hero_title}>Ваш беговой помощник</h1>
+          <span className={styles.hero_subtitle}>
+            Бегайте часто. Бегайте долго. Бегайте в удовольствие.
+          </span>
+        </div>
       </div>
     </div>
   )
