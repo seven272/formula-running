@@ -19,7 +19,7 @@ const router = express.Router()
 router.post('/create', checkVkId, createCustomPlan)
 router.get('/userplans', checkVkId, getUserCustomPlans)
 router.get('/all', checkAuth, checkAdmin, getAllCustomPlans)
-router.delete('/delete/:id', checkAuth, checkAdmin, deleteCustomPlan)
+router.delete('/:planId', checkAuth, checkAdmin, deleteCustomPlan)
 router.patch('/update/:id', checkAuth, checkAdmin, updateCustomPlan)
 
 

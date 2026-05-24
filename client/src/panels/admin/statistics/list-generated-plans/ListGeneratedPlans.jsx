@@ -1,11 +1,19 @@
 import { Spinner } from '@vkontakte/vkui'
+import { useDispatch } from 'react-redux'
 
 import styles from './ListGeneratedPlans.module.css'
+import { fetchDeleteCustomPlan } from '../../../../redux/slices/customPlanSlice'
 
 const ListGeneratedPlans = ({ plans }) => {
+  const dispatch = useDispatch()
   if (!plans) {
     return <Spinner />
   }
+
+  const handleRemovePlan = (planId) => {
+    dispatch(fetchDeleteCustomPlan({ planId }))
+  }
+
   return (
     <div className={styles.main}>
       <h3 className={styles.title}>Список сгенерированных планов</h3>
@@ -29,6 +37,12 @@ const ListGeneratedPlans = ({ plans }) => {
                 <strong>длительность, недели:</strong>{' '}
                 <span>{plan.period}</span>{' '}
               </span>
+              <button
+                className={styles.btn_del}
+                onClick={() => handleRemovePlan(plan._id)}
+              >
+                удалить
+              </button>
             </li>
           )
         })}

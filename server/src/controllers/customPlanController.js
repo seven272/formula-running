@@ -107,25 +107,41 @@ const getUserCustomPlans = async (req, res) => {
 }
 
 const deleteCustomPlan = async (req, res) => {
-  const id = req.params.id
-  try {
-    const deletedPlan = await planModel.findByIdAndDelete(id)
+  const { planId } = req.params
 
-    if (!deletedPlan) {
-      return res.status(404).json({
-        message: 'план не найден',
-      })
+  if (!planId) {
+    return res.status(400).json({ message: 'Не переданы обязательные параметры' })
+  }
+
+  try {
+    // Сначала просто находим план
+    const plan = await CustomPlan.findById(planId)
+    if (!plan) {
+      return res.status(404).json({ message: 'План не найден' })
     }
+
+    // Ищем пользователя по привязанному полю ownerVkId (убедитесь, что оно есть в схеме CustomPlan)
+    const user = await User.findOne({ vkId: plan.ownerVkId })
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователя не существует' })
+    }
+
+    // 3. Удаляем ID плана из массива пользователя
+    user.customPlans = user.customPlans.filter(
+      (id) => id.toString() !== planId
+    )
+    await user.save()
+
+    //  И только теперь, когда пользователь обновлен, удаляем сам план
+    const deletedPlan = await CustomPlan.findByIdAndDelete(planId)
 
     return res.status(200).json({
       message: 'План успешно удален',
-      deletedPlan,
+      deletedPlan
     })
   } catch (error) {
     console.error('Ошибка deleteCustomPlan controller:', error)
-    res
-      .status(500)
-      .json({ message: 'Ошибка сервера при удалении плана' })
+    return res.status(500).json({ message: 'Ошибка сервера при удалении плана' })
   }
 }
 

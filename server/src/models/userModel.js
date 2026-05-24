@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
     vkId: {
       type: String,
       required: true,
-      unique: true,
+      unique: true, 
       sparse: true,
     },
     tier: {

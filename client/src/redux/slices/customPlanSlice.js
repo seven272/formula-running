@@ -29,6 +29,20 @@ const fetchGetCustomPlans = createAsyncThunk(
   },
 )
 
+const fetchDeleteCustomPlan = createAsyncThunk(
+  'customPlan/fetchDeleteCustomPlan',
+  async ({ planId }, { rejectWithValue }) => {
+    console.log(planId)
+    try {
+      const res = await axios.delete(`/custom-plans/${planId}`)
+      return res.data
+    } catch (error) {
+      console.log('ошибка при удалении плана. Redux ', error)
+      return rejectWithValue(error)
+    }
+  },
+)
+
 const fetchCheckToken = createAsyncThunk(
   'customPlan/fetchCheckToken',
   async () => {
@@ -89,7 +103,7 @@ const customPlanSlice = createSlice({
         state.customPace = { ...action.payload.pace }
         state.title = action.payload.title
         state.status = 'success'
-        state.listCustomPlans.push(action.payload) 
+        state.listCustomPlans.push(action.payload)
       })
       .addCase(fetchCreateCustomPlan.rejected, (state) => {
         state.isLoading = false
@@ -104,6 +118,16 @@ const customPlanSlice = createSlice({
         state.listCustomPlans = action.payload
       })
       .addCase(fetchGetCustomPlans.rejected, (state) => {
+        state.isLoading = false
+      })
+      //delete customs plans
+      .addCase(fetchDeleteCustomPlan.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(fetchDeleteCustomPlan.fulfilled, (state) => {
+        state.isLoading = false
+      })
+      .addCase(fetchDeleteCustomPlan.rejected, (state) => {
         state.isLoading = false
       })
       //check customs token
@@ -128,5 +152,10 @@ export const {
   setCustomPace,
   changeStatusToken,
 } = customPlanSlice.actions
-export { fetchCreateCustomPlan, fetchGetCustomPlans, fetchCheckToken }
+export {
+  fetchCreateCustomPlan,
+  fetchGetCustomPlans,
+  fetchDeleteCustomPlan,
+  fetchCheckToken,
+}
 export default customPlanSlice.reducer

@@ -36,7 +36,6 @@
   font: var(--font-ms);
 }
 
-
 .text {
   width: 100%;
   display: flex;
@@ -44,9 +43,18 @@
   align-items: center;
   flex-wrap: wrap;
   color: var(--color-grey);
-  font: var(--font-s)
+  font: var(--font-s);
 }
 
 .text strong {
   margin-right: 7px;
+}
+
+.btn_del {
+  padding: 5px 8px;
+  text-align: center;
+  color: var(--color-grey);
+  font: var(--font-s);
+  border: 1px solid var(--color-grey);
+  cursor: pointer;
 }
