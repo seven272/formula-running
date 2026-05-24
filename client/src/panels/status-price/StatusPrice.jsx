@@ -167,7 +167,7 @@ const StatusPrice = ({ id }) => {
             </div>
           ))}
         </div>
-        {/* {!canShowPayments() && <span className={styles.warning}>*оплата в мобильном приложении недоступна</span>} */}
+        {!canShowPayments() && <span className={styles.warning}>*оплата в мобильном приложении недоступна</span>}
       </div>
       <Footer />
     </Panel>

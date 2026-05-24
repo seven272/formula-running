@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PiPaperclip } from 'react-icons/pi'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { Panel } from '@vkontakte/vkui'
-// import { TbLock } from 'react-icons/tb'
 
 import styles from './Generate.module.css'
 import GenerateHeader from './generate-header/GenerateHeader'
@@ -16,8 +15,6 @@ import { showToast } from '../../redux/slices/toastSlice'
 import {
   fetchCreateCustomPlan,
   fetchGetCustomPlans,
-  // fetchCheckToken,
-  // changeStatusToken,
 } from '../../redux/slices/customPlanSlice'
 import { fetchUpdateUserTier } from '../../redux/slices/userSlice'
 import Header from '../../components/header/Header'
@@ -62,8 +59,11 @@ const Generate = ({ id }) => {
       const { h, m, s } = payload.time
       updateTime = h * 3600 + m * 60 + s
     }
+    console.log(payload.time)
+    console.log(updateTime)
+    console.log(typeof updateTime)
     setDataPlan((prev) => {
-      return { ...prev, level: payload.level, time: updateTime }
+      return { ...prev, level: payload.level, time: Number(updateTime)}
     })
   }
 
@@ -96,9 +96,11 @@ const Generate = ({ id }) => {
       !totalWeeks ||
       !level ||
       !time ||
+      time === 0 ||
       !daysPerWeek ||
       !longDay === '' ||
-      (hasStrengths && strengthDays.length === 0)
+      (hasStrengths && strengthDays.length === 0) ||
+      (time.h === 0 && time.m === 0)
     ) {
       dispatch(
         showToast({

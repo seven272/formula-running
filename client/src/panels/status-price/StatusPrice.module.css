@@ -4,6 +4,7 @@
   border-radius: 12px;
   margin: 0 auto;
   padding: 0 10px;
+
 }
 
 .title {
@@ -11,6 +12,7 @@
   font: var(--font-l);
   color: var(--color-grey);
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .grid {
