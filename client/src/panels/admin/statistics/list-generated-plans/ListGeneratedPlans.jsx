@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import styles from './ListGeneratedPlans.module.css'
 import { fetchDeleteCustomPlan } from '../../../../redux/slices/customPlanSlice'
+import { showToast } from '../../../../redux/slices/toastSlice'
 
 const ListGeneratedPlans = ({ plans }) => {
   const dispatch = useDispatch()
@@ -12,6 +13,24 @@ const ListGeneratedPlans = ({ plans }) => {
 
   const handleRemovePlan = (planId) => {
     dispatch(fetchDeleteCustomPlan({ planId }))
+      .unwrap()
+      .then(() => {
+        dispatch(
+          showToast({
+            message: 'План успешно удален',
+            type: 'success',
+          }),
+        )
+      })
+      .catch((err) => {
+        console.log(err)
+        dispatch(
+          showToast({
+            type: 'error',
+            message: 'Ошибка при удалении плана',
+          }),
+        )
+      })
   }
 
   return (
