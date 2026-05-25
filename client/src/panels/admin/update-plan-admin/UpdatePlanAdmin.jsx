@@ -42,6 +42,11 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
         name = 'isFree'
       }
     }
+
+    if (name === 'pace') {
+      value = {manualText: value}
+    }
+    
     setNewPlan((prevState) => ({ ...prevState, [name]: value }))
   }
 
@@ -200,7 +205,7 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
                   : 'Напр: Зоны ЧСС 1-3, средний темп 6:30/км'
               }
               required
-              value={newPlan.pace}
+              value={newPlan.pace.manualText}
               onChange={handleChange}
             />
           </label>
