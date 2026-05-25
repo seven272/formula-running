@@ -72,14 +72,13 @@
   padding: 15px;
   background-color: var(--color-grey-light);
   border-radius: 8px;
-  border: 1px solid var(--color-grey);
   margin-top: 10px;
   width: 100%;
 }
 
 .manual_pace_text {
-  color: var(--color-black);
-  font: var(--font-submenu);
+  color: var(--color-grey-dark);
+  font: var(--font-ms);
   text-align: left;
   line-height: 1.5;
   white-space: pre-line; /* Чтобы переносы строк админа красиво отображались */

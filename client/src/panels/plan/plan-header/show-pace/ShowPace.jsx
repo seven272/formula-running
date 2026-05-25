@@ -26,10 +26,10 @@ const ShowPace = ({ show, paces }) => {
             {paces.manualText ||
               'Рекомендации по темпу не указаны автором плана.'}
           </span>
-          <p className={styles.substr_manual}>
+          <span className={styles.substr_manual}>
             Используйте эти целевые показатели или пульсовые зоны во
             время выполнения тренировок.
-          </p>
+          </span>
         </div>
       ) : (
         /* КЛАССИЧЕСКИЙ ВАРИАНТ ДЛЯ ШОССЕЙНОГО БЕГА (P1-P6) */

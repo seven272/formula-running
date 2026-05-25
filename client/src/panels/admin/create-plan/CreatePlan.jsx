@@ -317,8 +317,8 @@ const CreatePlan = ({ closeFn }) => {
               <span className={styles.label_title}>
                 Целевой темп / Описание зон интенсивности:
               </span>
-              <input
-                className={styles.input_text}
+              <textarea
+                className={styles.input_textarea}
                 type="text"
                 id="manualPaceId"
                 placeholder={

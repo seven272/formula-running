@@ -65,7 +65,7 @@ const readyPlanSchema = new mongoose.Schema(
       default: '',
     },
     pace: {
-      type: Object,
+      type: Object, 
       required: true,
     },
     time: {

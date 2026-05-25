@@ -22,12 +22,12 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
     typeSport: plan.typeSport,
     distance: plan.distance,
     period: plan.period,
+    pace: plan.pace,
     planUrl: plan.planUrl,
     pictureUrl: plan.pictureUrl,
     isFree: plan.isFree,
     workouts: JSON.stringify(plan.workouts),
   })
-  
 
   const handleChange = (evt) => {
     let { name, value } = evt.target
@@ -53,7 +53,7 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
       formData.append('picture', file)
       const { data } = await axios.post(
         '/plans/upload/picture',
-        formData
+        formData,
       )
       const pictureUrl = data.url
       setNewPlan((prevState) => ({
@@ -73,7 +73,7 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
       formData.append('plan', file)
       const { data } = await axios.post(
         '/plans/upload/plan',
-        formData
+        formData,
       )
       const planUrl = data.url
       setNewPlan((prevState) => ({
@@ -147,9 +147,10 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
               --выбрать--
             </option>
             <option value="run">Бег</option>
+            <option value="trail">Трейл</option>
+            <option value="tri">Триатлон</option>
             <option value="bike">Велосипед</option>
             <option value="swim">Плавание</option>
-            <option value="tri">Триатлон</option>
           </select>
         </label>
 
@@ -182,6 +183,28 @@ const UpdatePlanAdmin = ({ plan, closeFn }) => {
             onChange={handleChange}
           />
         </label>
+
+        {newPlan.typeSport !== 'run' && (
+          <label htmlFor="manualPaceId" className={styles.label}>
+            <span className={styles.label_title}>
+              Целевой темп / Описание зон интенсивности:
+            </span>
+            <textarea
+              className={styles.input_textarea}
+              type="text"
+              id="manualPaceId"
+              name="pace"
+              placeholder={
+                newPlan.typeSport === 'tri'
+                  ? 'Напр: Плав: 2:00/100м, Вело: 30км/ч, Бег: 5:10/км'
+                  : 'Напр: Зоны ЧСС 1-3, средний темп 6:30/км'
+              }
+              required
+              value={newPlan.pace}
+              onChange={handleChange}
+            />
+          </label>
+        )}
 
         <label htmlFor="pictureUrlId" className={styles.label}>
           <span className={styles.label_title}>
