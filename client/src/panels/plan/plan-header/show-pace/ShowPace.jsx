@@ -1,4 +1,5 @@
 import { MdClose } from 'react-icons/md'
+import React from 'react'
 import styles from './ShowPace.module.css'
 
 const ShowPace = ({ show, paces }) => {
@@ -23,8 +24,12 @@ const ShowPace = ({ show, paces }) => {
         /* ВАРИАНТ ДЛЯ ТРЕЙЛА И ТРИАТЛОНА (РУЧНОЙ ВВОД) */
         <div className={styles.manual_pace_block}>
           <span className={styles.manual_pace_text}>
-            {paces.manualText ||
-              'Рекомендации по темпу не указаны автором плана.'}
+            {paces.manualText.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            )) || 'Рекомендации по темпу не указаны автором плана.'}
           </span>
           <span className={styles.substr_manual}>
             Используйте эти целевые показатели или пульсовые зоны во

@@ -81,7 +81,7 @@
   font: var(--font-ms);
   text-align: left;
   line-height: 1.5;
-  white-space: pre-line; /* Чтобы переносы строк админа красиво отображались */
+  white-space: pre-line !important; /* Чтобы переносы строк админа красиво отображались */
 }
 
 .substr_manual {
