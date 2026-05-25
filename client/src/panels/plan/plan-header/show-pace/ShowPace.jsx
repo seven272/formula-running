@@ -23,14 +23,16 @@ const ShowPace = ({ show, paces }) => {
       {isManualPace ? (
         /* ВАРИАНТ ДЛЯ ТРЕЙЛА И ТРИАТЛОНА (РУЧНОЙ ВВОД) */
         <div className={styles.manual_pace_block}>
-          <span className={styles.manual_pace_text}>
-            {paces.manualText.split('\n').map((line, index) => (
-              <React.Fragment key={index}>
-                {line}
-                <br />
-              </React.Fragment>
-            )) || 'Рекомендации по темпу не указаны автором плана.'}
-          </span>
+          <div className={styles.manual_pace_text}>
+            {paces.manualText
+              ? paces.manualText.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))
+              : 'Рекомендации по темпу не указаны автором плана.'}
+          </div>
           <span className={styles.substr_manual}>
             Используйте эти целевые показатели или пульсовые зоны во
             время выполнения тренировок.
