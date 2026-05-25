@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { GrUpdate } from 'react-icons/gr'
-import { useSelector } from 'react-redux'
 import { Panel } from '@vkontakte/vkui'
 
 import ResultSort from './result-sort/ResultSort'
 import MenuType from './menu-type/MenuType'
+import MenuSport from './menu-sport/MenuSport' 
 import MenuDistance from './menu-distance/MenuDistance'
 import styles from './Shop.module.css'
 import Header from '../../components/header/Header'
@@ -21,42 +21,60 @@ const Shop = ({ id }) => {
   const { allPlans, purchasedPlans } = useSelector(
     (state) => state.plans,
   )
-  const [filter, setFilter] = useState({ type: '', value: '' })
 
+  // 1. Новая структура стейта — все фильтры работают независимо
+  const [filters, setFilters] = useState({
+    category: 'all', // all, unavailable, available
+    sport: 'run', // run, trail, tri (по умолчанию показываем асфальт)
+    distance: '', // пустая строка означает "выбраны все дистанции"
+  })
+
+  // Сброс фильтров возвращает к исходному состоянию
   const handleClear = () => {
-    setFilter({ type: '', value: '' })
+    setFilters({ category: 'all', sport: 'run', distance: '' })
   }
 
+  // Смена вида спорта сбрасывает выбранную дистанцию, так как сетка дистанций меняется!
+  const handleSelectSport = (sportId) => {
+    setFilters((prev) => ({ ...prev, sport: sportId, distance: '' }))
+  }
+
+  // 2. Мощный useMemo для пересекающейся фильтрации
   const resultSort = useMemo(() => {
-    const { type, value } = filter
+    let filtered = [...allPlans]
 
-    if (!type) return []
+    // ФИЛЬТР 1: По виду спорта (выполняется всегда)
+    filtered = filtered.filter(
+      (plan) => plan.typeSport === filters.sport,
+    )
 
-    // Фильтрация по категории (платные/бесплатные/все)
-    if (type === 'category') {
-      if (value === 'all') return allPlans
-      if (value === 'unavailable') {
-        const filteredPlans = allPlans.filter((plan) =>
-           (purchasedPlans || []).some((elem) => elem.originalPlanId === plan._id),
-        )
-        return filteredPlans
-      }
-
-      if (value === 'available') {
-        const filteredPlans = allPlans.filter((plan) =>
-          !(purchasedPlans || []).some((elem) => elem.originalPlanId === plan._id),
-        )
-        return filteredPlans
-      }
+    // ФИЛЬТР 2: По категории доступности
+    if (filters.category === 'unavailable') {
+      // Только активированные
+      filtered = filtered.filter((plan) =>
+        (purchasedPlans || []).some(
+          (elem) => elem.originalPlanId === plan._id,
+        ),
+      )
+    } else if (filters.category === 'available') {
+      // Только доступные для покупки/активации
+      filtered = filtered.filter(
+        (plan) =>
+          !(purchasedPlans || []).some(
+            (elem) => elem.originalPlanId === plan._id,
+          ),
+      )
     }
 
-    // Фильтрация по дистанции
-    if (type === 'distance') {
-      return allPlans.filter((plan) => plan.distance === value)
+    // ФИЛЬТР 3: По дистанции (если она выбрана)
+    if (filters.distance) {
+      filtered = filtered.filter(
+        (plan) => plan.distance === filters.distance,
+      )
     }
 
-    return []
-  }, [filter, allPlans])
+    return filtered
+  }, [filters, allPlans, purchasedPlans])
 
   useEffect(() => {
     dispatch(fetchGetPurchasedPlans())
@@ -73,19 +91,36 @@ const Shop = ({ id }) => {
             сбросить
           </button>
         </div>
+
+        {/* Фильтр Категорий владения */}
         <MenuType
-          filter={filter}
+          filter={{ value: filters.category }} // Передаем структуру для обратной совместимости
           onSelectFilter={(val) =>
-            setFilter({ type: 'category', value: val })
+            setFilters((prev) => ({ ...prev, category: val }))
           }
         />
+
+        {/* Фильтр Видов Спорта */}
+        <MenuSport
+          activeSport={filters.sport}
+          onSelectSport={handleSelectSport}
+        />
+
+        {/* Динамический Фильтр Дистанций */}
         <MenuDistance
-          filter={filter}
-          onSelectFilter={(val) =>
-            setFilter({ type: 'distance', value: val })
-          }
+          activeSport={filters.sport}
+          activeDistance={filters.distance}
+          onSelectFilter={(val) => {
+            // Если кликнули на уже активную дистанцию — снимаем фильтр (тогл)
+            setFilters((prev) => ({
+              ...prev,
+              distance: prev.distance === val ? '' : val,
+            }))
+          }}
         />
-        {filter.type !== '' && <ResultSort sortList={resultSort} />}
+
+        {/* Результаты рендерятся ВСЕГДА, пустой экран больше не показываем */}
+        <ResultSort sortList={resultSort} />
       </div>
       <Footer />
     </Panel>

@@ -42,7 +42,7 @@ const readyPlanSchema = new mongoose.Schema(
     typeSport: {
       type: String,
       required: true,
-      enum: ['run', 'bike', 'swim', 'tri'],
+      enum: ['run', 'bike', 'swim', 'tri', 'trail'],
     },
     distance: {
       type: String,

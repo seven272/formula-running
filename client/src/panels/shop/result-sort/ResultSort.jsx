@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import styles from './ResultSort.module.css'
 import PreviewPlan from '../preview-plan/PreviewPlan'
 
-const ResultSort = ({ sortList }) => {
+const ResultSort = ({ sortList }) => { 
   const purchasedPlans = useSelector(
     (state) => state.plans.purchasedPlans || [],
   )

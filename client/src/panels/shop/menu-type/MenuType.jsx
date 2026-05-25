@@ -8,7 +8,7 @@ const MenuType = ({ filter, onSelectFilter }) => {
   
   const getAllPlans = (value) => {
     onSelectFilter(value)
-  }
+  } 
 
   const getUnavailablePlans = (value) => {
     onSelectFilter(value)
