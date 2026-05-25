@@ -25,7 +25,7 @@ const ShowPace = ({ show, paces }) => {
         <div className={styles.manual_pace_block}>
           <div className={styles.manual_pace_text}>
             {paces.manualText
-              ? paces.manualText.split('\n').map((line, index) => (
+              ? paces.manualText.split(';').map((line, index) => (
                   <React.Fragment key={index}>
                     {line}
                     <br />
