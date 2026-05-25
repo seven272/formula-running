@@ -303,7 +303,7 @@ const plansSlice = createSlice({
         state.allPlans = state.allPlans.map((elem) => {
           if (elem._id === action.payload.updatedPlan._id) {
             return action.payload.updatedPlan
-          } else {
+          } else { 
             return elem
           }
         })

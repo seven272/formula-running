@@ -493,7 +493,7 @@ const updateWorkoutUser = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
-
+ 
 const addReadyPlan = async (req, res) => {
   const vkId = req.vkId
   const readyPlanId = req.body.readyPlanId

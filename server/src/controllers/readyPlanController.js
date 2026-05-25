@@ -6,7 +6,7 @@ import fs from 'fs'
 const createPlan = async (req, res) => {
   const {
     title,
-    subtitle,
+    subtitle, 
     typeSport,
     distance,
     period,
