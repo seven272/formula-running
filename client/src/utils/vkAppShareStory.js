@@ -2,7 +2,7 @@ import bridge from '@vkontakte/vk-bridge'
 
 import { convertBase64FromUrl } from './convertToBase64'
 
-import ImgBlob from '../assets/images/vk-ui/onboarding.png'
+import ImgBlob from '../assets/images/vk-ui/finish_workout.jpeg'
 import ImgBlob2 from '../assets/images/vk-ui/story4.jpeg'
 
 // размещение записи в истории пользователя
