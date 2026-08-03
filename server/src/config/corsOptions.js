@@ -13,7 +13,10 @@ const corsOptions = {
     const allowedPatterns = [
       /vk\.com$/,
       /vk\.me$/,
-      /\.vk\.com$/, // Чтобы ловить поддомены
+      /\.vk\.com$/, // Поддомены vk.com
+      /vk\.ru$/, // Сам домен vk.ru
+      /\.vk\.ru$/, // Поддомены vk.ru (Критически важно!)
+      /\.vkplay-apps\.ru$/, // Новые поддомены VK Play Apps (используются для хостинга мини-приложений)
     ]
 
     // 1. Разрешаем запросы без origin (например, мобильные приложения или curl)
@@ -46,6 +49,7 @@ const corsOptions = {
     'x-vk-user-id',
     'x-vk-app-id',
     'x-vk-sign',
+    'x-vk-launch-params',
   ],
   optionsSuccessStatus: 200,
   credentials: true,
