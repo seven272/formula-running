@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   RouterLink,
@@ -63,10 +63,8 @@ const Plan = ({ id }) => {
     dispatch(fetchGetCurrentPlan())
   }, [dispatch])
 
-  // Добавляем новый useEffect, который сработает, когда план загрузится в Redux
   useEffect(() => {
     if (hasCalculatedPage) return
-    // Проверяем, что план загружен, в нем есть тренировки и установлена дата старта
     if (
       plan &&
       plan.workouts &&
@@ -76,38 +74,95 @@ const Plan = ({ id }) => {
       const now = new Date()
       const start = new Date(plan.startDate)
 
-      // Находим понедельник недели старта, чтобы расчет был точным
       const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
       const firstMonday = new Date(start)
       firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
 
-      // Сбрасываем время у дат для чистого сравнения дней
       now.setHours(0, 0, 0, 0)
       firstMonday.setHours(0, 0, 0, 0)
 
-      // Разница в миллисекундах переводим в дни
       const diffTime = now.getTime() - firstMonday.getTime()
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
 
-      // Считаем индекс текущей недели (целое деление на 7)
       const currentWeekIndex = Math.floor(diffDays / 7)
 
-      // Если план уже идет, проверяем, чтобы индекс не выходил за рамки массива тренировок
       if (
         currentWeekIndex >= 0 &&
         currentWeekIndex < plan.workouts.length
       ) {
         setPage(currentWeekIndex)
       } else if (currentWeekIndex >= plan.workouts.length) {
-        // Если все недели прошли, открываем последнюю неделю плана
         setPage(plan.workouts.length - 1)
       }
-      // Фиксируем, что первичная настройка недели выполнена успешна
       setHasCalculatedPage(true)
     }
-  }, [plan, hasCalculatedPage]) // Сработает каждый раз, когда plan обновляется (при загрузке, смене или сбросе даты)
+  }, [plan, hasCalculatedPage])
 
-  if (Object.keys(plan.workouts).length === 0) {
+  // МАТРИЦА КАЛЕНДАРЯ: Перестраиваем тренировки с учетом сдвига даты старта
+  const calendarWorkouts = useMemo(() => {
+    if (!plan || !plan.workouts || !plan.startDate) return []
+
+    const start = new Date(plan.startDate)
+    const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
+
+    // 1. Собираем ВСЕ тренировки плана в один плоский массив
+    const allSessions = []
+    plan.workouts.forEach((week) => {
+      if (week.sessions) {
+        allSessions.push(...week.sessions)
+      }
+    })
+
+    // 2. Добавляем пустые заглушки В НАЧАЛО этого плоского списка
+    const placeholdersCount = startDayOfWeek - 1
+    const totalGrid = []
+
+    for (let i = 0; i < placeholdersCount; i++) {
+      totalGrid.push({
+        _id: `empty-start-${i}`,
+        isEmptyBeforeStart: true,
+        title: 'Отдых',
+        descr: 'Ожидание старта плана',
+        day: '--',
+        completed: false,
+      })
+    }
+
+    // Добавляем реальные тренировки вслед за заглушками
+    totalGrid.push(...allSessions)
+
+    // 3. Нарезаем получившийся огромный массив строго по 7 дней на каждую неделю
+    const formattedWeeks = []
+    const weeksCount = Math.ceil(totalGrid.length / 7)
+
+    for (let w = 0; w < weeksCount; w++) {
+      const weekSessions = totalGrid.slice(w * 7, (w + 1) * 7)
+      
+      // Если на последней неделе не хватает дней до полного размера в 7 дней — добиваем днями отдыха
+      while (weekSessions.length < 7) {
+        weekSessions.push({
+          _id: `empty-end-${weekSessions.length}`,
+          isEmptyBeforeStart: false,
+          title: 'Отдых',
+          descr: 'День восстановления',
+          day: '--',
+          completed: false,
+        })
+      }
+
+      // Сохраняем метаданные оригинальной недели (или генерируем новые для UI)
+      const originalWeek = plan.workouts[w] || {}
+      formattedWeeks.push({
+        _id: originalWeek._id || `generated-week-${w}`,
+        weekNumber: w + 1,
+        sessions: weekSessions,
+      })
+    }
+
+    return formattedWeeks
+  }, [plan])
+
+  if (!plan || !plan.workouts || Object.keys(plan.workouts).length === 0) {
     setTimeout(() => {
       setIsLoading(false)
     }, 2000)
@@ -119,13 +174,9 @@ const Plan = ({ id }) => {
         ) : (
           <div>
             <span className={styles.error_text}>
-              Активный план не выбран. Сделайте это перейдя на
-              страницу Мой планы. Предварительно добавив понравившиеся
-              планы в избранное или купив их.
+              Активный план не выбран. Сделайте это перейдя на страницу Мой планы.
             </span>
-            <RouterLink to="/userplans">
-              ПЕРЕЙТИ В МОИ ПЛАНЫ
-            </RouterLink>
+            <RouterLink to="/userplans">ПЕРЕЙТИ В МОИ ПЛАНЫ</RouterLink>
           </div>
         )}
       </div>
@@ -145,37 +196,32 @@ const Plan = ({ id }) => {
             назад
           </button>
           <PlanHeader plan={plan} />
-          {Object.keys(plan.workouts).length !== 0 &&
-            plan.workouts.map((week, inx) => {
-              return (
-                <WeekPlan
-                  key={inx}
-                  week={week}
-                  weekNumber={inx}
-                  startDate={plan.startDate}
-                  paginatePage={page}
-                />
-              )
-            })}
+          
+          {/* Рендерим отформатированный календарный массив вместо сырого plan.workouts */}
+          {calendarWorkouts.map((week, inx) => (
+            <WeekPlan
+              key={`week-page-${inx}`} // Уникальный ключ для сброса кэша React
+              week={week}
+              weekNumber={inx}
+              startDate={plan.startDate}
+              paginatePage={page}
+            />
+          ))}
+
           <Pagination
             paginate={paginate}
             elementsPerPage={1}
-            totalElements={plan.workouts.length}
+            totalElements={calendarWorkouts.length}
             activePage={page}
           />
+          
           {percent === 100 && (
             <div className={styles.compliment}>
               <div className={styles.compliment_card}>
                 <span className={styles.compliment_text}>
-                  Поздравляем! Вы успешно завершили весь план
-                  тренировок и полностью готовы к старту. Самое время
-                  поделиться этим достижением с друзьями!
+                  Поздравляем! Вы успешно завершили весь план тренировок...
                 </span>
-
-                <button
-                  className={styles.btn_share_story}
-                  onClick={handleShare}
-                >
+                <button className={styles.btn_share_story} onClick={handleShare}>
                   <TfiCup size={24} className={styles.cup_icon} />
                   <span className={styles.compliment_text_btn}>
                     Поделиться успехом в Истории
@@ -188,10 +234,7 @@ const Plan = ({ id }) => {
             <div className={styles.progress_container}>
               <Progressbar completed={percent} />
             </div>
-            <button
-              className={styles.btn_reset_progress}
-              onClick={showModal}
-            >
+            <button className={styles.btn_reset_progress} onClick={showModal}>
               <BiReset size={25} />
             </button>
           </div>
@@ -200,17 +243,13 @@ const Plan = ({ id }) => {
         </div>
         <Modal
           title="Сброс прогресса"
-          closable={{ 'aria-label': 'Custom Close Button' }}
           open={isModalOpen}
           okText="Обнулить"
           cancelText="Вернуться назад"
           onOk={handleOkReset}
           onCancel={handleCancelReset}
         >
-          <span>
-            Вы уверены, что хотите обнулить прогресс по всем
-            тренировкам в этом плане?
-          </span>
+          <span>Вы уверены, что хотите обнулить прогресс?</span>
         </Modal>
       </div>
       <Footer />
