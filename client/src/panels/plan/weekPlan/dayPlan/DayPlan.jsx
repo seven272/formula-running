@@ -21,6 +21,7 @@ const DayPlan = ({
   numberDayInWeek,
   weekNumber,
   startDate,
+  calculatedDate, // <-- Получаем готовую дату от родителя
   isEmptyBeforeStart = false,
 }) => {
   const dispatch = useDispatch()
@@ -34,6 +35,7 @@ const DayPlan = ({
   const handleShareStory = () => {
     shareTrainingStory({ title, descr })
   }
+
   const handleRatingSession = (data) => {
     dispatch(
       fetchUpdateSessionStatus({
@@ -49,22 +51,12 @@ const DayPlan = ({
     setIsSelected(completed)
   }, [completed])
 
-  // Функция для расчета красивой даты тренировки
+  // Функция теперь только красиво форматирует переданную дату
   const getFormattedDate = () => {
-    if (!startDate) return ''
+    // Если дата не передана (например, план еще не начат вообще), возвращаем пустую строку
+    if (!calculatedDate) return ''
 
-    const start = new Date(startDate)
-    const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
-
-    // Находим виртуальный понедельник текущей недели
-    const firstMonday = new Date(start)
-    firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
-
-    // Смещение рассчитывается от этого понедельника
-    const daysOffset = weekNumber * 7 + (numberDayInWeek - 1)
-
-    const finalDate = new Date(firstMonday)
-    finalDate.setDate(firstMonday.getDate() + daysOffset)
+    const finalDate = new Date(calculatedDate)
 
     // Форматируем: "Сб, 23 мая"
     const realWeekday = finalDate.toLocaleDateString('ru-RU', {
@@ -78,14 +70,15 @@ const DayPlan = ({
       month: 'short',
     })
 
-     return (
-    <>
-      <span>{formattedWeekday}</span> <span>{formattedDateOnly}</span>
-    </>
-  )
+    return (
+      <>
+        <span>{formattedWeekday}</span>{' '}
+        <span>{formattedDateOnly}</span>
+      </>
+    )
   }
-  const trainingDate = getFormattedDate()
 
+  const trainingDate = getFormattedDate()
   const isDark = numberDayInWeek % 2 !== 0
 
   if (isEmptyBeforeStart) {
@@ -107,12 +100,12 @@ const DayPlan = ({
               color: 'var(--color-grey)',
               textAlign: 'center',
             }}
-          >
-          </span>
+          ></span>
         </div>
       </div>
     )
   }
+
   // СТАНДАРТНОЕ ОТОБРАЖЕНИЕ РЕАЛЬНОЙ ТРЕНИРОВКИ ПЛАНА
   return (
     <div

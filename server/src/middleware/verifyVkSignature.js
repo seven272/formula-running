@@ -17,7 +17,7 @@ const verifyVkSignature = (req, res, next) => {
       : launchParams,
   )
 
-  const queryParams = {} 
+  const queryParams = {}
   for (const [key, value] of urlParams.entries()) {
     queryParams[key] = value
   }
@@ -34,13 +34,21 @@ const verifyVkSignature = (req, res, next) => {
   }
 
   // 3. Формируем строку для проверки (только параметры с префиксом vk_)
+  // const checkString = Object.keys(params)
+  //   .filter((key) => key.startsWith('vk_'))
+  //   .sort()
+  //   .map(
+  //     (key) =>
+  //       `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
+  //   )
+  //   .join('&')
+
+  // 3. Формируем строку для проверки (только параметры с префиксом vk_)
   const checkString = Object.keys(params)
     .filter((key) => key.startsWith('vk_'))
     .sort()
-    .map(
-      (key) =>
-        `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
-    )
+    // Склеиваем ключи и значения БЕЗ encodeURIComponent
+    .map((key) => `${key}=${params[key]}`)
     .join('&')
 
   // 4. Считаем хеш, используя Защищенный ключ (Client Secret) из настроек VK
