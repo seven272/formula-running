@@ -1,6 +1,6 @@
 **/.vscode
 **/logs
 **/node_modules/
-**/.cashe
+**/.cache
 **/npm-debug.log
 Dockerfile*
