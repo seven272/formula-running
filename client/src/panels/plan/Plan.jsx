@@ -104,21 +104,31 @@ const Plan = ({ id }) => {
 
   // МАТРИЦА КАЛЕНДАРЯ: Перестраиваем тренировки с учетом сдвига даты старта
   const calendarWorkouts = useMemo(() => {
-   if (!plan || !plan.workouts || !Array.isArray(plan.workouts) || !plan.startDate) {
-    return []
-  }
+    if (!plan || !plan.workouts || !Array.isArray(plan.workouts)) {
+      return []
+    }
+    if (!plan || !plan.workouts || !Array.isArray(plan.workouts))
+      return []
 
+    // 🚀 НОВАЯ ЛОГИКА: Если ДАТЫ СТАРТА НЕТ, рендерим недели "как есть", без сдвигов и заглушек
+    if (!plan.startDate) {
+      return plan.workouts.map((week, w) => ({
+        _id: week._id || `default-week-${w}`,
+        weekNumber: week.weekNumber || w + 1,
+        sessions: week.sessions || [],
+      }))
+    }
     const start = new Date(plan.startDate)
     const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
 
     // 1. Собираем ВСЕ тренировки плана в один плоский массив
     const allSessions = []
-   // Безопасный перебор
-  plan.workouts.forEach((week) => {
-    if (week && week.sessions && Array.isArray(week.sessions)) {
-      allSessions.push(...week.sessions)
-    }
-  })
+    // Безопасный перебор
+    plan.workouts.forEach((week) => {
+      if (week && week.sessions && Array.isArray(week.sessions)) {
+        allSessions.push(...week.sessions)
+      }
+    })
 
     // 2. Добавляем пустые заглушки В НАЧАЛО этого плоского списка
     const placeholdersCount = startDayOfWeek - 1
@@ -198,27 +208,31 @@ const Plan = ({ id }) => {
   // }
 
   // 1. Если данные еще загружаются с сервера — показываем лоадер
-if (isLoading && (!plan || !plan.workouts)) {
-  return (
-    <div className={styles.error_block}>
-      <Loader />
-    </div>
-  )
-}
-
-// 2. Если загрузка завершена, но плана реально нет в базе (пользователь ничего не покупал)
-if (!isLoading && (!plan || !plan.workouts || plan.workouts.length === 0)) {
-  return (
-    <div className={styles.error_block}>
-      <div>
-        <span className={styles.error_text}>
-          Активный план не выбран. Сделайте это перейдя на страницу Мои планы.
-        </span>
-        <RouterLink to="/userplans">ПЕРЕЙТИ В МОИ ПЛАНЫ</RouterLink>
+  if (isLoading && (!plan || !plan.workouts)) {
+    return (
+      <div className={styles.error_block}>
+        <Loader />
       </div>
-    </div>
-  )
-}
+    )
+  }
+
+  // 2. Если загрузка завершена, но плана реально нет в базе (пользователь ничего не покупал)
+  if (
+    !isLoading &&
+    (!plan || !plan.workouts || plan.workouts.length === 0)
+  ) {
+    return (
+      <div className={styles.error_block}>
+        <div>
+          <span className={styles.error_text}>
+            Активный план не выбран. Сделайте это перейдя на страницу
+            Мои планы.
+          </span>
+          <RouterLink to="/userplans">ПЕРЕЙТИ В МОИ ПЛАНЫ</RouterLink>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <Panel id={id}>

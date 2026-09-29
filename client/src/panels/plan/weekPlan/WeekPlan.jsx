@@ -3,13 +3,23 @@ import React from 'react'
 import DayPlan from './dayPlan/DayPlan'
 import styles from './WeekPlan.module.css'
 
-const WeekPlan = ({
-  week,
-  weekNumber,
-  startDate,
-}) => {
-  
+const WeekPlan = ({ week, weekNumber, startDate }) => {
   const renderSessions = () => {
+    if (!startDate) {
+      return week.sessions.map((daySession, inx) => (
+        <div key={`${weekNumber}-day-${inx}`} className={styles.week}>
+          <DayPlan
+            {...daySession}
+            numberDayInWeek={inx + 1}
+            weekId={week._id}
+            weekNumber={weekNumber}
+            startDate={startDate}
+            calculatedDate={null} // 🚀 Даты нет, DayPlan выведет дефолтное название дня из базы (например, "День 1")
+          />
+        </div>
+      ))
+    }
+
     const start = new Date(startDate)
     const startDayOfWeek = start.getDay() === 0 ? 7 : start.getDay()
 
@@ -19,13 +29,15 @@ const WeekPlan = ({
 
     return week.sessions.map((daySession, inx) => {
       const currentDayDate = new Date(firstMonday)
-      currentDayDate.setDate(firstMonday.getDate() + (weekNumber * 7) + inx)
+      currentDayDate.setDate(
+        firstMonday.getDate() + weekNumber * 7 + inx,
+      )
 
       return (
         <div key={`${weekNumber}-day-${inx}`} className={styles.week}>
           <DayPlan
             {...daySession}
-            numberDayInWeek={inx + 1} 
+            numberDayInWeek={inx + 1}
             weekId={week._id}
             weekNumber={weekNumber}
             startDate={startDate}
