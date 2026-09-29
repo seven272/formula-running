@@ -52,6 +52,10 @@ const Plan = ({ id }) => {
   }
   const handleOkReset = () => {
     setIsModalOpen(false)
+    // 🚀 СБРОС ФЛАГА: Разрешаем компоненту заново вычислить стартовую страницу
+    setHasCalculatedPage(false)
+    // Принудительно возвращаем пагинацию на самую первую неделю (0-й индекс)
+    setPage(0)
     dispatch(fetchResetProgressPlan(plan._id))
   }
 
