@@ -182,3 +182,11 @@
   cursor: pointer;
   color: var(--color-blue);
 }
+.weeks_scroll_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Гарантирует плавное появление блоков без резких скачков высоты */
+  will-change: transform, opacity; 
+}

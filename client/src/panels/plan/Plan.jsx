@@ -137,7 +137,7 @@ const Plan = ({ id }) => {
 
     for (let w = 0; w < weeksCount; w++) {
       const weekSessions = totalGrid.slice(w * 7, (w + 1) * 7)
-      
+
       // Если на последней неделе не хватает дней до полного размера в 7 дней — добиваем днями отдыха
       while (weekSessions.length < 7) {
         weekSessions.push({
@@ -162,7 +162,11 @@ const Plan = ({ id }) => {
     return formattedWeeks
   }, [plan])
 
-  if (!plan || !plan.workouts || Object.keys(plan.workouts).length === 0) {
+  if (
+    !plan ||
+    !plan.workouts ||
+    Object.keys(plan.workouts).length === 0
+  ) {
     setTimeout(() => {
       setIsLoading(false)
     }, 2000)
@@ -174,9 +178,12 @@ const Plan = ({ id }) => {
         ) : (
           <div>
             <span className={styles.error_text}>
-              Активный план не выбран. Сделайте это перейдя на страницу Мой планы.
+              Активный план не выбран. Сделайте это перейдя на
+              страницу Мой планы.
             </span>
-            <RouterLink to="/userplans">ПЕРЕЙТИ В МОИ ПЛАНЫ</RouterLink>
+            <RouterLink to="/userplans">
+              ПЕРЕЙТИ В МОИ ПЛАНЫ
+            </RouterLink>
           </div>
         )}
       </div>
@@ -196,17 +203,25 @@ const Plan = ({ id }) => {
             назад
           </button>
           <PlanHeader plan={plan} />
-          
+
           {/* Рендерим отформатированный календарный массив вместо сырого plan.workouts */}
-          {calendarWorkouts.map((week, inx) => (
-            <WeekPlan
-              key={`week-page-${inx}`} // Уникальный ключ для сброса кэша React
-              week={week}
-              weekNumber={inx}
-              startDate={plan.startDate}
-              paginatePage={page}
-            />
-          ))}
+          {/* Рендерим отформатированный календарный массив с CSS-пагинацией */}
+          <div className={styles.weeks_scroll_container}>
+            {calendarWorkouts.map((week, inx) => (
+              <div
+                key={`week-wrapper-${week._id || inx}`}
+                // 🚀 ОПТИМИЗАЦИЯ: Если неделя активна — показываем, если нет — скрываем из DOM через display: none [INDEX]
+                style={{ display: inx === page ? 'block' : 'none' }}
+              >
+                <WeekPlan
+                  week={week}
+                  weekNumber={inx}
+                  startDate={plan.startDate}
+                  paginatePage={page}
+                />
+              </div>
+            ))}
+          </div>
 
           <Pagination
             paginate={paginate}
@@ -214,14 +229,18 @@ const Plan = ({ id }) => {
             totalElements={calendarWorkouts.length}
             activePage={page}
           />
-          
+
           {percent === 100 && (
             <div className={styles.compliment}>
               <div className={styles.compliment_card}>
                 <span className={styles.compliment_text}>
-                  Поздравляем! Вы успешно завершили весь план тренировок...
+                  Поздравляем! Вы успешно завершили весь план
+                  тренировок...
                 </span>
-                <button className={styles.btn_share_story} onClick={handleShare}>
+                <button
+                  className={styles.btn_share_story}
+                  onClick={handleShare}
+                >
                   <TfiCup size={24} className={styles.cup_icon} />
                   <span className={styles.compliment_text_btn}>
                     Поделиться успехом в Истории
@@ -234,7 +253,10 @@ const Plan = ({ id }) => {
             <div className={styles.progress_container}>
               <Progressbar completed={percent} />
             </div>
-            <button className={styles.btn_reset_progress} onClick={showModal}>
+            <button
+              className={styles.btn_reset_progress}
+              onClick={showModal}
+            >
               <BiReset size={25} />
             </button>
           </div>

@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Modal } from 'antd'
 import { TbMoodSmile } from 'react-icons/tb'
 
 import styles from './ModalRating.module.css'
 
-const ModalRating = ({ getData }) => {
-  const [valueRating, setValueRating] = useState(null)
-  const [valueMood, setValueMood] = useState(null)
+const ModalRating = ({ getData , currentRating, currentMood}) => {
+   const [valueRating, setValueRating] = useState(currentRating || null)
+  const [valueMood, setValueMood] = useState(currentMood || null)
   const [openModal, setOpenModal] = useState(false)
 
   const dictionaryRating = [
@@ -25,6 +25,15 @@ const ModalRating = ({ getData }) => {
     { title: '🙂', value: 4 },
     { title: '😀', value: 5 },
   ]
+
+  useEffect(() => {
+    if (openModal) {
+      setValueRating(currentRating || null)
+      setValueMood(currentMood || null)
+    }
+  }, [openModal, currentRating, currentMood])
+
+
   const showModal = () => {
     setOpenModal(true)
   }
@@ -34,14 +43,13 @@ const ModalRating = ({ getData }) => {
       rating: valueRating || null,
       mood: valueMood || null,
     })
-    setValueRating(null)
-    setValueMood(null)
+ 
     setOpenModal(false)
   }
 
   const handleCancel = () => {
-    setValueRating(null)
-    setValueMood(null)
+    setValueRating(currentRating || null)
+    setValueMood(currentMood || null)
     setOpenModal(false)
   }
 

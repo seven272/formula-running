@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../utils/axios.js'
 import { showToast } from './toastSlice.js'
-
+ 
 const fetchGetCurrentPlan = createAsyncThunk(
   'currentPlan/fetchGetCurrentPlan',
   async () => {

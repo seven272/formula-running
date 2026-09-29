@@ -23,6 +23,8 @@ const DayPlan = ({
   startDate,
   calculatedDate, // <-- Получаем готовую дату от родителя
   isEmptyBeforeStart = false,
+  rating, // 🚀 Новое: Принимаем текущую оценку из Redux
+  mood, // 🚀 Новое: Принимаем текущее самочувствие из Redux
 }) => {
   const dispatch = useDispatch()
   const [isSelected, setIsSelected] = useState(completed)
@@ -130,7 +132,11 @@ const DayPlan = ({
 
         <div className={styles.day_rating} title="Оценить тренировку">
           {isSelected ? (
-            <ModalRating getData={handleRatingSession} />
+            <ModalRating
+              getData={handleRatingSession}
+              currentRating={rating}
+              currentMood={mood}
+            />
           ) : (
             <TbMoodOff
               size={22}

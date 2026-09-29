@@ -1,10 +1,10 @@
+// === Полный обновленный файл WeekPlan.jsx ===
 import React from 'react'
 import DayPlan from './dayPlan/DayPlan'
 import styles from './WeekPlan.module.css'
 
 const WeekPlan = ({
   week,
-  paginatePage = 0,
   weekNumber,
   startDate,
 }) => {
@@ -18,8 +18,6 @@ const WeekPlan = ({
     firstMonday.setDate(start.getDate() - (startDayOfWeek - 1))
 
     return week.sessions.map((daySession, inx) => {
-      // Для каждого элемента (неважно, заглушка это или реальный день)
-      // дата рассчитывается абсолютно линейно: Понедельник + СмещениеНедели + НомерДня
       const currentDayDate = new Date(firstMonday)
       currentDayDate.setDate(firstMonday.getDate() + (weekNumber * 7) + inx)
 
@@ -31,7 +29,7 @@ const WeekPlan = ({
             weekId={week._id}
             weekNumber={weekNumber}
             startDate={startDate}
-            calculatedDate={currentDayDate} // Передаем точную железную дату
+            calculatedDate={currentDayDate}
           />
         </div>
       )
@@ -39,16 +37,13 @@ const WeekPlan = ({
   }
 
   return (
-    <>
-      {weekNumber === paginatePage && (
-        <div className={styles.week}>
-          <span className={styles.week__title}>
-            Неделя {week.weekNumber}
-          </span>
-          {renderSessions()}
-        </div>
-      )}
-    </>
+    <div className={styles.week}>
+      {/* 🚀 Изменено: Условие weekNumber === paginatePage убрано, рендер идет напрямую */}
+      <span className={styles.week__title}>
+        Неделя {week.weekNumber}
+      </span>
+      {renderSessions()}
+    </div>
   )
 }
 
