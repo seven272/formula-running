@@ -213,8 +213,23 @@ const currentPlanSlice = createSlice({
       })
       .addCase(fetchResetProgressPlan.fulfilled, (state, action) => {
         state.isLoading = false
-        state.progress = { ...action.payload.progress }
-        state.plan = action.payload.plan
+        
+        // Гарантируем, что прогресс обновится, если он есть в ответе
+        if (action.payload?.progress) {
+          state.progress = { ...action.payload.progress }
+        } else if (action.payload?.currentPlan?.progress) {
+          state.progress = { ...action.payload.currentPlan.progress }
+        }
+
+        // 🚀 СТРАХОВКА: Проверяем, в каком именно поле бэкенд прислал обновленный план
+        const updatedPlan = action.payload?.plan || action.payload?.currentPlan;
+        
+        if (updatedPlan) {
+          state.plan = updatedPlan;
+          state.currentId = updatedPlan._id;
+          if (updatedPlan.progress) state.progress = updatedPlan.progress;
+          state.activityDates = updatedPlan.activityMap || [];
+        }
       })
       .addCase(fetchResetProgressPlan.rejected, (state) => {
         state.isLoading = false
