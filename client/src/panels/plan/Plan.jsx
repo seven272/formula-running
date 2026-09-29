@@ -166,33 +166,56 @@ const Plan = ({ id }) => {
     return formattedWeeks
   }, [plan])
 
-  if (
-    !plan ||
-    !plan.workouts ||
-    Object.keys(plan.workouts).length === 0
-  ) {
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
+  // if (
+  //   !plan ||
+  //   !plan.workouts ||
+  //   Object.keys(plan.workouts).length === 0
+  // ) {
+  //   setTimeout(() => {
+  //     setIsLoading(false)
+  //   }, 2000)
 
-    return (
-      <div className={styles.error_block}>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div>
-            <span className={styles.error_text}>
-              Активный план не выбран. Сделайте это перейдя на
-              страницу Мой планы.
-            </span>
-            <RouterLink to="/userplans">
-              ПЕРЕЙТИ В МОИ ПЛАНЫ
-            </RouterLink>
-          </div>
-        )}
+  //   return (
+  //     <div className={styles.error_block}>
+  //       {isLoading ? (
+  //         <Loader />
+  //       ) : (
+  //         <div>
+  //           <span className={styles.error_text}>
+  //             Активный план не выбран. Сделайте это перейдя на
+  //             страницу Мой планы.
+  //           </span>
+  //           <RouterLink to="/userplans">
+  //             ПЕРЕЙТИ В МОИ ПЛАНЫ
+  //           </RouterLink>
+  //         </div>
+  //       )}
+  //     </div>
+  //   )
+  // }
+
+  // 1. Если данные еще загружаются с сервера — показываем лоадер
+if (isLoading && (!plan || !plan.workouts)) {
+  return (
+    <div className={styles.error_block}>
+      <Loader />
+    </div>
+  )
+}
+
+// 2. Если загрузка завершена, но плана реально нет в базе (пользователь ничего не покупал)
+if (!isLoading && (!plan || !plan.workouts || plan.workouts.length === 0)) {
+  return (
+    <div className={styles.error_block}>
+      <div>
+        <span className={styles.error_text}>
+          Активный план не выбран. Сделайте это перейдя на страницу Мои планы.
+        </span>
+        <RouterLink to="/userplans">ПЕРЕЙТИ В МОИ ПЛАНЫ</RouterLink>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
   return (
     <Panel id={id}>
