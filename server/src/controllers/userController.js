@@ -38,7 +38,7 @@ const getMyProfile = async (req, res) => {
       })
     }
 
-    res.status(201).json(user)
+    res.status(200).json(user)
   } catch (error) {
     console.error('Ошибка в getMyProfile:', error)
     // Возвращаем 500 статус, чтобы Redux Toolkit ушел в rejected

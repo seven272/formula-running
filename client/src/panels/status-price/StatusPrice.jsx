@@ -63,7 +63,7 @@ const StatusPrice = ({ id }) => {
     //возвращает true если platform есть в массиве с разрешенными версиями Вконтакте
     return allowedPlatforms.includes(platform)
   }
-
+ 
   const handleBuy = async (tierId) => {
     try {
       const confirmationUrl = await dispatch(

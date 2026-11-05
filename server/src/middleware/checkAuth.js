@@ -42,25 +42,33 @@ import jwt from 'jsonwebtoken'
 //2 вариант через авторизацию в headers, вшивая токен в заголовok при отправки запроса в axios
 
 const checkAuth = (req, res, next) => {
-  //1 вариант расшифровки токена
-  const token = (req.headers.authorization || '').replace(
-    /Bearer\s?/,
-    '', 
-  )
+  // Безопасно достаем токен из заголовка Authorization
+  const authHeader = req.headers.authorization || ''
+  const token = authHeader.replace(/Bearer\s?/, '')
 
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      //вшиваю в запрос поле userId
-      req.userId = decoded.userId
-      next()
-    } catch (error) {
-      return res.status(400).json({
-        message: 'Не удалось авторизоваться',
-      })
-    }
-  } else {
-    console.log('Не удалось получить токен при авторизации')
+  if (!token) {
+    // ВАЖНО: Если токена нет, сразу возвращаем 401 ошибку и пишем в консоль
+    console.warn('Авторизация отклонена: токен отсутствует в заголовках')
+    return res.status(401).json({
+      message: 'Доступ запрещен: отсутствует авторизационный токен',
+    })
+  }
+
+  try {
+    // Проверяем ваш внутренний JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    
+    // Записываем userId в объект запроса для последующих контроллеров
+    req.userId = decoded.userId
+    
+    // Передаем управление следующему обработчику/контроллеру
+    next()
+  } catch (error) {
+    console.error('Ошибка верификации JWT токена:', error.message)
+    return res.status(403).json({
+      message: 'Токен недействителен или его срок действия истек',
+    })
   }
 }
+
 export default checkAuth

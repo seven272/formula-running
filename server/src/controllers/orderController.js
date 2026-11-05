@@ -221,7 +221,7 @@ const vkPayFiat = async (req, res) => {
 
 const createPaymentYooKassa = async (req, res) => {
   try {
-    const vkId = req.vkId
+    const vkId = req.vkId 
     const { tierId } = req.body
     const tier = TIER_SETTINGS[tierId]
 

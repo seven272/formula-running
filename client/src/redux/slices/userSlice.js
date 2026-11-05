@@ -188,7 +188,7 @@ const fetchUpdateUserTier = createAsyncThunk(
 
 const fetchPaymentLink = createAsyncThunk(
   'user/fetchPaymentLink',
-  async ({ tierId }, { rejectWithValue }) => {
+  async ({ tierId }, { rejectWithValue }) => { 
     try {
       const response = await axios.post('/orders/create-payment', {
         tierId,
